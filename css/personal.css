@@ -3,31 +3,56 @@ body{
     height: 100%
 }
 .content{
-    width:6.48rem;
-    height:7.02rem;
     margin: auto;
     padding-top: .1rem;
     box-sizing: border-box;
-    background-color: pink
 }
 .input{
     width:100%;
     height:2.76rem;
-    background-color: blueviolet
 }
 .phone{
     width:100%;
-    height:1.38rem;
     display: flex;
     flex-direction: row;
-    background-color: darkcyan
 }
-.phone .iconfont{
+.phone .iconfont,.icon-icon-user-copy-copy{
     width:.25rem;
     height:.36rem;
-    margin-right: .2rem
+    margin-right: .2rem;
+    color: #3b6af4;
 }
 .ipt{
     width:3.26rem;
-    height:.38rem
+    height:.38rem;
+}
+.phone,.name{
+	border-bottom: 1px solid #e1e1e1;
+	padding:.4rem ;
+}
+
+/*=====*/
+.changebox{
+	display: inline-block;
+	width: 1.75rem;
+	height: .6rem;
+	line-height: .6rem;
+	border-radius: .6rem;
+	background-color: #3b6af4;
+	color: #FFFFFF;
+	border: none;
+	outline: none;
+}
+.ipt{
+	height: .6rem;
+	line-height: .6rem;
+	border:none;
+	outline: none;
+	text-indent: 12px;
+}
+
+#btn{
+	background-color: #3b6af4;
+	height: .6rem;
+	line-height: .6rem;
 }
