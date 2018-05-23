@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我要申请</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/weui.min.css">
+    <link rel="stylesheet" href="../css/jquery-weui.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css">
+    <link rel="stylesheet" href="../css/apply.css">
+    <script src="../js/jquery-3.2.1.js"></script>
+    <script src="../js/jquery-weui.min.js"></script>
+    <script src="../js/auto-size.js"></script>
+</head>
+<body>
+    <div class="content">
+        <div class="name">
+            <i class="must">*</i>
+            <label class="label">借款人姓名：</label>
+            <input type="name" placeholder="请输入姓名" class="ipt">
+        </div>
+        <div class="IDcard">
+            <i class="must">*</i>
+            <label class="label">身份证号码：</label>
+            <input type="text" placeholder="请输入身份证号" class="ipt" maxlength="18">
+            <span>✔</span>
+            <i class="iconfont icon-xiangji1"></i>
+        </div>
+        <div class="card">
+            <label class="label">银行卡号：&nbsp;&nbsp;&nbsp;</label>
+            <input type="text" placeholder="请输入银行卡号" class="ipt" maxlength="19">
+            <i class="iconfont icon-xiangji1"></i>
+        </div>
+        <div class="phone">
+            <i class="must">*</i>
+            <label class="label">银行预留手机号：</label>
+            <div class="pho">
+                <input type="number" placeholder="输入预留手机号" class="ipt1" maxlength="11">
+                <button class="get">
+                    <p>获取验证码</p>
+                </button>
+            </div>
+        </div>
+        <div class="msg">
+            <i class="must">*</i>
+            <label class="label">短信验证码：</label>
+            <input type="name" placeholder="请输入短信验证码" class="ipt">       
+        </div>
+        <a href="javascript:;" class="weui-btn weui-btn_primary" id="btn">下一步</a>
+        <!-- 提示框 -->
+        <div class="name-pop-box">
+            <div class="mask"></div>
+            <div class="box">
+                <p class="warn">提醒</p>
+                <p class="wrong"></p>
+                <a href="javascript:;" class="weui-btn weui-btn_primary" id="btn1">返回</a>  
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(function(){
+
+            //点击下一步提交
+            $('#btn').click(function(){
+                let name=$('.name .ipt').val();
+                let IDcard=$('.IDcard .ipt').val();
+                let card=$('.card .ipt').val();
+                let phone=$('.phone .ipt1').val();
+                let msg=$('.msg .ipt').val();
+                if(!$('.name .ipt').val()||!name){
+                    $('.name-pop-box').css('display','block');
+                    $('.wrong').text('您填写的经销商代码不正确，请重新填写！');
+                    $("#btn1").on('click',function(){
+                        $('.name-pop-box').css('display','none');
+                        $('.name .ipt').val('');
+                    })
+                    return false;
+                }else if($('.IDcard .ipt').val()!=$('.name .ipt').val()){
+                    $('.name-pop-box').css('display','block');
+                    $('.wrong').text('您填写的身份证号码与姓名不匹配，请重新填写！');
+                    $("#btn1").on('click',function(){
+                        $('.name-pop-box').css('display','none');
+                        $('.IDcard .ipt').val('');
+                    });
+                    return false;
+                }else if(!(/^[1-9]\d{5}[1-2]\d{3}[0-1]\d{1}[0-2]\d{1}\d{3}[0-9Xx]$/.test(IDcard))||!IDcard){
+                    console.log("身份证",IDcard);
+                    $('.name-pop-box').css('display','block');
+                    $('.wrong').text('您填写的身份证号码无效，请重新填写！');
+                    $("#btn1").on('click',function(){
+                        $('.name-pop-box').css('display','none');
+                        $('.IDcard .ipt').val('');
+                    })
+                    return false;
+                }else if(!(/^[1-9]\d{18}$/.test(card))||!card){
+                    $('.name-pop-box').css('display','block');
+                    $('.wrong').text("您填写的银行卡号不正确，请重新填写！");
+                    $("#btn1").on('click',function(){
+                        $('.name-pop-box').css('display','none');
+                        $('.card .ipt').val('');
+                    })
+                    return false;
+                }else if(!(/^1[34578]\d{9}$/.test(phone))||!phone){
+                    $('.name-pop-box').css('display','block');
+                    $('.wrong').text("您填写的银行预留号码不正确，请重新填写！");
+                    $("#btn1").on('click',function(){
+                        $('.name-pop-box').css('display','none');
+                        $('.phone .ipt').val('');
+                    })
+                    return false;
+                }else if(!(/^\d{6}$/)){
+                    $('.name-pop-box').css('display','block');
+                    $('.wrong').text("您填写的短信验证码不正确，请重新填写！");
+                    $("#btn1").on('click',function(){
+                        $('.name-pop-box').css('display','none');
+                        $('.msg .ipt').val('');
+                    })
+                    return false;
+                }else{
+                    return true
+                }
+            })
+
+            $('.IDcard .ipt').blur(function(){
+                let p =  $('.IDcard .ipt').val();
+                if(!(/^[1-9]\d{5}[1-2]\d{3}[0-1]\d{1}[0-2]\d{1}\d{3}[0-9Xx]$/.test(p))){
+
+                }else{
+                    alert('55')
+                }
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+body{
+    width: 100%;
+    height:100%
+}
+.content{
+    width:6.9rem;
+    height: 7.68rem;
+    margin:auto;
+    padding-top: .4rem
+}
+.name{
+    width:100%;
+    height: .6rem;
+    padding-bottom: .4rem 
+}
+.IDcard{
+    width:100%;
+    height: .6rem;
+    margin-bottom: .4rem
+}
+.IDcard span{
+    color: red;
+    font-size: .4rem
+}
+.IDcard .iconfont{
+    color: #5078f4;
+    margin-left: .3rem
+}
+.card{
+    width:100%;
+    height: .6rem;
+    margin-bottom: .4rem
+}
+.card .label{
+    margin-left: .4rem
+}
+.card .iconfont{
+    color: #5078f4;
+    margin-left: .72rem
+}
+.pho{
+    width:100%;
+    height: .6rem;
+    margin-bottom: .4rem
+}
+.msg{
+    width:100%;
+    height: .6rem;
+    margin-bottom: 1.75rem
+}
+.must{
+    color: red;
+    margin-right: .1rem;
+    position: relative;
+    top: .05rem
+}
+.label{
+    font-size: .28rem;
+    color:#5c5c5c;
+    line-height: .6rem
+}
+.ipt{
+    width:3.5rem;
+    height:.55rem;
+    border-radius: .5rem;
+    padding-left: .2rem;
+    outline: none
+}
+.ipt1{
+    width:2.62rem;
+    height:.55rem;
+    border-radius: .5rem;
+    margin-left: 2.1rem;
+    padding-left: .2rem;
+    outline: none
+}
+.get{
+    width:1.9rem;
+    height:.55rem;
+    background-color: #4371f8;
+    border:1px solid #4371f8;
+    box-sizing: border-box;
+    border-radius: .5rem;
+    margin-left: .16rem;
+    outline: none
+}
+.get p{
+    font-size: .26rem;
+    color: #fff;
+    text-align: center;
+    line-height: .55rem
+}
+input{
+    border:1px solid #dcdcdc;
+    box-sizing: border-box;
+    font-size: .26rem;
+    color: #b2b2b2
+}
+
+
+.weui-btn{
+    width:5.52rem;
+    height: .65rem;
+    background-color: #3b6af4 !important;
+    border-radius: .5rem;
+    font-size: .3rem;
+    line-height: .65rem;
+    text-align: center;
+    color: #fff;
+    outline: none
+}
+
+
+
+/* 借款人姓名提示框 */
+.name-pop-box{
+    display: none
+}
+.name-pop-box .mask{
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 100;
+    width:100%;
+    height:100%;
+    background-color: black;
+    opacity: .3;
+}
+.box{
+    position: fixed;
+    top:3.15rem;
+    left:.3rem;
+    z-index: 200;
+    width:6.9rem;
+    height: 4.45rem;
+    background-color: #fff;
+    border-radius: .1rem
+}
+#btn{
+    width:100%;
+    height:.8rem;
+    background-color: #3b6bf4;
+    border-radius: .5rem;
+    font-size: .32rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: .8rem;
+    text-align: center; 
+}
+.warn{
+    font-size: .3rem;
+    color: #1a69ea;
+    text-align: center;
+    margin: 0;
+    padding-top: .38rem
+}
+.wrong{
+    font-size: .26rem;
+    color: black;
+    text-align: center;
+    margin-top: 1rem
+}
+#btn1{
+    width:4rem;
+    height:.65rem;
+    background-color: #3b6af4;
+    font-size: .3rem;
+    color: #fff;
+    border-radius: .5rem;
+    margin-top: .97rem
+}
