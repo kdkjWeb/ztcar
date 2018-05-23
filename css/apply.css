@@ -4,7 +4,7 @@ body{
 }
 .content{
     width:6.9rem;
-    height: 7.68rem;
+    /*height: 7.68rem;*/
     margin:auto;
     padding-top: .4rem
 }
@@ -34,9 +34,10 @@ body{
 .card .label{
     margin-left: .4rem
 }
-.card .iconfont{
+.icon-xiangji1{
     color: #5078f4;
-    margin-left: .72rem
+    /*margin-left: .72rem*/
+   float: right;
 }
 .pho{
     width:100%;
@@ -46,7 +47,7 @@ body{
 .msg{
     width:100%;
     height: .6rem;
-    margin-bottom: 1.75rem
+    margin-bottom: .4rem
 }
 .must{
     color: red;
@@ -63,7 +64,7 @@ body{
     width:3.5rem;
     height:.6rem;
     border-radius: .5rem;
-    padding-left: .2rem;
+    text-indent: .2rem;
     outline: none
 }
 .ipt1{
@@ -168,4 +169,33 @@ input{
     color: #fff;
     border-radius: .5rem;
     margin-top: .97rem
+}
+/*=============*/
+.marry,.tenant,.guarantee{
+	margin-bottom: .4rem
+}
+.marry>div,.tenant>div,.guarantee>div{
+	margin-bottom: .4rem
+}
+/*==复选框样式=======*/
+.mycheckbox{
+	margin-right: .2rem;
+}
+.icon-weigouxuan,.icon-yigouxuan{
+	font-size: .4rem;
+	color: #dddddd;
+}
+.icon-yigouxuan{
+	color: #3b6af4;
+}
+.agreement{
+	font-size: .18rem;
+	text-align: center;
+	margin: .7rem;
+}
+.agreement span{
+	color: #3b6af4;
+}
+.agreement a{
+	color: #f96700;
 }
