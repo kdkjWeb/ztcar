@@ -16,5 +16,18 @@ body{
     background-color: blueviolet
 }
 .phone{
-    
+    width:100%;
+    height:1.38rem;
+    display: flex;
+    flex-direction: row;
+    background-color: darkcyan
+}
+.phone .iconfont{
+    width:.25rem;
+    height:.36rem;
+    margin-right: .2rem
+}
+.ipt{
+    width:3.26rem;
+    height:.38rem
 }
