@@ -1,0 +1,30 @@
+.body{
+    width:100%;
+    height:100%;
+}
+.content{
+    width:6.92rem;
+    height:100%;
+    margin:auto;
+    padding-top: .12rem
+}
+.msg{
+    width:100%;
+    height: 1.08rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    line-height: 1.08rem;
+    border-bottom: 1px dashed #dbdbdb;
+    box-sizing: border-box
+}
+.msg p{
+    font-size: .28rem;
+    color: #5b5b5b;
+    font-weight: 700;
+}
+.msg span{
+    font-size: .28rem;
+    color: #416dff;
+    font-weight: 700
+}
