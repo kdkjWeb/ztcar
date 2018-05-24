@@ -43,7 +43,11 @@
 	background-size: 100% 100%;
 }
 #upbanck,#downback{
-	
+	width: 5rem;
+	height: 3rem;
+	margin: .2rem  auto;
+	background-image: url(../image/addbank.png);
+	background-size: 100% 100%;
 }
 
 .positiveCar .file{

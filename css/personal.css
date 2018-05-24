@@ -54,6 +54,9 @@ body{
 
 #btn{
 	background-color: #3b6af4;
-	height: .6rem;
-	line-height: .6rem;
+	height: .8rem;
+	line-height: .8rem;
+	border-radius: .8rem;
+	width: 5.5rem;
+	margin-top: 3.3rem;
 }
