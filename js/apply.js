@@ -66,7 +66,7 @@ $(function() {
 		if(!(/^[1-9]\d{5}[1-2]\d{3}[0-1]\d{1}[0-2]\d{1}\d{3}[0-9Xx]$/.test(p))) {
 
 		} else {
-			alert('55')
+			$(".IDcard span").show()
 		}
 	})
 })
