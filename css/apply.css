@@ -8,11 +8,13 @@ body{
     margin:auto;
     padding-top: .4rem
 }
+/* 姓名 */
 .name{
     width:100%;
     height: .6rem;
     padding-bottom: .4rem 
 }
+/* 身份证 */
 .IDcard{
     width:100%;
     height: .6rem;
@@ -30,6 +32,7 @@ body{
     margin:.1rem 0 .3rem;
 
 }
+/* 银行卡 */
 .card{
     width:100%;
     height: .6rem;
@@ -43,27 +46,34 @@ body{
     margin:.1rem 0 .3rem;
    float: right;
 }
-.pho{
+/* 手机号 */
+.phone{
     width:100%;
     height: .6rem;
-    margin-bottom: .4rem
+    margin-bottom: .4rem;
+    display: flex;
+    flex-direction: row;
 }
+/* 短信验证码 */
 .msg{
     width:100%;
     height: .6rem;
     margin-bottom: .4rem
 }
+/* *必填项 */
 .must{
     color: red;
     margin-right: .1rem;
     position: relative;
     top: .05rem
 }
+/* 文字 */
 .label{
     font-size: .28rem;
     color:#5c5c5c;
-    line-height: .6rem
+    line-height: .6rem;
 }
+/* 输入框 */
 .ipt{
     width:3.5rem;
     height:.6rem;
@@ -71,38 +81,29 @@ body{
     text-indent: .2rem;
     outline: none
 }
-.ipt1{
-    width:2.62rem;
-    height:.55rem;
-    border-radius: .5rem;
-    margin-left: 2.1rem;
-    padding-left: .2rem;
-    outline: none
-}
-.get{
-    width:1.9rem;
-    height:.55rem;
-    background-color: #4371f8;
-    border:1px solid #4371f8;
-    box-sizing: border-box;
-    border-radius: .5rem;
-    margin-left: .16rem;
-    outline: none
-}
-.get p{
-    font-size: .26rem;
-    color: #fff;
-    text-align: center;
-    line-height: .55rem
-}
 input{
     border:1px solid #dcdcdc;
     box-sizing: border-box;
     font-size: .26rem;
     color: #b2b2b2
 }
-
-
+/* 获取验证码 */
+.get{
+    width:1.5rem;
+    height:.55rem;
+    background-color: #4371f8;
+    border:1px solid #4371f8;
+    box-sizing: border-box;
+    border-radius: .5rem;
+    outline: none
+}
+.get span{
+    font-size: .18rem;
+    color: #fff;
+    text-align: center;
+    line-height: .55rem
+}
+/* 确定按钮 */
 .weui-btn{
     width:5.52rem;
     height: .65rem;
@@ -114,8 +115,14 @@ input{
     color: #fff;
     outline: none
 }
-
-
+p{
+    margin: -.5rem 0 0 .5rem
+}
+em{
+    font-size: .12rem;
+    color: red;
+    margin-top: -.5rem
+}
 
 /* 借款人姓名提示框 */
 .name-pop-box{
@@ -151,6 +158,7 @@ input{
     color: #fff;
     line-height: .8rem;
     text-align: center; 
+    margin-bottom: .5rem
 }
 .warn{
     font-size: .3rem;
@@ -178,6 +186,18 @@ input{
 .marry,.tenant,.guarantee{
 	margin-bottom: .4rem
 }
+/* 配偶 */
+.marry-box{
+    display: none
+}
+/* 共同承租人 */
+.tenant-box{
+    display: none
+}
+/* 担保人 */
+.guarantee-box{
+    display: none
+}
 .marry>div,.tenant>div,.guarantee>div{
 	margin-bottom: .4rem
 }
@@ -202,4 +222,23 @@ input{
 }
 .agreement a{
 	color: #f96700;
+}
+
+/* 征信内容的文字 */
+.full-name{
+    font-size: .28rem;
+    color:#5c5c5c;
+    line-height: .6rem;
+    margin-left: .4rem 
+}
+.full-name1{
+    font-size: .28rem;
+    color:#5c5c5c;
+    line-height: .6rem;
+    margin-left: -.15rem 
+}
+.push{
+    width:100%;
+    height: .6rem;
+    padding-bottom: .4rem 
 }
