@@ -45,6 +45,7 @@ function errAlert(tit,msg){
 			</div>\
 		</div>';
     $('body').append(text);
+    $('#errBox').fadeIn('500');
 };
 $(document).on('click','#colseErr',function(){
 	$('#errBox').remove();
