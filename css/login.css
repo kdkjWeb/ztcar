@@ -94,10 +94,10 @@ input{
     border: 1px solid #ccc
 }
 /* 验证码提示框 */
-.identifying-pop-box{
+.pop-box{
     display: none
 }
-.identifying-pop-box .mask{
+.pop-box .mask{
     position: fixed;
     top:0;
     left:0;
@@ -151,7 +151,7 @@ input{
     margin-top: .97rem
 }
 /* 登录提示框 */
-.btn-pop-box{
+/* .btn-pop-box{
     display: none
 }
 .btn-pop-box .mask{
@@ -176,6 +176,53 @@ input{
 }
 #btn2{
     width:4rem;
+    height:.65rem;
+    background-color: #3b6af4;
+    font-size: .3rem;
+    color: #fff;
+    border-radius: .5rem;
+    margin-top: .97rem
+} */
+/* 登录成功后弹出是否需要重新选择产品提示框；是，跳转选择产品，重新申请；否，跳转个人信息 */
+.scs-pop-box{
+    display: none
+}
+.scs-pop-box .mask{
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 100;
+    width:100%;
+    height:100%;
+    background-color: black;
+    opacity: .3;
+}
+.box1{
+    position: fixed;
+    top:3.15rem;
+    left:.3rem;
+    z-index: 200;
+    width:6.9rem;
+    height: 4.45rem;
+    background-color: #fff;
+    border-radius: .1rem
+}
+.btn-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around
+}
+#yes{
+    width:25%;
+    height:.65rem;
+    background-color: #3b6af4;
+    font-size: .3rem;
+    color: #fff;
+    border-radius: .5rem;
+    margin-top: .97rem
+}
+#no{
+    width:25%;
     height:.65rem;
     background-color: #3b6af4;
     font-size: .3rem;

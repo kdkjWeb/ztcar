@@ -2,24 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>变更手机号</title>
+    <title>登录</title>
     <link rel="stylesheet" href="../css/common/reset.css">
     <link rel="stylesheet" href="../css/common/weui.min.css">
     <link rel="stylesheet" href="../css/common/jquery-weui.min.css">
     <link rel="stylesheet" type="text/css" href="../css/common/iconfont.css">
-    <link rel="stylesheet" href="../css/change.css">
+    <link rel="stylesheet" href="../css/login.css">
     <script src="../js/common/jquery-3.2.1.js"></script>
     <script src="../js/common/jquery-weui.min.js"></script>
     <script src="../js/common/common.js"></script>
 </head>
 <body>
+    <!-- 头部logo -->
+    <!-- <header>
+        <img src="../image/logo.jpg" alt="" class="img">
+    </header> -->
+    <!-- 用户登录 -->
     <div class="content">
         <div class="username">
             <i class="iconfont icon-shurushoujihao-baise"></i>
             <input class="phone" type="username" placeholder="请输入新手机号" maxlength="11">
-            
         </div>
         <div class="password">
             <div class="ipt">
@@ -34,8 +38,8 @@
         <a href="javascript:;" class="weui-btn weui-btn_primary" id="btn">保存</a>
         <!-- <button class="btn"><p>客户登录</p></button> -->
     </div>
-
-    <div class="identifying-pop-box">
+<!-- 验证码提示框 -->
+    <div class="pop-box">
         <div class="mask"></div>
         <div class="box">
             <p class="warn">提醒</p>
@@ -43,86 +47,124 @@
             <a href="javascript:;" class="weui-btn weui-btn_primary" id="btn1">返回</a>  
         </div>
     </div>
-    <div class="btn-pop-box">
+    <!-- 登录提示框 -->
+    <!-- <div class="btn-pop-box">
         <div class="mask"></div>
         <div class="box1">
             <p class="warn">提醒</p>
             <p class="wrong">您填写的验证码错误或为空，请重新输入</p>
             <a href="javascript:;" class="weui-btn weui-btn_primary" id="btn2">返回</a>  
         </div>
+    </div> -->
+    <!-- 登录成功后弹出是否需要重新选择产品提示框；是，跳转选择产品，重新申请；否，跳转个人信息 -->
+    <div class="scs-pop-box">
+        <div class="mask"></div>
+        <div class="box1">
+            <p class="warn">提醒</p>
+            <p class="wrong">是否需要重新申请</p>
+            <div class="btn-box">
+                <a href="javascript:;" class="weui-btn weui-btn_primary" id="yes">是</a> 
+                <a href="javascript:;" class="weui-btn weui-btn_primary" id="no">否</a>  
+            </div>
+        </div>
     </div>
-    <script>
-        $(function(){
-            var phone;
-            var number;
-            var num = 10;
-            // 验证码倒计时
-            $(document).on('click','.num',function(){
-                if($(this).attr('disabled') != undefined){
-    
-                }else{
-                    $('.num').attr("disabled",true);
-                    timer();
-                }
-               
-            })
-    
-           var timer = function(){
-            var time = setInterval(
-                function(){
-                    if(num == 0){
-                        $('.num').removeAttr("disabled");
-                        clearInterval(time);
-                        num = 10;
-                        $('.num').text('获取验证码');
-                    }else{
-                        num -- ;
-                        $('.num').text( num +'S');
-                    }
-                    
-                  
-    
-                },1000
-            )
-           }
-            // 点击获取按钮，判断手机号是否正确
-    
-            $(".get").click(function(){
-                phone=$(".phone").val();
-                console.log(phone)
-                if(!(/^1[34578]\d{9}$/.test(phone))||!phone){
-                    $(".identifying-pop-box").show();
-                    return false
-                }else{
-                    return true
-                }
-            })
-            // 若手机号错误或为空，弹出提示框，点击返回按钮，并清除用户所输入的手机号
-            $("#btn1").click(function(){
-                $(".identifying-pop-box").hide();
-                $(".phone").val("")
-            })
-            // 点击获取按钮，判断验证码是否正确
-            $("#btn").click(function(){
-                number=$(".identifying").val();
-                if(!(/^\d{6}$/.test(number))||!number){
-                    $(".btn-pop-box").show();
-                    return false
-                }else{
-                    let text= '55'
-                    $(".btn-pop-box").hide();
-                    window.location.href="login.html";
-                    return true
-                }
-            })
-    
-            // 若验证码错误或为空，弹出提示框，点击返回按钮，并清除用户所输入的验证码
-            $("#btn2").click(function(){
-                $(".btn-pop-box").hide();
-                $(".identifying").val("")
-            })
-        
-        })
-    </script>
 </body>
+<script>
+
+		
+		console.log(GetRequest().isNumber)
+
+    $(function(){
+        var phone;
+        var number;
+        var num = 10;
+        // 验证码倒计时
+        $(document).on('click','.num',function(){
+            if($(this).attr('disabled') != undefined){
+
+            }else{
+                $('.num').attr("disabled",true);
+                timer();
+            }
+           
+        })
+
+       var timer = function(){
+        var time = setInterval(
+            function(){
+                if(num == 0){
+                    $('.num').removeAttr("disabled");
+                    clearInterval(time);
+                    num = 10;
+                    $('.num').text('获取验证码');
+                }else{
+                    num -- ;
+                    $('.num').text( num +'S');
+                }
+                
+              
+
+            },1000
+        )
+       }
+        // 点击获取按钮，判断手机号是否正确
+
+        $(".get").click(function(){
+            phone=$(".phone").val();
+            console.log(phone)
+            if(!(/^1[34578]\d{9}$/.test(phone))||!phone){
+                $('.pop-box').css('display', 'block');
+                $('.wrong').text("请填写正确的电话号码");
+                $("#btn1").on('click', function() {
+                    $('.pop-box').css('display', 'none');
+                    $('.phone .ipt').val('');
+                })
+                return false
+            }else{
+                return true
+            }
+        })
+   
+        $("#btn").click(function(){
+            number=$(".identifying").val();
+        // 若未填写电话号码和验证码，弹出提示
+            
+            if($(".phone").val() == '' && $(".identifying").val() == ''){
+              
+
+                $('.pop-box').css('display', 'block');
+                $('.wrong').text("您还未填写手机号和验证码，请先填写");
+                $("#btn1").on('click', function() {
+                    $('.pop-box').css('display', 'none');
+                })
+                console.log('')
+                return false;
+            }
+        // 点击获取按钮，判断验证码是否正确
+            else if(!(/^\d{6}$/.test(number))||!number){
+                $('.pop-box').css('display', 'block');
+                $('.wrong').text("请填写正确的验证码");
+                $("#btn1").on('click', function() {
+                    $('.pop-box').css('display', 'none');
+                    $('.phone .ipt').val('');
+                })
+                console.log('22')
+                return false
+            }else{
+                window.location.href="personal.html"
+                console.log('33')
+                return true
+            }
+        })
+
+        // 若验证码错误或为空，弹出提示框，点击返回按钮，并清除用户所输入的验证码
+       
+        $("#yes").on("click",function(){
+            window.location.href="applyChoice.html"
+        })
+        $("#no").on("click",function(){
+            window.location.href="personal.html"
+        })
+    })
+</script>
 </html>

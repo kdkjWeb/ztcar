@@ -15,15 +15,17 @@ $(function() {
 				$('.name .ipt').val('');
 			})
 			return false;
-		} else if($('.IDcard .ipt').val() != $('.name .ipt').val()) {
-			$('.name-pop-box').css('display', 'block');
-			$('.wrong').text('您填写的身份证号码与姓名不匹配，请重新填写！');
-			$("#btn1").on('click', function() {
-				$('.name-pop-box').css('display', 'none');
-				$('.IDcard .ipt').val('');
-			});
-			return false;
-		} else if(!(/^[1-9]\d{5}[1-2]\d{3}[0-1]\d{1}[0-2]\d{1}\d{3}[0-9Xx]$/.test(IDcard)) || !IDcard) {
+		} 
+		// else if($('.IDcard .ipt').val() != $('.name .ipt').val()) {
+		// 	$('.name-pop-box').css('display', 'block');
+		// 	$('.wrong').text('您填写的身份证号码与姓名不匹配，请重新填写！');
+		// 	$("#btn1").on('click', function() {
+		// 		$('.name-pop-box').css('display', 'none');
+		// 		$('.IDcard .ipt').val('');
+		// 	});
+		// 	return false;
+		// }
+		 else if(!(/^[1-9]\d{5}[1-2]\d{3}[0-1]\d{1}[0-2]\d{1}\d{3}[0-9Xx]$/.test(IDcard)) || !IDcard) {
 			console.log("身份证", IDcard);
 			$('.name-pop-box').css('display', 'block');
 			$('.wrong').text('您填写的身份证号码无效，请重新填写！');
@@ -57,6 +59,7 @@ $(function() {
 			})
 			return false;
 		} else {
+			window.location.href="detail.html"
 			return true
 		}
 	})
@@ -69,7 +72,15 @@ $(function() {
 			$(".IDcard span").show()
 		}
 	})
+	$("#IDcamera").on("click",function(){
+		window.location.href="upidcar.html"
+	})
+	$("#Ccamera").on("click",function(){
+		window.location.href="addback.html"
+		
+	})
 })
+
 
 
 //=============
