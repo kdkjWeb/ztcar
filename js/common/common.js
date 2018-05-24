@@ -90,3 +90,57 @@ function getDate(times) {
   	var d = new Date(times);
     return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
 };
+
+//=====正则验证===========
+
+function isName(name,msg){      //姓名
+	let regex =  /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/;  
+	if(name == ''){
+		errAlert('提醒','请填写'+msg+'姓名');
+		return false;
+	}else if(!regex.test(name)){
+		errAlert('提醒','请填写正确的'+msg+'姓名');
+		return false;
+	}else{
+		return true;
+	}
+}
+
+function isId(id,msg){    //身份证
+	let  regex = /^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/;
+	if(id == ''){
+		errAlert('提醒','请填写'+msg+'身份证号');
+		return false;
+	}else if(!regex.test(id)){
+		errAlert('提醒','请填写正确的'+msg+'身份证号');
+		return false;
+	}else{
+		return true;
+	}
+}
+
+function isCode(code){  //短信验证码
+	let  regex = /^\d{6}$/;
+	if(code == ''){
+		errAlert('提醒','请填写验证码');
+		return false;
+	}else if(!regex.test(code)){
+		errAlert('提醒','请填写正确的验证码');
+		return false;
+	}else{
+		return true;
+	}
+}
+
+function isBank(carId){  //银行卡验证
+	let regex =  /^([1-9]{1})(\d{14}|\d{18})$/;
+	if(carId == ''){
+		return true;
+	}
+	else if(!regex.test(carId)){
+		errAlert('提醒','请填写正确的银行卡');
+		return false;
+	}else{
+		return true;
+	}
+}
