@@ -1,133 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>我要申请</title>
-    <script src="../js/common/jquery-3.2.1.js"></script>
-    <script src="../js/common/common.js"></script>
-    <link rel="stylesheet" href="../css/common/reset.css">
-    <link rel="stylesheet" href="../css/common/weui.min.css">
-    <link rel="stylesheet" href="../css/common/jquery-weui.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/common/iconfont.css">
-    <link rel="stylesheet" href="../css/apply.css">
-</head>
-<body>
-    <div class="content">
-        <div class="name">
-            <i class="must">*</i>
-            <label class="label">借款人姓名：</label>
-            <input type="name" placeholder="请输入姓名" class="ipt">
-        </div>
-        <div class="IDcard">
-            <i class="must">*</i>
-            <label class="label">身份证号码：</label>
-            <input type="text" placeholder="请输入身份证号" class="ipt" maxlength="18">
-            <span>✔</span>
-            <i class="iconfont icon-xiangji1" id="IDcamera"></i>
-        </div>
-        <div class="card">
-            <label class="label">银&nbsp;行&nbsp;卡&nbsp;号：</label>
-            <input type="text" placeholder="请输入银行卡号" class="ipt" maxlength="19">
-            <i class="iconfont icon-xiangji1" id="Ccamera"></i>
-        </div>
-        <div>
-            <div class="phone">
-                <i class="must">*</i>
-                <label class="label">&nbsp;&nbsp;手&nbsp;&nbsp;&nbsp;机&nbsp;&nbsp;&nbsp;号:&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    <input type="text" placeholder="输入手机号" class="ipt" maxlength="11">
-                    <button class="get">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">	
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>我要申请</title>
+		<script src="../js/common/jquery-3.2.1.js"></script>
+		<script src="../js/common/common.js"></script>
+		<link rel="stylesheet" href="../css/common/reset.css">
+		<link rel="stylesheet" href="../css/common/weui.min.css">
+		<link rel="stylesheet" href="../css/common/jquery-weui.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/common/iconfont.css">
+		<link rel="stylesheet" href="../css/apply.css">
+
+	</head>
+
+	<body>
+		<div class="content">
+			<div class="name">
+				<i class="must">*</i>
+				<label class="label">借款人姓名：</label>
+				<input type="name" placeholder="请输入姓名" class="ipt" id="userName">
+			</div>
+			<div class="IDcard">
+				<i class="must">*</i>
+				<label class="label">身份证号码：</label>
+				<input type="text" placeholder="请输入身份证号" class="ipt" maxlength="18" id="userId">
+				<span>✔</span>
+				<i class="iconfont icon-xiangji1" id="IDcamera"></i>
+			</div>
+			<div class="card">
+				<label class="label">银&nbsp;行&nbsp;卡&nbsp;号：</label>
+				<input type="text" placeholder="请输入银行卡号" class="ipt" maxlength="19" id="userBank">
+				<i class="iconfont icon-xiangji1" id="Ccamera"></i>
+			</div>
+			<div>
+				<div class="phone">
+					<i class="must">*</i>
+					<label class="label">&nbsp;&nbsp;手&nbsp;&nbsp;&nbsp;机&nbsp;&nbsp;&nbsp;号:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+					<input type="number" placeholder="输入手机号" class="ipt" maxlength="11" id="userPhone">
+					<button class="get">
                         <span>获取验证码</span>
                     </button>
-                    
-            </div>
-            <p>
-                <em>若有填写银行卡号，请填入银行预留的手机号</em>
-            </p>
-        </div>
-        <div class="msg">
-            <i class="must">*</i>
-            <label class="label">短信验证码：</label>
-            <input type="name" placeholder="请输入短信验证码" class="ipt">       
-        </div>
-        
-       <!--配偶-->
-        <div class="marry">
-        	<div>
-        		<i class="iconfont icon-weigouxuan mycheckbox" id="icon"></i><span class="label">已婚</span>
-        	</div>
-        	<div class="marry-box">
-                <div class="push">
-                    <span class="full-name">配&nbsp;偶&nbsp;姓&nbsp;名:&nbsp;&nbsp;&nbsp;</span>
-                    <input type="text" class="ipt" placeholder="请输入姓名"/>
-                </div>
-                <div class="push">
-                    <span class="full-name">身份证号码:&nbsp;&nbsp;&nbsp;</span>
-                    <input type="text" class="ipt" placeholder="请输入身份证号码"/>
-                    <i class="iconfont icon-xiangji1"></i>
-                </div>
-            </div>
-        </div>
-        
-        <!--承租人-->
-        <div class="tenant">  
-        	<div>
-        		<i class="iconfont icon-weigouxuan mycheckbox" id="icon-1"></i><span class="label">共同承租人</span>
-        	</div>
-        	<div class="tenant-box">
-                <div class="push">
-                    <span class="full-name1">共同承租人姓名:&nbsp;&nbsp;&nbsp;</span>
-                    <input type="text" class="ipt" placeholder="请输入姓名"/>
-                </div>
-                <div class="push">
-                    <span class="full-name">身份证号码:&nbsp;&nbsp;&nbsp;</span>
-                    <input type="text" class="ipt" placeholder="请输入身份证号码"/>
-                    <i class="iconfont icon-xiangji1"></i>
-                </div>
-            </div>
-        </div>
-        
-        <!--担保人-->	
-        <div class="guarantee">  
-        	<div>
-        		<i class="iconfont icon-weigouxuan mycheckbox" id="icon-2"></i><span class="label">担保人</span>
-        	</div>
-        	<div class="guarantee-box">
-                <div class="push">
-                    <span class="full-name">担保人姓名:&nbsp;&nbsp;&nbsp;</span>
-                    <input type="text" class="ipt" placeholder="请输入姓名"/>
-                </div>
-                <div class="push">
-                    <span class="full-name">身份证号码:&nbsp;&nbsp;&nbsp;</span>
-                    <input type="text" class="ipt" placeholder="请输入身份证号码"/>
-                    <i class="iconfont icon-xiangji1"></i>
-                </div>
-            </div>
-        </div>
-        
-        <!--用户协议-->
-        <div class="agreement">
-        	 <i class="iconfont icon-weigouxuan mycheckbox" id="agreen"></i>
-        	 <span>我已经阅读并同意</span>
-        	 <a href="">《征信授权书》</a>
-        </div>
-       
-        
-        
-        <a href="javascript:;" class="weui-btn weui-btn_primary" id="btn">完成</a>
-        <!-- 提示框 -->
-        <div class="name-pop-box">
-            <div class="mask"></div>
-            <div class="box">
-                <p class="warn">提醒</p>
-                <p class="wrong"></p>
-                <a href="javascript:;" class="weui-btn weui-btn_primary" id="btn1">返回</a>  
-            </div>
-        </div>
-    </div>
 
-   <script src="../js/apply.js"></script>
-</body>
-<script src="../js/common/jquery-weui.min.js"></script>
+				</div>
+				<p>
+					<em>若有填写银行卡号，请填入银行预留的手机号</em>
+				</p>
+			</div>
+			<div class="msg">
+				<i class="must">*</i>
+				<label class="label">短信验证码：</label>
+				<input type="name" placeholder="请输入短信验证码" class="ipt" id="userCode">
+			</div>
+
+			<!--配偶-->
+			<div class="marry">
+				<div>
+					<i class="iconfont icon-weigouxuan mycheckbox check" id="marry"></i><span class="label">已婚</span>
+				</div>
+				<div class="marry-box fadeBox">
+					<div class="push">
+						<span class="full-name">配&nbsp;偶&nbsp;姓&nbsp;名:&nbsp;&nbsp;&nbsp;</span>
+						<input type="text" class="ipt" placeholder="请输入姓名" id="marryName" />
+					</div>
+					<div class="push">
+						<span class="full-name">身份证号码:&nbsp;&nbsp;&nbsp;</span>
+						<input type="text" class="ipt" placeholder="请输入身份证号码" id="marryId" />
+						<i class="iconfont icon-xiangji1"></i>
+					</div>
+				</div>
+			</div>
+
+			<!--承租人-->
+			<div class="tenant">
+				<div>
+					<i class="iconfont icon-weigouxuan mycheckbox check" id="tenant"></i><span class="label">共同承租人</span>
+				</div>
+				<div class="tenant-box fadeBox">
+					<div class="push">
+						<span class="full-name1">共同承租人姓名:&nbsp;&nbsp;&nbsp;</span>
+						<input type="text" class="ipt" placeholder="请输入姓名" id="tenantName" />
+					</div>
+					<div class="push">
+						<span class="full-name">身份证号码:&nbsp;&nbsp;&nbsp;</span>
+						<input type="text" class="ipt" placeholder="请输入身份证号码" id="tenantId" />
+						<i class="iconfont icon-xiangji1"></i>
+					</div>
+				</div>
+			</div>
+
+			<!--担保人-->
+			<div class="guarantee">
+				<div>
+					<i class="iconfont icon-weigouxuan mycheckbox check" id="guarantee"></i><span class="label">担保人</span>
+				</div>
+				<div class="guarantee-box fadeBox">
+					<div class="push">
+						<span class="full-name">担保人姓名:&nbsp;&nbsp;&nbsp;</span>
+						<input type="text" class="ipt" placeholder="请输入姓名" id="guaranteeName" />
+					</div>
+					<div class="push">
+						<span class="full-name">身份证号码:&nbsp;&nbsp;&nbsp;</span>
+						<input type="text" class="ipt" placeholder="请输入身份证号码" id="guaranteeId" />
+						<i class="iconfont icon-xiangji1"></i>
+					</div>
+				</div>
+			</div>
+
+			<!--用户协议-->
+			<div class="agreement">
+				<i class="iconfont icon-yigouxuan mycheckbox" id="agreen" box='true'></i>
+				<span>我已经阅读并同意</span>
+				<a href="">《征信授权书》</a>
+			</div>
+
+			<a href="javascript:;" class="weui-btn weui-btn_primary" id="btn">完成</a>
+		</div>
+
+		<div class="fixBox">
+			<div class="tit">请上传身份证正反面照片</div>
+
+			<div class="positiveCar">
+
+				<div id="upId">
+					<input class="file" type="file" />
+					<span>上传身份证正面照片</span>
+				</div>
+
+			</div>
+
+			<div class="positiveCar">
+				<div id="downId">
+					<input class="file" type="file" />
+					<span>上传身份证反面照片</span>
+				</div>
+			</div>
+
+			<div class="next">
+				完成
+			</div>
+		</div>
+
+		<div class="fixBox">
+			<div class="tit">请上传银行卡正反面照片</div>
+
+			<div class="positiveCar">
+
+				<div id="upbanck" class="image-item">
+					<input class="file" type="file" multiple="multiple" />
+					<span>上传银行卡正面照片</span>
+				</div>
+			</div>
+
+			<div class="positiveCar">
+				<div id="downback" class="image-item">
+					<input class="file" type="file" multiple="multiple"/>
+					<span>上传银行卡反面照片</span>
+				</div>
+			</div>
+
+			<div class="next">完成</div>
+		</div>
+
+		
+		
+	</body>
+	<script src="../js/common/jquery-weui.min.js"></script>
+	<script src="../js/common/lrz.bundle.js"></script>
+	<script src="../js/apply.js"></script>
 </html>
