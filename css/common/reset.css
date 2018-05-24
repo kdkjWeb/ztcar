@@ -192,3 +192,55 @@ svg{overflow: hidden;}
 /**/
 .clearfix:before, .clearfix:after{display: table;content: " ";}
 .clearfix:after{clear: both;}
+
+
+
+
+/*======================*/
+#errBox{
+	
+}
+#errBox .mask{
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 100;
+    width:100%;
+    height:100%;
+    background-color: black;
+    opacity: .3;
+}
+#errBox .warn{
+	text-align: center;
+	color: #1a69ea;
+	font-size: .3rem;
+	padding: .38rem;
+}
+#errBox .wrong{
+	text-align: center;
+	font-size: .26rem;
+}
+#errBox .box1{
+    position: fixed;
+    top:3.15rem;
+    left:.3rem;
+    z-index: 200;
+    width:6.9rem;
+    height: 4.45rem;
+    background-color: #fff;
+    border-radius: .1rem
+}
+#errBox #colseErr{
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		bottom: .5rem;
+    width:4rem;
+    height:.65rem;
+    background-color: #3b6af4;
+    font-size: .3rem;
+    color: #fff;
+    border-radius: .5rem;
+    border: none;
+    outline: none;
+}
