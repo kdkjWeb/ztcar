@@ -66,12 +66,66 @@ $(function() {
 	})
 	// 上传身份证照片
 	$("#IDcamera").on("click", function() {
-		window.location.href = "upidcar.html"
+		$('#userIdbox').fadeIn(100)
 	})
 	// 上传银行卡照片
 	$("#Ccamera").on("click", function() {
-		window.location.href = "addback.html"
+		$('#userBankbox').fadeIn(100)
+	});
+	
+	//上传配偶身份证
+	$("#mcamera").on("click", function() {
+		$('#marryIdbox').fadeIn(100)
+	});
+	
+	//上传  承租人身份证
+	$("#tcamera").on("click", function() {
+		$('#tenantIdbox').fadeIn(100)
+	});
+	
+	//上传担保人身份证
+	$("#gcamera").on("click", function() {
+		$('#guaranteeIdbox').fadeIn(100)
+	});
+	
+	
+	$('.next').on('click',function(){
+		$(this).parent('.fixBox').fadeOut(100)
 	})
+	
+	
+	$('#getCode').click(function(){   //获取验证码
+		let _that = $(this);
+		var num = 10;
+		var timer = function(){
+        var time = setInterval(
+            function(){
+                if(num == 0){
+                    _that.removeAttr("disabled");
+                    clearInterval(time);
+                    num = 10;
+                    _that.text('获取验证码');
+                }else{
+                    num -- ;
+                   _that.text( num +'S');
+                }
+            },1000
+        )
+       }
+		
+		let userPhone = $('#userPhone').val(); //用户电话
+		if(isPhone(userPhone) == false){
+			return false;
+		}else{
+			if(_that.attr('disabled') != undefined){
+				
+            }else{
+                _that.attr("disabled",true);
+                timer();
+            }
+		}
+	})
+	
 
 })
 
@@ -90,7 +144,7 @@ $('.mycheckbox').click(function() {
 
 //===================上传图片
 
-$(document).on('change', 'input', function() {
+$(document).on('change', 'input[type=file]', function() {
 	var files = Array.prototype.slice.call(this.files);
 	var _this = $(this)
 	files.forEach(function(file, i) {

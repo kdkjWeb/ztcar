@@ -99,11 +99,14 @@ input{
 .get{
     width:1.9rem;
     height:.55rem;
+    line-height: .55rem;
     background-color: #4371f8;
     border:1px solid #4371f8;
     box-sizing: border-box;
     border-radius: .5rem;
-    outline: none
+    outline: none;
+    color: #FFF;
+    font-size: .14rem;
 }
 .get span{
     font-size: .18rem;
@@ -252,7 +255,6 @@ em{
 }
 
 /*=====上传图片弹框==========*/
-
 .fixBox{
 	position: fixed;
 	top: 0;
@@ -290,21 +292,21 @@ em{
 	border-radius:.65rem ;
 }
 
-#upId{
+.upId{
 	width: 5rem;
 	height: 3rem;
 	margin: .2rem  auto;
 	background-image: url(../image/upId.png);
 	background-size: 100% 100%;
 }
-#downId{
+.downId{
 	width: 5rem;
 	height: 3rem;
 	margin: .2rem  auto;
 	background-image: url(../image/downId.png);
 	background-size: 100% 100%;
 }
-#upbanck,#downback{
+.upbanck,.downback{
 	width: 5rem;
 	height: 3rem;
 	margin: .2rem  auto;

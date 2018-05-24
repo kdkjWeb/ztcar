@@ -42,9 +42,7 @@
 					<i class="must">*</i>
 					<label class="label">&nbsp;&nbsp;手&nbsp;&nbsp;&nbsp;机&nbsp;&nbsp;&nbsp;号:&nbsp;&nbsp;&nbsp;&nbsp;</label>
 					<input type="number" placeholder="输入手机号" class="ipt" maxlength="11" id="userPhone">
-					<button class="get">
-                        <span>获取验证码</span>
-                    </button>
+					<button class="get" id="getCode">获取验证码</button>
 
 				</div>
 				<p>
@@ -70,7 +68,7 @@
 					<div class="push">
 						<span class="full-name">身份证号码:&nbsp;&nbsp;&nbsp;</span>
 						<input type="text" class="ipt" placeholder="请输入身份证号码" id="marryId" />
-						<i class="iconfont icon-xiangji1"></i>
+						<i class="iconfont icon-xiangji1" id="mcamera"></i>
 					</div>
 				</div>
 			</div>
@@ -88,7 +86,7 @@
 					<div class="push">
 						<span class="full-name">身份证号码:&nbsp;&nbsp;&nbsp;</span>
 						<input type="text" class="ipt" placeholder="请输入身份证号码" id="tenantId" />
-						<i class="iconfont icon-xiangji1"></i>
+						<i class="iconfont icon-xiangji1" id="tcamera"></i>
 					</div>
 				</div>
 			</div>
@@ -106,7 +104,7 @@
 					<div class="push">
 						<span class="full-name">身份证号码:&nbsp;&nbsp;&nbsp;</span>
 						<input type="text" class="ipt" placeholder="请输入身份证号码" id="guaranteeId" />
-						<i class="iconfont icon-xiangji1"></i>
+						<i class="iconfont icon-xiangji1" id="gcamera"></i>
 					</div>
 				</div>
 			</div>
@@ -120,53 +118,101 @@
 
 			<a href="javascript:;" class="weui-btn weui-btn_primary" id="btn">完成</a>
 		</div>
-
-		<div class="fixBox">
+			
+		<!--=用户身份证====-->
+		<div class="fixBox" id="userIdbox">
 			<div class="tit">请上传身份证正反面照片</div>
-
 			<div class="positiveCar">
-
-				<div id="upId">
+				<div class="upId image-item">
 					<input class="file" type="file" />
 					<span>上传身份证正面照片</span>
 				</div>
-
 			</div>
-
 			<div class="positiveCar">
-				<div id="downId">
+				<div class="downId image-item">
 					<input class="file" type="file" />
 					<span>上传身份证反面照片</span>
 				</div>
 			</div>
-
-			<div class="next">
-				完成
-			</div>
+			<div class="next">完成</div>
 		</div>
-
-		<div class="fixBox">
+		<!--=用户身份证====-->
+		
+		<!--=用户银行卡====-->
+		<div class="fixBox" id="userBankbox">
 			<div class="tit">请上传银行卡正反面照片</div>
-
 			<div class="positiveCar">
-
-				<div id="upbanck" class="image-item">
+				<div class="upbanck image-item">
 					<input class="file" type="file" multiple="multiple" />
 					<span>上传银行卡正面照片</span>
 				</div>
 			</div>
-
 			<div class="positiveCar">
-				<div id="downback" class="image-item">
+				<div class="downback image-item">
 					<input class="file" type="file" multiple="multiple"/>
 					<span>上传银行卡反面照片</span>
 				</div>
 			</div>
-
 			<div class="next">完成</div>
 		</div>
-
+		<!--=用户银行卡====-->
 		
+		<!--=配偶身份证====-->
+		<div class="fixBox" id="marryIdbox">
+			<div class="tit">请上传配偶身份证正反面照片</div>
+			<div class="positiveCar">
+				<div class="upId image-item">
+					<input class="file" type="file" />
+					<span>上传身份证正面照片</span>
+				</div>
+			</div>
+			<div class="positiveCar">
+				<div class="downId image-item">
+					<input class="file" type="file" />
+					<span>上传身份证反面照片</span>
+				</div>
+			</div>
+			<div class="next">完成</div>
+		</div>
+		<!--=配偶身份证====-->
+		
+		<!--=承租人身份证====-->
+		<div class="fixBox" id="tenantIdbox">
+			<div class="tit">请上传承租人身份证正反面照片</div>
+			<div class="positiveCar">
+				<div class="upId image-item">
+					<input class="file" type="file" />
+					<span>上传身份证正面照片</span>
+				</div>
+			</div>
+			<div class="positiveCar">
+				<div class="downId image-item">
+					<input class="file" type="file" />
+					<span>上传身份证反面照片</span>
+				</div>
+			</div>
+			<div class="next">完成</div>
+		</div>
+		<!--=承租人身份证====-->
+		
+		<!--=担保人身份证====-->
+		<div class="fixBox" id="guaranteeIdbox">
+			<div class="tit">请上传担保人身份证正反面照片</div>
+			<div class="positiveCar">
+				<div class="upId image-item">
+					<input class="file" type="file" />
+					<span>上传身份证正面照片</span>
+				</div>
+			</div>
+			<div class="positiveCar">
+				<div class="downId image-item">
+					<input class="file" type="file" />
+					<span>上传身份证反面照片</span>
+				</div>
+			</div>
+			<div class="next">完成</div>
+		</div>
+		<!--=担保人身份证====-->
 		
 	</body>
 	<script src="../js/common/jquery-weui.min.js"></script>
