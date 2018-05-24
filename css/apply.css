@@ -19,12 +19,19 @@ body{
     margin-bottom: .4rem
 }
 .IDcard span{
-    color: red;
-    font-size: .4rem
+    display: inline;
+    vertical-align: middle;
+    color: greenyellow;
+    font-size: .4rem;
+    display: none
 }
 .IDcard .iconfont{
+    /* width:.5rem;
+    height:.42rem; */
     color: #5078f4;
-    margin-left: .3rem
+    margin-left: .3rem;
+    /* padding:.1rem 0 */
+
 }
 .card{
     width:100%;
