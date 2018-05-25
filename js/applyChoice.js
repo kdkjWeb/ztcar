@@ -1,23 +1,8 @@
-$(function(){
-  $("#job").select({
-    title: "选择经销商",
-    items: ["法官", "医生", "猎人", "学生", "记者", "其他",]
-  });
 
-
-  $("#produce").select({
-    title:"选择车贷分期类型",
-    items:["诚易贷","诚易贷","诚易贷","诚易贷"]
-  })
-  $("#num").select({
-    title:"选择贷款期数",
-    items:["12期","36期","48期","其他"]
-  })
-
-  $("#btn1").on("click",function(){
+$("#btn1").on("click",function(){
     window.location.href="apply.html"
-  })
 })
+
 
 $('#newCar').click(function(){
 		$('#oldCar').removeClass('icon-danxuan').addClass('icon-danxuan2');
@@ -45,3 +30,74 @@ $('.iconBox').each(function(){
 //			$(this).
 		}
 })
+
+
+//========================
+
+
+$(function(){
+
+	var data={};
+	$.ajax({
+		url: path + "/smDealers/list",
+		data:JSON.stringify(data),
+		dataType: "json",
+		contentType:"application/json",
+		type: "post",
+		success: function(data) {
+			if(data.code ==0){
+				var arr =[];
+				$.each(data.data,function(index,data,array){
+   					var a = {title: data.dealerName,value:data.id}
+			　　　arr.push(a);
+			　})
+				$("#distributor").select({
+					  title: "选择经销商",
+					  items:arr,
+					  onClose:function(){
+//							console.log($('#distributor').attr('data-values'))
+							query($('#distributor').attr('data-values'))
+					  }
+					});
+
+			}else{
+					errAlert('提醒', '请求超时');
+			}
+		},
+		error: function(xhr, type, errorThrown) {
+			//异常处理；
+			console.log(xhr);
+			console.log(type);
+		}
+	});
+	
+	
+})
+
+function query(id){   //根据经销商ID查询产品信息
+	
+	var data={id:id};
+	$.ajax({
+		url: path + "/product/queryProductBydealersId",
+		data:JSON.stringify(data),
+		dataType: "json",
+		contentType:"application/json",
+		type: "post",
+		success: function(data) {
+			if(data.code ==0){
+						console.log(data)
+						
+
+			}else{
+					errAlert('提醒', '请求超时');
+			}
+		},
+		error: function(xhr, type, errorThrown) {
+			//异常处理；
+			console.log(xhr);
+			console.log(type);
+		}
+		})
+	
+	
+}

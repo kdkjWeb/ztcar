@@ -244,3 +244,8 @@ svg{overflow: hidden;}
     border: none;
     outline: none;
 }
+
+
+body{
+	background-color: #FFFFFF;
+}

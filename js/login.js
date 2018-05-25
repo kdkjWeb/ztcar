@@ -56,12 +56,15 @@
 
                 return false
             }else{
+            	var data  = {
+            		 phone: phone,
+                     verifiyCode:number
+            	}
+            	
+            	
                 $.ajax({
                     url:path+"/login/phoneLogin",
-                    data:{
-                        phone: phone,
-                        verifiyCode:number
-                    },
+                    data: JSON.stringify(data),
                     dataType:"json",
                     type:"post",
                     success:function(data){
@@ -89,20 +92,20 @@
 
     })
     function getcode(phone) {
-	$.ajax({
-		url: path + "/login/sendVerifiyCode",
-		data: {
-			phone:phone
-		},
-		dataType: "json",
-		type: "post",
-		success: function(data) {
-			console.log(data)
-		},
-		error: function(xhr, type, errorThrown) {
-			//异常处理；
-			console.log(xhr);
-			console.log(type);
-		}
-	});
+    	var data =  {phone:phone};
+		$.ajax({
+			url: path + "/login/sendVerifiyCode",
+			data: JSON.stringify(data),
+			dataType: "json",
+			contentType:"application/json",
+			type: "post",
+			success: function(data) {
+				console.log(data)
+			},
+			error: function(xhr, type, errorThrown) {
+				//异常处理；
+				console.log(xhr);
+				console.log(type);
+			}
+		});
 }
