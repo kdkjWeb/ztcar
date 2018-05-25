@@ -75,23 +75,26 @@ h1{
     color:#383838;
     line-height: .82rem
 }
+
+.line{
+    width:100%;
+    height:.1rem;
+    background-color: #ebf1ff
+}
 .pass-box{
     width:.95rem;
     height:.4rem;
     border-radius: .5rem;
     margin-top: .25rem;
     margin-left: .27rem;
-    background-color: #94c945;
-  
-}
-.pass{
-    font-size: .28rem;
-    color: white;
+    font-size: .16rem;
     text-align: center;
-    /* line-height: .82rem */
+    color: #ffffff;
 }
-.line{
-    width:100%;
-    height:.1rem;
-    background-color: #ebf1ff
+.no{
+    background-color:red;
 }
+.yes{
+    background-color:  #94c945;
+}
+

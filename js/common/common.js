@@ -1,4 +1,4 @@
-var path = "http://192.168.20.3:8080"
+var path = "http://192.168.20.3:8080";
 
 var token=localStorage.getItem('token');
 var token =  GetRequest()
