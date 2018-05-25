@@ -1,20 +1,25 @@
 $(function() {
 	//点击下一步提交
 	$('#btn').click(function() {
-		let userName = $('#userName').val(); //用户姓名
-		let userId = $('#userId').val(); //用户身份证
-		let userBank = $('#userBank').val(); //用户银行卡
-		let userPhone = $('#userPhone').val(); //用户电话
-		let userCode = $('#userCode').val(); //验证码
 
-		let marryName = $('#marryName').val(); //配偶姓名
-		let marryId = $('#marryId').val(); //配偶 身份证
+		var userName = $('#userName').val(); //用户姓名
+		var userId = $('#userId').val(); //用户身份证
+		var userBank = $('#userBank').val(); //用户银行卡
+		var userPhone = $('#userPhone').val(); //用户电话
+		var userCode = $('#userCode').val(); //验证码
 
-		let tenantName = $('#tenantName').val(); //承租人姓名  
-		let tenantId = $('#tenantId').val(); //承租人姓名
+		var marryName = $('#marryName').val(); //配偶姓名
+		var marryId = $('#marryId').val(); //配偶 身份证
 
-		let guaranteeName = $('#guaranteeName').val(); //担保人姓名
-		let guaranteeId = $('#guaranteeId').val(); //担保人身份证
+		var tenantName = $('#tenantName').val(); //承租人姓名  
+		var tenantId = $('#tenantId').val(); //承租人姓名
+
+		var guaranteeName = $('#guaranteeName').val(); //担保人姓名
+		var guaranteeId = $('#guaranteeId').val(); //担保人身份证
+
+		var myisMarryed = 0; //是否有配偶欧
+		var myhaveLessee = 0; //是否有承租人
+		var myhaveGuarantee = 0; //是否有担保人
 
 		if(isName(userName, '借款人') == false) { //判断用户姓名
 			return false;
@@ -28,6 +33,7 @@ $(function() {
 			return false;
 		}
 		if($('#marry').attr('box') == 'true') { //如果勾选配偶
+			myisMarryed = 1; //是否有配偶欧
 			if(isName(marryName, '配偶') == false) { //配偶姓名
 				return false;
 			} else if(isId(marryId, '配偶') == false) { //配偶 身份证
@@ -35,6 +41,7 @@ $(function() {
 			}
 		}
 		if($('#tenant').attr('box') == 'true') { //如果勾选承租人
+			myhaveLessee = 1; //是否有承租人
 			if(isName(tenantName, '承租人') == false) { //承租人姓名
 				return false;
 			} else if(isId(tenantId, '承租人') == false) { //承租人姓名
@@ -42,6 +49,7 @@ $(function() {
 			}
 		}
 		if($('#guarantee').attr('box') == 'true') { //如果勾选担保人
+			myhaveGuarantee = 1; //是否有担保人
 			if(isName(guaranteeName, '担保人') == false) { //担保人姓名
 				return false;
 			} else if(isId(guaranteeId, '担保人') == false) { //担保人身份证
@@ -51,7 +59,65 @@ $(function() {
 		if($('#agreen').attr('box') != 'true') {
 			errAlert('提醒', '请阅读征信授权书');
 		} else {
-			console.log('跳转注册')
+			console.log('跳转注册');
+
+			$.ajax({
+				url: path + "/apply/addApply",
+				data: {
+					carProperty: '新车', //车辆属性    上个页面传过来
+
+					dealersId: '5', //经销商id  上个页面传过来
+					loanId: '', //车贷产品id   上个页面传过来
+					loanMonth: 15, //车贷期限    上个页面传过来
+					premiumId: '', //车险id  上个页面传过来
+					premiumMonth: 15, //车险月份   上个页面传过来
+					maintenanceId: '', // 维保产品 id 上个页面传过来
+					maintenanceMonth: 15, //维保产品月份   上个页面传过来
+
+					name: userName, //姓名
+					idNum: userId, //用户身份证
+					code: userCode, //短信
+
+					payCardNum: userBank, // 银行卡号
+ 
+					reservedPhone: userPhone, //绑定银行卡电话，
+
+					haveLessee: myhaveLessee, //是否有承租人 0和1 1表有 0 没有 
+					lessee: tenantName, //承租人姓名
+					lesseeIdNum: tenantId, //承租人身份证
+
+					isMarryed: myisMarryed, //是否有配偶欧
+					spouse: marryName, //配偶名字
+					spouseIdNum: marryId, //配偶身份证id 
+
+					haveGuarantee: myhaveGuarantee, //是否有担保人   0和1 1表有 0 没有
+					guarantee: guaranteeName, //担保人的姓名
+					guaranteeIdNum: guaranteeId, //担保人身份证
+
+				},
+				dataType: "json",
+				type: "post",
+				beforeSend:function(){console.log('loading')},
+				success: function(data) {
+					console.log(data)
+					//	            if(data.status == 200){
+					//	            	console.log(data)
+					////	                token = data.content.token;
+					////	                localStorage.setItem("token",token);
+					////	                location.href = "";
+					//	            }else {
+					//	                alert(data.message);
+					//	            }
+				},
+				error: function(xhr, type, errorThrown) {
+					//异常处理；
+					console.log(xhr);
+					console.log(type);
+				}
+			});
+
+			//==============注册ajax==============
+
 		}
 	})
 
@@ -72,60 +138,59 @@ $(function() {
 	$("#Ccamera").on("click", function() {
 		$('#userBankbox').fadeIn(100)
 	});
-	
+
 	//上传配偶身份证
 	$("#mcamera").on("click", function() {
 		$('#marryIdbox').fadeIn(100)
 	});
-	
+
 	//上传  承租人身份证
 	$("#tcamera").on("click", function() {
 		$('#tenantIdbox').fadeIn(100)
 	});
-	
+
 	//上传担保人身份证
 	$("#gcamera").on("click", function() {
 		$('#guaranteeIdbox').fadeIn(100)
 	});
-	
-	
-	$('.next').on('click',function(){
+
+	$('.next').on('click', function() {
 		$(this).parent('.fixBox').fadeOut(100)
 	})
-	
-	
-	$('#getCode').click(function(){   //获取验证码
+
+	$('#getCode').click(function() { //获取验证码
 		let _that = $(this);
-		var num = 10;
-		var timer = function(){
-        var time = setInterval(
-            function(){
-                if(num == 0){
-                    _that.removeAttr("disabled");
-                    clearInterval(time);
-                    num = 10;
-                    _that.text('获取验证码');
-                }else{
-                    num -- ;
-                   _that.text( num +'S');
-                }
-            },1000
-        )
-       }
-		
+		var num = 60;
+		var timer = function() {
+			var time = setInterval(
+				function() {
+					if(num == 0) {
+						_that.removeAttr("disabled");
+						clearInterval(time);
+						num = 60;
+						_that.text('获取验证码');
+					} else {
+						num--;
+						_that.text(num + 'S');
+					}
+				}, 1000
+			)
+		}
+
 		let userPhone = $('#userPhone').val(); //用户电话
-		if(isPhone(userPhone) == false){
+		if(isPhone(userPhone) == false) {
 			return false;
-		}else{
-			if(_that.attr('disabled') != undefined){
-				
-            }else{
-                _that.attr("disabled",true);
-                timer();
-            }
+		} else {
+			if(_that.attr('disabled') != undefined) {
+
+			} else {
+				_that.attr("disabled", true);
+				timer();
+				getcode(userPhone)
+				console.log(userPhone)
+			}
 		}
 	})
-	
 
 })
 
@@ -177,6 +242,25 @@ $(document).on('change', 'input[type=file]', function() {
 		reader.readAsDataURL(file);
 	})
 
-	alert(files[0].size)
+	//	alert(files[0].size)
 
 })
+
+function getcode(phone) {
+	$.ajax({
+		url: path + "/apply/sendVitify",
+		data: {
+			phone:phone
+		},
+		dataType: "json",
+		type: "post",
+		success: function(data) {
+			console.log(data)
+		},
+		error: function(xhr, type, errorThrown) {
+			//异常处理；
+			console.log(xhr);
+			console.log(type);
+		}
+	});
+}

@@ -1,15 +1,15 @@
-//var path = ""
-//
-//var token=localStorage.getItem('token');
-//var token =  GetRequest()
-//
-////var token = '123456'
-//if(GetRequest().token == undefined || GetRequest().token =='undefined'){
-//	token = localStorage.getItem('token');
-//}else{
-//	token = GetRequest().token;
-//	localStorage.token = token;
-//}
+var path = "http://192.168.20.3:8080"
+
+var token=localStorage.getItem('token');
+var token =  GetRequest()
+
+
+if(GetRequest().token == undefined || GetRequest().token =='undefined'){
+	token = localStorage.getItem('token');
+}else{
+	token = GetRequest().token;
+	localStorage.token = token;
+}
 
 (function(doc, win) {
 	var docEl = doc.documentElement;
@@ -129,7 +129,7 @@ function isId(id, msg) { //身份证
 }
 
 function isCode(code) { //短信验证码
-	let regex = /^\d{6}$/;
+	let regex = /^\d{4}$/;
 	if(code == '') {
 		errAlert('提醒', '请填写验证码');
 		return false;
