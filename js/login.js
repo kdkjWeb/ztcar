@@ -58,6 +58,9 @@
             }else{
                 $.ajax({
                     url:path+"/login/phoneLogin",
+                    header:{
+                        'token':token
+                    },
                     data:{
                         phone: phone,
                         verifiyCode:number
