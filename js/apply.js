@@ -20,6 +20,7 @@ $(function() {
 		var myhaveLessee = 0; //是否有承租人
 		var myhaveGuarantee = 0; //是否有担保人
 
+
 		if(isName(userName, '借款人') == false) { //判断用户姓名
 			return false;
 		} else if(isId(userId, '借款人') == false) { //判断用户身份证
@@ -55,16 +56,14 @@ $(function() {
 				return false;
 			}
 		}
+
 		if($('#agreen').attr('box') != 'true') {
 			errAlert('提醒', '请阅读征信授权书');
 		} else {
 			console.log('跳转注册');
-			
-//			let myidenta =  $('#identa').get(0).files;
-			
+
 			var data = {
 					carProperty: '新车', //车辆属性    上个页面传过来
-
 					dealersId: '5', //经销商id  上个页面传过来
 					loanId: '', //车贷产品id   上个页面传过来
 					loanMonth: 15, //车贷期限    上个页面传过来
@@ -76,9 +75,7 @@ $(function() {
 					name: userName, //姓名
 					idNum: userId, //用户身份证
 					code: userCode, //短信
-
 					payCardNum: userBank, // 银行卡号
- 
 					reservedPhone: userPhone, //绑定银行卡电话，
 
 					haveLessee: myhaveLessee, //是否有承租人 0和1 1表有 0 没有 
@@ -93,9 +90,8 @@ $(function() {
 					guarantee: guaranteeName, //担保人的姓名
 					guaranteeIdNum: guaranteeId, //担保人身份证
 					
-//					identa:myidenta
+
 			};
-			
 			console.log(data)
 			
 			$.ajax({

@@ -64,7 +64,17 @@
             	
                 $.ajax({
                     url:path+"/login/phoneLogin",
+<<<<<<< HEAD
                     data: JSON.stringify(data),
+=======
+                    header:{
+                        'token':token
+                    },
+                    data:{
+                        phone: phone,
+                        verifiyCode:number
+                    },
+>>>>>>> cfae9dd03c0681ae391cc80749bba2c4fa40334d
                     dataType:"json",
                     type:"post",
                     success:function(data){
