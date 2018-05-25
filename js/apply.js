@@ -21,49 +21,51 @@ $(function() {
 		var myhaveLessee = 0; //是否有承租人
 		var myhaveGuarantee = 0; //是否有担保人
 
-		if(isName(userName, '借款人') == false) { //判断用户姓名
-			return false;
-		} else if(isId(userId, '借款人') == false) { //判断用户身份证
-			return false;
-		} else if(isBank(userBank) == false) { //银行卡（可以为空）
-			return false;
-		} else if(isPhone(userPhone) == false) { //电话
-			return false;
-		} else if(isCode(userCode) == false) { //验证码
-			return false;
-		}
-		if($('#marry').attr('box') == 'true') { //如果勾选配偶
-			myisMarryed = 1; //是否有配偶欧
-			if(isName(marryName, '配偶') == false) { //配偶姓名
-				return false;
-			} else if(isId(marryId, '配偶') == false) { //配偶 身份证
-				return false;
-			}
-		}
-		if($('#tenant').attr('box') == 'true') { //如果勾选承租人
-			myhaveLessee = 1; //是否有承租人
-			if(isName(tenantName, '承租人') == false) { //承租人姓名
-				return false;
-			} else if(isId(tenantId, '承租人') == false) { //承租人姓名
-				return false;
-			}
-		}
-		if($('#guarantee').attr('box') == 'true') { //如果勾选担保人
-			myhaveGuarantee = 1; //是否有担保人
-			if(isName(guaranteeName, '担保人') == false) { //担保人姓名
-				return false;
-			} else if(isId(guaranteeId, '担保人') == false) { //担保人身份证
-				return false;
-			}
-		}
+//		if(isName(userName, '借款人') == false) { //判断用户姓名
+//			return false;
+//		} else if(isId(userId, '借款人') == false) { //判断用户身份证
+//			return false;
+//		} else if(isBank(userBank) == false) { //银行卡（可以为空）
+//			return false;
+//		} else if(isPhone(userPhone) == false) { //电话
+//			return false;
+//		} else if(isCode(userCode) == false) { //验证码
+//			return false;
+//		}
+//		if($('#marry').attr('box') == 'true') { //如果勾选配偶
+//			myisMarryed = 1; //是否有配偶欧
+//			if(isName(marryName, '配偶') == false) { //配偶姓名
+//				return false;
+//			} else if(isId(marryId, '配偶') == false) { //配偶 身份证
+//				return false;
+//			}
+//		}
+//		if($('#tenant').attr('box') == 'true') { //如果勾选承租人
+//			myhaveLessee = 1; //是否有承租人
+//			if(isName(tenantName, '承租人') == false) { //承租人姓名
+//				return false;
+//			} else if(isId(tenantId, '承租人') == false) { //承租人姓名
+//				return false;
+//			}
+//		}
+//		if($('#guarantee').attr('box') == 'true') { //如果勾选担保人
+//			myhaveGuarantee = 1; //是否有担保人
+//			if(isName(guaranteeName, '担保人') == false) { //担保人姓名
+//				return false;
+//			} else if(isId(guaranteeId, '担保人') == false) { //担保人身份证
+//				return false;
+//			}
+//		}
 		if($('#agreen').attr('box') != 'true') {
 			errAlert('提醒', '请阅读征信授权书');
 		} else {
 			console.log('跳转注册');
-
-			$.ajax({
-				url: path + "/apply/addApply",
-				data: {
+			
+			let myidenta =  $('#identa').get(0).files;
+			
+			
+			
+			var data = {
 					carProperty: '新车', //车辆属性    上个页面传过来
 
 					dealersId: '5', //经销商id  上个页面传过来
@@ -93,28 +95,29 @@ $(function() {
 					haveGuarantee: myhaveGuarantee, //是否有担保人   0和1 1表有 0 没有
 					guarantee: guaranteeName, //担保人的姓名
 					guaranteeIdNum: guaranteeId, //担保人身份证
-
-				},
-				dataType: "json",
-				type: "post",
-				beforeSend:function(){console.log('loading')},
-				success: function(data) {
-					console.log(data)
-					//	            if(data.status == 200){
-					//	            	console.log(data)
-					////	                token = data.content.token;
-					////	                localStorage.setItem("token",token);
-					////	                location.href = "";
-					//	            }else {
-					//	                alert(data.message);
-					//	            }
-				},
-				error: function(xhr, type, errorThrown) {
-					//异常处理；
-					console.log(xhr);
-					console.log(type);
-				}
-			});
+					
+					
+					identa:myidenta
+			};
+			
+			console.log(data)
+			
+//			$.ajax({
+//				url: path + "/apply/addApply",
+//				data: JSON.stringify(data),
+//				dataType: "json",
+//				contentType:"application/json",
+//				type: "post",
+//				beforeSend:function(){console.log('loading')},
+//				success: function(data) {
+//					console.log(data)
+//				},
+//				error: function(xhr, type, errorThrown) {
+//					//异常处理；
+//					console.log(xhr);
+//					console.log(type);
+//				}
+//			});
 
 			//==============注册ajax==============
 
@@ -242,17 +245,19 @@ $(document).on('change', 'input[type=file]', function() {
 		reader.readAsDataURL(file);
 	})
 
-	//	alert(files[0].size)
+
 
 })
 
 function getcode(phone) {
+	
+	var data = {phone:phone};
+	  
 	$.ajax({
 		url: path + "/apply/sendVitify",
-		data: {
-			phone:phone
-		},
+		data: JSON.stringify(data),
 		dataType: "json",
+		contentType:"application/json",
 		type: "post",
 		success: function(data) {
 			console.log(data)

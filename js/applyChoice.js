@@ -5,9 +5,6 @@ $(function(){
   });
 
 
-
-
-
   $("#produce").select({
     title:"选择车贷分期类型",
     items:["诚易贷","诚易贷","诚易贷","诚易贷"]
@@ -20,4 +17,31 @@ $(function(){
   $("#btn1").on("click",function(){
     window.location.href="apply.html"
   })
+})
+
+$('#newCar').click(function(){
+		$('#oldCar').removeClass('icon-danxuan').addClass('icon-danxuan2');
+		$(this).removeClass('icon-danxuan2').addClass('icon-danxuan');
+})
+
+$('#oldCar').click(function(){
+		$('#newCar').removeClass('icon-danxuan').addClass('icon-danxuan2');
+		$(this).removeClass('icon-danxuan2').addClass('icon-danxuan');
+})
+
+$('.iconBox').click(function(){
+	if($(this).attr('box') != 'true'){
+		$(this).removeClass('icon-danxuan2').addClass('icon-danxuan');
+		$(this).attr('box','true')
+	}else{
+		$(this).removeClass('icon-danxuan').addClass('icon-danxuan2');
+		$(this).attr('box','false')
+	}
+})
+
+
+$('.iconBox').each(function(){
+		if($(this).attr('box') == 'true'){
+//			$(this).
+		}
 })
