@@ -1,7 +1,6 @@
 $(function() {
 	//点击下一步提交
 	$('#btn').click(function() {
-
 		var userName = $('#userName').val(); //用户姓名
 		var userId = $('#userId').val(); //用户身份证
 		var userBank = $('#userBank').val(); //用户银行卡
