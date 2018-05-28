@@ -35,7 +35,7 @@
 			<div class="card">
 				<label class="label">银&nbsp;行&nbsp;卡&nbsp;号：</label>
 				<input type="text" placeholder="请输入银行卡号" class="ipt" maxlength="19" id="userBank">
-				<i class="iconfont icon-xiangji1" id="Ccamera"></i>
+				<!--<i class="iconfont icon-xiangji1" id="Ccamera"></i>-->
 			</div>
 			<div>
 				<div class="phone">
@@ -136,13 +136,13 @@
 			<div class="tit">请上传身份证正反面照片</div>
 			<div class="positiveCar">
 				<div class="upId image-item">
-					<input class="file" type="file" id="identa"/>
+					<input class="file userfile" type="file" id="a"/>
 					<span>上传身份证正面照片</span>
 				</div>
 			</div>
 			<div class="positiveCar">
 				<div class="downId image-item">
-					<input class="file" type="file" />
+					<input class="file userfile" type="file" id="b"/>
 					<span>上传身份证反面照片</span>
 				</div>
 			</div>
@@ -155,13 +155,13 @@
 			<div class="tit">请上传银行卡正反面照片</div>
 			<div class="positiveCar">
 				<div class="upbanck image-item">
-					<input class="file" type="file" multiple="multiple" />
+					<input class="file carfile" type="file" id="c"/>
 					<span>上传银行卡正面照片</span>
 				</div>
 			</div>
 			<div class="positiveCar">
 				<div class="downback image-item">
-					<input class="file" type="file" multiple="multiple"/>
+					<input class="file carfile" type="file" id="d"/>
 					<span>上传银行卡反面照片</span>
 				</div>
 			</div>
@@ -174,13 +174,13 @@
 			<div class="tit">请上传配偶身份证正反面照片</div>
 			<div class="positiveCar">
 				<div class="upId image-item">
-					<input class="file" type="file" />
+					<input class="file maryfile" type="file" id="e"/>
 					<span>上传身份证正面照片</span>
 				</div>
 			</div>
 			<div class="positiveCar">
 				<div class="downId image-item">
-					<input class="file" type="file" />
+					<input class="file maryfile" type="file" id="f"/>
 					<span>上传身份证反面照片</span>
 				</div>
 			</div>
@@ -193,13 +193,13 @@
 			<div class="tit">请上传承租人身份证正反面照片</div>
 			<div class="positiveCar">
 				<div class="upId image-item">
-					<input class="file" type="file" />
+					<input class="file tenfile" type="file" id="g"/>
 					<span>上传身份证正面照片</span>
 				</div>
 			</div>
 			<div class="positiveCar">
-				<div class="downId image0-item">
-					<input class="file" type="file" />
+				<div class="downId image-item">
+					<input class="file tenfile" type="file" id="h"/>
 					<span>上传身份证反面照片</span>
 				</div>
 			</div>
@@ -212,13 +212,13 @@
 			<div class="tit">请上传担保人身份证正反面照片</div>
 			<div class="positiveCar">
 				<div class="upId image-item">
-					<input class="file" type="file" />
+					<input class="file guafile" type="file" id="i"/>
 					<span>上传身份证正面照片</span>
 				</div>
 			</div>
 			<div class="positiveCar">
 				<div class="downId image-item">
-					<input class="file" type="file" />
+					<input class="file guafile" type="file" id="j"/>
 					<span>上传身份证反面照片</span>
 				</div>
 			</div>
@@ -228,5 +228,6 @@
 		
 	</body>
 	<script src="../js/common/jquery-weui.min.js"></script>
+	<script src="../js/common/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../js/apply.js"></script>
 </html>

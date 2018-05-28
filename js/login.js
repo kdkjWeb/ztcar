@@ -37,10 +37,11 @@
 
         $(".get").click(function(){
             phone=$(".phone").val()
-            if(isPhone(phone)==false){
+            if(isPhone(phone,'用户')==false){
                 return false
             }else{
-                getcode(phone);
+//              getcode(phone);
+				errAlert('提示', '《华为云》：短信接口未开通');
             }
         })
    
@@ -64,9 +65,7 @@
             	
                 $.ajax({
                     url:path+"/login/phoneLogin",
-<<<<<<< HEAD
                     data: JSON.stringify(data),
-=======
                     header:{
                         'token':token
                     },
@@ -74,7 +73,6 @@
                         phone: phone,
                         verifiyCode:number
                     },
->>>>>>> cfae9dd03c0681ae391cc80749bba2c4fa40334d
                     dataType:"json",
                     type:"post",
                     success:function(data){

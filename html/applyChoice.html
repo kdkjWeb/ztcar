@@ -20,7 +20,7 @@
     <div class="content">
     	<div class="top_head">
     		<span>经销商名称</span>
-    		<span class="input_span iconfont"><input type="text"  id="distributor" /></span>
+    		<span class="input_span iconfont"><input type="text"  id="distributor" readonly="readonly"/></span>
     	</div>
     	
     	<div class="header">
@@ -41,32 +41,32 @@
     		<div class="tit">选择金融产品</div>
     		<div class="content_div">
     			<div class="time-car">
-					<div class="car"><i class="iconfont icon-danxuan2 iconBox" box='false'></i>车贷分期</div>
-					<span class="input_span iconfont spanName"><input type="text" id="produce"/></span>
+					<div class="car"><i class="iconfont icon-danxuan2 iconBox" box='false' num='1' Adata=''></i>车贷分期</div>
+					<span class="input_span iconfont spanName"><input type="text" id="Carloan" readonly="readonly"/></span>
 				</div>
     			<div class="time_tit">
 					<span class="number">贷款期数</span>   
-					<span class="input_span iconfont spanTime" id="num"><input type="text"/></span>
+					<span class="input_span iconfont spanTime"><input type="text" id="CarloanTime" readonly="readonly"/></span>
     			</div>
     		</div>
     		<div class="content_div">
     			<div class="time-car">
-					<div class="car"><i class="iconfont icon-danxuan2 iconBox" box='false'></i>车险分期</div>
-					<span class="input_span iconfont spanName"><input type="text" id="produce"/></span>
+					<div class="car"><i class="iconfont icon-danxuan2 iconBox" box='false' num='2' Adata=''></i>车险分期</div>
+					<span class="input_span iconfont spanName"><input type="text" id="Carrisk" readonly="readonly"/></span>
 				</div>
     			<div class="time_tit">
 					<span class="number">贷款期数</span>   
-					<span class="input_span iconfont spanTime" id="num"><input type="text"/></span>
+					<span class="input_span iconfont spanTime"><input type="text" id="CarriskTime" readonly="readonly"/></span>
     			</div>
     		</div>
     		<div class="content_div">
     			<div class="time-car">
-					<div class="car"><i class="iconfont icon-danxuan2 iconBox" box='false'></i>维保分期</div>
-					<span class="input_span iconfont spanName"><input type="text" id="produce"/></span>
+					<div class="car"><i class="iconfont icon-danxuan2 iconBox" box='false' num='3' Adata=''></i>维保分期</div>
+					<span class="input_span iconfont spanName"><input type="text" id="Insurance" readonly="readonly"/></span>
 				</div>
     			<div class="time_tit">
 					<span class="number">贷款期数</span>   
-					<span class="input_span iconfont spanTime" id="num"><input type="text"/></span>
+					<span class="input_span iconfont spanTime"><input type="text" id="InsuranceTime" readonly="readonly"/></span>
     			</div>
     		</div>
     	</div>
@@ -78,6 +78,7 @@
     
 </body>
 <script src="../js/common/jquery-weui.min.js"></script>
+<script src="../js/common/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/applyChoice.js"></script>
    
 </html>
