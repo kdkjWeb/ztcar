@@ -57,7 +57,7 @@ input[type ="text"]{
 	outline: none;
 }
 /* 三角形 */
-.input_span:after{
+/*.input_span:after{
 	position: absolute;
 	top: .1rem;
 	right: .25rem;
@@ -65,7 +65,8 @@ input[type ="text"]{
 	color: #9a9a9a;
 	height: .5rem;
 	line-height: .5rem;
-}
+	z-index: -1;
+}*/
 /* 车贷分期 */
 .car{
 	width: 33.5%;
@@ -151,4 +152,10 @@ input[type ="text"]{
     line-height: .8rem;
     text-align: center;
     /* margin:0 1rem */
+}
+
+.input_span input{
+	background: url(../image/down.png) no-repeat;  
+	background-size:20px 20px;
+	background-position:90% 60%;
 }
