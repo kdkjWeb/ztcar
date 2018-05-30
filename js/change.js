@@ -26,9 +26,6 @@
                     num -- ;
                     $('.num').text( num +'S');
                 }
-                
-              
-
             },1000
         )
        }
@@ -55,7 +52,7 @@
                 return false
             }else{
                 $.ajax({
-                    url:path+"/login/phoneLogin",
+                    url:path+"/smUser/updateNewPhone",
                     data:{
                         phone: phone,
                         verifiyCode:number
@@ -88,7 +85,7 @@
     })
     function getcode(phone) {
 	$.ajax({
-		url: path + "/login/sendVerifiyCode",
+		url: path + "/smUser/updatePhone2Code",
 		data: {
 			phone:phone
 		},

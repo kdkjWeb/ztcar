@@ -1,4 +1,4 @@
-var path = "http://114.116.25.220:8081";
+var path = "http://192.168.20.117:8080";
 
 var token=localStorage.getItem('token');
 var token =  GetRequest()
@@ -90,7 +90,7 @@ function getDate(times) {
 
 //=====正则验证===========
 function isPhone(phone,msg) { //手机号
-	let regex = /^1[3|4|5|6|8|7][0-9]\d{4,8}$/;
+	let regex = /^1[3|4|5|6|8|7|9][0-9]\d{4,8}$/;
 	if(phone == '') {
 		errAlert('提醒', '请填写'+msg+'手机号');
 		return false;

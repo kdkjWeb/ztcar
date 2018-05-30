@@ -1,0 +1,73 @@
+body{
+    width:100%
+}
+/* 整体内容 */
+.content{
+    width:6.9rem;
+    margin: auto;
+    padding-top: .59rem;
+    box-sizing: border-box;
+    /* background-color: indianred */
+}
+label{
+    font-size: .32rem;
+    color: #5c5c5c
+}
+span{
+    font-size: .32rem;
+    color: #5c5c5c
+}
+/* 基本信息 */
+.basic-msg{
+    width:6.9rem;
+    height: 3rem;
+    /* background-color: palegreen; */
+    border-bottom: 1px dashed #ccc
+}
+/* 姓名和电话 */
+.basic{
+    width:100%;
+    height:.28rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: .58rem
+}
+/* 身份证号 */
+.idcard{
+    width:100%;
+    height: .28rem;
+    margin-bottom: .58rem
+}
+/* 车型 */
+.type label{
+    text-align: right;
+}
+/* 输入框 */
+.input{
+    width:100%;
+    height: 2.38rem;
+    /* background-color: burlywood */
+}
+.weui-cell{
+    padding: 0;
+    width: 100%;
+    height: .6rem;
+    padding-top: .4rem
+    
+}
+.weui-cell:before{
+    border: none
+}
+.weui-label{
+    width: 1.5rem;
+    font-size: .32rem;
+    text-align: right;
+    line-height: .6rem;
+    margin-right: .3rem
+}
+.weui-input{
+    width:5rem;
+    height:.6rem;
+    border: 1px solid #c6c6c6;
+    border-radius: .5rem;
+}

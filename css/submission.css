@@ -1,0 +1,161 @@
+body{
+    width:100%;
+    background-color: #ecf1ff
+}
+
+header{
+    width:100%;
+    height: 2rem;
+    background-color: #fff;
+    margin-bottom: .1rem
+}
+.basic{
+    width:6.9rem;
+    height: 1rem;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed #ccc;
+    line-height: 1rem;
+    color: #555555
+}
+.radio{
+    width: 6.9rem;
+    height: 1rem;
+}
+.banner{
+    display: flex;
+    justify-content: space-around;
+    font-size: .3rem;
+	color: #555555;
+	padding: .3rem;
+}
+/* 提交内容 */
+.content{
+    width: 100%;
+    background-color: #fff
+}
+/* 内容列表 */
+.c-list{
+    width:7rem;
+    margin: auto
+}
+/* 列表 */
+.list{
+    width:100%;
+    height: 2.1rem;
+    border-bottom: 1px dashed #ccc
+}
+.list label{
+    display: inline-block;
+    width: 100%;
+    height: .26rem;
+    font-size: .26rem;
+    color: #5f5f5f;
+    margin: .3rem 0;
+}
+/* 上传图片 */
+.weui-uploader__bd{
+    width: 100%;
+    height: 1rem;
+    /* background-color: plum */
+}
+
+.weui-uploader__file{
+    width:1.44rem;
+    height: 1rem;
+    border: 1px solid red;
+    border-radius: .15rem;
+    position: relative;
+}
+.weui-uploader__input-box{
+    width:.4rem;
+    height: .4rem;
+    border-radius: 50%;
+    margin: .3rem .56rem;
+    background-color: #3771ea
+}
+
+.weui-uploader__input-box:before{
+    width: 2px;
+    height:.3rem;
+    border-color: white;
+}
+.weui-uploader__input-box:after{
+    width: .3rem;
+    height: 2px;
+    border-color: white
+}
+.icon-guanbi{
+    position: absolute;
+    top: -.1rem;
+    left: 75%;
+    color: red;
+    opacity: .6
+}
+/* 删除提示框 */
+.pop-box{
+    display: none
+}
+.pop-box .mask{
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 100;
+    width:100%;
+    height:100%;
+    background-color: black;
+    opacity: .3;
+}
+.box1{
+    position: fixed;
+    top:3.15rem;
+    left:.3rem;
+    z-index: 200;
+    width:6.9rem;
+    height: 4.45rem;
+    background-color: #fff;
+    border-radius: .1rem
+}
+.btn-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around
+}
+#yes{
+    width:2rem;
+    height:.64rem;
+    background-color: #ccc;
+    font-size: .3rem;
+    color: #fff;
+    border-radius: .5rem;
+    margin-top: .97rem;
+    line-height: .64rem;
+}
+#no{
+    width:2rem;
+    height: 0.64rem;
+    background-color: #3b6af4;
+    font-size: .3rem;
+    color: #fff;
+    border-radius: .5rem;
+    margin-top: .97rem;
+    line-height: .64rem;
+    
+}
+.warn{
+    font-size: .3rem;
+    color: #1a69ea;
+    text-align: center;
+    margin: 0;
+    padding-top: .38rem
+}
+.wrong{
+    font-size: .26rem;
+    color: black;
+    text-align: center;
+    margin-top: 1rem
+}
+.weui-btn:after{
+    border: none
+}

@@ -1,0 +1,12 @@
+body{
+    width:100%
+}
+.content{
+    width:5.52rem;
+    margin: auto;
+    padding-top: 4rem;
+    box-sizing: border-box
+}
+.weui-btn{
+    margin-top: 1rem;
+}

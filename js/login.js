@@ -40,8 +40,8 @@
             if(isPhone(phone,'用户')==false){
                 return false
             }else{
-//              getcode(phone);
-				errAlert('提示', '《华为云》：短信接口未开通');
+             getcode(phone);
+				// errAlert('提示', '《华为云》：短信接口未开通');
             }
         })
    

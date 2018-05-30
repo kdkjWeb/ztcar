@@ -1,0 +1,145 @@
+/* 顺序框 */
+header{
+    width:100%;
+    height: .94rem;
+}
+header ul{
+    display: flex;
+    justify-content: space-around;
+    line-height: .94rem
+}
+/* 图标 */
+.iconfont{
+    color: #c6cbc9;
+    /* background-color: #ebf2ff */
+}
+/* 分割线 */
+.line{
+    width: 100%;
+    height: .1rem;
+    background-color: #ebf2ff
+}
+
+/* 内容 */
+.content{
+    width:100%;
+}
+/* 内容列表 */
+.c-list{
+    width:6.9rem;
+    margin: auto;
+    /* background-color: paleturquoise */
+}
+.weui-cell{
+    padding: 0;
+    width: 100%;
+    height: 1rem;
+    border-bottom: 1px dashed #dddddd
+    /* padding-top: .4rem */
+}
+.weui-cell:before{
+    border: none
+}
+.weui-label{
+    width: 2.5rem;
+    font-size: .26rem;
+    text-align: right;
+    line-height: .6rem;
+    margin-right: .3rem;
+    margin-left: -.3rem
+}
+.weui-input{
+    width:3.7rem;
+    height:.6rem;
+    border: 1px solid #c6c6c6;
+    border-radius: .5rem;
+    padding-left: .2rem;
+    margin-left: -.3rem;
+    position: relative;
+}
+.weui-cell .icon-xiangxia1{
+    position: absolute;
+    top: .3rem;
+    left: 80%
+}
+.weui-cell .icon-xiangji1{
+   width:.4rem;
+   height: .35rem;
+   color: #3b6bf4
+}
+.weui-btn{
+    width:5.5rem;
+    height: .64rem;
+    border-radius: .5rem;
+    margin: .35rem auto;
+    background-color: #3b6bf4 !important;
+    line-height: .64rem
+}
+#personal {
+    background-color: #fff;
+    border:1px solid #3b6bf4;
+    border-radius: .5rem 0 0 .5rem
+}
+#company {
+    background-color: #fff;
+    border:1px solid #3b6bf4;
+    border-radius: 0 .5rem .5rem 0
+}
+.weui-navbar__item{
+    padding: .1rem 0 0 0
+}
+.weui-navbar__item:after{
+    display: none
+}
+.weui-search-bar:after, .weui-search-bar:before{
+    display: none
+}
+.weui-navbar:after{
+    display: none
+}
+.weui-tab{
+    height:1rem
+}
+.weui-navbar{
+    width: 6.9rem;
+    height: .64rem;
+    margin: .2rem .3rem 0;
+    
+}
+span{
+    display: inline-block;
+    font-size: .28rem;
+    margin-top: -.15rem;
+    color: #3b6bf4
+}
+/* 说明区 */
+.weui-cells{
+    padding: 0;
+    width: 6.9rem;
+    height: 2.25rem;
+    margin: 0 auto;
+    display: flex;
+    border-bottom: 1px dashed #dddddd;
+}
+#cell{
+    width: 100%;
+    height: 2.25rem;
+    flex-direction: column;
+    border: none
+}
+.weui-cells #label{
+    display: inline-block;
+    width:6.6rem;
+    height: .72rem;
+    text-align: left;
+    line-height: .72rem;
+    margin-left: .3rem
+}
+.weui-textarea{
+    width:6.7rem;
+    height: 1.35rem;
+    border: 1px solid #dddddd;
+    box-sizing: border-box;
+    border-radius: .15rem;
+    padding-left: .2rem
+}

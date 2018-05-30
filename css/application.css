@@ -1,0 +1,66 @@
+/* 顺序框 */
+header{
+    width:100%;
+    height: .94rem;
+}
+header ul{
+    display: flex;
+    justify-content: space-around;
+    line-height: .94rem
+}
+/* 图标 */
+.iconfont{
+    color: #c6cbc9;
+    background-color: #ebf2ff
+}
+/* 分割线 */
+.line{
+    width: 100%;
+    height: .1rem;
+    background-color: #ebf2ff
+}
+
+.banner{
+    width:100%;
+}
+/* 内容 */
+.content{
+    width:6.35rem;
+    margin: auto;
+    padding-top: .6rem;
+    box-sizing: border-box
+}
+/* 标题 */
+h2{
+    color: #4e4e4e;
+    text-align: center;
+}
+span{
+    color: #3969f8
+}
+/* 按钮 */
+.button{
+    display: flex;
+    justify-content: space-around;
+}
+p{
+    width: 2.6rem;
+    height: .54rem;
+    border: 1px solid #ed7e10;
+    border-radius: .5rem;
+    font-size: .28rem;
+    color: #ed7e10;
+    text-align: center;
+    line-height: .54rem;
+    margin-top: 1rem
+}
+/* 完成 */
+.weui-btn{
+    width: 5.5rem;
+    height:.64rem;
+    border-radius: .5rem;
+    line-height: .64rem;
+    background-color: #3a6bf4 !important;
+    margin-top: 1rem;
+
+}
