@@ -1,4 +1,6 @@
 $(function(){
+    $("#date").calendar();
+    
     $(".personal").on("click",function(){
         $(".compony").removeClass("p-active")
         $(".personal").addClass("p-active");

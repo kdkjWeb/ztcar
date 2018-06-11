@@ -1,10 +1,12 @@
 body{
     width:100%;
-    background-color: #ecf1ff
+}
+.icon-danxuan,.icon-danxuan2{
+	color: #3b6af4;
 }
 header{
     width:100%;
-    height: 1rem;
+    height: 2rem;
     background-color: #fff;
     margin-bottom: .1rem
 }
@@ -13,18 +15,16 @@ header{
     height: 1rem;
     margin: auto;
     display: flex;
-    /* justify-content: space-between; */
+    justify-content: space-between;
+    border-bottom: 1px dashed #ccc;
     line-height: 1rem;
     color: #555555
 }
-.name{
-    width: 3rem;
-    height: 100%
-}
-.phone{
-    width:3.9rem;
-    height: 100%;
-    display: flex
+.cause{
+    width: 6.9rem;
+    height: 1rem;
+    margin: auto;
+    /* display: none */
 }
 label{
     font-size: .32rem;
@@ -33,11 +33,6 @@ label{
 span{
     font-size: .32rem;
     line-height: 1rem;
-}
-.cause{
-    width: 6.9rem;
-    height: 1rem;
-    margin: auto;
 }
 .cause label, .cause span{
     color: red
@@ -48,7 +43,11 @@ span{
     display: flex;
     justify-content: space-between;
     line-height: 1rem;
-    
+}
+.line{
+    width: 100%;
+    height: .1rem;
+    background-color: #ebf2ff
 }
 /* 提交内容 */
 .content{
@@ -56,85 +55,82 @@ span{
     height: 100%;
     background-color: #fff
 }
-/*上传放款后资料图 */
-.list .weui-uploader__input-box{
-    width:7rem;
-    height: 1.2rem;
-    background-color: unset;
-    border: none;
-    margin-left: 0
-}
-.list .weui-uploader__input-box:after, .weui-uploader__input-box:before{
-    background-color: unset
-}
-i{
-    display: inline-block
-}
-.list span{
-    color: #acacac;
-    margin-left: .3rem
-}
-.icon-xiangji1{
-    margin: 0 .3rem;
-    color: #3e6ae7;
-}
 .more12{
     display: none
 }
 /* 内容列表 */
 .c-list{
-    width:7rem;
+    width:6.9rem;
     margin: auto
 }
 /* 列表 */
 .list{
     width:100%;
     height: 2.1rem;
-    border-bottom: 1px dashed #ccc
+    border-bottom: 1px dashed #ccc;
 }
 .list label{
     display: inline-block;
     width: 100%;
-    height: .26rem;
+    height: .3rem;
     font-size: .26rem;
     color: #5f5f5f;
-    margin: .3rem 0;
+}
+/* 拍照或选择照片 */
+.photo{
+    width: 100%;
+    height: 1.8rem;
+}
+.photo span{
+    line-height: 1.3rem;
+    color: #b0b0b0 !important;
+    margin-left: .3rem
+}
+.photo .icon-xiangji1{
+    font-size: .5rem;
+    color: #3b6bf4;
+    margin-left: .5rem
 }
 /* 上传图片 */
-.weui-uploader__bd{
-    width: 100%;
-    height: 1.2rem;
+.up-load{
+    width:100%;
+    height: 1.8rem;
+    display: none
 }
-.weui-uploader__file{
-    width:1.44rem;
-    height: 1rem;
-    border: 1px solid red;
-    border-radius: .15rem;
-    position: relative;
-}
-.weui-uploader__input-box{
-    width:.4rem;
-    height: .4rem;
-    border-radius: 50%;
-    margin: .3rem .56rem;
-    background-color: #3771ea
-}
-.weui-uploader__input-box:before{
+.up-load .weui-uploader__input-box:before{
     width: 2px;
-    height:.3rem;
-    border-color: white;
+    height: .2rem
 }
-.weui-uploader__input-box:after{
-    width: .3rem;
-    height: 2px;
-    border-color: white
+.up-load .weui-uploader__input-box:after{
+    width: .2rem;
+    height: 2px
 }
-.icon-guanbi{
-    position: absolute;
-    top: -.1rem;
-    left: 75%;
-    color: red;
-    opacity: .6
+.up-load .weui-uploader__input-box{
+    width: .5rem;
+    height: .5rem;
+    border: 1px solid #ccc;
+    background-color: #3b6bf4;
+    border-radius: .5rem;
+    margin-top: .4rem
+}
+.up-load .weui_uploader_files{
+    list-style: none;
+    display: flex
+}
+.up-load .weui_uploader_file{
+    width: 1.8rem;
+    height: 1.3rem;
+    margin-right: .15rem;
+    background-size: 100% 100%;
+    border-radius: .15rem
+}
+.up-load .weui_uploader_bd{
+    display: flex;
+    margin-left: .3rem
+}
+.up-load .weui_uploader_status_content{
+    text-align: center;
+    line-height: 1.3rem
 }
 /* 说明区 */
 .weui-cells{
@@ -143,8 +139,7 @@ i{
     height: 3.5rem;
     margin: 0 auto 0;
     display: flex;
-    padding-top: .45rem;
-    box-sizing: border-box
+    background-color: unset;
 }
 .weui-cells:after{
     border: none
@@ -178,11 +173,11 @@ i{
 /* 下一步 */
 .weui-btn{
     width:5.5rem;
-    height: .64rem;
+    height: .8rem;
     border-radius: .5rem;
-    margin: .35rem auto;
+    margin: .5rem auto;
     background-color: #3b6bf4 !important;
-    line-height: .64rem
+    line-height: .8rem
 }
 .weui-btn:after{
     border: none

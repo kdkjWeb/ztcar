@@ -1,4 +1,6 @@
 $(function(){
+    $("#date").calendar();
+    
     $("#gender").select({
         title: "性别",
         items: ["男", "女"]

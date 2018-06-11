@@ -1,4 +1,6 @@
 $(function(){
+
+    $("#date").calendar();
     $("#type").select({
         title:"证件类型",
         items:["身份证","户口簿","护照"]

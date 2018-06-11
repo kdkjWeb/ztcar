@@ -1,6 +1,8 @@
 body{
     width:100%;
-    background-color: #ecf1ff
+}
+.icon-danxuan,.icon-danxuan2{
+	color: #3b6af4;
 }
 header{
     width:100%;
@@ -41,7 +43,11 @@ span{
     display: flex;
     justify-content: space-between;
     line-height: 1rem;
-    
+}
+.line{
+    width: 100%;
+    height: .1rem;
+    background-color: #ebf2ff
 }
 /* 提交内容 */
 .content{
@@ -49,11 +55,12 @@ span{
     height: 100%;
     background-color: #fff
 }
-/*上传放款后资料图 */
-
+.more12{
+    display: none
+}
 /* 内容列表 */
 .c-list{
-    width:7rem;
+    width:6.9rem;
     margin: auto
 }
 /* 列表 */
@@ -74,22 +81,12 @@ span{
     width: 100%;
     height: 1.8rem;
 }
-.photo .weui-uploader__input-box:before{
-    background-color: unset
-}
-.photo .weui-uploader__input-box::after{
-    background-color: unset
-}
-.photo .weui-uploader__input-box{
-    width: 100%;
-    border: none
-}
 .photo span{
     line-height: 1.3rem;
     color: #b0b0b0 !important;
     margin-left: .3rem
 }
-.icon-xiangji1{
+.photo .icon-xiangji1{
     font-size: .5rem;
     color: #3b6bf4;
     margin-left: .5rem
@@ -116,54 +113,25 @@ span{
     border-radius: .5rem;
     margin-top: .4rem
 }
+.up-load .weui_uploader_files{
+    list-style: none;
+    display: flex
+}
 .up-load .weui_uploader_file{
     width: 1.8rem;
     height: 1.3rem;
     margin-right: .15rem;
     background-size: 100% 100%;
+    border-radius: .15rem
 }
 .up-load .weui_uploader_bd{
-    display: flex
+    display: flex;
+    margin-left: .3rem
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.up-load .weui_uploader_status_content{
+    text-align: center;
+    line-height: 1.3rem
+}
 /* 说明区 */
 .weui-cells{
     padding: 0;
@@ -171,8 +139,7 @@ span{
     height: 3.5rem;
     margin: 0 auto 0;
     display: flex;
-    padding-top: .45rem;
-    box-sizing: border-box
+    background-color: unset;
 }
 .weui-cells:after{
     border: none
@@ -206,11 +173,11 @@ span{
 /* 下一步 */
 .weui-btn{
     width:5.5rem;
-    height: .64rem;
+    height: .8rem;
     border-radius: .5rem;
-    margin: .35rem auto;
+    margin: .5rem auto;
     background-color: #3b6bf4 !important;
-    line-height: .64rem
+    line-height: .8rem
 }
 .weui-btn:after{
     border: none

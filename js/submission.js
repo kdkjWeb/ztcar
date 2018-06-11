@@ -1,8 +1,5 @@
-$(function(){
-    $(".weui-btn").on("click",function(){
-        window.location.href="carMsg.html"
-    })
-})
+
+ 
 
 
 $.weui = {};
@@ -21,6 +18,28 @@ $.weui.alert = function(options) {
 };
 
 $(function() {
+    $(".photo").on("click",function(){
+        $(this).hide();
+        $(this).siblings(".up-load").show();
+        $(this).siblings(".up-load").show();
+        
+    })
+
+    $('#less12').click(function() {
+        $('#more12').removeClass('icon-danxuan').addClass('icon-danxuan2');
+        $(this).removeClass('icon-danxuan2').addClass('icon-danxuan');
+        $(".more12").hide();
+        $(".less12").show();
+    })
+    
+    $('#more12').click(function() {
+        $('#less12').removeClass('icon-danxuan').addClass('icon-danxuan2');
+        $(this).removeClass('icon-danxuan2').addClass('icon-danxuan');
+        $(".more12").show();
+        $(".less12").hide()
+    })
+
+
     // 允许上传的图片类型  
     var allowTypes = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
     // 1024KB，也就是 1MB  
@@ -106,4 +125,9 @@ $(function() {
             reader.readAsDataURL(file);
         }
     });
+
+
+    $(".weui-btn").on("click",function(){
+        window.location.href="carMsg.html"
+    })
 });
