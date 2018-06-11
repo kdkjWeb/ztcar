@@ -1,5 +1,5 @@
-//var path = "http://192.168.20.149:8080";
-   var path="http://114.116.25.220:8081"
+var path = "http://192.168.20.128:8080";
+// var path="http://114.116.25.220:8081"
 
 var token=localStorage.getItem('token');
 var token =  GetRequest()
@@ -148,16 +148,19 @@ function isName(name, msg) { //姓名
 
 function isDisName(disName){  //经销商代码
 	let regex = /^[A-Z]d{7}$/;
+	
 	if(disName == '') {
 		errLay('经销商代码不能为空');
 		return false;
-	} else if(!regex.test(disName)) {
-		errLay('请填写' + msg + '请填写正确的经销商代码');
-		return false;
-	} else {
+	}
+//	else if(!regex.test(disName)) {
+//		errLay('请填写正确的经销商代码');
+//		return false;
+//	}
+	else {
 		return true;
 	}
-	return true;	
+
 }
 
 function isDate(date,msg){//出生日期
@@ -208,6 +211,16 @@ function isBank(carId) { //银行卡验证
 		errLay("请填写正确的银行卡");
 		return false;
 	} else {
+		return true;
+	}
+}
+
+
+function isPsd(word){
+	if(word == ''){
+		errLay("密码不能为空");
+		return false;
+	}else{
 		return true;
 	}
 }

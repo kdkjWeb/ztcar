@@ -1,28 +1,15 @@
-/* .header{
-    width:100%;
-    height: 1rem;
-    display: flex;
+.weui-navbar:after{
+	display: none;
 }
-.header p{
-    width: 3.45rem;
-    height: .8rem;
-    text-align: center;
-    line-height: .8rem;
-    margin-top: .15rem;
-    padding: 0 .3rem;
-    box-sizing: border-box;
-    border: 1px solid #3b6af4
-} */
+
 .today{
     margin-left: .3rem;
-    border-radius: .5rem 0 0 .5rem
+    border-radius: .5rem 0 0 .5rem;
+    color: #3b6af4;
 }
 .waitting{
     border-radius:0 .5rem .5rem 0
 }
-/* #waitting {
-    display: none
- } */
 .p-active{
     background-color: #3b6af4;
     color: #ffffff;
@@ -44,20 +31,18 @@
 .weui-navbar__item:after{
     border: none
 }
-/* .weui-bar__item--on{
-    padding-left: .6rem
-} */
+
 .line{
     width: 100%;
     height: .1rem;
     background-color: #ebf2ff;
-    margin-top: 1rem
+    padding-top: 1.6rem;
 }
 
 /* 表格 */
 
 table,th,tr,td{
-    border: 1px solid #b8b8b8
+    /*border: 1px solid #b8b8b8*/
 }
 .container{
     width:100%;
@@ -66,6 +51,8 @@ table,th,tr,td{
 table{
     width:6.9rem;
     margin: .45rem .3rem 0;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 th{
@@ -96,17 +83,6 @@ td:nth-child(4),td:nth-child(5){
     justify-content: space-between
 }
 
-
-
-
-
-
-
-
-
-
-
-
 .pop-box{
     display: none
 }
@@ -114,7 +90,7 @@ td:nth-child(4),td:nth-child(5){
     position: fixed;
     top:0;
     left:0;
-    z-index: 100;
+    z-index: 999;
     width:100%;
     height:100%;
     background-color: black;
@@ -124,7 +100,7 @@ td:nth-child(4),td:nth-child(5){
     position: fixed;
     top:3.15rem;
     left:.3rem;
-    z-index: 200;
+    z-index: 999;
     width:6.9rem;
     height: 4.45rem;
     background-color: #fff;
@@ -137,7 +113,7 @@ td:nth-child(4),td:nth-child(5){
 }
 #no{
     width:2rem;
-    height:.64rem;
+    height:.8rem;
     background-color: #ccc;
     font-size: .3rem;
     color: #fff;
@@ -147,7 +123,7 @@ td:nth-child(4),td:nth-child(5){
 }
 #yes{
     width:2rem;
-    height: 0.64rem;
+    height: .8rem;
     background-color: #3b6af4;
     font-size: .3rem;
     color: #fff;
