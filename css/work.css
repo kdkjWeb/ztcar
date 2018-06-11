@@ -67,11 +67,11 @@ header ul{
 }
 .weui-btn{
     width:5.5rem;
-    height: .64rem;
+    height: .8rem;
     border-radius: .5rem;
     margin: .35rem auto;
     background-color: #3b6bf4 !important;
-    line-height: .64rem
+    line-height: .8rem;
 }
 .toolbar, .toolbar .title{
     font-size: unset

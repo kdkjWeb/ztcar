@@ -177,7 +177,11 @@ span{
     border-radius: .5rem;
     margin: .5rem auto;
     background-color: #3b6bf4 !important;
+<<<<<<< HEAD
     line-height: .8rem
+=======
+    line-height: .8rem;
+>>>>>>> 168af16a521252c298b37bf65a40c707ccf82e42
 }
 .weui-btn:after{
     border: none
@@ -219,7 +223,7 @@ span{
     color: #fff;
     border-radius: .5rem;
     margin-top: .97rem;
-    line-height: .64rem;
+    line-height: .8rem;
 }
 #no{
     width:2rem;
@@ -229,7 +233,7 @@ span{
     color: #fff;
     border-radius: .5rem;
     margin-top: .97rem;
-    line-height: .64rem;
+    line-height: .8rem;
     
 }
 .warn{
