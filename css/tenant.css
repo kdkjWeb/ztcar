@@ -75,6 +75,7 @@ header ul{
     background-color: #3b6bf4 !important;
     line-height: .8rem;
 }
+/* 下拉选择弹出框 */
 .toolbar, .toolbar .title{
     font-size: unset
 }
@@ -90,4 +91,33 @@ header ul{
 }
 .weui-select-modal .weui-cells{
     max-height: 3rem
+}
+/* 时间选择器 */
+/* .weui-picker-modal .picker-item{
+    font-size: .4rem;
+} */
+.picker-calendar-month-picker a.icon-only, .picker-calendar-year-picker a.icon-only{
+    width: 10%;
+    height: .5rem;
+    line-height: .6rem
+}
+.picker-calendar-month-picker .current-month-value, .picker-calendar-month-picker .current-year-value, .picker-calendar-year-picker .current-month-value, .picker-calendar-year-picker .current-year-value{
+    height: .5rem;
+    line-height: .5rem
+}
+.picker-calendar-row{
+    height: .8rem;
+}
+i.icon.icon-next, i.icon.icon-prev{
+    width: .4rem;
+    height: .4rem
+}
+.weui-picker-calendar .picker-modal-inner{
+    margin-top: -.4rem;
+}
+.weui-picker-modal.weui-picker-modal-visible{
+    height: 5rem
+}
+.picker-calendar-week-days{
+    height: .5rem
 }

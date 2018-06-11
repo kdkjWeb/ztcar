@@ -71,11 +71,11 @@ header ul{
 }
 .weui-label{
     width: 2.5rem;
-    font-size: .26rem;
-    text-align: right;
     line-height: .6rem;
-    margin-right: .3rem;
-    margin-left: -.3rem
+}
+#compony .weui-label{
+    font-size: .26rem;
+    font-weight: 700
 }
 .weui-input{
     width:3.7rem;
@@ -86,10 +86,18 @@ header ul{
     margin-left: -.3rem;
     position: relative;
 }
+#compony .weui-input{
+    margin-left:0;
+}
 .weui-cell .icon-xiangxia1{
     position: absolute;
     top: .3rem;
     left: 80%
+}
+#compony .weui-cell .icon-xiangxia1{
+    position: absolute;
+    top: .3rem;
+    left: 85%
 }
 .weui-cell .icon-xiangji1{
    width:.4rem;
@@ -175,4 +183,43 @@ span{
 .toolbar .picker-button{
     height: 1rem;
     line-height: 1rem
+}
+/* 时间选择器 */
+/* .weui-picker-modal .picker-item{
+    font-size: .4rem;
+} */
+.picker-calendar-month-picker a.icon-only, .picker-calendar-year-picker a.icon-only{
+    width: 10%;
+    height: .5rem;
+    line-height: .6rem
+}
+.picker-calendar-month-picker .current-month-value, .picker-calendar-month-picker .current-year-value, .picker-calendar-year-picker .current-month-value, .picker-calendar-year-picker .current-year-value{
+    height: .5rem;
+    line-height: .5rem
+}
+.picker-calendar-row{
+    height: .8rem;
+}
+i.icon.icon-next, i.icon.icon-prev{
+    width: .4rem;
+    height: .4rem
+}
+.weui-picker-calendar .picker-modal-inner{
+    margin-top: -.4rem;
+}
+.weui-picker-modal.weui-picker-modal-visible{
+    height: 5rem
+}
+.picker-calendar-week-days{
+    height: .5rem
+}
+ .picker-calendar-year-picker span{
+    margin-top: 0;
+    color: unset;
+    font-size: .32rem
+}
+.picker-calendar-row span{
+    margin-top: 0;
+    color: unset;
+    font-size: .32rem
 }

@@ -1,14 +1,13 @@
+
 $(function(){
-    // $("#end").cityPicker({
-    //     title: "请选择收货地址",
-    //     items:[{
-    //         province:"四川",
-    //         city:["成都","遂宁","达州"]
-    //     }]
-    //   });
+
+    
+    $("#address").cityPicker({
+        title: "选择户籍地址",
+      });
       $("#nature").select({
           title:"现住房性质",
-          items:["租住公房","租住私房","借助父母处"]
+          items:["租住公房","租住私房","    借助父母处"]
       })
       $("#type").select({
           title:"房产类型",
