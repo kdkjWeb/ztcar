@@ -25,9 +25,9 @@ header ul{
 }
 .title p{
     width: 3.45rem;
-    height: .64rem;
+    height: .8rem;
     text-align: center;
-    line-height: .64rem;
+    line-height: .8rem;
     margin-top: .15rem;
     padding: 0 .3rem;
     box-sizing: border-box;
@@ -98,19 +98,19 @@ header ul{
 }
 #btn{
     width:5.5rem;
-    height: .64rem;
+    height: .8rem;
     border-radius: .5rem;
     margin: .35rem auto;
     background-color: #3b6bf4 !important;
-    line-height: .64rem
+    line-height: .8rem;
 }
 #btn2{
     width:5.5rem;
-    height: .64rem;
+    height: .8rem;
     border-radius: .5rem;
     margin: .35rem auto;
     background-color: #3b6bf4 !important;
-    line-height: .64rem
+    line-height: .8rem;
 }
 
 .weui-navbar__item{

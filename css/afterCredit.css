@@ -157,11 +157,11 @@ i{
 /* 下一步 */
 .weui-btn{
     width:5.5rem;
-    height: .64rem;
+    height: .8rem;
     border-radius: .5rem;
     margin: .35rem auto;
     background-color: #3b6bf4 !important;
-    line-height: .64rem
+    line-height: .8rem;
 }
 .weui-btn:after{
     border: none
@@ -203,7 +203,7 @@ i{
     color: #fff;
     border-radius: .5rem;
     margin-top: .97rem;
-    line-height: .64rem;
+    line-height: .8rem;
 }
 #no{
     width:2rem;
@@ -213,7 +213,7 @@ i{
     color: #fff;
     border-radius: .5rem;
     margin-top: .97rem;
-    line-height: .64rem;
+    line-height: .8rem;
     
 }
 .warn{

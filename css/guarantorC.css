@@ -70,11 +70,11 @@ header ul{
 /* 下一步 */
 .weui-btn{
     width:5.5rem;
-    height: .64rem;
+    height: .8rem;
     border-radius: .5rem;
     margin: .35rem auto;
     background-color: #3b6bf4 !important;
-    line-height: .64rem
+    line-height: .8rem;
 }
 #personal {
     background-color: #fff;
@@ -103,7 +103,7 @@ header ul{
 }
 .weui-navbar{
     width: 6.9rem;
-    height: .64rem;
+    height: .8rem;
     margin: .2rem .3rem 0;
     
 }
