@@ -46,6 +46,20 @@ function errAlert(tit, msg) {
 	$('#errBox').fadeIn('500');
 };
 
+//====提示====
+function errLay(msg){
+	let text = '<div id="errLay" class="errLay"><span>'+msg+'</span></div>';
+	$('body').append(text);
+	$('#errLay').fadeIn('8000');
+	
+	var set = setTimeout(function(){
+		$('#errLay').fadeOut('8000');
+		var setRemove = setTimeout(function(){$('#errLay').remove()},800);
+	},1200);
+}
+
+
+
 function cue(tit,msg){
 	let text=` <div class="pop-box" id="errbox">
 		<div class="mask"></div>
@@ -123,7 +137,9 @@ function isPhone(phone,msg) { //手机号
 function isName(name, msg) { //姓名
 	let regex = /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/;
 	if(name == '') {
-		errAlert('提醒', '姓名不能为空');
+//		errAlert('提醒', '姓名不能为空');
+		errLay('姓名不能为空')
+
 		return false;
 	} else if(!regex.test(name)) {
 		errAlert('提醒', '请填写' + msg + '正确的姓名');

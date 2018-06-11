@@ -26,7 +26,8 @@ body{
 }
 .weui-input{
     width:3.88rem;
-    height:.6rem;
+    height:.8rem;
+    font-size: .3rem;
     border: 1px solid #c6c6c6;
     border-radius: .5rem;
     padding-left: .2rem;
