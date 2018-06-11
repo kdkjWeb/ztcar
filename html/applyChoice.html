@@ -6,15 +6,28 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="">
     <title>我要申请-产品选择</title>
     <script src="../js/common/jquery-3.2.1.js"></script>
     <script src="../js/common/common.js"></script>
+    <script src="../js/common/fastclick.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+	   if ('addEventListener' in document) {
+        document.addEventListener('DOMContentLoaded', function() {
+             /*如果对body绑定，那么意味着body下面的所有元素都会使用fastclick来进行单击事件的处理*/
+             FastClick.attach(document.body);
+         }, false);
+     }
+	</script>
+    
     <link rel="stylesheet" href="../css/common/reset.css">
     <link rel="stylesheet" href="../css/common/weui.min.css">
     <link rel="stylesheet" href="../css/common/jquery-weui.min.css">
     <link rel="stylesheet" type="text/css" href="../css/common/iconfont.css">
     <link rel="stylesheet" href="../css/applyChoice.css">
-
+		
 </head>
 <body>
     <div class="content">
@@ -36,8 +49,6 @@
     			二手车
     		</span>
     	</div>
-    	
-    	
     	<div class="bor"></div>
     	<div>
     		<div class="tit">选择金融产品</div>

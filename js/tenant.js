@@ -3,16 +3,46 @@ $(function(){
         title: "性别",
         items: ["男", "女"]
     });
-    // $("#year").select({
-    //     title: "选择工作年限",
-    //     items: ["1", "2", "3", "4", "5", "6"]
-    // });
-    // $("#edu").select({
-    //     title: "选择学历要求",
-    //     items: ["大专", "本科", "研究生", "硕士", "博士", "其他"]
-    // });
-    // $("#address").select({
-    //     title: "选择工作地点",
-    //     items: ["成都市成华区", "成都市锦江区", "成都市金牛区", "成都市武侯区", "成都市龙泉驿区", "其他"]
-    // });
+    $("#type").select({
+        title: "证件类型",
+        items: ["身份证", "护照","户口簿"]
+    });
+    $("#edu").select({
+        title: "文化程度",
+        items: ["小学", "初中","高中", "职高","中专", "大专","本科", "研究生","硕士", "博士"]
+    });
+    $("#isMarried").select({
+        title: "婚姻状况",
+        items: ["未婚", "已婚","离异"]
+    });
+    $("#register").select({
+        title: "户籍性质",
+        items: ["城市", "农村"]
+    });
+    $("#nature").select({
+        title: "现住房性质",
+        items: ["租住公房", "租住私房","租住父母处"]
+    });
+       
+    $(".weui-btn").on("click",function(){
+        let name=$("#name").val()
+        let id=$("#id").val()
+        let date=$("#date").val()
+        let tel=$("#tel").val()
+        let phone=$("#phone").val()
+        if(isName(name,"承租人")==false){
+            return false
+        }else if(isId(id,"承租人")==false){
+            return false
+        }else if(isDate(date,"承租人")==false){
+            return false
+        }else if(isPhone(tel)==false){
+            return false
+        }else if(isPhone(phone)==false){
+            return false
+        }else{
+            window.location.href="guarantor.html"
+        }
+    })
+    
 })

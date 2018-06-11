@@ -1,4 +1,4 @@
-body{
+	body{
     width: 100%;
     height:100%
 }
@@ -87,7 +87,7 @@ body{
     height:.6rem;
     border-radius: .5rem;
     text-indent: .2rem;
-    outline: none
+    outline: none;
 }
 input{
     border:1px solid #dcdcdc;
@@ -99,14 +99,14 @@ input{
 .get{
     width:1.9rem;
     height:.55rem;
-    line-height: .55rem;
+    /*line-height: .55rem;*/
     background-color: #4371f8;
     border:1px solid #4371f8;
     box-sizing: border-box;
     border-radius: .5rem;
     outline: none;
     color: #FFF;
-    font-size: .14rem;
+    font-size: .26rem;
 }
 .get span{
     font-size: .18rem;
@@ -130,7 +130,7 @@ p{
     margin: -.5rem 0 0 .5rem
 }
 em{
-    font-size: .12rem;
+    font-size: .28rem;
     color: red;
     margin-top: -.5rem
 }
@@ -182,7 +182,7 @@ em{
     font-size: .26rem;
     color: black;
     text-align: center;
-    margin-top: 1rem
+    margin: 0;
 }
 #btn1{
     width:4rem;
@@ -329,3 +329,19 @@ em{
 	font-size: .26rem;
 }
 
+/*==loading========*/
+.loading{
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 999;
+	background-color: rgba(0,0,0,.5);
+	
+}
+.weui-loadmore{
+	margin-top: 4rem;
+	color: #FFFFFF;
+}

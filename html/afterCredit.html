@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>提交放款后资料</title>
+    <script src="../js/common/jquery-3.2.1.js"></script>
+    <script src="../js/common/common.js"></script>
+    <link rel="stylesheet" href="../css/common/reset.css">
+    <link rel="stylesheet" href="../css/common/weui.min.css">
+    <link rel="stylesheet" href="../css/common/jquery-weui.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/common/iconfont.css">
+    <link rel="stylesheet" href="../css/afterCredit.css">
+</head>
+<body>
+    <header>
+        <div class="basic">
+            <div class="name">
+                <label>借款人姓名：</label>
+                <span>张三</span>
+            </div>
+            <div class="phone">
+                <label>电话号码：</label>
+                <span>12345678945</span>
+            </div>
+        </div>
+        <div class="cause">
+            <label>未通过原因：</label>
+            <span>拒绝原因..........</span>
+        </div>
+        
+    </header>
+    <div class="content">
+            <div class="c-list">
+                <div class="list">
+                    <label>行驶证：</label>
+                    <div class="weui-uploader__bd">
+                        <div class="weui-uploader__input-box">
+                            <input id="uploaderInput" class="weui-uploader__input" type="file" multiple="">
+                            <i class="iconfont icon-xiangji1"><span>拍照或选择图片</span></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="list">
+                    <label>登记证：</label>
+                    <div class="weui-uploader__bd">
+                        <div class="weui-uploader__input-box">
+                            <input id="uploaderInput" class="weui-uploader__input" type="file" multiple="">
+                            <i class="iconfont icon-xiangji1"><span>拍照或选择图片</span></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-cells">
+                <div class="weui-cell" id="cell">
+                <div class="weui-cell__hd"><label class="weui-label" id="label">备注：</label></div>
+                    <div class="weui-cell__bd">
+                        <textarea class="weui-textarea" placeholder="与贷款申请人说明关系" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+       
+        <a href="javascript:;" class="weui-btn weui-btn_primary">确认提交</a> 
+    </div> 
+    <div class="pop-box">
+        <div class="mask"></div>
+        <div class="box1">
+            <p class="warn">提醒</p>
+            <p class="wrong">你确定要删除本张照片吗？删除之后将无法删除</p>
+            <div class="btn-box">
+                <a href="javascript:;" class="weui-btn weui-btn_primary" id="yes">取消</a> 
+                <a href="javascript:;" class="weui-btn weui-btn_primary" id="no">确定</a>  
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../js/common/jquery-weui.min.js"></script>
+<script src="../js/afterCredit.js"></script>
+</html>

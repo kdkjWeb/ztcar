@@ -194,7 +194,7 @@ svg{overflow: hidden;}
 .clearfix:after{clear: both;}
 
 
-
+input[type=button], input[type=submit], input[type=file], input[type=text],input[type=number],button  { cursor: pointer; -webkit-appearance: none; } 
 
 /*======================*/
 #errBox{
@@ -219,6 +219,7 @@ svg{overflow: hidden;}
 #errBox .wrong{
 	text-align: center;
 	font-size: .26rem;
+	  padding-bottom: .5rem;
 }
 #errBox .box1{
     position: fixed;
@@ -228,13 +229,17 @@ svg{overflow: hidden;}
     width:6.9rem;
     height: 4.45rem;
     background-color: #fff;
-    border-radius: .1rem
+    border-radius: .1rem;
+    text-align: center;
+  
 }
 #errBox #colseErr{
-		position: absolute;
-		left: 50%;
-		transform: translateX(-50%);
-		bottom: .5rem;
+	margin: 0 auto;
+		/*position: absolute;*/
+		/*margin-top: 1.6rem;*/
+		/*left: 50%;*/
+		/*transform: translateX(-50%);*/
+		/*bottom: .5rem;*/
     width:4rem;
     height:.65rem;
     background-color: #3b6af4;

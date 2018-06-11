@@ -64,6 +64,7 @@ $(function(){
     $('.content').append(mind)
     }
    
+
  for(var j = 0; j<arr.length; j++){
     var text  =  `<div class="content-c1">
                     <div class="other">

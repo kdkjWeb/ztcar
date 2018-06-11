@@ -1,0 +1,106 @@
+/* 顺序框 */
+header{
+    width:100%;
+    height: .94rem;
+}
+header ul{
+    display: flex;
+    justify-content: space-around;
+    line-height: .94rem
+}
+/* 直属亲戚 */
+.relative{
+    width: 6.9rem;
+    height: 3.62rem;
+    margin: auto;
+}
+.relative .weui-cell{
+    height: 1rem
+}
+p{
+    width: 100%;
+    height: .6rem;
+    line-height: .6rem;
+    /* font-size: .2rem; */
+    color: #4164f4;
+    text-align: center
+}
+/* 紧急联系人 */
+.urgent{
+    width:6.9rem;
+    height: 3.2rem;
+    margin: auto;
+}
+.urgent .weui-cell:last-child{
+    border: none
+}
+/* 图标 */
+.iconfont{
+    color: #c6cbc9;
+}
+/* 分割线 */
+.line{
+    width: 100%;
+    height: .1rem;
+    background-color: #ebf2ff
+}
+.weui-cell{
+    padding: 0;
+    width: 100%;
+    height: 1.05rem;
+    border-bottom: 1px dashed #dddddd
+}
+.weui-cell:before{
+    border: none
+}
+.weui-label{
+    width: 3rem;
+    font-size: .32rem;
+    text-align: left;
+    line-height: .6rem;
+    margin-right: .3rem;
+    color: #585858
+}
+.weui-input{
+    width:3.7rem;
+    height:.6rem;
+    border: 1px solid #c6c6c6;
+    border-radius: .5rem;
+    padding-left: .2rem;
+    margin-left: -.7rem;
+    position: relative;
+}
+/* 向下图标 */
+.weui-cell .icon-xiangxia1{
+    position: absolute;
+    top: .3rem;
+    left: 85%
+}
+/* 相机图标 */
+.weui-cell .icon-xiangji1{
+   width:.4rem;
+   height: .35rem;
+   color: #3b6bf4
+}
+/* 按钮 */
+.weui-btn{
+    width:5.5rem;
+    height: .64rem;
+    border-radius: .5rem;
+    margin: .35rem auto;
+    background-color: #3b6bf4 !important;
+    line-height: .64rem
+}
+.toolbar, .toolbar .title{
+    font-size: unset
+}
+.toolbar{
+    height: 1rem
+}
+.toolbar .title{
+    line-height: 1rem
+}
+.toolbar .picker-button{
+    height: 1rem;
+    line-height: 1rem
+}

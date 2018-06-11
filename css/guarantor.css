@@ -11,7 +11,6 @@ header ul{
 /* 图标 */
 .iconfont{
     color: #c6cbc9;
-    /* background-color: #ebf2ff */
 }
 /* 分割线 */
 .line{
@@ -19,7 +18,35 @@ header ul{
     height: .1rem;
     background-color: #ebf2ff
 }
-
+.title{
+    width:100%;
+    height: 1rem;
+    display: flex;
+}
+.title p{
+    width: 3.45rem;
+    height: .64rem;
+    text-align: center;
+    line-height: .64rem;
+    margin-top: .15rem;
+    padding: 0 .3rem;
+    box-sizing: border-box;
+    border: 1px solid #3b6af4
+}
+.personal{
+    margin-left: .3rem;
+    border-radius: .5rem 0 0 .5rem
+}
+.compony{
+    border-radius:0 .5rem .5rem 0
+}
+#compony {
+    display: none
+ }
+.p-active{
+    background-color: #3b6af4;
+    color: #ffffff;
+}
 /* 内容 */
 .content{
     width:100%;
@@ -28,14 +55,16 @@ header ul{
 .c-list{
     width:6.9rem;
     margin: auto;
-    /* background-color: paleturquoise */
+}
+.icon-xiangji1{
+    font-size: .5rem;
+    margin-top: -.5rem
 }
 .weui-cell{
     padding: 0;
     width: 100%;
     height: 1rem;
     border-bottom: 1px dashed #dddddd
-    /* padding-top: .4rem */
 }
 .weui-cell:before{
     border: none
@@ -67,7 +96,7 @@ header ul{
    height: .35rem;
    color: #3b6bf4
 }
-.weui-btn{
+#btn{
     width:5.5rem;
     height: .64rem;
     border-radius: .5rem;
@@ -75,16 +104,15 @@ header ul{
     background-color: #3b6bf4 !important;
     line-height: .64rem
 }
-#personal {
-    background-color: #fff;
-    border:1px solid #3b6bf4;
-    border-radius: .5rem 0 0 .5rem
+#btn2{
+    width:5.5rem;
+    height: .64rem;
+    border-radius: .5rem;
+    margin: .35rem auto;
+    background-color: #3b6bf4 !important;
+    line-height: .64rem
 }
-#company {
-    background-color: #fff;
-    border:1px solid #3b6bf4;
-    border-radius: 0 .5rem .5rem 0
-}
+
 .weui-navbar__item{
     padding: .1rem 0 0 0
 }
@@ -97,15 +125,7 @@ header ul{
 .weui-navbar:after{
     display: none
 }
-.weui-tab{
-    height:1rem
-}
-.weui-navbar{
-    width: 6.9rem;
-    height: .64rem;
-    margin: .2rem .3rem 0;
-    
-}
+
 span{
     display: inline-block;
     font-size: .28rem;
@@ -118,7 +138,6 @@ span{
     width: 6.9rem;
     height: 2.25rem;
     margin: 0 auto;
-    display: flex;
     border-bottom: 1px dashed #dddddd;
 }
 #cell{
@@ -142,4 +161,18 @@ span{
     box-sizing: border-box;
     border-radius: .15rem;
     padding-left: .2rem
+}
+
+.toolbar, .toolbar .title{
+    font-size: unset
+}
+.toolbar{
+    height: 1rem
+}
+.toolbar .title{
+    line-height: 1rem
+}
+.toolbar .picker-button{
+    height: 1rem;
+    line-height: 1rem
 }

@@ -72,3 +72,17 @@ header ul{
     background-color: #3b6bf4 !important;
     line-height: .64rem
 }
+/* 下拉框 */
+.toolbar, .toolbar .title{
+    font-size: unset
+}
+.toolbar{
+    height: 1rem
+}
+.toolbar .title{
+    line-height: 1rem
+}
+.toolbar .picker-button{
+    height: 1rem;
+    line-height: 1rem
+}

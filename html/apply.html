@@ -10,6 +10,12 @@
 		<title>我要申请</title>
 		<script src="../js/common/jquery-3.2.1.js"></script>
 		<script src="../js/common/common.js"></script>
+		<script src="../js/common/fastclick.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+		  $(function() {
+		    FastClick.attach(document.body);
+		  });
+		</script>
 		<link rel="stylesheet" href="../css/common/reset.css">
 		<link rel="stylesheet" href="../css/common/weui.min.css">
 		<link rel="stylesheet" href="../css/common/jquery-weui.min.css">
@@ -23,7 +29,7 @@
 			<div class="name">
 				<i class="must">*</i>
 				<label class="label">借款人姓名：</label>
-				<input type="name" placeholder="请输入姓名" class="ipt" id="userName">
+				<input type="text" placeholder="请输入姓名" class="ipt" id="userName">
 			</div>
 			<div class="IDcard">
 				<i class="must">*</i>
@@ -34,14 +40,14 @@
 			</div>
 			<div class="card">
 				<label class="label">银&nbsp;行&nbsp;卡&nbsp;号：</label>
-				<input type="text" placeholder="请输入银行卡号" class="ipt" maxlength="19" id="userBank">
+				<input type="number" placeholder="请输入银行卡号" class="ipt" oninput="if(value.length>19)value=value.slice(0,19)"  id="userBank">
 				<!--<i class="iconfont icon-xiangji1" id="Ccamera"></i>-->
 			</div>
 			<div>
 				<div class="phone">
 					<i class="must">*</i>
 					<label class="label">&nbsp;&nbsp;手&nbsp;&nbsp;&nbsp;机&nbsp;&nbsp;&nbsp;号:&nbsp;&nbsp;&nbsp;&nbsp;</label>
-					<input type="number" placeholder="输入手机号" class="ipt" maxlength="11" id="userPhone">
+					<input type="number" placeholder="输入手机号" class="ipt"  oninput="if(value.length>11)value=value.slice(0,11)" id="userPhone">
 					<button class="get" id="getCode">获取验证码</button>
 
 				</div>
@@ -52,7 +58,7 @@
 			<div class="msg">
 				<i class="must">*</i>
 				<label class="label">短信验证码：</label>
-				<input type="name" placeholder="请输入短信验证码" class="ipt" id="userCode">
+				<input type="number" placeholder="请输入短信验证码" class="ipt" id="userCode" oninput="if(value.length>4)value=value.slice(0,4)">
 			</div>
 
 			<!--配偶-->
@@ -226,8 +232,14 @@
 		</div>
 		<!--=担保人身份证====-->
 		
+		<div class="loading" id="loading">
+			<div class="weui-loadmore">
+			  <i class="weui-loading"></i>
+			  <span class="weui-loadmore__tips">正在加载</span>
+			</div>
+		</div>
+		
 	</body>
 	<script src="../js/common/jquery-weui.min.js"></script>
-	<script src="../js/common/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../js/apply.js"></script>
 </html>

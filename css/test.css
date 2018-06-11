@@ -1,0 +1,38 @@
+.weui_cell_bd{
+    
+}
+.weui_cells .weui_uploader_bd{
+    display: flex;
+    display: -webkit-box;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling:touch;
+}
+.weui_uploader_files{
+    list-style: none;
+    display: flex
+}
+.weui_uploader_file{
+    width: 1.45rem;
+    height: 1rem;
+    margin-right: .15rem;
+    background-size: 100% 100%
+}
+
+/* 添加图片 */
+.weui-uploader__input-box:before{
+    width:2px;
+    height: .2rem
+}
+.weui-uploader__input-box:after{
+    width: .2rem;
+    height: 2px
+}
+
+.weui-uploader__input-box{
+ 
+    width: .5rem;
+    height: .5rem;
+    border-radius: .5rem;
+    background-color: blue;
+    margin-top: .3rem
+}

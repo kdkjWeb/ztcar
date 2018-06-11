@@ -1,10 +1,3 @@
-$(function(){
-    $(".weui-btn").on("click",function(){
-        window.location.href="carMsg.html"
-    })
-})
-
-
 $.weui = {};
 $.weui.alert = function(options) {
     options = $.extend({

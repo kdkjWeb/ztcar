@@ -1,13 +1,24 @@
 $(function(){
-    var phone=$(".changebox").val();
-    var name=$(".ipt").val()
-    $(".changebox").on("click",function(){
-        window.location.href="change.html"
-    })
-    $("#drop").on("click",function(e){
-        // e.preventDefault()
-        $(".changebox").val("");
-        $(".ipt").val("")
-        window.location.href="login.html"
-    })
+	
+	
+	var phone = sessionStorage.getItem('userPhone');
+	var name = sessionStorage.getItem('userName');
+	
+	if(phone != '' && phone != undefined){
+		$('#userPhone').attr('placeholder',phone);
+	}
+	if(name != '' && name != undefined){
+		$('#userName').val(name)
+	}
+	
+	$(".changebox").on("click",function(){
+	    window.location.href="change.html"
+	})
+
+	  $("#drop").on("click",function(e){
+	      window.location.href="login.html"
+	  })
+
+
+
 })

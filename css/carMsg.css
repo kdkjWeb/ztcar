@@ -71,3 +71,15 @@ span{
     border: 1px solid #c6c6c6;
     border-radius: .5rem;
 }
+/* 按钮 */
+.weui-btn{
+    width:5.5rem;
+    height: .64rem;
+    border-radius: .5rem;
+    margin: 3.9rem auto;
+    background-color: #3b6bf4 !important;
+    line-height: .64rem
+}
+.weui-btn:after{
+    border: none
+}
