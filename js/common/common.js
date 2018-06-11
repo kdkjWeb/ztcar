@@ -59,7 +59,6 @@ function errLay(msg){
 }
 
 
-
 function cue(tit,msg){
 	let text=` <div class="pop-box" id="errbox">
 		<div class="mask"></div>
@@ -124,10 +123,10 @@ function getDate(times) {
 function isPhone(phone,msg) { //手机号
 	let regex = /^1[3|4|5|6|8|7|9][0-9]\d{4,8}$/;
 	if(phone == '') {
-		errAlert('提醒', '手机号不能为空');
+		errLay('手机号不能为空');
 		return false;
 	} else if(!regex.test(phone)) {
-		errAlert('提醒', '请填写'+msg+'正确的手机号');
+		errLay('请填写'+msg+'正确的手机号');
 		return false;
 	} else {
 		return true;
@@ -137,39 +136,37 @@ function isPhone(phone,msg) { //手机号
 function isName(name, msg) { //姓名
 	let regex = /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/;
 	if(name == '') {
-//		errAlert('提醒', '姓名不能为空');
-		errLay('姓名不能为空')
-
+		errLay('姓名不能为空');
 		return false;
 	} else if(!regex.test(name)) {
-		errAlert('提醒', '请填写' + msg + '正确的姓名');
+		errLay('请填写' + msg + '正确的姓名');
 		return false;
 	} else {
 		return true;
 	}
 }
+
 function isDisName(disName){  //经销商代码
-//	let regex = /^[A-Z]d{7}$/;
-//	if(disName == '') {
-//		errAlert('提醒', '经销商代码不能为空');
-//		return false;
-//	} else if(!regex.test(disName)) {
-//		errAlert('提醒', '请填写正确的经销商代码');
-//		return false;
-//	} else {
-//		return true;
-//	}
-//	
-	return true;
-	
+	let regex = /^[A-Z]d{7}$/;
+	if(disName == '') {
+		errLay('经销商代码不能为空');
+		return false;
+	} else if(!regex.test(disName)) {
+		errLay('请填写' + msg + '请填写正确的经销商代码');
+		return false;
+	} else {
+		return true;
+	}
+	return true;	
 }
+
 function isDate(date,msg){//出生日期
 	let regex= /^(19|20)\d{2}(1[0-2]|0?[1-9])(0?[1-9]|[1-2][0-9]|3[0-1])$/
 	if(date==""){
-		errAlert('提醒',"出生日期不能为空")
+		errLay('出生日期不能为空');
 		return false
 	}else if(!regex.test(date)){
-		errAlert('提醒',"请填写"+msg+"正确的出生日期")
+		errLay("请填写"+msg+"正确的出生日期");
 		return false
 	}
 	else{
@@ -177,14 +174,13 @@ function isDate(date,msg){//出生日期
 	}
 }
 
-
 function isId(id, msg) { //身份证
 	let regex = /^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/;
 	if(id == '') {
-		errAlert('提醒', '身份证号不能为空');
+		errLay("身份证号不能为空");
 		return false;
 	} else if(!regex.test(id)) {
-		errAlert('提醒', '请填写' + msg +'正确的身份证号');
+		errLay("请填写"+msg+"正确的身份证号");
 		return false;
 	} else {
 		return true;
@@ -194,10 +190,10 @@ function isId(id, msg) { //身份证
 function isCode(code) { //短信验证码
 	let regex = /^\d{4}$/;
 	if(code == '') {
-		errAlert('提醒', '验证码不能为空');
+		errLay("验证码不能为空");
 		return false;
 	} else if(!regex.test(code)) {
-		errAlert('提醒', '请填写正确的验证码');
+		errLay("请填写正确的验证码");
 		return false;
 	} else {
 		return true;
@@ -209,7 +205,7 @@ function isBank(carId) { //银行卡验证
 	if(carId == '') {
 		return true;
 	} else if(!regex.test(carId)) {
-		errAlert('提醒', '请填写正确的银行卡');
+		errLay("请填写正确的银行卡");
 		return false;
 	} else {
 		return true;
