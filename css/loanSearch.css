@@ -1,0 +1,28 @@
+/* 查询结果 */
+.content{
+    width:6.9rem;
+    margin: auto;
+    padding-top: .5rem;
+    box-sizing: border-box
+}
+table,th,tr,td{
+    /* border: 1px solid black; */
+}
+table{
+    width: 100%;
+}
+th{ 
+    height: .65rem;
+    font-size: .32rem;
+    color: white;
+    text-align: center;
+    line-height: .65rem;
+    background-color: #3b6bf4;
+} 
+td{
+    height: .6rem;
+    line-height: .6rem;  
+    font-size: .32rem;
+    color: #717171;
+    text-align: center
+}

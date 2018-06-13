@@ -1,0 +1,25 @@
+.content{
+    width: 100%;
+    height: 100%;
+    padding-top: 1.6rem;
+    box-sizing: border-box;
+}
+.content div{
+    width: 2.43rem;
+    height: 2.43rem;
+    border-radius: 50%;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 2.43rem;
+    color: #fff;
+    font-size: .16rem;
+    /* cursor: pointer; */
+    /* outline: none; */
+}
+.content div.loan{
+    background-color: #3b6bf4;
+    margin-bottom: 1.2rem; 
+}
+.content div.repay{
+    background-color: #fe7800;
+}
