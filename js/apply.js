@@ -155,13 +155,18 @@ $(function() {
    				 },
 			 	success: function(data) {
 			 		$('#loading').hide();
-			 		
-			 		errAlert('提醒', data.msg)
-			 		
+			 			
 			 		console.log(data)
-//			 		if(data.code==0){
-////			 			window.location.href = 'detail.html';
-//			 		}
+			 		if(data.code==0){
+			 			errLay(data.msg);
+			 			var time = setTimeout(function(){
+			 				window.location.href = 'detail.html?phone='+userPhone;
+			 			},8000);
+			 			
+			 			
+			 		}else{
+			 			errAlert('提醒', data.msg)
+			 		}
 			 	},
 			 	error: function(xhr, type, errorThrown) {
 			 		//异常处理；

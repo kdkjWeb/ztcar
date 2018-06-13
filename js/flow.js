@@ -46,7 +46,8 @@ $(function(){
         </div>
     </div>
     <!-- 向下箭头（左侧） -->
-    <i class="iconfont icon-jiantou3"></i>
+    <div class="leftDown"><i class="iconfont icon-jiantou3"></i></div>
+
     <!-- 第三排 -->
     <div class="third">
         <div class="choose">

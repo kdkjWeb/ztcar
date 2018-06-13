@@ -1,6 +1,6 @@
 .content{
     width:100%;
-    padding: .6rem 0 0;
+    padding: .6rem .2rem 0rem .2rem;
     box-sizing: border-box;
 }
 /* 第一排 */
@@ -32,29 +32,56 @@
 .choose{
     width:2.2rem;
     height: 1.18rem;
+    position: relative;
 }
 /* 图标 */
 .iconfont{
    font-size: .7rem;
-   margin-left: .5rem;
-   color: #b0b0b0
+   color: #b0b0b0;
+   margin:  0 auto;
 }
 /* 字体 */
 p{
+	display: block;
+	width: 100%;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
     font-size: .24rem;
     text-align: center;
     color: #3e3e3e;
-    font-weight: 700
+    font-weight: 700;
+    white-space:nowrap;
 }
-/* 双排箭头旋转90度 */
-.secound .arrow, .fouth .arrow{
-    transform: rotate(90deg)
-}
-/* 单排箭头旋转90度 */
+
+
 .arrow{
+	text-align: center;
+	vertical-align: middle;
+}
+.first .arrow i,.third .arrow i{
+	float: left;
+	display: block;
     transform: rotate(-90deg);
+    margin-left: 0;
+}
+.secound .arrow i,.fouth .arrow i{
+	float: left;
+	display: block;
+    transform: rotate(90deg);
+    margin-left: 0;
+
 }
 /* 向下的箭头--单排单独 */
 .down{
-    margin-left: 78%
+    margin-left: 5.8rem
+}
+
+.content>div>div{
+	height: 100%;
+	text-align: center;
+}
+
+.leftDown i{
+	margin-left: .6rem;
 }
