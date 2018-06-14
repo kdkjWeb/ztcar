@@ -1,0 +1,82 @@
+p{
+    font-size: .34rem;
+    color: rgb(59,107,244);
+    text-align: center;
+    padding: .55rem 0 0;
+    box-sizing: border-box
+}
+/* 返回上一级 */
+.comeBack{
+    width: 2rem;
+    height: .5rem;
+    border: 1px solid rgb(59,107,244);
+    border-radius: .5rem;
+    margin-top: .4rem;
+    margin-left: 70%
+}
+.comeBack p{
+    font-size: .3rem;
+    color: rgb(59,107,244);
+    line-height: .5rem;
+    text-align: center;
+    padding: 0
+}
+/* 公积金情况 */
+.public{
+    width: 6.9rem;
+    height: 4.95rem;
+    margin: 0 auto;
+}
+.public ul{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.public li{
+    width: 50%;
+    margin-top: 1rem
+}
+.public div{
+    width:2rem;
+    height: 1.6rem;
+    margin: auto
+}
+.public .iconfont{
+    font-size: .9rem;
+    color: rgb(59,107,244);
+    margin-left: .5rem
+}
+.public p{
+    font-size: .28rem;
+    padding: 0;
+    margin: 0
+}
+.line{
+    width: 100%;
+    height: .1rem;
+    margin-top: 1.5rem;
+    background-color: #ebf2ff
+}
+/* 你的身价 */
+.status{
+    width: 6.9rem;
+    height: 4.4rem;
+    margin: auto;
+}
+.status p{
+    padding: .6rem 0 1.4rem
+}
+/* 进度条 */
+.process{
+    width: 100%;
+    height: .1rem;
+    border-radius: .5rem;
+    background-color: #ffd1a2;
+}
+/* 价格 */
+.price{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: .3rem
+}

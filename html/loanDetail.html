@@ -15,11 +15,120 @@
     </head>
 <body>
     <div class="content">
-        <div class="rcord">
-            <p>2018-06-13</p>
-            <p>车贷分期</p>
-            <p>查看详情</p>
-        </div>
+       <header>
+           <label>订单号：</label>
+           <span>5434321322222222</span>
+       </header>
+       <div class="line"></div>
+       <div class="product">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">产品类型：</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="name" class="weui-label">产品名称：</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">车辆属性：</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">经销商名称：</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="id" maxlength="18">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="date" class="weui-label">车辆品牌：</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="date" type="text" readonly="">
+                </div>
+            </div>
+            <div class="car-msg">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">车系：</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="text">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">车型：</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="text">
+                    </div>
+                </div>
+            </div>
+       </div>
+       <div class="line"></div>
+       <div class="car">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">车辆开票价：</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">车辆融资额：</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text">
+                </div>
+            </div>
+            <div class="first">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">首付比例：</label></div>
+                    <div class="weui-cell__bd" id="ipt">
+                        <input class="weui-input" type="text" id="ratio"><p>%</p>
+                    </div>
+                </div>
+                <div class="weui-cell" id="sum">
+                    <div class="weui-cell__hd"><label class="weui-label">首付金额：</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="text" value="555555.00">
+                    </div>
+                </div>
+            </div>
+            <div class="s-charge">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label" id="safe">保险费：</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="text" value="5555.00">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">GPS服务费：</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="text" value="5555.00" id="GPS">
+                    </div>
+                </div>
+            </div>
+           <div class="tax">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">购置税：</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="text">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">车船税：</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="text">
+                    </div>
+                </div>
+           </div>
+            
+       </div>
+       <div class="line"></div>
+       <footer>
+            <label>贷款总额：</label>
+            <span>1314542.00</span>
+       </footer>
     </div>
 </body>
 <script src="../js/common/jquery-weui.min.js"></script>

@@ -1,5 +1,5 @@
 $(function(){
     $(".rcord").on("click",function(){
-        window.location.href="loanDetail.html"
+        window.location.href="repayDetail.html"
     })
 })

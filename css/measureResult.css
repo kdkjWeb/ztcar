@@ -1,0 +1,40 @@
+p{
+    font-size: .34rem;
+    color: rgb(59,107,244);
+    text-align: center;
+    padding: .5rem 0 0;
+    box-sizing: border-box
+}
+/* 重新测算 */
+.comeBack{
+    width: 2rem;
+    height: .5rem;
+    margin-top: .4rem;
+    margin-left: 70%
+}
+.comeBack p{
+    font-size: .3rem;
+    color:#fff;
+    line-height: .5rem;
+    text-align: center;
+    padding: 0;
+    background-color: rgb(59,107,244);
+    border-radius: .5rem
+}
+/* 图标 */
+#iconfont{
+    width: 3.5rem;
+    height: 3.5rem;
+    border: 1px solid rgb(59,107,244);
+    border-radius: 50%;
+    margin: .8rem 2rem;
+}
+.iconfont{
+    font-size: 2.1rem;
+    color: rgb(59,107,244);
+    margin-left: .45rem
+}
+/* 可贷款额度**你的身价为 */
+.price{
+    color: #fc7700
+}

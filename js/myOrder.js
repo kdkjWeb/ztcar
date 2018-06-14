@@ -41,16 +41,18 @@ $(function(){
     </div>`)
     })
     $(".cancel").on("click",function(){
-        $(".pop-box").show();
+        $.confirm({
+            title: '提醒',
+            text: '你确定要取消此订单？取消后不可再进行操作',
+            onOK: function () {
+              //点击确认
+                $('.active').hide(); 
+            },
+            onCancel: function () {
+                $('.active').removeClass('active');
+            }
+          });
         $(this).parents('.list').addClass('active');
-    })
-    $("#yes").on("click",function(){
-      $(".pop-box").hide();
-        $('.active').hide(); 
-       })
-    $("#no").on("click",function(){
-        $(".pop-box").hide();
-        $('.active').removeClass('active');
     })
     $(".choose").on("click",function(){
         window.location.href="flow.html"

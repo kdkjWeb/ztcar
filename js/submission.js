@@ -21,10 +21,8 @@ $(function() {
     $(".photo").on("click",function(){
         $(this).hide();
         $(this).siblings(".up-load").show();
-        $(this).siblings(".up-load").show();
-        
     })
-
+    // 少于12万和大于12万切换
     $('#less12').click(function() {
         $('#more12').removeClass('icon-danxuan').addClass('icon-danxuan2');
         $(this).removeClass('icon-danxuan2').addClass('icon-danxuan');
@@ -98,7 +96,11 @@ $(function() {
                     var base64 = canvas.toDataURL('image/png');
 
                     // 插入到预览区  
-                    var $preview = $('<li class="weui_uploader_file weui_uploader_status" style="background-image:url(' + base64 + ')"><div class="weui_uploader_status_content">0%</div></li>');
+
+
+
+                    // 此处新增一个关闭图标
+                    var $preview = $('<li class="weui_uploader_file weui_uploader_status" style="background-image:url(' + base64 + ')"><div class="weui_uploader_status_content">0%</div><i class="iconfont icon-guanbi" id="closer"><i></li>');
                     $('.weui_uploader_files').append($preview);
                     var num = $('.weui_uploader_file').length;
                     $('.js_counter').text(num + '/' + maxCount);
@@ -125,6 +127,19 @@ $(function() {
             reader.readAsDataURL(file);
         }
     });
+    
+    $("#closer").on("click",function(){
+        console.log("传附件大煞风景")
+        $.confirm({
+            title: '提醒',
+            text: '是否删除？',
+            onOK: function () {
+              //点击确认
+            },
+            onCancel: function () {
+            }
+          });
+    })
 
 
     $(".weui-btn").on("click",function(){

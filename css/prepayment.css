@@ -1,0 +1,92 @@
+.content{
+    width: 100%;
+    padding-top: .4rem;
+    box-sizing: border-box;
+}
+.list{
+    width: 6.9rem;
+    height: 2.4rem;
+    margin: auto;
+    border-radius: .15rem;
+    background-color: rgb(225,233,255)
+}
+.list ul{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap
+}
+.list li{
+    width: 50%;
+}
+.list div{
+    width: 100%;
+    height: 100%;
+    height: .8rem;
+    display: flex
+}
+.list div label{
+    width: 50%;
+    height: 100%;
+    font-size: .28rem;
+    color: #464646;
+    line-height: .8rem;
+    text-align: right
+}
+.list div p{
+    width: 50%;
+    height: 100%;
+    font-size: .28rem;
+    color: #464646;
+    line-height: .8rem;
+} 
+.list .apply{
+    font-size: .28rem;
+    color: #1966f3;
+    line-height: .8rem;
+    text-align: center;
+    text-decoration: underline
+}
+.list:nth-child(2){
+    margin-top: .3rem;
+    background-color: rgb(255,230,213)
+}
+
+.list:nth-child(3){
+    height: 3.2rem;
+    margin-top: .3rem;
+    background-color: rgb(255,226,226)
+}
+#pass{
+    width: 100%;
+    display: flex
+}
+#pass p{
+    width: 50%;
+    font-size: .28rem;
+    color: rgb(255,99,22)
+}
+#pass #has{
+    text-decoration: none
+}
+#cancle{
+    font-size: .28rem;
+    color: rgb(255,99,22);
+    line-height: .8rem;
+    text-align: center;
+    text-decoration: underline
+}
+#not{
+    height: 100%;
+    font-size: .28rem;
+    color: rgb(255,22,22);
+    line-height: .8rem;
+    padding-left: .3rem;
+    box-sizing: border-box
+}
+#cause{
+    font-size: .28rem;
+    line-height: .8rem;
+    text-decoration: underline;
+    color: rgb(255,22,22)
+}

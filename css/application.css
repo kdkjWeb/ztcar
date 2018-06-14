@@ -42,27 +42,26 @@ span{
     color: #3969f8
 }
 /* 按钮 */
-.button{
-    display: flex;
-    justify-content: space-around;
-}
-.button p{
-    width: 2.6rem;
+
+.send{
+    width: 2.5rem;
     height: .54rem;
     border: 1px solid #ed7e10;
     border-radius: .5rem;
     font-size: .28rem;
-    color: #ed7e10;
+    color: #fff;
     text-align: center;
     line-height: .54rem;
-    margin-top: 1rem
+    margin-top: 1rem;
+    margin-left: 2rem;
+    background-color: #ed7e10;
 }
 /* 完成 */
-#send{
+.weui-btn{
     width: 5.5rem;
     height:.64rem;
     border-radius: .5rem;
-    line-height: .8rem;
+    line-height: .7rem;
     background-color: #3a6bf4 !important;
     margin-top: 1rem;
 }

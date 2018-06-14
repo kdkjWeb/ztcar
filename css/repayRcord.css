@@ -1,0 +1,21 @@
+.content{
+    width: 100%;
+    padding-top: .3rem;
+    box-sizing: border-box
+}
+.rcord{
+    width: 6.9rem;
+    height: .9rem;
+    margin:.3rem auto 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed #dddddd;
+    box-sizing: border-box;
+}
+p{
+    line-height: .9rem;
+    color: rgb(92,92,92)
+}
+p:last-child{
+    color: #4372f9
+}

@@ -1,0 +1,27 @@
+/* 选择车辆文字 */
+p{
+    font-size: .34rem;
+    color: rgb(59,107,244);
+    text-align: center;
+    padding: 1.45rem 0 1.7rem;
+    box-sizing: border-box
+}
+/* 汽车图标 */
+.iconfont{
+    font-size: 2.1rem;
+    color: rgb(59,107,244);
+    margin: 0 2.7rem
+}
+/* 开始测试 */
+button{
+    width: 5.5rem;
+    height: .64rem;
+    font-size: .34rem;
+    text-align: center;
+    line-height: .64rem;
+    color: #fff;
+    border: 1px solid rgb(59,107,244);
+    border-radius: .5rem;
+    margin: 1.5rem 1rem 0;
+    background-color: rgb(59,107,244)
+}

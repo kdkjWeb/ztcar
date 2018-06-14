@@ -1,0 +1,66 @@
+p{
+    font-size: .34rem;
+    color: rgb(59,107,244);
+    text-align: center;
+    padding: 1.45rem 0 0;
+    box-sizing: border-box
+}
+/* 你的职业 */
+.occupation{
+    width: 6.9rem;
+    height: 4.95rem;
+    margin: 0 auto;
+}
+.occupation ul{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.occupation li{
+    width: 33%;
+    margin-top: 1rem
+}
+.occupation div{
+    width:2rem;
+    height: 1.6rem;
+}
+/* 职业图标 */
+.occupation .iconfont{
+    font-size: .9rem;
+    color: rgb(59,107,244);
+    margin-left: .5rem
+}
+.occupation p{
+    font-size: .28rem;
+    padding: 0;
+    margin: 0
+}
+.line{
+    width: 100%;
+    height: .1rem;
+    margin-top: 1.5rem;
+    background-color: #ebf2ff
+}
+/* 你的身价 */
+.status{
+    width: 6.9rem;
+    height: 4.4rem;
+    margin: auto;
+}
+.status p{
+    padding: .6rem 0 1.4rem
+}
+/* 进度条 */
+.process{
+    width: 100%;
+    height: .1rem;
+    border-radius: .5rem;
+    background-color: #ffd1a2;
+}
+/* 价格 */
+.price{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: .3rem
+}
