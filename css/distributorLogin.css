@@ -4,10 +4,8 @@ body{
 .content{
     width:5.52rem;
     margin: auto;
-    /*padding-top: 4rem;*/
     box-sizing: border-box;
 }
-
 .text{
 	color: #3b6bf4;
 	text-align: center;

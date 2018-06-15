@@ -1,7 +1,7 @@
-var phone;
-var number;
+var oldPhone;
+var newPhone;
 var num = 60;
-
+// 验证码倒计时
 var timer = function() {
 	var time = setInterval(
 		function() {
@@ -18,60 +18,41 @@ var timer = function() {
 	)
 }
 
-$(function() {
-
-	// 验证码倒计时
-	$(document).on('click', '.num', function() {
-		if($(this).attr('disabled') != undefined) {
-
-		} else {
-			phone=$(".phone").val();
-			getcode(phone);
+$(function(){
+	$("#getOld").on("click",function(){
+		oldPhone = $("#old").val();
+		if(isPhone(oldPhone,'') != false){
+			getCodeByOld()
 		}
 	})
-
-	$("#btn").click(function() {
-		phone = $(".phone").val();
-		number = $(".identifying").val();
-		// 若未填写电话号码和验证码，弹出提示
-		// if(isPhone(phone)=="" && isCode(number)==""){
-		//     return false;
-		// }
-		// 点击获取按钮，判断验证码是否正确
-		if(isCode(number) == false) {
-			return false
-		} else {
-			$.ajax({
-				url: path + "/smUser/updateNewPhone",
-				data: {
-					phone: phone,
-					verifiyCode: number
-				},
-				dataType: "json",
-				type: "post",
-				success: function(data) {
-					if(data.code == 0 || data.code == 1) {
-
-					} else {
-						//                          window.location.href="personal.html"
-					}
-					console.log("登录数据", data)
-				},
-				error: function(xhr, type, errorThrown) {
-					//异常处理；
-					console.log(xhr);
-					console.log(type);
-				}
-			})
-			console.log('33')
-			return true
+	$("#getNew").on("click",function(){
+		newPhone = $("#new").val();
+		if(isPhone(newPhone,'') != false){
+			getCodeByNew()
 		}
 	})
-
 })
+// 获取旧手机号验证码
+function getCodeByOld(){
+	var data={phone:oldPhone}
+	$.ajax({
+		url:path+"",
+		data:JSON.stringify(data),
+		contentType:"application/json",
+		dataType: "json",
+		type: "post",
+		success:function(data){
 
-function getcode(phone) {
-	var data = {phone:phone}
+		},
+		error:function(xhr, type, errorThrown){
+			console.log(xhr);
+			console.log(type)
+		}
+	})
+}
+// 获取新手机号验证码
+function getCodeByNew(phone) {
+	var data = {phone:oldPhone}
 	$.ajax({
 		url: path + "/smUser/updatePhone2Code",
 		data: JSON.stringify(data),

@@ -3,6 +3,7 @@
     padding-top: .4rem;
     box-sizing: border-box;
 }
+/* 还款列表 */
 .list{
     width: 6.9rem;
     height: 2.4rem;
@@ -40,6 +41,7 @@
     color: #464646;
     line-height: .8rem;
 } 
+/* 申请提前还款 */
 .list .apply{
     font-size: .28rem;
     color: #1966f3;
@@ -47,16 +49,18 @@
     text-align: center;
     text-decoration: underline
 }
+/* 取消提前还款 */
 .list:nth-child(2){
     margin-top: .3rem;
     background-color: rgb(255,230,213)
 }
-
+/* 申请未通过 */
 .list:nth-child(3){
     height: 3.2rem;
     margin-top: .3rem;
     background-color: rgb(255,226,226)
 }
+/* 已通过 */
 #pass{
     width: 100%;
     display: flex
@@ -69,6 +73,7 @@
 #pass #has{
     text-decoration: none
 }
+/* 取消提前还款字段 */
 #cancle{
     font-size: .28rem;
     color: rgb(255,99,22);
@@ -76,6 +81,7 @@
     text-align: center;
     text-decoration: underline
 }
+/* 未通过字段 */
 #not{
     height: 100%;
     font-size: .28rem;
@@ -84,6 +90,7 @@
     padding-left: .3rem;
     box-sizing: border-box
 }
+/* 未通过原因 */
 #cause{
     font-size: .28rem;
     line-height: .8rem;

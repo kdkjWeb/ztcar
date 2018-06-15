@@ -1,16 +1,19 @@
 body{
     width: 100%;
 }
+/* 产品介绍内容 */
 .content{
     width: 6.9rem;
     margin: auto;
     padding-top: .4rem;
     box-sizing: border-box;
 }
+/* 标题 */
 h3{
     font-size: .3rem;
     color: #4a4a4a
 }
+/* 发布时间、发布人 */
 .tit{
     display: flex;
 }
@@ -22,11 +25,13 @@ h3{
     display: flex;
     margin-left: .35rem
 }
+/* 插图 */
 img{
     width: 6.9rem;
     height: 3.2rem;
     margin: .5rem 0
 }
+/* 文章 */
 .main p{
     font-size: .26rem;
     color: #515151;

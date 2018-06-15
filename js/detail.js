@@ -117,7 +117,7 @@ function user(arr) {
 
 	var mind = `<div class="content-c">
         <div class="mind">
-            <h1>主申请人征信结果</h1>
+            <h2>主申请人征信结果</h2>
             <div class="result">
                 <div class="name">
                     <p class="text">借款人姓名：${arr.name}</p>
@@ -150,7 +150,7 @@ function user(arr) {
 function other(arr) {
 	var text = `<div class="content-c1">
         <div class="other">
-        <h1>${arr.h1}征信结果</h1>
+        <h1>${arr.h2}征信结果</h1>
         <div class="result1">
         <div class="name">
         <p class="text">姓名：${arr.name}</p>

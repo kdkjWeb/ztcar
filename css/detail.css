@@ -8,7 +8,6 @@ body{
 }
 .content-c{
     width:100%;
-    /*height:5.24rem;*/
 }
 .content-c1{
     width:100%;
@@ -16,11 +15,21 @@ body{
 }
 .mind{
     width:6.93rem;
-    /*height:5.14rem;*/
     margin: auto;
 }
-
 h1{
+    width:100%;
+    height:1.38rem;
+    font-size: .32rem;
+    color: red;
+    font-weight: 700;
+    line-height: 1.38rem;
+    text-align: center;
+    margin-bottom: .3rem
+}
+
+/* 某某人的征信结果标题 */
+h2{
     width:100%;
     height:1.38rem;
     font-size: .32rem;
@@ -29,48 +38,46 @@ h1{
     line-height: 1.38rem;
     text-align: center
 }
+/* 主申请人征信结果 */
 .result{
     width:100%;
-    /*height:2.96rem;*/
-   
 }
-
+/* 姓名 */
 .name{
     width:100%;
     height:.74rem;
     border-bottom: 1px dashed #b8b8b8;
     box-sizing: border-box;
 }
+/* 身份证 */
 .IDcard{
     width:100%;
     height:.74rem;
     border-bottom: 1px dashed #b8b8b8;
     box-sizing: border-box;
 }
+/* 银行卡 */
 .card{
     width:100%;
     height:.74rem;
     border-bottom: 1px dashed #b8b8b8;
     box-sizing: border-box;
 }
+/* （预留）手机号 */
 .phone{
     width:100%;
     height:.74rem;
     border-bottom: 1px dashed #b8b8b8;
     box-sizing: border-box;
 }
+/* 手机号标题 */
 .text{
     font-size: .28rem;
     color:#5e5e5e;
     line-height: .74rem;
     padding-left: .34rem
 }
-/* .IDcard .text{
-    margin-left: .16rem
-}
-.card .text{
-    margin-left: .16rem
-} */
+/* 综合审核结果 */
 .auditing-result{
     width:100%;
     height:.82rem;
@@ -84,10 +91,13 @@ h1{
     height:3.66rem;
     margin: auto;
 }
-.result2{
+/* 除主申请人以外的征信结果 */
+.result1{
     width:100%;
     height:1.48rem;
 }
+/* 除主申请人以外的综合审核结果 */
+
 .auditing-result2{
     width:100%;
     height:.82rem;
@@ -95,10 +105,10 @@ h1{
     flex-direction: row;
     padding-top: .2rem;
 }
+/* 综合审核结果标题 */
 .text-p{
     font-size: .28rem;
     color:#383838;
-    /*line-height: .82rem*/
 }
 
 .line{
@@ -106,6 +116,7 @@ h1{
     height:.1rem;
     background-color: #ebf1ff
 }
+/* 通过与否 */
 .pass-box{
     width:.95rem;
     height:.4rem;
@@ -115,11 +126,12 @@ h1{
     color: #ffffff;
     vertical-align: middle;
 }
-
+/* 通过 */
 .yes{
     border-radius: .5rem;
     background-color:  #94c945;
 }
+/* 未通过 */
 .no{
 	border-radius: .5rem;
     background-color:  red;
