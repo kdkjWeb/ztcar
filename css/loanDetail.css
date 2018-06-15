@@ -51,6 +51,7 @@ header span{
     margin-left: -.3rem;
     position: relative;
 }
+/* 车系、车型 */
 .car-msg{
     width: 100%;
     display: flex;
@@ -65,10 +66,12 @@ header span{
 .car-msg .weui-cell{
     border: none
 }
+/* 车辆信息 */
 .car{
     width:6.9rem;
     margin: auto;
 }
+/* 首付比例、首付金额 */
 .first{
     width: 100%;
     display: flex;
@@ -91,6 +94,7 @@ header span{
 #ipt{
     display: flex;
 }
+/* 保险费、GPS服务费 */
 .s-charge{
     width: 100%;
     display: flex;
@@ -105,6 +109,7 @@ header span{
 .s-charge .weui-input{
     width: 1.5rem;
 }
+/* 购置税、车船税 */
 .tax{
     width: 100%;
     display: flex;
@@ -115,10 +120,10 @@ header span{
 .tax .weui-label{
     width: 1.28rem;
 }
-
 .tax .weui-input{
     width: 1.5rem;
 }
+/* 贷款总额 */
 footer{
     width:6.9rem;
     margin: auto;

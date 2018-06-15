@@ -1,6 +1,7 @@
 .container{
     width:100%；
 }
+/* 代扣银行卡信息 */
 header{
     width: 100%;
     height: 1rem;
@@ -14,6 +15,7 @@ header p{
     color: rgb(67,114,249);
     line-height: 1rem
 }
+/* 内容 */
 .content{
     width:6.9rem;
     margin: auto;
@@ -37,8 +39,8 @@ header p{
     height: .1rem;
     background-color: #ebf2ff
 }
+/* 合同 */
 .banner{
-    /* width: 6.9rem; */
     width: 100%;
     margin: auto;
     height: 1.3rem;
@@ -50,6 +52,7 @@ header p{
     color: #fe7800;
     line-height: 1.3rem;
 }
+/* 合同发送 */
 button{
     width: 5.5rem;
     height: .64rem;

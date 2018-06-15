@@ -1,224 +1,56 @@
-
-/* 用户登录 */
 .content{
-    width:5.52rem;
-    height:3rem;
+    width:6.9rem;
     margin: auto;
-    padding-top: 3.7rem;
+}
+.old{
+    padding-top: .5rem;
     box-sizing: border-box
 }
-/* 图标 */
-.iconfont{
-    color: #3b6bf4;
+.new{
+    padding-top: .5rem;
+    box-sizing: border-box
 }
-/* 手机号输入 */
-.username{
-    position: relative;
-}
-.username .iconfont{
-    width:.24rem;
-    height:.35rem;
-    position: absolute;
-    top: .15rem;
-    left:.5rem
-}
-.phone{
-  width:4.55rem;
-  height:.8rem;
-  margin-bottom: .5rem;
-  border-radius: .5rem;
-  outline: none;
-  padding-left:.95rem
-}
-/* 验证码输入 */
-.identifying{
-    width:2.3rem;
-    height:.8rem;
-    border-radius: .5rem;
-    outline: none;
-    padding-left: .95rem
-}
-/* 获取验证码按钮 */
-.password{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: .5rem;
-    position: relative;
-}
-.password .iconfont{
-    width:.24rem;
-    height:.35rem;
-    position: absolute;
-    top: .15rem;
-    left:.5rem
-}
-/* #get{
-      width:2.15rem;
-      height:.8rem;
-      background-color: #3b6bf4;
-      border-radius: .5rem ;
-      margin:0 0 .15rem;
-      outline:none;
-      font-size: .26rem;
-      font-weight: 900;
-      color: #fff;
-      text-align: center;
-      line-height: .8rem;
-} */
-.get{
-    width:2.15rem;
-    height:.8rem;
-    background-color: #3b6bf4;
-    border-radius: .5rem ;
-    margin:0 0 .15rem;
-    outline:none;
-}
-.get p{
-      margin:0;
-      font-size: .26rem;
-      font-weight: 900;
-      color: #fff;
-      text-align: center;
-      line-height: .8rem;
+label{
+    font-size: .3rem
 }
 input{
-    border: 1px solid #ccc
+    width:5rem;
+    height: .8rem;
+    border: 1px solid #ccc;
+    border-radius: .5rem;
+    padding-left: .2rem;
+    box-sizing: border-box;
+    outline: none
 }
-/* 验证码提示框 */
-.pop-box{
-    display: none
+
+.code{
+    display: flex;
+    justify-content: space-between;
+    margin: .5rem 0
 }
-.pop-box .mask{
-    position: fixed;
-    top:0;
-    left:0;
-    z-index: 100;
-    width:100%;
-    height:100%;
-    background-color: black;
-    opacity: .3;
+.code input{
+    width: 3.5rem;
+    height: .8rem
 }
-.box{
-    position: fixed;
-    top:3.15rem;
-    left:.3rem;
-    z-index: 200;
-    width:6.9rem;
-    height: 4.45rem;
-    background-color: #fff;
-    border-radius: .1rem
+.get{
+    width:1.75rem;
+    height: .8rem;
+    font-size: .26rem;
+    line-height: .8rem;
+    text-align: center;
+    border-radius: .5rem;
+    color: #fff;
+    background-color: #3b6bf4
 }
-#btn{
+.weui-btn{
     width:100%;
     height:.8rem;
-    background-color: #3b6bf4;
+    background-color: #3b6bf4 !important;
     border-radius: .5rem;
     font-size: .32rem;
     font-weight: 900;
     color: #fff;
     line-height: .8rem;
     text-align: center; 
-}
-.warn{
-    font-size: .3rem;
-    color: #1a69ea;
-    text-align: center;
-    margin: 0;
-    padding-top: .38rem
-}
-.wrong{
-    font-size: .26rem;
-    color: black;
-    text-align: center;
-    margin-top: 1rem
-}
-#btn1{
-    width:4rem;
-    height:.65rem;
-    background-color: #3b6af4;
-    font-size: .3rem;
-    color: #fff;
-    border-radius: .5rem;
-    margin-top: .97rem
-}
-/* 登录提示框 */
-/* .btn-pop-box{
-    display: none
-}
-.btn-pop-box .mask{
-    position: fixed;
-    top:0;
-    left:0;
-    z-index: 100;
-    width:100%;
-    height:100%;
-    background-color: black;
-    opacity: .3;
-}
-.box1{
-    position: fixed;
-    top:3.15rem;
-    left:.3rem;
-    z-index: 200;
-    width:6.9rem;
-    height: 4.45rem;
-    background-color: #fff;
-    border-radius: .1rem
-}
-#btn2{
-    width:4rem;
-    height:.65rem;
-    background-color: #3b6af4;
-    font-size: .3rem;
-    color: #fff;
-    border-radius: .5rem;
-    margin-top: .97rem
-} */
-/* 登录成功后弹出是否需要重新选择产品提示框；是，跳转选择产品，重新申请；否，跳转个人信息 */
-.scs-pop-box{
-    display: none
-}
-.scs-pop-box .mask{
-    position: fixed;
-    top:0;
-    left:0;
-    z-index: 100;
-    width:100%;
-    height:100%;
-    background-color: black;
-    opacity: .3;
-}
-.box1{
-    position: fixed;
-    top:3.15rem;
-    left:.3rem;
-    z-index: 200;
-    width:6.9rem;
-    height: 4.45rem;
-    background-color: #fff;
-    border-radius: .1rem
-}
-.btn-box{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around
-}
-#yes{
-    width:25%;
-    height:.65rem;
-    background-color: #3b6af4;
-    font-size: .3rem;
-    color: #fff;
-    border-radius: .5rem;
-    margin-top: .97rem
-}
-#no{
-    width:25%;
-    height:.65rem;
-    background-color: #3b6af4;
-    font-size: .3rem;
-    color: #fff;
-    border-radius: .5rem;
-    margin-top: .97rem
-}
+} 
+

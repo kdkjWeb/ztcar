@@ -133,7 +133,6 @@ input[type ="text"]{
 }
 .content_div i{
 	float: left;
-	/*margin-left: .1rem;*/
 	padding:0 .1rem;
 	font-size: .50rem;
 }
@@ -151,7 +150,6 @@ input[type ="text"]{
     color: #fff;
     line-height: .8rem;
     text-align: center;
-    /* margin:0 1rem */
 }
 
 .input_span input{

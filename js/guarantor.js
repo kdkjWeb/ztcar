@@ -1,5 +1,5 @@
 $(function(){
-    $("#date").calendar();
+    $("#time3").datetimePicker();
     
     $(".personal").on("click",function(){
         $(".compony").removeClass("p-active")
@@ -7,13 +7,16 @@ $(function(){
         $("#personal").show()
         $("#compony").hide()
     })
-    $(".compony").on("click",function(){
-        $(".compony").addClass("p-active")
-        $(".personal").removeClass("p-active")
-        $("#compony").show()
-        $("#personal").hide()
-    })
-    $("#btn").on("click",function(){
+
+
+    // 暂时隐藏，后期需要时再放开
+    // $(".compony").on("click",function(){
+    //     $(".compony").addClass("p-active")
+    //     $(".personal").removeClass("p-active")
+    //     $("#compony").show()
+    //     $("#personal").hide()
+    // })
+    $("#personal .weui-btn").on("click",function(){
         let name=$("#name").val()
         let id=$("#id").val()
         let date=$("#date").val()
@@ -34,7 +37,7 @@ $(function(){
              window.location.href="urgent.html"
         }
     })
-    $("#btn2").on("click",function(){
+    $("#compony .weui-btn").on("click",function(){
       
         let Cphone=$("#Cphone").val()
         let Ctel=$("#Ctel").val()

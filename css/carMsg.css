@@ -21,7 +21,6 @@ span{
 .basic-msg{
     width:6.9rem;
     height: 3rem;
-    /* background-color: palegreen; */
     border-bottom: 1px dashed #ccc
 }
 /* 姓名和电话 */
@@ -46,14 +45,12 @@ span{
 .input{
     width:100%;
     height: 2.38rem;
-    /* background-color: burlywood */
 }
 .weui-cell{
     padding: 0;
     width: 100%;
     height: .6rem;
     padding-top: .4rem
-    
 }
 .weui-cell:before{
     border: none

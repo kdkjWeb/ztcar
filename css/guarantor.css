@@ -18,6 +18,7 @@ header ul{
     height: .1rem;
     background-color: #ebf2ff
 }
+/* 个人担保、企业担保 切换*/
 .title{
     width:100%;
     height: 1rem;
@@ -33,16 +34,19 @@ header ul{
     box-sizing: border-box;
     border: 1px solid #3b6af4
 }
+/* 个人担保 */
 .personal{
     margin-left: .3rem;
     border-radius: .5rem 0 0 .5rem
 }
+/* 公司担保 */
 .compony{
     border-radius:0 .5rem .5rem 0
 }
+/* 公司担保内容 */
 #compony {
     display: none
- }
+}
 .p-active{
     background-color: #3b6af4;
     color: #ffffff;
@@ -104,7 +108,7 @@ header ul{
    height: .35rem;
    color: #3b6bf4
 }
-#btn{
+.weui-btn{
     width:5.5rem;
     height: .8rem;
     border-radius: .5rem;
@@ -112,16 +116,7 @@ header ul{
     background-color: #3b6bf4 !important;
     line-height: .8rem;
 }
-#btn2{
-    width:5.5rem;
-    height: .8rem;
-    border-radius: .5rem;
-    margin: .35rem auto;
-    background-color: #3b6bf4 !important;
-    line-height: .8rem;
-}
-
-.weui-navbar__item{
+/* .weui-navbar__item{
     padding: .1rem 0 0 0
 }
 .weui-navbar__item:after{
@@ -139,7 +134,7 @@ span{
     font-size: .28rem;
     margin-top: -.15rem;
     color: #3b6bf4
-}
+} */
 /* 说明区 */
 .weui-cells{
     padding: 0;
@@ -169,57 +164,4 @@ span{
     box-sizing: border-box;
     border-radius: .15rem;
     padding-left: .2rem
-}
-
-.toolbar, .toolbar .title{
-    font-size: unset
-}
-.toolbar{
-    height: 1rem
-}
-.toolbar .title{
-    line-height: 1rem
-}
-.toolbar .picker-button{
-    height: 1rem;
-    line-height: 1rem
-}
-/* 时间选择器 */
-/* .weui-picker-modal .picker-item{
-    font-size: .4rem;
-} */
-.picker-calendar-month-picker a.icon-only, .picker-calendar-year-picker a.icon-only{
-    width: 10%;
-    height: .5rem;
-    line-height: .6rem
-}
-.picker-calendar-month-picker .current-month-value, .picker-calendar-month-picker .current-year-value, .picker-calendar-year-picker .current-month-value, .picker-calendar-year-picker .current-year-value{
-    height: .5rem;
-    line-height: .5rem
-}
-.picker-calendar-row{
-    height: .8rem;
-}
-i.icon.icon-next, i.icon.icon-prev{
-    width: .4rem;
-    height: .4rem
-}
-.weui-picker-calendar .picker-modal-inner{
-    margin-top: -.4rem;
-}
-.weui-picker-modal.weui-picker-modal-visible{
-    height: 5rem
-}
-.picker-calendar-week-days{
-    height: .5rem
-}
- .picker-calendar-year-picker span{
-    margin-top: 0;
-    color: unset;
-    font-size: .32rem
-}
-.picker-calendar-row span{
-    margin-top: 0;
-    color: unset;
-    font-size: .32rem
 }
