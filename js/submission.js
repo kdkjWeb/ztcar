@@ -1,21 +1,17 @@
-
- 
-
-
-$.weui = {};
-$.weui.alert = function(options) {
-    options = $.extend({
-        title: '警告',
-        text: '警告内容'
-    }, options);
-    var $alert = $('.weui_dialog_alert');
-    $alert.find('.weui_dialog_title').text(options.title);
-    $alert.find('.weui_dialog_bd').text(options.text);
-    $alert.on('touchend click', '.weui_btn_dialog', function() {
-        $alert.hide();
-    });
-    $alert.show();
-};
+//$.weui = {};
+//$.weui.alert = function(options) {
+//  options = $.extend({
+//      title: '警告',
+//      text: '警告内容'
+//  }, options);
+//  var $alert = $('.weui_dialog_alert');
+//  $alert.find('.weui_dialog_title').text(options.title);
+//  $alert.find('.weui_dialog_bd').text(options.text);
+//  $alert.on('touchend click', '.weui_btn_dialog', function() {
+//      $alert.hide();
+//  });
+//  $alert.show();
+//};
 
 $(function() {
     $(".photo").on("click",function(){
@@ -36,7 +32,6 @@ $(function() {
         $(".more12").show();
         $(".less12").hide()
     })
-
 
     // 允许上传的图片类型  
     var allowTypes = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
@@ -97,22 +92,24 @@ $(function() {
 
                     // 插入到预览区  
 
-
-
                     // 此处新增一个关闭图标
-                    var $preview = $('<li class="weui_uploader_file weui_uploader_status" style="background-image:url(' + base64 + ')"><div class="weui_uploader_status_content">0%</div><i class="iconfont icon-guanbi" id="closer"><i></li>');
+                    var $preview = $('<li class="weui_uploader_file weui_uploader_status" style="background-image:url(' + base64 + ')">'
+                    +'<div class="weui_uploader_status_content">0%</div><i class="iconfont icon-guanbi" id="closer"><i></li>');
                     $('.weui_uploader_files').append($preview);
                     var num = $('.weui_uploader_file').length;
                     $('.js_counter').text(num + '/' + maxCount);
 
                     // 然后假装在上传，可以post base64格式，也可以构造blob对象上传，也可以用微信JSSDK上传  
-
+					
                     var progress = 0;
 
                     function uploading() {
-                        $preview.find('.weui_uploader_status_content').text(++progress + '%');
                         if (progress < 100) {
+                        	
                             setTimeout(uploading, 30);
+                            progress = progress+1;
+                            $preview.find('.weui_uploader_status_content').text(progress);
+                            console.log($preview.find('.weui_uploader_status_content').text())
                         } else {
                             // 如果是失败，塞一个失败图标  
                             //$preview.find('.weui_uploader_status_content').html('<i class="weui_icon_warn"></i>');  

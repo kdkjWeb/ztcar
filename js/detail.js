@@ -9,10 +9,7 @@ $(function() {
 		getResult(phone,'phone');
 	}
 	
-	
 })
-
-
 
 function getResult(num,type) {
 	var url = '';
@@ -29,8 +26,6 @@ function getResult(num,type) {
 			phone:num
 		}
 	}
-	
-	
 	
 	
 	$.ajax({
@@ -50,7 +45,7 @@ function getResult(num,type) {
 				let list = data.data;
 
 				//        	  	===主申请人====
-				if(list.borrowerName.length != null && list.borrowerName.length != undefined && list.borrowerName.length != '') {
+				if(list.borrowerName != null && list.borrowerName != undefined && list.borrowerName != '') {
 					let arr = {
 						name: list.borrowerName,
 						IDcard: list.borrowerDocumentNo,
@@ -71,7 +66,7 @@ function getResult(num,type) {
 					other(arr);
 				}
 				
-				if(list.haveLesseeName.length != null && list.haveLesseeName.length != undefined && list.haveLesseeName.length != '' ){
+				if(list.haveLesseeName != null && list.haveLesseeName != undefined && list.haveLesseeName != '' ){
 					let arr = {
 						h1: '自然人',
 						name: list.haveLesseeName,
@@ -82,7 +77,7 @@ function getResult(num,type) {
 					other(arr);
 				}
 				
-				if(list.haveGuaranteeName.length != null && list.haveGuaranteeName.length != undefined && list.haveGuaranteeName.length != ''){
+				if(list.haveGuaranteeName != null && list.haveGuaranteeName != undefined && list.haveGuaranteeName != ''){
 					let arr = {
 						h1: '担保人',
 						name: list.haveGuaranteeName,
@@ -102,16 +97,6 @@ function getResult(num,type) {
 		}
 	});
 }
-
-
-
-
-
-
-
-
-
-
 
 function user(arr) {
 

@@ -176,7 +176,7 @@ em{
     color: #1a69ea;
     text-align: center;
     margin: 0;
-    padding-top: .38rem
+    /*padding-top: .38rem*/
 }
 .wrong{
     font-size: .26rem;
@@ -344,4 +344,48 @@ em{
 .weui-loadmore{
 	margin-top: 4rem;
 	color: #FFFFFF;
+}
+
+/*==============*/
+#errbox{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+.mask{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,.5);
+}
+.box1{
+	position: absolute;
+	top:50%;
+	transform: translateY(-50%);
+	z-index: 9999;
+	width: 80%;
+	left: 10%;
+	border-radius: 15px;
+	text-align: center;
+	background-color: #FFFFFF;
+	padding: .5rem 0;
+}
+.btn-box{
+	width: 100%;
+	text-align: center;
+}
+.wrong{
+	padding: .3rem 0;
+}
+#sure,#login{
+	/*float: left;*/
+	/*display: block;*/
+	display: inline-block;
+	width: 30%;
+	margin-top: .5rem;
+	margin: 0 auto;
 }

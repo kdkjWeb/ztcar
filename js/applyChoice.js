@@ -196,53 +196,54 @@ $("#btn1").on("click", function () {
     var premiumId = $('#Carrisk').attr('data-values'); //车险id
     var maintenanceId = $('#maintenanceId').attr('data-values'); //维保id
 
-    var productarr = []; //产品数组
+//  var productarr = []; //产品数组
+
+	var loanId = '';  //产品id
+	var loanMonth ='';  //产品期数
+	var loanType  ='';   //产品类型
+
 
     $('.iconBox').each(function () {
         if ($(this).attr('box') == 'true') {
             if ($(this).attr('num') == '1') {
                 let id = $('#Carloan').attr('data-values');
                 let line = $('#CarloanTime').attr('data-values');
-                let text = {
-                    Id: id,
-                    LoanDeadline: line
-                };
-                productarr.push(text);
+                loanId = id;
+				loanMonth = line;
+				loanType = $(this).attr('num');
+
             } else if ($(this).attr('num') == '2') {
                 let id = $('#Carrisk').attr('data-values');
                 let line = $('#CarriskTime').attr('data-values');
-                let text = {
-                    Id: id,
-                    LoanDeadline: line
-                };
-                productarr.push(text);
+                loanId = id;
+				loanMonth = line;
+				loanType = $(this).attr('num');
             } else if ($(this).attr('num') == '3') {
                 let id = $('#Insurance').attr('data-values');
                 let line = $('#InsuranceTime').attr('data-values');
-                let text = {
-                    Id: id,
-                    LoanDeadline: line
-                };
-                productarr.push(text);
+                loanId = id;
+				loanMonth = line;
+				loanType = $(this).attr('num');
             }
         }
     });
 
-    if (productarr.length == 0) {
-        errAlert("提示", '请选择一个产品');
-        return false;
-    }
 
-    if (productarr[0].Id == undefined) {
+    if (loanId == '') {
         errAlert("提示", '请选择一个产品');
         return false;
-    } else if (productarr[0].LoanDeadline == undefined) {
+    } else if (loanMonth == '') {
         errAlert("提示", '请选择产品期数');
         return false;
     } else {
-        localStorage.setItem('arr', JSON.stringify(arr)); //数组
+
         localStorage.setItem('carProperty', JSON.stringify(carProperty)); //新车
         localStorage.setItem('dealersId', JSON.stringify(dealersId)); //经销商id
+        
+        localStorage.setItem('loanId', JSON.stringify(loanId));  
+        localStorage.setItem('loanMonth', JSON.stringify(loanMonth)); 
+        localStorage.setItem('loanType', JSON.stringify(loanType)); 
+        
         window.location.href = "apply.html";
     }
 
