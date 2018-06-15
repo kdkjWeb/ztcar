@@ -37,7 +37,6 @@
     			<input type="text"  id="distributor" readonly="readonly"/>
     		</span>
     	</div>
-    	
     	<div class="header">
     		<span>车辆属性:</span>
     		<span class="checkbox_span">
@@ -83,66 +82,9 @@
     			</div>
     		</div>
     	</div>
-   
 		<a href="javascript:void(0);" class="weui-btn" id="btn1">下一步</a>
-    
     </div>
-
-    
 </body>
 <script src="../js/common/jquery-weui.min.js"></script>
-<!-- <script src="../js/applyChoice.js"></script> -->
-   <script>
-	    $("#distributor").select({
-                    title: "选择经销商",
-                    items: [
-    {
-      title: "iPhone 3GS",
-      value: "001",
-    },
-    {
-      title: "iPhone 5",
-      value: "002",
-    },
-    {
-      title: "iPhone 5S",
-      value: "003",
-    },
-    {
-      title: "iPhone 6",
-      value: "004",
-    },
-    {
-      title: "iPhone 6S",
-      value: "005",
-    },
-    {
-      title: "iPhone 6P",
-      value: "006",
-    },
-    {
-      title: "iPhone 6SP",
-      value: "007",
-    },
-    {
-      title: "iPhone SE",
-      value: "008",
-    },
-    {
-      title: "iPhone 7",
-      value: "009"
-    }
-  ],
-                    onChange: function () {
-                        $('.iconBox').each(function () {
-                            $(this).attr('adata', '');
-                            $(this).attr('box', 'false');
-                            $(this).removeClass('icon-danxuan').addClass('icon-danxuan2');
-                            clear();  //清空下拉框
-                        });
-                        //						getTime();//获取分期时间
-                    }
-                });
- 
- </script>
+<script src="../js/applyChoice.js"></script>
 </html>

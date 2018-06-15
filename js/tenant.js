@@ -1,5 +1,9 @@
 $(function(){
-    $("#date").calendar();
+    $("#date").datetimePicker({
+        times:function(){
+            return
+        }
+    });
     
     $("#gender").select({
         title: "性别",

@@ -1,6 +1,10 @@
 $(function(){
 
-    $("#date").calendar();
+    $("#date").datetimePicker({
+        times:function(){
+            return
+        }
+    });
     $("#type").select({
         title:"证件类型",
         items:["身份证","户口簿","护照"]

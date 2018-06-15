@@ -313,10 +313,10 @@ body{
 }
 
 /* 将时分隐藏 */
-.weui-picker-modal .picker-items-col:nth-child(n+7){
+/* .weui-picker-modal .picker-items-col:nth-child(n+7){
   background-color: palevioletred;
   display: none !important;
-}
+} */
 /* 将-隐藏 */
 .weui-picker-modal .picker-items-col.picker-items-col-divider{
   display: none !important

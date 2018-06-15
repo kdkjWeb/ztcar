@@ -1,5 +1,9 @@
 $(function(){
-    $("#time3").datetimePicker();
+    $("#time3").datetimePicker({
+        times:function(){
+            return
+        }
+    });
     
     $(".personal").on("click",function(){
         $(".compony").removeClass("p-active")
