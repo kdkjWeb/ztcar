@@ -1,16 +1,16 @@
 var path = "http://192.168.20.128:8080";
 // var path="http://114.116.25.220:8081"
 
-var token=localStorage.getItem('token');
-var token =  GetRequest()
-
-
-if(GetRequest().token == undefined || GetRequest().token =='undefined'){
-	token = localStorage.getItem('token');
-}else{
-	token = GetRequest().token;
-	localStorage.token = token;
-}
+//var token=localStorage.getItem('token');
+//var token =  GetRequest()
+//
+//
+//if(GetRequest().token == undefined || GetRequest().token =='undefined'){
+//	token = localStorage.getItem('token');
+//}else{
+//	token = GetRequest().token;
+//	localStorage.token = token;
+//}
 
 (function(doc, win) {
 	var docEl = doc.documentElement;
@@ -32,20 +32,29 @@ if(GetRequest().token == undefined || GetRequest().token =='undefined'){
 	doc.addEventListener('DOMContentLoaded', recalc, false);
 })(document, window);
 
+//==========ios兼容readonly=====
+$('input[readonly]').on('focus', function () {
+    $(this).trigger('blur');
+});
+
 //=======弹框=====使用时传入 tit标题 和msg 提示信息两个====使用方法：errAlert('登陆提醒','登陆错误')==
 function errAlert(tit, msg) {
-	let text = '<div id="errBox">\
-			<div class="mask"></div>\
-			<div class="box1">\
-				<p class="warn">' + tit + '</p>\
-				<p class="wrong">' + msg + '</p>\
-				<input type="button" value="返回" id="colseErr"/>\
-			</div>\
-		</div>';
+	let text = '<div id="errBox">'+
+			'<div class="mask"></div>'+
+			'<div class="box1">'+
+				'<p class="warn">' + tit + '</p>'+
+				'<p class="wrong">' + msg + '</p>'+
+				'<input type="button" value="返回" id="colseErr"/>'+
+			'</div>'+
+		'</div>';
+		
 	$('body').append(text);
 	$('#errBox').fadeIn('500');
 };
 
+$(document).on('click', '#colseErr', function() {
+	$('#errBox').remove();
+})
 //====提示====
 function errLay(msg){
 	let text = '<div id="errLay" class="errLay"><span>'+msg+'</span></div>';
@@ -75,9 +84,6 @@ function cue(tit,msg){
 	$('#errBox').fadeIn('500');
 }
 
-$(document).on('click', '#colseErr', function() {
-	$('#errBox').remove();
-})
 
 //=========== 带参跳转=====
 function jumpSet(src, isNumber) {

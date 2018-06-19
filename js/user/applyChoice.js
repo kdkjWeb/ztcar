@@ -48,7 +48,7 @@ $(function () {
                 });
                 //=======================
             } else {
-                errAlert('提醒', '请求超时');
+                errLay('请求超时');
             }
         },
         error: function (xhr, type, errorThrown) {
@@ -94,7 +94,7 @@ $('.iconBox').on('click', function () {
 
 
     } else {
-        errAlert('提醒', '请先选择经销商')
+        errLay('请先选择经销商')
     }
 });
 
@@ -160,7 +160,7 @@ function query(id, type) { //根据经省份ID查询产品信息
                 }
 
             } else {
-                errAlert('提醒', '请求超时');
+                errLay('请求超时');
             }
         },
         error: function (xhr, type, errorThrown) {
@@ -196,7 +196,6 @@ $("#btn1").on("click", function () {
     var premiumId = $('#Carrisk').attr('data-values'); //车险id
     var maintenanceId = $('#maintenanceId').attr('data-values'); //维保id
 
-//  var productarr = []; //产品数组
 
 	var loanId = '';  //产品id
 	var loanMonth ='';  //产品期数
@@ -229,13 +228,14 @@ $("#btn1").on("click", function () {
     });
 
 
-    if (loanId == '') {
-        errAlert("提示", '请选择一个产品');
+    if (!loanId) {
+        errLay('请选择一个产品');
         return false;
-    } else if (loanMonth == '') {
-        errAlert("提示", '请选择产品期数');
+    }
+    if(!loanMonth) {
+        errLay('请选择产品期数');
         return false;
-    } else {
+    }
 
         localStorage.setItem('carProperty', JSON.stringify(carProperty)); //新车
         localStorage.setItem('dealersId', JSON.stringify(dealersId)); //经销商id
@@ -245,19 +245,15 @@ $("#btn1").on("click", function () {
         localStorage.setItem('loanType', JSON.stringify(loanType)); 
         
         window.location.href = "apply.html";
-    }
+    
 
 });
 
-//==========ios兼容readonly=====
-$('input[readonly]').on('focus', function () {
-    $(this).trigger('blur');
-});
 
 //==========如果没有选择经销商============
 $('.content_div .input_span').on('click', function () {
     if ($('#distributor').val().length < 1) {
-        errAlert("提示", '请先选择经销商');
+        errLay('请先选择经销商');
         return false;
     }
 });
