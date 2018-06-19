@@ -24,6 +24,9 @@ $(function(){
 		if(isPhone(oldPhone,'') != false){
 			getCodeByOld()
 		}
+		$(".test-old").on("click",function(){
+			
+		})
 	})
 	$("#getNew").on("click",function(){
 		newPhone = $("#new").val();
