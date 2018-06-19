@@ -204,6 +204,10 @@ input[type=button], input[type=submit], input[type=file], input[type=text],input
 .icon-danxuanxuanzhong{
 	color: #3b6af4 !important;
 }
+/*======滑动报错方法=======*/
+*{
+	touch-action: none;
+}
 /*======================*/
 #errBox{
 	display: none;

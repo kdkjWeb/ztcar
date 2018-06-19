@@ -1,8 +1,8 @@
 $(function(){
    
-    $("#address").cityPicker({
-        title: "选择户籍地址",
-      });
+//  $("#address").cityPicker({
+//      title: "选择户籍地址",
+//    });
       $("#nature").select({
           title:"现住房性质",
           items:["有按揭自置","无按揭自置","家属房产","租住","其他"]
@@ -26,4 +26,5 @@ $(function(){
     $(".weui-btn").on("click",function(){
         window.location.href="married.html"
     })
+    
 })
