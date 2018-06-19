@@ -28,3 +28,8 @@ $(function(){
         window.location.href="basicMsg.html"
     })
 })
+
+
+function getList(){
+	
+}

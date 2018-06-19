@@ -18,7 +18,7 @@
         <ul>
             <li><i class="iconfont icon-danxuan2"></i></li>
             <li><i class="iconfont icon-danxuan2"></i></li>
-            <li><i class="iconfont icon-danxuan2"></i></li>
+          	<li><i class="iconfont icon-danxuanxuanzhong"></i></li>
             <li><i class="iconfont icon-danxuan2"></i></li>
             <li><i class="iconfont icon-danxuan2"></i></li>
             <li><i class="iconfont icon-danxuan2"></i></li>
@@ -33,49 +33,49 @@
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">单位名称：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="number">
+                    <input class="weui-input Required" type="text" id="companyName">
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">单位地址：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="number">
+                    <input class="weui-input Required" type="text" id="unitAddress">
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label for="name" class="weui-label">企业性质：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="text" id="nature">
+                    <input class="weui-input Required" type="text" id="nature">
                 </div>
                 <i class="iconfont icon-xiangxia1"></i>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">单位电话：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="text" maxlength="11" id="tel">
+                    <input class="weui-input Required" type="number" oninput="if(value.length>11)value=value.slice(0,11)" id="tel">
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">所属行业：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="text" id="trade">
+                    <input class="weui-input Required" type="text" id="trade">
                 </div>
                 <i class="iconfont icon-xiangxia1"></i>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">单位工作年限：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="text">
+                    <input class="weui-input Required" type="text" id="yearsOfWorking">
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">职务：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="text">
+                    <input class="weui-input Required" type="text" id="position">
                 </div>
             </div>
         </div>
-        <a href="javascript:;" class="weui-btn weui-btn_primary">下一步</a>  
+        <a href="javascript:;" class="weui-btn weui-btn_primary" id="next">下一步</a>  
     </div>
 </body>
 <script src="../js/common/jquery-weui.min.js"></script>

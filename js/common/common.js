@@ -1,5 +1,5 @@
-//var path = "http://192.168.20.128:8080";
-   var path="http://114.116.25.220:8081"
+var path = "http://192.168.20.128:8080";
+// var path="http://114.116.25.220:8081"
 
 var token=localStorage.getItem('token');
 var token =  GetRequest()
@@ -60,7 +60,7 @@ function errLay(msg){
 
 
 function cue(tit,msg){
-	let text=` <div class="pop-box" id="errbox">
+	let text=` <div class="pop-box" id="errBox">
 		<div class="mask"></div>
 		<div class="box1">
 			<p class="warn">`+tit+`</p>
@@ -72,7 +72,7 @@ function cue(tit,msg){
 		</div>
 	</div>`
 	$('body').append(text);
-	$('#errbox').fadeIn('500');
+	$('#errBox').fadeIn('500');
 }
 
 $(document).on('click', '#colseErr', function() {
@@ -223,4 +223,33 @@ function isPsd(word){
 	}else{
 		return true;
 	}
+}
+
+
+
+//=======获取出生日期=====
+function getBirthday(idCard){
+	 let birthday = "";  
+        if(idCard != null && idCard != ""){  
+            if(idCard.length == 15){  
+                birthday = "19"+idCard.substr(6,6);  
+            } else if(idCard.length == 18){  
+                birthday = idCard.substr(6,8);  
+            }  
+            birthday = birthday.replace(/(.{4})(.{2})/,"$1-$2-");  
+        }  
+          
+    return birthday;  
+}
+
+//=======获取性别=========
+function getSex(idCard){
+	let sex ='';
+	if (parseInt(idCard.substr(16, 1)) % 2 == 1) { 
+		sex  = '男';
+	} else {
+		sex  = '女';
+	} 
+	
+	return sex;
 }

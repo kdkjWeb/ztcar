@@ -201,6 +201,9 @@ input[type=button], input[type=submit], input[type=file], input[type=text],input
 	outline: none;
 } 
 
+.icon-danxuanxuanzhong{
+	color: #3b6af4 !important;
+}
 /*======================*/
 #errBox{
 	display: none;

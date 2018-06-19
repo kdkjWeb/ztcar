@@ -14,7 +14,7 @@ $(function(){
 				
     	 	cue("提醒","你确定将【"+name+"】的征信结果转为订单吗？")
         $("#yes").on("click",function(){
-					dowatting(id,1);
+			dowatting(id,1);
         })
         
     })
