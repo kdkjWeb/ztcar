@@ -1,4 +1,5 @@
 $(function(){
+<<<<<<< HEAD
 var listJson={};
 var importId = 1;
 
@@ -6,6 +7,10 @@ var importId = 1;
 	getList();  //获取借贷人信息
 	
     $("#birth").datetimePicker({
+=======
+
+    $("#date").datetimePicker({
+>>>>>>> b32f84086942df8d99f256b1837c40a065822587
         times:function(){
             return
         }
