@@ -13,6 +13,10 @@ header ul{
     color: #c6cbc9;
     /* background-color: #ebf2ff */
 }
+.icon-xiangji1{
+    font-size: .5rem;
+    margin-top: -.5rem
+}
 /* 分割线 */
 .line{
     width: 100%;

@@ -27,15 +27,8 @@ $(function(){
     <!-- 第二排 -->
     <div class="secound">
         <div class="choose">
-            <i class="iconfont icon-gerenzhongxinwodeqianbao"></i>
-            <p>提交放款后资料</p>
-        </div>
-        <div class="arrow">
-            <i class="iconfont icon-jiantou3"></i>
-        </div>
-        <div class="choose">
-            <i class="iconfont icon-14"></i>
-            <p>提交放款资料</p>
+            <i class="iconfont icon-tubiaolunkuo-"></i>
+            <p>待签合同</p>
         </div>
         <div class="arrow">
             <i class="iconfont icon-jiantou3"></i>
@@ -43,6 +36,13 @@ $(function(){
         <div class="choose">
             <i class="iconfont icon-cheliang-"></i>
             <p>录入车辆信息</p>
+        </div>
+        <div class="arrow">
+            <i class="iconfont icon-jiantou3"></i>
+        </div>
+        <div class="choose">
+            <i class="iconfont icon-shiyongyinzhang"></i>
+            <p>初审资料审核中</p>
         </div>
     </div>
     <!-- 向下箭头（左侧） -->
@@ -52,21 +52,21 @@ $(function(){
     <div class="third">
         <div class="choose">
             <i class="iconfont icon-jibenziliao"></i>
-            <p>初审资料审核中</p>
+            <p>提交放款资料</p>
         </div>
         <div class="arrow">
             <i class="iconfont icon-jiantou3"></i>
         </div>
         <div class="choose">
-            <i class="iconfont icon-tubiaolunkuo-"></i>
-            <p>待签合同</p>
-        </div>
-        <div class="arrow">
-            <i class="iconfont icon-jiantou3"></i>
-        </div>
-        <div class="choose">
-            <i class="iconfont icon-jibenziliao"></i>
+            <i class="iconfont icon-shiyongyinzhang"></i>
             <p>放款资料审核中</p>
+        </div>
+        <div class="arrow">
+            <i class="iconfont icon-jiantou3"></i>
+        </div>
+        <div class="choose">
+            <i class="iconfont icon-qian"></i>
+            <p>已放款</p>
         </div>
     </div>
     <!-- 向下的箭头 -->
@@ -83,8 +83,8 @@ $(function(){
             <i class="iconfont icon-jiantou3"></i>
         </div>
         <div class="choose">
-            <i class="iconfont icon-qian"></i>
-            <p>已放款</p>
+            <i class="iconfont icon-jibenziliao"></i>
+            <p>提交放款后资料</p>
         </div>
     </div>`)
    

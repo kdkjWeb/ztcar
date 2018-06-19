@@ -18,7 +18,7 @@ $(function(){
     </a>`)
     })
     console.log("点击跳转")
-    $(".msg").on("clcik",function(){
+    $(".msg").on("click",function(){
         console.log("6666666666666666666666")
         window.location.hash="detail.html"
     })

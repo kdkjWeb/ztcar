@@ -22,17 +22,33 @@ $(function(){
 	$("#getOld").on("click",function(){
 		oldPhone = $("#old").val();
 		if(isPhone(oldPhone,'') != false){
+			console.log("大花洒管会")
 			getCodeByOld()
 		}
 		$(".test-old").on("click",function(){
-			
+			let Ocode= $("#oCode").val();
+			if(isCode(Ocode,'')==false){
+				errLay()
+			}else{
+				errLay("验证成功！请进行下一步")
+			}
 		})
 	})
 	$("#getNew").on("click",function(){
 		newPhone = $("#new").val();
 		if(isPhone(newPhone,'') != false){
+			console.log("结婚登记还是")
 			getCodeByNew()
 		}
+		$(".test-new").on("click",function(){
+			let Ncode= $("#nCode").val();
+			if(isCode(Ncode,'')==false){
+				errLay()
+			}else{
+				errLay("验证成功！请重新登录");
+				// window.location.href="login.html"
+			}
+		})
 	})
 })
 // 获取旧手机号验证码
@@ -55,7 +71,7 @@ function getCodeByOld(){
 }
 // 获取新手机号验证码
 function getCodeByNew(phone) {
-	var data = {phone:oldPhone}
+	var data = {phone:newPhone}
 	$.ajax({
 		url: path + "/smUser/updatePhone2Code",
 		data: JSON.stringify(data),
