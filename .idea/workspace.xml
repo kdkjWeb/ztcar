@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9a4eb7bd-a4c4-4019-9c89-fbe3a9aa6b13" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/distributor/afterCredit.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/html/test.html" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/Pinformation.css" afterPath="$PROJECT_DIR$/css/user/Pinformation.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/address.css" afterPath="$PROJECT_DIR$/css/distributor/address.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/afterCredit.css" afterPath="$PROJECT_DIR$/css/distributor/afterCredit.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/application.css" afterPath="$PROJECT_DIR$/css/distributor/application.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/apply.css" afterPath="$PROJECT_DIR$/css/user/apply.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/applyChoice.css" afterPath="$PROJECT_DIR$/css/user/applyChoice.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/basicMsg.css" afterPath="$PROJECT_DIR$/css/distributor/basicMsg.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/begin.css" afterPath="$PROJECT_DIR$/css/public/begin.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/carMsg.css" afterPath="$PROJECT_DIR$/css/distributor/carMsg.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/change.css" afterPath="$PROJECT_DIR$/css/user/change.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/credit.css" afterPath="$PROJECT_DIR$/css/distributor/credit.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/detail.css" afterPath="$PROJECT_DIR$/css/user/detail.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/disFeedBack.css" afterPath="$PROJECT_DIR$/css/distributor/disFeedBack.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/distributorLogin.css" afterPath="$PROJECT_DIR$/css/distributor/distributorLogin.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/distributorMenu.css" afterPath="$PROJECT_DIR$/css/distributor/distributorMenu.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/distributorMsg.css" afterPath="$PROJECT_DIR$/css/distributor/distributorMsg.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/electronic.css" afterPath="$PROJECT_DIR$/css/user/electronic.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/feedback.css" afterPath="$PROJECT_DIR$/css/user/feedback.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/financing.css" afterPath="$PROJECT_DIR$/css/distributor/financing.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/flow.css" afterPath="$PROJECT_DIR$/css/distributor/flow.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/guarantor.css" afterPath="$PROJECT_DIR$/css/distributor/guarantor.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/honor.css" afterPath="$PROJECT_DIR$/css/public/honor.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/housing.css" afterPath="$PROJECT_DIR$/css/public/housing.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/income.css" afterPath="$PROJECT_DIR$/css/public/income.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/loanDetail.css" afterPath="$PROJECT_DIR$/css/user/loanDetail.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/loanRcord.css" afterPath="$PROJECT_DIR$/css/user/loanRcord.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/loanSearch.css" afterPath="$PROJECT_DIR$/css/distributor/loanSearch.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/login.css" afterPath="$PROJECT_DIR$/css/user/login.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/married.css" afterPath="$PROJECT_DIR$/css/distributor/married.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/measureResult.css" afterPath="$PROJECT_DIR$/css/public/measureResult.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/myOrder.css" afterPath="$PROJECT_DIR$/css/distributor/myOrder.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/occupation.css" afterPath="$PROJECT_DIR$/css/public/occupation.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/pDetail.css" afterPath="$PROJECT_DIR$/css/public/pDetail.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/personal.css" afterPath="$PROJECT_DIR$/css/user/personal.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/prepayment.css" afterPath="$PROJECT_DIR$/css/user/prepayment.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/presentation.css" afterPath="$PROJECT_DIR$/css/public/presentation.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/public.css" afterPath="$PROJECT_DIR$/css/public/public.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/repayDetail.css" afterPath="$PROJECT_DIR$/css/user/repayDetail.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/repayRcord.css" afterPath="$PROJECT_DIR$/css/user/repayRcord.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/repaymentSearch.css" afterPath="$PROJECT_DIR$/css/distributor/repaymentSearch.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/search.css" afterPath="$PROJECT_DIR$/css/distributor/search.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/social.css" afterPath="$PROJECT_DIR$/css/public/social.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/submission.css" afterPath="$PROJECT_DIR$/css/distributor/submission.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/tenant.css" afterPath="$PROJECT_DIR$/css/distributor/tenant.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/unlanded.css" afterPath="$PROJECT_DIR$/css/public/unlanded.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/urgent.css" afterPath="$PROJECT_DIR$/css/distributor/urgent.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/userMenu.css" afterPath="$PROJECT_DIR$/css/user/userMenu.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/userSearch.css" afterPath="$PROJECT_DIR$/css/distributor/userSearch.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/waitting.css" afterPath="$PROJECT_DIR$/css/distributor/waitting.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/css/work.css" afterPath="$PROJECT_DIR$/css/distributor/work.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/Pinformation.html" afterPath="$PROJECT_DIR$/html/user/Pinformation.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/address.html" afterPath="$PROJECT_DIR$/html/distrubutor/address.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/afterCredit.html" afterPath="$PROJECT_DIR$/html/distrubutor/afterCredit.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/application.html" afterPath="$PROJECT_DIR$/html/distrubutor/application.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/apply.html" afterPath="$PROJECT_DIR$/html/user/apply.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/applyChoice.html" afterPath="$PROJECT_DIR$/html/user/applyChoice.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/basicMsg.html" afterPath="$PROJECT_DIR$/html/distrubutor/basicMsg.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/begin.html" afterPath="$PROJECT_DIR$/html/public/begin.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/carMsg.html" afterPath="$PROJECT_DIR$/html/distrubutor/carMsg.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/change.html" afterPath="$PROJECT_DIR$/html/user/change.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/credit.html" afterPath="$PROJECT_DIR$/html/distrubutor/credit.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/detail.html" afterPath="$PROJECT_DIR$/html/user/detail.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/disFeedBack.html" afterPath="$PROJECT_DIR$/html/distrubutor/disFeedBack.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/distributorLogin.html" afterPath="$PROJECT_DIR$/html/distrubutor/distributorLogin.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/distributorMenu.html" afterPath="$PROJECT_DIR$/html/distrubutor/distributorMenu.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/distributorMsg.html" afterPath="$PROJECT_DIR$/html/distrubutor/distributorMsg.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/electronic.html" afterPath="$PROJECT_DIR$/html/user/electronic.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/feedback.html" afterPath="$PROJECT_DIR$/html/user/feedback.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/financing.html" afterPath="$PROJECT_DIR$/html/distrubutor/financing.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/flow.html" afterPath="$PROJECT_DIR$/html/distrubutor/flow.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/guarantor.html" afterPath="$PROJECT_DIR$/html/distrubutor/guarantor.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/honor.html" afterPath="$PROJECT_DIR$/html/public/honor.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/housing.html" afterPath="$PROJECT_DIR$/html/public/housing.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/income.html" afterPath="$PROJECT_DIR$/html/public/income.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/loanDetail.html" afterPath="$PROJECT_DIR$/html/user/loanDetail.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/loanRcord.html" afterPath="$PROJECT_DIR$/html/user/loanRcord.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/loanSearch.html" afterPath="$PROJECT_DIR$/html/distrubutor/loanSearch.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/login.html" afterPath="$PROJECT_DIR$/html/user/login.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/married.html" afterPath="$PROJECT_DIR$/html/distrubutor/married.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/measureResult.html" afterPath="$PROJECT_DIR$/html/public/measureResult.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/myOrder.html" afterPath="$PROJECT_DIR$/html/distrubutor/myOrder.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/occupation.html" afterPath="$PROJECT_DIR$/html/public/occupation.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/pDetail.html" afterPath="$PROJECT_DIR$/html/public/pDetail.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/personal.html" afterPath="$PROJECT_DIR$/html/user/personal.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/prepayment.html" afterPath="$PROJECT_DIR$/html/user/prepayment.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/presentation.html" afterPath="$PROJECT_DIR$/html/public/presentation.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/public.html" afterPath="$PROJECT_DIR$/html/public/public.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/repayDetail.html" afterPath="$PROJECT_DIR$/html/user/repayDetail.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/repayRcord.html" afterPath="$PROJECT_DIR$/html/user/repayRcord.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/repaymentSearch.html" afterPath="$PROJECT_DIR$/html/distrubutor/repaymentSearch.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/search.html" afterPath="$PROJECT_DIR$/html/distrubutor/search.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/social.html" afterPath="$PROJECT_DIR$/html/public/social.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/submission.html" afterPath="$PROJECT_DIR$/html/distrubutor/submission.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/tenant.html" afterPath="$PROJECT_DIR$/html/distrubutor/tenant.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/unlanded.html" afterPath="$PROJECT_DIR$/html/public/unlanded.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/urgent.html" afterPath="$PROJECT_DIR$/html/distrubutor/urgent.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/userMenu.html" afterPath="$PROJECT_DIR$/html/user/userMenu.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/userSearch.html" afterPath="$PROJECT_DIR$/html/distrubutor/userSearch.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/waitting.html" afterPath="$PROJECT_DIR$/html/distrubutor/waitting.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/html/work.html" afterPath="$PROJECT_DIR$/html/distrubutor/work.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/Pinformation.js" afterPath="$PROJECT_DIR$/js/user/Pinformation.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/address.js" afterPath="$PROJECT_DIR$/js/distributor/address.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/application.js" afterPath="$PROJECT_DIR$/js/distributor/application.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/apply.js" afterPath="$PROJECT_DIR$/js/user/apply.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/applyChoice.js" afterPath="$PROJECT_DIR$/js/user/applyChoice.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/basicMsg.js" afterPath="$PROJECT_DIR$/js/distributor/basicMsg.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/begin.js" afterPath="$PROJECT_DIR$/js/public/begin.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/carMsg.js" afterPath="$PROJECT_DIR$/js/distributor/carMsg.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/change.js" afterPath="$PROJECT_DIR$/js/user/change.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/credit.js" afterPath="$PROJECT_DIR$/js/distributor/credit.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/detail.js" afterPath="$PROJECT_DIR$/js/user/detail.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/disFeedBack.js" afterPath="$PROJECT_DIR$/js/distributor/disFeedBack.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/distributorLogin.js" afterPath="$PROJECT_DIR$/js/distributor/distributorLogin.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/distributorMenu.js" afterPath="$PROJECT_DIR$/js/distributor/distributorMenu.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/distributorMsg.js" afterPath="$PROJECT_DIR$/js/distributor/distributorMsg.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/electronic.js" afterPath="$PROJECT_DIR$/js/user/electronic.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/feedback.js" afterPath="$PROJECT_DIR$/js/user/feedback.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/financing.js" afterPath="$PROJECT_DIR$/js/distributor/financing.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/flow.js" afterPath="$PROJECT_DIR$/js/distributor/flow.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/guarantor.js" afterPath="$PROJECT_DIR$/js/distributor/guarantor.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/honor.js" afterPath="$PROJECT_DIR$/js/public/honor.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/housing.js" afterPath="$PROJECT_DIR$/js/public/housing.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/income.js" afterPath="$PROJECT_DIR$/js/public/income.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/loanDetail.js" afterPath="$PROJECT_DIR$/js/user/loanDetail.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/loanRcord.js" afterPath="$PROJECT_DIR$/js/user/loanRcord.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/loanSearch.js" afterPath="$PROJECT_DIR$/js/distributor/loanSearch.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/login.js" afterPath="$PROJECT_DIR$/js/user/login.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/married.js" afterPath="$PROJECT_DIR$/js/distributor/married.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/measureResult.js" afterPath="$PROJECT_DIR$/js/public/measureResult.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/myOrder.js" afterPath="$PROJECT_DIR$/js/distributor/myOrder.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/occupation.js" afterPath="$PROJECT_DIR$/js/public/occupation.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/personal.js" afterPath="$PROJECT_DIR$/js/user/personal.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/prepayment.js" afterPath="$PROJECT_DIR$/js/user/prepayment.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/presentation.js" afterPath="$PROJECT_DIR$/js/public/presentation.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/public.js" afterPath="$PROJECT_DIR$/js/public/public.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/repayDetail.js" afterPath="$PROJECT_DIR$/js/user/repayDetail.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/repayRcord.js" afterPath="$PROJECT_DIR$/js/user/repayRcord.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/repaymentSearch.js" afterPath="$PROJECT_DIR$/js/distributor/repaymentSearch.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/search.js" afterPath="$PROJECT_DIR$/js/distributor/search.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/social.js" afterPath="$PROJECT_DIR$/js/public/social.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/submission.js" afterPath="$PROJECT_DIR$/js/distributor/submission.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/tenant.js" afterPath="$PROJECT_DIR$/js/distributor/tenant.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/urgent.js" afterPath="$PROJECT_DIR$/js/distributor/urgent.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/userMenu.js" afterPath="$PROJECT_DIR$/js/user/userMenu.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/userSearch.js" afterPath="$PROJECT_DIR$/js/distributor/userSearch.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/waitting.js" afterPath="$PROJECT_DIR$/js/distributor/waitting.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/work.js" afterPath="$PROJECT_DIR$/js/distributor/work.js" />
+    </list>
+    <ignored path="5.28.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="5.28" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="public.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html/public/public.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pDetail.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html/public/pDetail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="presentation.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/html/public/presentation.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/html/public/honor.html" />
+        <option value="$PROJECT_DIR$/html/distrubutor/loanSearch.html" />
+        <option value="$PROJECT_DIR$/html/public/measureResult.html" />
+        <option value="$PROJECT_DIR$/html/public/occupation.html" />
+        <option value="$PROJECT_DIR$/html/public/pDetail.html" />
+        <option value="$PROJECT_DIR$/html/user/personal.html" />
+        <option value="$PROJECT_DIR$/html/user/Pinformation.html" />
+        <option value="$PROJECT_DIR$/html/user/prepayment.html" />
+        <option value="$PROJECT_DIR$/html/public/presentation.html" />
+        <option value="$PROJECT_DIR$/html/public/public.html" />
+        <option value="$PROJECT_DIR$/html/user/repayDetail.html" />
+        <option value="$PROJECT_DIR$/html/distrubutor/repaymentSearch.html" />
+        <option value="$PROJECT_DIR$/html/user/repayRcord.html" />
+        <option value="$PROJECT_DIR$/html/distrubutor/search.html" />
+        <option value="$PROJECT_DIR$/html/public/social.html" />
+        <option value="$PROJECT_DIR$/html/distrubutor/submission.html" />
+        <option value="$PROJECT_DIR$/html/public/unlanded.html" />
+        <option value="$PROJECT_DIR$/html/user/loanDetail.html" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="5.28" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="5.28" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="5.28" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.file-colors" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="js-jscs-nodeInterpreter" value="C:\computerSoftware\node\node.exe" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\5.28\js\distributor" />
+      <recent name="E:\5.28\js\user" />
+      <recent name="E:\5.28\js\public" />
+      <recent name="E:\5.28\css\distributor" />
+      <recent name="E:\5.28\css\user" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" value="" />
+      <option name="executablePath" />
+      <option name="filePath" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9a4eb7bd-a4c4-4019-9c89-fbe3a9aa6b13" name="Default" comment="" />
+      <created>1529373548413</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1529373548413</updated>
+      <workItem from="1529373549542" duration="1779000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1779000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973656" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="NativeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="NativeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973656" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/html/public/honor.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/distrubutor/loanSearch.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/public/measureResult.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/public/occupation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/user/personal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/user/Pinformation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/user/prepayment.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/user/repayDetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/distrubutor/repaymentSearch.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/user/repayRcord.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/distrubutor/search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-378">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/public/social.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/distrubutor/submission.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/public/unlanded.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-241">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/user/loanDetail.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1260">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/user/loanDetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/user/repayDetail.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/user/repayRcord.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/distributor/afterCredit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-756">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1528948520248" expanded="true" signature="2516:2552" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/user/prepayment.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/public/presentation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/public/presentation.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/user/prepayment.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/public/pDetail.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/user/Pinformation.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/public/public.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/public/pDetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/public/presentation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>借款人基本信息</title>
+    <script src="../../js/common/jquery-3.2.1.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <link rel="stylesheet" href="../../css/common/reset.css">
+    <link rel="stylesheet" href="../../css/common/weui.min.css">
+    <link rel="stylesheet" href="../../css/common/jquery-weui.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/common/iconfont.css">
+    <link rel="stylesheet" href="../../css/distributor/basicMsg.css">
+</head>
+<body>
+    <header>
+        <ul>
+            <li><i class="iconfont icon-danxuan2"></i></li>
+            <li><i class="iconfont icon-danxuan2"></i></li>
+            <li><i class="iconfont icon-danxuanxuanzhong"></i></li>
+            <li><i class="iconfont icon-danxuan2"></i></li>
+            <li><i class="iconfont icon-danxuan2"></i></li>
+            <li><i class="iconfont icon-danxuan2"></i></li>
+            <li><i class="iconfont icon-danxuan2"></i></li>
+            <li><i class="iconfont icon-danxuan2"></i></li>
+            <li><i class="iconfont icon-danxuan2"></i></li>
+        </ul>
+    </header>
+    <div class="line"></div>
+    <div class="basic-msg">
+        <div class="basic">
+            <div class="name">
+                <label>姓名：</label>
+                <span id="Name"></span>
+            </div>
+            <div class="phone">
+                <label>性别</label>
+                <span id="Sex"></span>
+            </div>
+        </div>
+        <div class="date">
+            <label>出生日期：</label>
+            <span id="Birthday"></span>
+        </div>
+        <div class="number">
+            <div class="name">
+                <label>电话号码：</label>
+                <span id="Phone"></span>
+            </div>
+            <div class="phone">
+                <label>证件类别：</label>
+                <span>身份证</span>
+            </div>
+        </div>
+        <div class="type">
+            <label>证件号码:</label>
+            <span id="idNumber"></span>
+        </div>
+    </div>
+    <div class="line"></div>
+    <div class="content">
+        <div class="c-list">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="name" class="weui-label">文化程度：</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input Required" type="text" id="edu">
+                </div>
+                <i class="iconfont icon-xiangxia1"></i>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="name" class="weui-label">婚姻状况：</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input Required" type="text" id="ismarried">
+                </div>
+                <i class="iconfont icon-xiangxia1"></i>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="name" class="weui-label">户籍性质：</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input Required" type="text" id="register">
+                </div>
+                <i class="iconfont icon-xiangxia1"></i>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">每月净收入：</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input Required" type="number" id="monthlyIncome">
+                </div>
+            </div>
+        
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">每月均支出：</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input Required" type="number" id="monthAverage">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="name" class="weui-label">驾驶证：</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input Required" type="text" id="license">
+                </div>
+                <i class="iconfont icon-xiangxia1"></i>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">驾驶人姓名：</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input carSur" type="text" id="drivingName">
+                </div>
+                <i class="iconfont icon-xiangji1"></i>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">驾驶证号码：</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input carSur" type="number" id="drivingNumber" oninput="if(value.length>18)value=value.slice(0,18)">
+                </div>
+                <i class="iconfont icon-xiangji1"></i>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">驾驶证档案号：</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input carSur" type="number" id="drivingRecordNumber" oninput="if(value.length>12)value=value.slice(0,12)">
+                </div>
+                <i class="iconfont icon-xiangji1"></i>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">实际用车人：</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input Required" type="text" id="recalDriver">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">联系电话：</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input Required" type="number" id="tel" maxlength="11" oninput="if(value.length>11)value=value.slice(0,11)">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="name" class="weui-label">家庭首次购车：</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input Required" type="text" id="isFirst">
+                </div>
+                <i class="iconfont icon-xiangxia1"></i>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="name" class="weui-label">现有车辆品牌：</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input Required" type="text" id="Vehicle">
+                </div>
+                <i class="iconfont icon-xiangxia1"></i>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="name" class="weui-label">购车目的：</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input Required" type="text" id="aim">
+                </div>
+                <i class="iconfont icon-xiangxia1"></i>
+            </div>
+        </div>
+        <a href="javascript:;" class="weui-btn weui-btn_primary" id="next">下一步</a>  
+    </div>
+</body>
+<script src="../../js/common/jquery-weui.min.js"></script>
+<script src="../../js/distributor/basicMsg.js"></script>
+</html>

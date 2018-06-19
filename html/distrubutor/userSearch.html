@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>客户查询</title>
+    <script src="../../js/common/jquery-3.2.1.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/fastclick.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+		  $(function() {
+		    FastClick.attach(document.body);
+		  });
+	</script>
+    <link rel="stylesheet" href="../../css/common/reset.css">
+    <link rel="stylesheet" href="../../css/common/weui.min.css">
+    <link rel="stylesheet" href="../../css/common/jquery-weui.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/common/iconfont.css">
+    <link rel="stylesheet" href="../../css/distributor/userSearch.css">
+</head>
+<body>
+    <header>
+        <p>客户信息查询</p>
+        <div class="type">
+            <label>查询类型：</label>
+            <input type="text">
+            <i class="iconfont icon-xiangxia1"></i>
+        </div>
+    </header>
+    <div class="content">
+        <div class="car-search">
+            <div class="time">
+                <div>
+                    <label>时间段：</label>
+                    <input type="text">
+                </div>
+                <div>
+                    <label>至</label>
+                    <input type="text">
+                </div>
+                <button>搜索</button>
+            </div>
+            <div class="line"></div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>汽车销售时间</th>
+                        <th>汽车品牌型号</th>
+                        <th>客户姓名</th>
+                        <th>查看详情</th>
+                    </tr>
+                </thead>
+               <tbody>
+                    <tr>
+                        <td>2018-03-12</td>
+                        <td></td>
+                        <td>张珊</td>
+                        <td class="look">查看</td>
+                    </tr>
+               </tbody>
+            </table>
+        </div>
+        <div class="car-search-price">
+            <div class="price">
+                <div>
+                    <label>价格区间：</label>
+                    <input type="text">
+                </div>
+                <div>
+                    <label>至</label>
+                    <input type="text">
+                </div>
+                <button>搜索</button>
+            </div>
+            <div class="line"></div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>汽车销售时间</th>
+                        <th>汽车品牌型号</th>
+                        <th>汽车售价</th>
+                        <th>查看详情</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2018-03-12</td>
+                        <td></td>
+                        <td>32万</td>
+                        <td class="look">查看</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="zx-search">
+            <div class="time">
+                <div>
+                    <label>时间段：</label>
+                    <input type="text">
+                </div>
+                <div>
+                    <label>至</label>
+                    <input type="text">
+                </div>
+                <button>搜索</button>
+            </div>
+            <div class="line"></div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>征信调查时间</th>
+                        <th>征信状态</th>
+                        <th>备注</th>
+                    </tr>
+                </thead>
+               <tbody>
+                    <tr>
+                        <td>张珊</td>
+                        <td>2018-03-12</td>
+                        <td>良好</td>
+                        <td>暂无</td>
+                    </tr>
+               </tbody>
+                
+            </table>
+        </div>
+        <div class="user-search">
+            <div class="name">
+                <label>客户姓名：</label>
+                <input type="text">
+                <button>搜索</button>
+            </div>
+            <div class="line"></div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>电话</th>
+                        <th>身份证号</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>张珊</td>
+                        <td>15669874563</td>
+                        <td>544887788963254156</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="line"></div>
+            <div class="text">
+                <a href="loanSearch.html" id="loan">车贷分期记录查询</a>
+                <a href="repaymentSearch.html" id="repay">车贷还款记录查询</a>
+            </div> 
+        </div>
+    </div>
+
+</body>
+<script src="../../js/common/jquery-weui.min.js"></script>
+<script src="../../js/distributor/userSearch.js"></script>
+</html>

@@ -1,0 +1,365 @@
+body{
+    width: 100%;
+    height:100%
+}
+.content{
+    width:6.9rem;
+    margin:auto;
+    padding-top: .4rem
+}
+/* 姓名 */
+.name{
+    width:100%;
+    height: .6rem;
+    padding-bottom: .4rem 
+}
+/* 身份证 */
+.IDcard{
+    width:100%;
+    height: .6rem;
+    margin-bottom: .4rem
+}
+.IDcard span{
+    display: inline;
+    vertical-align: middle;
+    color: greenyellow;
+    font-size: .4rem;
+    display: none
+}
+.IDcard .iconfont{
+    color: #5078f4;
+    margin:.1rem 0 .3rem;
+}
+/* 银行卡 */
+.card{
+    width:100%;
+    height: .6rem;
+    margin-bottom: .4rem
+}
+.card .label{
+    margin-left: .4rem
+}
+.icon-xiangji1{
+    color: #5078f4;
+    margin:.1rem 0 .3rem;
+   float: right;
+}
+/* 手机号 */
+.phone{
+    width:100%;
+    height: .6rem;
+    margin-bottom: .4rem;
+    display: flex;
+    flex-direction: row;
+}
+.phone .ipt{
+    width:2.8rem;
+    height:.6rem;
+    border-radius: .5rem;
+    text-indent: .2rem;
+    outline: none;
+    margin-right:.3rem
+}
+/* 短信验证码 */
+.msg{
+    width:100%;
+    height: .6rem;
+    margin-bottom: .4rem
+}
+/* *必填项 */
+.must{
+    color: red;
+    margin-right: .1rem;
+    position: relative;
+    top: .05rem
+}
+/* 文字 */
+.label{
+    font-size: .28rem;
+    color:#5c5c5c;
+    line-height: .6rem;
+}
+/* 输入框 */
+.ipt{
+    width:3.5rem;
+    height:.6rem;
+    border-radius: .5rem;
+    text-indent: .2rem;
+    outline: none;
+}
+input{
+    border:1px solid #dcdcdc;
+    box-sizing: border-box;
+    font-size: .26rem;
+    color: #b2b2b2
+}
+/* 获取验证码 */
+.get{
+    width:1.9rem;
+    height:.55rem;
+    background-color: #4371f8;
+    border:1px solid #4371f8;
+    box-sizing: border-box;
+    border-radius: .5rem;
+    outline: none;
+    color: #FFF;
+    font-size: .26rem;
+}
+.get span{
+    font-size: .18rem;
+    color: #fff;
+    text-align: center;
+    line-height: .55rem
+}
+/* 确定按钮 */
+.weui-btn{
+    width:5.52rem;
+    height: .65rem;
+    background-color: #3b6af4 !important;
+    border-radius: .5rem;
+    font-size: .3rem;
+    line-height: .65rem;
+    text-align: center;
+    color: #fff;
+    outline: none
+}
+p{
+    margin: -.5rem 0 0 .5rem
+}
+em{
+    font-size: .28rem;
+    color: red;
+    margin-top: -.5rem
+}
+#btn{
+    width:100%;
+    height:.8rem;
+    background-color: #3b6bf4;
+    border-radius: .5rem;
+    font-size: .32rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: .8rem;
+    text-align: center; 
+    margin-bottom: .5rem
+}
+<<<<<<< HEAD
+.warn{
+    font-size: .3rem;
+    color: #1a69ea;
+    text-align: center;
+    margin: 0;
+    /*padding-top: .38rem*/
+}
+.wrong{
+    font-size: .26rem;
+    color: black;
+    text-align: center;
+    margin: 0;
+}
+#btn1{
+    width:4rem;
+    height:.65rem;
+    background-color: #3b6af4;
+    font-size: .3rem;
+    color: #fff;
+    border-radius: .5rem;
+    margin-top: .97rem
+}
+=======
+
+>>>>>>> origin/master
+/*=============*/
+.marry,.tenant,.guarantee{
+	margin-bottom: .4rem
+}
+/* 配偶 */
+.marry-box{
+    display: none
+}
+/* 共同承租人 */
+.tenant-box{
+    display: none
+}
+/* 担保人 */
+.guarantee-box{
+    display: none
+}
+.marry>div,.tenant>div,.guarantee>div{
+	margin-bottom: .4rem
+}
+/*==复选框样式=======*/
+.mycheckbox{
+	margin-right: .2rem;
+}
+.icon-weigouxuan,.icon-yigouxuan{
+	font-size: .4rem;
+	color: #dddddd;
+}
+.icon-yigouxuan{
+	color: #3b6af4;
+}
+.agreement{
+	font-size: .18rem;
+	text-align: center;
+	margin: .7rem;
+}
+.agreement span{
+	color: #3b6af4;
+}
+.agreement a{
+	color: #f96700;
+}
+/* 征信内容的文字 */
+.full-name{
+    font-size: .28rem;
+    color:#5c5c5c;
+    line-height: .6rem;
+    margin-left: .4rem 
+}
+.full-name1{
+    font-size: .28rem;
+    color:#5c5c5c;
+    line-height: .6rem;
+    margin-left: -.15rem 
+}
+.push{
+    width:100%;
+    height: .6rem;
+    padding-bottom: .4rem 
+}
+
+/*=====上传图片弹框==========*/
+.fixBox{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #FFFFFF;
+	text-align: center;
+	color: #333333;
+	display: none; 	
+}
+.tit{
+	font-size: .28rem;
+	padding: .5rem 0;
+}
+.positiveCar{
+	position: relative;
+	width: 5.55rem;
+	height: 3.45rem;
+	border: 1px dashed #CCCCCC;
+	border-radius:.25rem ;
+	margin: 0 auto .44rem;
+	text-align: center;
+}
+.next{
+	margin: 1rem  auto;
+	width: 5.55rem;
+	height: .65rem;
+	line-height: .65rem;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: .32rem;
+	background-color: #3b6bf4;
+	border-radius:.65rem ;
+}
+
+.upId{
+	width: 5rem;
+	height: 3rem;
+	margin: .2rem  auto;
+	background-image: url(../../image/upId.png);
+	background-size: 100% 100%;
+}
+.downId{
+	width: 5rem;
+	height: 3rem;
+	margin: .2rem  auto;
+	background-image: url(../../image/downId.png);
+	background-size: 100% 100%;
+}
+.upbanck,.downback{
+	width: 5rem;
+	height: 3rem;
+	margin: .2rem  auto;
+	background-image: url(../../image/addbank.png);
+	background-size: 100% 100%;
+}
+
+.positiveCar .file{
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+}
+
+.positiveCar span{
+	position: absolute;
+	bottom: .5rem;
+	left: 50%;
+	transform: translateX(-50%);
+	color: #434343;
+	font-size: .26rem;
+}
+
+/*==loading========*/
+.loading{
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 999;
+	background-color: rgba(0,0,0,.5);
+	
+}
+.weui-loadmore{
+	margin-top: 4rem;
+	color: #FFFFFF;
+}
+
+/*==============*/
+#errbox{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+.mask{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,.5);
+}
+.box1{
+	position: absolute;
+	top:50%;
+	transform: translateY(-50%);
+	z-index: 9999;
+	width: 80%;
+	left: 10%;
+	border-radius: 15px;
+	text-align: center;
+	background-color: #FFFFFF;
+	padding: .5rem 0;
+}
+.btn-box{
+	width: 100%;
+	text-align: center;
+}
+.wrong{
+	padding: .3rem 0;
+}
+#sure,#login{
+	/*float: left;*/
+	/*display: block;*/
+	display: inline-block;
+	width: 30%;
+	margin-top: .5rem;
+	margin: 0 auto;
+}
