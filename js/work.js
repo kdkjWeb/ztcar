@@ -3,8 +3,7 @@ $(function(){
 	var listJson ={};
 	var importId = 1;
 
-
-	 getList();
+	getList();  //回显
 	
 	
     $("#nature").select({
@@ -21,14 +20,13 @@ $(function(){
 
 $("#next").on("click",function(){
         let tel=$("#tel").val()
-//      if(isPhone(tel,"正确的")==""){
-//          return false
-//      }else if(isPhone(tel,"正确的")==false){
-//          return false
-//      }else{
-//          window.location.href="address.html"
-			
-//			Verification();
+        if(isPhone(tel,"正确的")==""){
+            return false
+        }else if(isPhone(tel,"正确的")==false){
+            return false
+        }else{
+        	
+			Verification();  //正则 
 			
 			listJson.applyId = importId;
 			
@@ -40,14 +38,13 @@ $("#next").on("click",function(){
 			listJson.yearsOfWorking = $('#yearsOfWorking').val()//单位工作年限
 			listJson.position = $('#position').val()//单位工作年限
 			
+			postList();  //上传
 			
-			postList();
-			
-//      }
+        }
 })
 
 
-function getList(){
+function getList(){   //回显
 	let data = {
 		id:1
 	}
@@ -83,10 +80,9 @@ function getList(){
 					if(listJson.yearsOfWorking){   //单位工作年限
 						$('#yearsOfWorking').val(listJson.yearsOfWorking);
 					}
-					if(listJson.position){   //单位工作年限
+					if(listJson.position){   //职务
 						$('#position').val(listJson.position);
 					}
-					
 					
 				}
 				
@@ -103,7 +99,7 @@ function getList(){
 }
 
 
-function postList(){
+function postList(){       //上传
 	$.ajax({
 		url: path + "/apply/saveBorrowerWork",
 		data: JSON.stringify(listJson),
@@ -115,8 +111,7 @@ function postList(){
 		},
 		success: function(data) {
 			if(data.code == 0) {
-				console.log(data);
-				
+				 window.location.href="address.html"
 			}
 		},
 		error: function(xhr, type, errorThrown) {
