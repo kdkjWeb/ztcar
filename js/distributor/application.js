@@ -1,15 +1,13 @@
 $(function(){
     $(".send").on("click",function(){
-        $.confirm({
-            title: '提醒',
-            text: '是否发送至经销商邮箱？',
-            onOK: function () {
-              //点击确认
-              errLay("已发送至经销商邮箱")
-            },
-            onCancel: function () {
-            }
-          });
+        cue("提醒","是否发送至经销商邮箱？")
+        $("#yes").on("click",function(){
+            $(".pop-box").hide()
+            errLay("已发送至经销商邮箱")
+        })
+        $("#no").on("click",function(){
+            $(".pop-box").hide()
+        })
     })
     $(".weui-btn").on("click",function(){
         window.location.href="submission.html"

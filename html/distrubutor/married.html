@@ -39,7 +39,7 @@
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label for="name" class="weui-label">联系电话：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="text" maxlength="11" placeholder="请输入联系电话" id="tel">
+                    <input class="weui-input" type="number" oninput="if(value.length>11)value=value.slice(0,11)" placeholder="请输入联系电话" id="tel">
                 </div>
             </div>
             <div class="weui-cell">
@@ -52,38 +52,38 @@
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">证件号码：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="text" placeholder="请输入证件号码" id="id">
+                    <input class="weui-input" type="number" placeholder="请输入证件号码" id="id" oninput="if(value.length>18)value=value.slice(0,18)">
                 </div>
                 <i class="iconfont icon-xiangji1"></i>
             </div>
             <div class="weui-cell">
-                <div class="weui-cell__hd"><label for="date" class="weui-label">出生日期：</label></div>
-                <div class="weui-cell__bd">
-                  <input class="weui-input" id="date" type="text" readonly="" placeholder="请选择您的出生日期">
+                    <div class="weui-cell__hd"><label for="time3" class="weui-label">出生日期：</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" id="date" type="text" readonly="" placeholder="请输入出生日期">
+                    </div>
                 </div>
-            </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">单位名称：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="text" placeholder="请输入单位名称">
+                    <input class="weui-input" type="text" placeholder="请输入单位名称" id="cName">
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">职务：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="text" placeholder="请输入职务">
+                    <input class="weui-input" type="text" placeholder="请输入职务" id="position">
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">单位地址：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="text" placeholder="请输入单位地址">
+                    <input class="weui-input" type="text" placeholder="请输入单位地址" id="cAddress">
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">单位电话：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="tetx" placeholder="请输入单位电话" id="phone" maxlength="11">
+                    <input class="weui-input" type="number" placeholder="请输入单位电话" id="phone" oninput="if(value.length>11)value=value.slice(0,11)">
                 </div>
             </div>
         </div>

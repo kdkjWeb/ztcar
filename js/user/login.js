@@ -102,9 +102,9 @@
 }
 
 
-$("#yes").on("click",function(){
-    window.location.href="applyChoice.html"
-})
-$("#no").on("click",function(){
-    window.location.href=`personal.html`
-})
+// $("#yes").on("click",function(){
+//     window.location.href="applyChoice.html"
+// })
+// $("#no").on("click",function(){
+//     window.location.href=`personal.html`
+// })

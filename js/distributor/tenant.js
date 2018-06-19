@@ -1,5 +1,8 @@
 $(function(){
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5cb730d6e7a8ef175f4609e67b320ab747dd291d
 var listJson={};
 var importId = 1;
 
