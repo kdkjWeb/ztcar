@@ -1,21 +1,21 @@
 $(function(){
-    let arr=[{
-        name:"刘世桂",
-        phone:"13580392179",
-        money:"55555555.00",
-        box:"选择产品"
+    let arr = [{
+        name: "刘世桂",
+        phone: "13580392179",
+        money: "55555555.00",
+        box: "选择产品"
     },{
-        name:"刘世桂",
-        phone:"13580392179",
-        money:"11111111.00",
-        box:"完善信息"
+        name: "刘世桂",
+        phone: "13580392179",
+        money: "11111111.00",
+        box: "完善信息"
     },{
-        name:"刘世桂",
-        phone:"13580392179",
-        money:"333333.00",
-        box:"提交放款后资料"
+        name: "刘世桂",
+        phone: "13580392179",
+        money: "333333.00",
+        box: "提交放款后资料"
     }]
-    $.each(arr,function(index,el){
+    $.each(arr,function(index,el) {
         $(".content").append(` <div class="list">
         <div class="c-list">
             <div class="basic-msg">
@@ -40,21 +40,18 @@ $(function(){
         <div class="line"></div>
     </div>`)
     })
-    $(".cancel").on("click",function(){
-        $.confirm({
-            title: '提醒',
-            text: '你确定要取消此订单？取消后不可再进行操作',
-            onOK: function () {
-              //点击确认
-                $('.active').hide(); 
-            },
-            onCancel: function () {
-                $('.active').removeClass('active');
-            }
-          });
+    $(".cancel").on("click",function() {
         $(this).parents('.list').addClass('active');
+        cue("提醒","你确定要取消此订单？取消后不可再进行操作")
+        $("#yes").on("click",function() {
+            $('.active').removeClass('active');
+            $(".pop-box").hide()            
+        })
+        $("#no").on("click",function() {
+            $(".pop-box").hide()
+        })  
     })
-    $(".choose").on("click",function(){
-        window.location.href="flow.html"
+    $(".choose").on("click",function() {
+        window.location.href = "flow.html"
     })
 })

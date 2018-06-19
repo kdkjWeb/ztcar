@@ -114,15 +114,14 @@ $(function() {
     
     $("#closer").on("click",function(){
         console.log("传附件大煞风景")
-        $.confirm({
-            title: '提醒',
-            text: '是否删除？',
-            onOK: function () {
-              //点击确认
-            },
-            onCancel: function () {
-            }
-          });
+        cue("提醒","是否删除？")
+        $("#yes").on("click",function(){
+            $(".pop-box").hide();
+            errLay("已删除");
+        })
+        $("#no").on("click",function(){
+            $(".pop-box").hide()
+        })
     })
 
 
