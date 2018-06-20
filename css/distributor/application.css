@@ -56,7 +56,7 @@ span{
     background-color: #ed7e10;
 }
 /* 完成 */
-.weui-btn{
+.content .weui-btn{
     width: 5.5rem;
     height:.64rem;
     border-radius: .5rem;
