@@ -9,17 +9,19 @@ header ul{
     line-height: .94rem
 }
 /* 直属亲戚 */
-.relative{
+#relative{
     width: 6.9rem;
     height: 3.62rem;
     margin: auto;
 }
+
 .relative .weui-cell{
     height: 1rem
 }
 .bar p{
     width: 100%;
     height: .6rem;
+    font-size: .3rem;
     line-height: .6rem;
     color: #4164f4;
     text-align: center
