@@ -12,6 +12,12 @@
     <link rel="stylesheet" href="../../css/common/jquery-weui.min.css">
     <link rel="stylesheet" type="text/css" href="../../css/common/iconfont.css">
     <link rel="stylesheet" href="../../css/distributor/basicMsg.css">
+    <script src="../../js/common/fastclick.js"></script>
+    <script type="text/javascript">  	
+	  $(function() {
+	    FastClick.attach(document.body);
+	  });
+    </script>
 </head>
 <body>
     <header>
@@ -64,95 +70,95 @@
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label for="name" class="weui-label">文化程度：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input Required" type="text" id="edu">
+                    <input class="weui-input Required" type="text" id="edu" placeholder="请选择文化程度">
                 </div>
                 <i class="iconfont icon-xiangxia1"></i>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label for="name" class="weui-label">婚姻状况：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input Required" type="text" id="ismarried">
+                    <input class="weui-input Required" type="text" id="ismarried" placeholder="请选择婚姻状况">
                 </div>
                 <i class="iconfont icon-xiangxia1"></i>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label for="name" class="weui-label">户籍性质：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input Required" type="text" id="register">
+                    <input class="weui-input Required" type="text" id="register" placeholder="请选择户籍性质">
                 </div>
                 <i class="iconfont icon-xiangxia1"></i>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">每月净收入：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input Required" type="number" id="monthlyIncome">
+                    <input class="weui-input Required" type="number" id="monthlyIncome" placeholder="请输入每月净收入">
                 </div>
             </div>
         
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">每月均支出：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input Required" type="number" id="monthAverage">
+                    <input class="weui-input Required" type="number" id="monthAverage" placeholder="请输入每月均支出">
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label for="name" class="weui-label">驾驶证：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input Required" type="text" id="license">
+                    <input class="weui-input Required" type="text" id="license" placeholder="请选择有无驾驶证">
                 </div>
                 <i class="iconfont icon-xiangxia1"></i>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">驾驶人姓名：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input carSur" type="text" id="drivingName">
+                    <input class="weui-input carSur" type="text" id="drivingName" placeholder="请输入驾驶人姓名">
                 </div>
                 <i class="iconfont icon-xiangji1"></i>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">驾驶证号码：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input carSur" type="number" id="drivingNumber" oninput="if(value.length>18)value=value.slice(0,18)">
+                    <input class="weui-input carSur" type="number" id="drivingNumber" oninput="if(value.length>18)value=value.slice(0,18)" placeholder="请输入驾驶证号码">
                 </div>
                 <i class="iconfont icon-xiangji1"></i>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">驾驶证档案号：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input carSur" type="number" id="drivingRecordNumber" oninput="if(value.length>12)value=value.slice(0,12)">
+                    <input class="weui-input carSur" type="number" id="drivingRecordNumber" oninput="if(value.length>12)value=value.slice(0,12)" placeholder="请输入驾驶证档案号">
                 </div>
                 <i class="iconfont icon-xiangji1"></i>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">实际用车人：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input Required" type="text" id="recalDriver">
+                    <input class="weui-input Required" type="text" id="recalDriver" placeholder="请输入实际用车人">
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">联系电话：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input Required" type="number" id="tel" maxlength="11" oninput="if(value.length>11)value=value.slice(0,11)">
+                    <input class="weui-input Required" type="number" id="tel" maxlength="11" oninput="if(value.length>11)value=value.slice(0,11)" placeholder="请输入联系电话">
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label for="name" class="weui-label">家庭首次购车：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input Required" type="text" id="isFirst">
+                    <input class="weui-input Required" type="text" id="isFirst" placeholder="请选择是否家庭首次购车">
                 </div>
                 <i class="iconfont icon-xiangxia1"></i>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label for="name" class="weui-label">现有车辆品牌：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input Required" type="text" id="Vehicle">
+                    <input class="weui-input Required" type="text" id="Vehicle" placeholder="请选择现有车辆品牌">
                 </div>
                 <i class="iconfont icon-xiangxia1"></i>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label for="name" class="weui-label">购车目的：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input Required" type="text" id="aim">
+                    <input class="weui-input Required" type="text" id="aim" placeholder="请选择购车目的">
                 </div>
                 <i class="iconfont icon-xiangxia1"></i>
             </div>

@@ -10,8 +10,14 @@
     <link rel="stylesheet" href="../../css/common/reset.css">
     <link rel="stylesheet" href="../../css/common/weui.min.css">
     <link rel="stylesheet" href="../../css/common/jquery-weui.min.css">
-    <link rel="stylesheet" type="text/css" href="../../css/common/iconfont.css">
+    <link rel="stylesheet" href="../../css/common/iconfont.css">
     <link rel="stylesheet" href="../../css/distributor/urgent.css">
+    <script src="../../js/common/fastclick.js"></script>
+    <script type="text/javascript">  	
+	  $(function() {
+	    FastClick.attach(document.body);
+	  });
+    </script>
 </head>
 <body>
     <header>
@@ -32,43 +38,43 @@
         <div class="weui-cell">
             <div class="weui-cell__hd"><label class="weui-label">直属亲人姓名：</label></div>
             <div class="weui-cell__bd">
-                <input class="weui-input" type="text" id="name">
+                <input class="weui-input" type="text" id="name" placeholder="请输入直属亲人姓名">
             </div>
         </div>
         <div class="weui-cell">
             <div class="weui-cell__hd"><label class="weui-label">与申请人关系：</label></div>
             <div class="weui-cell__bd">
-                <input class="weui-input" type="text" id="relative">
-            </div>
-            <i class="iconfont icon-xiangxia1"></i>
-        </div>
-        <div class="weui-cell">
-            <div class="weui-cell__hd"><label class="weui-label">联系方式：</label></div>
-            <div class="weui-cell__bd">
-                <input class="weui-input" type="text" id="tel" maxlength="11">
-            </div>
-        </div>
-        <p>以上请填写为与申请人不同的直系亲属</p>
-    </section>
-    <div class="line"></div>
-    <section class="urgent">
-        <div class="weui-cell">
-            <div class="weui-cell__hd"><label class="weui-label">紧急联系人1姓名：</label></div>
-            <div class="weui-cell__bd">
-                <input class="weui-input" type="text" id="name1">
-            </div>
-        </div>
-        <div class="weui-cell">
-            <div class="weui-cell__hd"><label class="weui-label">与申请人关系</label></div>
-            <div class="weui-cell__bd">
-                <input class="weui-input relative1" type="text">
+                <input class="weui-input" type="text" id="relative" placeholder="请选择关系">
             </div>
             <i class="iconfont icon-xiangxia1"></i>
         </div>
         <div class="weui-cell">
             <div class="weui-cell__hd"><label class="weui-label">联系电话：</label></div>
             <div class="weui-cell__bd">
-                <input class="weui-input" type="text" id="tel1" maxlength="11">
+                <input class="weui-input" type="text" id="tel" maxlength="11" placeholder="请输入联系电话">
+            </div>
+        </div>
+        <div class="bar"><p>以上请填写为与申请人不同的直系亲属</p></div> 
+    </section>
+    <div class="line"></div>
+    <section class="urgent">
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">紧急联系人1姓名：</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" type="text" id="name1" placeholder="请输入联系人姓名">
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">与申请人关系</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input relative1" type="text" placeholder="请选择关系">
+            </div>
+            <i class="iconfont icon-xiangxia1"></i>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">联系电话：</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" type="text" id="tel1" maxlength="11" placeholder="请输入联系方式">
             </div>
         </div>
     </section>
@@ -77,20 +83,20 @@
         <div class="weui-cell">
             <div class="weui-cell__hd"><label class="weui-label">紧急联系人2姓名：</label></div>
             <div class="weui-cell__bd">
-                <input class="weui-input" type="text" id="name2">
+                <input class="weui-input" type="text" id="name2" placeholder="请输入联系人姓名">
             </div>
         </div>
         <div class="weui-cell">
             <div class="weui-cell__hd"><label class="weui-label">与申请人关系：</label></div>
             <div class="weui-cell__bd">
-                <input class="weui-input relative1" type="text">
+                <input class="weui-input relative1" type="text" placeholder="请选择关系">
             </div>
             <i class="iconfont icon-xiangxia1"></i>
         </div>
         <div class="weui-cell">
             <div class="weui-cell__hd"><label for="name" class="weui-label">联系电话：</label></div>
             <div class="weui-cell__bd">
-                <input class="weui-input" type="text" id="tel2" maxlength="11">
+                <input class="weui-input" type="text" id="tel2" maxlength="11" placeholder="请输入联系方式">
             </div>
         </div>
     </section>

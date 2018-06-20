@@ -17,7 +17,7 @@ header ul{
 .relative .weui-cell{
     height: 1rem
 }
-p{
+.bar p{
     width: 100%;
     height: .6rem;
     line-height: .6rem;

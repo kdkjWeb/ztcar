@@ -1,52 +1,45 @@
-$(function(){
-	
+$(function() {
+
 	var listJson = {};
 	var importId = 1;
 
-	
 	getList(); //回显
-	
-//  $("#address").cityPicker({
-//      title: "选择户籍地址",
-//    });
-      $("#nature").select({
-          title:"现住房性质",
-          items:["有按揭自置","无按揭自置","家属房产","租住","其他"]
-      })
-      $("#type").select({
-          title:"房产类型",
-          items:["商品房","商住两用","商用房","小产权，经适房","自建房","其他"]
-      })
-      $("#isTenant").select({
-          title:"有无共同承担人",
-          items:["自然人","无"]
-      })
-      $("#isMarried").select({
-        title:"是否为配偶",
-        items:["是","否"]
-    })
-    $("#isGuarantor").select({
-        title:"有无担保人",
-        items:["有自然担保人","有法人担保人","无"]
-    })
-    $(".weui-btn").on("click",function(){
-    	
-    	listJson.applyId = importId;
-    	
-    	listJson.currentAddress =  $('#currentAddress').val(); //现居地址
-    	listJson.permanentAddress =  $('#address').val(); //户籍地址
-    	listJson.natureHousing =  $('#nature').val(); //现住房性质
-    	listJson.housingLocation =  $('#housingLocation').val(); //房产地点
-    	listJson.housingType =  $('#type').val(); //房产类型
-    	listJson.mortgagePayments =  $('#mortgagePayments').val(); //房贷月供
-    
 
-        postList(); //上传
-    })
-    
-    
+	$("#nature").select({
+		title: "现住房性质",
+		items: ["有按揭自置", "无按揭自置", "家属房产", "租住", "其他"]
+	})
+	$("#type").select({
+		title: "房产类型",
+		items: ["商品房", "商住两用", "商用房", "小产权，经适房", "自建房", "其他"]
+	})
+	$("#isTenant").select({
+		title: "有无共同承担人",
+		items: ["自然人", "无"]
+	})
+	$("#isMarried").select({
+		title: "是否为配偶",
+		items: ["是", "否"]
+	})
+	$("#isGuarantor").select({
+		title: "有无担保人",
+		items: ["有自然担保人", "有法人担保人", "无"]
+	})
+	$(".weui-btn").on("click", function() {
+		Verification(); //为空的验证
 
-    function getList() { //回显
+		listJson.applyId = importId;
+		listJson.currentAddress = $('#currentAddress').val(); //现居地址
+		listJson.permanentAddress = $('#address').val(); //户籍地址
+		listJson.natureHousing = $('#nature').val(); //现住房性质
+		listJson.housingLocation = $('#housingLocation').val(); //房产地点
+		listJson.housingType = $('#type').val(); //房产类型
+		listJson.mortgagePayments = $('#mortgagePayments').val(); //房贷月供
+
+		postList(); //上传
+	})
+
+	function getList() { //回显
 		let data = {
 			id: 1
 		}
@@ -94,9 +87,7 @@ $(function(){
 			}
 		});
 	}
-    
-    
-    
+
 	function postList() { //上传
 		$.ajax({
 			url: path + "/apply/saveBorrowerAddressInfo",
@@ -109,7 +100,7 @@ $(function(){
 			},
 			success: function(data) {
 				if(data.code == 0) {
-					window.location.href="married.html"
+					window.location.href = "married.html"
 				}
 			},
 			error: function(xhr, type, errorThrown) {
@@ -119,9 +110,17 @@ $(function(){
 			}
 		});
 	}
-    
-    
-    
-    
-    
+
+	function Verification() {
+		$('.Required').each(function() {
+			if($(this).val() == '') {
+				let msg = $(this).parents('.weui-cell').find('label').text();
+				let str = msg.substr(0, msg.length - 1);
+				errLay(str + '不能为空');
+				return false;
+			}
+		})
+	}
+
+
 })

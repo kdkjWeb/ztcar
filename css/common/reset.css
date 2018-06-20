@@ -206,7 +206,7 @@ input[type=button], input[type=submit], input[type=file], input[type=text],input
 }
 /*======滑动报错方法=======*/
 *{
-	touch-action: none;
+	/*touch-action: none;*/
 }
 /*======================*/
 #errBox{
@@ -322,27 +322,30 @@ body{
 }
 
 /* =======下拉框样式覆盖========== */
-.weui-select-modal .weui-cells {
+.weui-picker-container .weui-select-modal .weui-cells {
   height: 4rem !important;
   overflow-y: scroll !important;
 }
- .toolbar .toolbar-inner{
+.weui-picker-container .toolbar .toolbar-inner{
 	height: 1rem !important;
 	line-height: 1rem !important;
 }
-.toolbar .picker-button{
+.weui-picker-container .toolbar .picker-button{
 	line-height: 1rem !important;
 	height: auto !important;
 	font-size: .22rem !important;
 	color: #3b6af4 !important;
 }
-.toolbar .title{
+.weui-picker-container .toolbar .title{
 	line-height: 1rem !important;
-	font-size: .24rem !important;
+	font-size: .3rem !important;
 }
-.weui-cell__bd.weui-cell_primary p{
+.weui-picker-container .weui-cell__bd.weui-cell_primary p{
   font-size: 17px !important;
+  padding-left: .3rem;
 }
+
+
 /* =======下拉框样式覆盖========== */
 
 /* 时间选择器 */
@@ -377,29 +380,3 @@ body{
 .toolbar:aftre{
   border: 1px solid #d9d9d9
 }
-/* 日历选择器 */
-/* .picker-calendar-month-picker a.icon-only, .picker-calendar-year-picker a.icon-only{
-  width: 10%;
-  height: .5rem;
-  line-height: .6rem
-}
-.picker-calendar-month-picker .current-month-value, .picker-calendar-month-picker .current-year-value, .picker-calendar-year-picker .current-month-value, .picker-calendar-year-picker .current-year-value{
-  height: .5rem;
-  line-height: .5rem
-}
-.picker-calendar-row{
-  height: .8rem;
-}
-i.icon.icon-next, i.icon.icon-prev{
-  width: .4rem;
-  height: .4rem
-}
-.weui-picker-calendar .picker-modal-inner{
-  margin-top: -.4rem;
-}
-.weui-picker-modal.weui-picker-modal-visible{
-  height: 5rem
-}
-.picker-calendar-week-days{
-  height: .5rem
-} */

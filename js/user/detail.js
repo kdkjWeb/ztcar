@@ -2,7 +2,6 @@ $(function() {
 	let id = GetRequest().id;
 	let phone = GetRequest().phone;
 	
-	console.log(id)
 	if(id != undefined){
 		getResult(id,'id');
 	}else if(phone != undefined){

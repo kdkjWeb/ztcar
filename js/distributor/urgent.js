@@ -1,11 +1,13 @@
 $(function(){
+	var relationship = ["夫妻","父子","父女","母子","母女"];
+	
     $("#relative").select({
         title:"与申请人关系",
-        items:["母女","父女","姐妹","兄弟","兄妹","姐弟"]
+        items:relationship
     })
     $(".relative1").select({
         title:"与申请人关系",
-        items:["亲戚","朋友","同事","同学"]
+        items:relationship
     })
     $(".weui-btn").on("click",function(){
         let name=$("#name").val()

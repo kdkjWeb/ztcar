@@ -185,6 +185,7 @@ $(function() {
 		});
 	}
 
+//====================获取汽车品牌=============
 	function getCar() {
 		$.ajax({
 			url: path + "/ztBrand/list",
@@ -218,6 +219,7 @@ $(function() {
 		});
 	}
 
+//=================为空验证============
 	function Verification() {
 		$('.Required').each(function() {
 			if($(this).val() == '') {
@@ -229,6 +231,7 @@ $(function() {
 		})
 	}
 
+//===========如果有驾驶证需要验证的====================
 	function carVerification() {
 		$('.carSur').each(function() {
 			if($(this).val() == '') {

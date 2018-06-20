@@ -12,6 +12,12 @@
     <link rel="stylesheet" href="../../css/common/jquery-weui.min.css">
     <link rel="stylesheet" type="text/css" href="../../css/common/iconfont.css">
     <link rel="stylesheet" href="../../css/distributor/financing.css">
+    <script src="../../js/common/fastclick.js"></script>
+    <script type="text/javascript">  	
+	  $(function() {
+	    FastClick.attach(document.body);
+	  });
+    </script>
 </head>
 <body>
     <header>
@@ -37,7 +43,7 @@
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">车辆品牌：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="text" placeholder="请输入车辆品牌" id="Vehicle">
+                    <input class="weui-input" type="text" placeholder="请选择车辆品牌" id="Vehicle" readonly="readonly">
 
                 </div>
                 <i class="iconfont icon-xiangxia1"></i>
@@ -45,14 +51,14 @@
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">车系：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="text" placeholder="请输入车系" id="audi">
+                    <input class="weui-input" type="text" placeholder="请选择车系" id="audi">
                 </div>
                 <i class="iconfont icon-xiangxia1"></i>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">车型：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="text" placeholder="请输入车型" id="type">
+                    <input class="weui-input" type="text" placeholder="请选择车型" id="type">
                 </div>
                 <i class="iconfont icon-xiangxia1"></i>
             </div>
@@ -65,7 +71,7 @@
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">还款期限(月)：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="number" placeholder="请输入还款期限" id="month">
+                    <input class="weui-input" type="text" placeholder="请选择还款期限" id="month">
                 </div>
                 <i class="iconfont icon-xiangxia1"></i>
             </div>

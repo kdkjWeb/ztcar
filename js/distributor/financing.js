@@ -1,8 +1,8 @@
 $(function(){
-    $("#Vehicle").select({
-        title:"请选择车辆品牌",
-        items:["奥迪","宝马","大众","本田"]
-    })
+	
+	getCar();  //获取车辆品牌 
+	
+	
     $("#audi").select({
         title:"请选择车系",
         items:["宝马1系","宝马2系"]
@@ -13,23 +13,51 @@ $(function(){
     })
     $("#month").select({
         title:"请选择还款期限",
-        items:["12期","24期","36期"]
+        items:["12期","24期","36期","48期"]
     })
     $("#payment").on("blur",function(){
-        // let payment=$(".payment").val()
-        // if(!(/^([1-9]\d*\.?\d*)|(0\.\d*[1-9]) $/.test(payment))||!payment){
-        //     $.toast("填写正确的数字", "cancel");
-        //     return false
-        // }else{
-        //    return true
-        // }
+
     })
     $(".weui-btn").on("click",function(){
         window.location.href="basicMsg.html"
     })
+    
+    
+
+    //====================获取汽车品牌=============
+	function getCar() {
+		$.ajax({
+			url: path + "/ztBrand/list",
+			dataType: "json",
+			contentType: "application/json",
+			type: "post",
+			xhrFields: {
+				withCredentials: true
+			},
+			success: function(data) {
+				if(data.code == 0) {
+					var arr = [];
+					for(var i = 0; i < data.list.length; i++) {
+						let car = {
+							title: data.list[i].name,
+							value: data.list[i].id
+						};
+						arr.push(car);
+					}
+					$("#Vehicle").select({
+						title: "现有车辆品牌",
+						items: arr
+					})
+				}
+			},
+			error: function(xhr, type, errorThrown) {
+				//异常处理；
+				console.log(xhr);
+				console.log(type);
+			}
+		});
+	}
+
+    
+    
 })
-
-
-function getList(){
-	
-}

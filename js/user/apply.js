@@ -337,10 +337,12 @@ function suerAjax() {
 				$('#loading').hide();
 				console.log(data)
 				if(data.code == 0) {
-					errLay(data.msg);
+					
+					errLay('申请成功');
 					var time = setTimeout(function() {
 						window.location.href = 'detail.html?phone=' + userPhone;
 					}, 1000);
+					
 				} else if(data.code == 1) {
 					isSecondTrue = 1;
 					SecondTrue(userName)
