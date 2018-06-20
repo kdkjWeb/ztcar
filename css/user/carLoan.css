@@ -1,0 +1,29 @@
+.content{
+    width:6.9rem;
+    margin: auto;
+}
+h3{
+    color: #3b6bf4
+}
+h5{
+    font-size: .3rem;
+    color: #505050
+}
+.main{
+    width:100%;
+}
+p{
+    font-size: .26rem;
+    color: #505050
+}
+.loan{
+    padding-left: .5rem;
+    box-sizing: border-box
+}
+.term{
+    padding-left: .5rem;
+    box-sizing: border-box
+}
+a{
+    color: #fe7800
+}

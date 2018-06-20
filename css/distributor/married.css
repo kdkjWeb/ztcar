@@ -11,7 +11,6 @@ header ul{
 /* 图标 */
 .iconfont{
     color: #c6cbc9;
-    /* background-color: #ebf2ff */
 }
 .icon-xiangji1{
     font-size: .5rem;
@@ -29,14 +28,12 @@ header ul{
 .c-list{
     width:6.9rem;
     margin: auto;
-    /* background-color: paleturquoise */
 }
-.weui-cell{
+.content .weui-cell{
     padding: 0;
     width: 100%;
     height: 1rem;
     border-bottom: 1px dashed #dddddd
-    /* padding-top: .4rem */
 }
 .weui-cell:before{
     border: none

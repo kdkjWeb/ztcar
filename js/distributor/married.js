@@ -134,6 +134,7 @@ $(function(){
     }
 
     function getNull(){
+        console.log("222222222222222")
         $(".weui-input").each(function(){
             if($(this).val() == '') {
                 let msg = $(this).parents(".weui-cell").find("label").text();
