@@ -1,7 +1,8 @@
 $(function(){
 	
-	getCar();  //获取车辆品牌 
 	
+	
+	getCar();  //获取车辆品牌 
 	
     $("#audi").select({
         title:"请选择车系",
@@ -22,12 +23,15 @@ $(function(){
         window.location.href="basicMsg.html"
     })
     
-    
-
+   
     //====================获取汽车品牌=============
 	function getCar() {
+		let data = {
+			id: 1
+		}
 		$.ajax({
-			url: path + "/ztBrand/list",
+			url: path + "/apply/getBrandNameList",
+			data: JSON.stringify(data),
 			dataType: "json",
 			contentType: "application/json",
 			type: "post",
@@ -37,16 +41,22 @@ $(function(){
 			success: function(data) {
 				if(data.code == 0) {
 					var arr = [];
-					for(var i = 0; i < data.list.length; i++) {
+					for(var i = 0; i < data.data.length; i++) {
 						let car = {
-							title: data.list[i].name,
-							value: data.list[i].id
+							title: data.data[i].text,
+							value: data.data[i].code
 						};
 						arr.push(car);
 					}
 					$("#Vehicle").select({
 						title: "现有车辆品牌",
-						items: arr
+						items: arr,
+						onChange:function(){
+							let dataVal = $(this)[0].data.values;
+                            if (dataVal != undefined) {
+                                getCartype(dataVal);
+                            }
+						}
 					})
 				}
 			},
@@ -58,6 +68,27 @@ $(function(){
 		});
 	}
 
-    
+    function getCartype(id){
+    	$.ajax({
+			url: path + "/smdrive/getDriveByBrandId",
+			data:{
+				brandId:id
+			},
+			dataType: "json",
+			contentType: "application/json",
+			type: "get",
+			xhrFields: {
+				withCredentials: true
+			},
+			success: function(data) {
+				
+			},
+			error: function(xhr, type, errorThrown) {
+				//异常处理；
+				console.log(xhr);
+				console.log(type);
+			}
+		});
+    }
     
 })

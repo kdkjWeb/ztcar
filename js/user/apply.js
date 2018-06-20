@@ -134,7 +134,6 @@ function getcode(phone) {
 	var data = {
 		phone: phone
 	};
-	console.log(data)
 
 	$.ajax({
 		url: path + "/apply/sendVitify",
@@ -146,8 +145,6 @@ function getcode(phone) {
 			if(data.code == 0) {
 				timer();
 			}
-
-			console.log(data)
 		},
 		error: function(xhr, type, errorThrown) {
 			//异常处理；

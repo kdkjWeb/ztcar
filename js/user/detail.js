@@ -25,8 +25,6 @@ function getResult(num,type) {
 			phone:num
 		}
 	}
-	
-	
 	$.ajax({
 		url: path + "/apply/"+url,
 		data: data,
@@ -40,11 +38,19 @@ function getResult(num,type) {
 			console.log(data)
 
 			if(data.code == 0) {
-
+				if(data.allStatusStr){
+					if(data.allStatusStr == '通过'){
+						$('#allStatusStr').text('通过');
+						$('#allStatusStr').addClass('yes');
+					}else{
+						$('#allStatusStr').text('不通过');
+						$('#allStatusStr').addClass('no');
+					}
+				}
+				
 				let list = data.data;
-
 				//        	  	===主申请人====
-				if(list.borrowerName != null && list.borrowerName != undefined && list.borrowerName != '') {
+				if(list.borrowerName) {
 					let arr = {
 						name: list.borrowerName,
 						IDcard: list.borrowerDocumentNo,
@@ -54,7 +60,7 @@ function getResult(num,type) {
 					user(arr);
 				}
 			//        	  	===配偶====
-				if(list.spouserName != null && list.spouserName != undefined && list.spouserName != '') {
+				if(list.spouserName) {
 					let arr = {
 						h1: '配偶',
 						name: list.spouserName,
@@ -65,7 +71,7 @@ function getResult(num,type) {
 					other(arr);
 				}
 				
-				if(list.haveLesseeName != null && list.haveLesseeName != undefined && list.haveLesseeName != '' ){
+				if(list.haveLesseeName){
 					let arr = {
 						h1: '自然人',
 						name: list.haveLesseeName,
@@ -76,7 +82,7 @@ function getResult(num,type) {
 					other(arr);
 				}
 				
-				if(list.haveGuaranteeName != null && list.haveGuaranteeName != undefined && list.haveGuaranteeName != ''){
+				if(list.haveGuaranteeName){
 					let arr = {
 						h1: '担保人',
 						name: list.haveGuaranteeName,
@@ -104,13 +110,13 @@ function user(arr) {
             <h2>主申请人征信结果</h2>
             <div class="result">
                 <div class="name">
-                    <p class="text">借款人姓名：${arr.name}</p>
+                    <p class="text">借款人姓名&nbsp;:&nbsp;${arr.name}</p>
                 </div>
                 <div class="IDcard">
-                    <p class="text">身份证号:${arr.IDcard}</p>
+                    <p class="text">身&nbsp;份&nbsp;证&nbsp;号&nbsp;:&nbsp;${arr.IDcard}</p>
                 </div>
                 <div class="phone">
-                    <p class="text">预留手机号：${arr.phone}</p>
+                    <p class="text">预留手机号&nbsp;:&nbsp;${arr.phone}</p>
                 </div>
             </div>
             <div class="auditing-result">
@@ -134,16 +140,17 @@ function user(arr) {
 function other(arr) {
 	var text = `<div class="content-c1">
         <div class="other">
-        <h1>${arr.h2}征信结果</h1>
+        <h1>${arr.h2}征信结果
+        </h1>
         <div class="result1">
         <div class="name">
-        <p class="text">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：${arr.name}</p>
+        <p class="text">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：${arr.name}</p>
         </div>
         <div class="IDcard">
-        <p class="text">身份&nbsp;证号: ${arr.IDcard}</p>
+        <p class="text">身&nbsp;份&nbsp;证&nbsp;号&nbsp;:{arr.IDcard}</p>
         </div>
         <div class="phone">
-        <p class="text">手&nbsp;&nbsp;机&nbsp;&nbsp;号: ${arr.phone}</p>
+        <p class="text">手&nbsp;&nbsp;&nbsp;机&nbsp;&nbsp;&nbsp;号: ${arr.phone}</p>
         </div>
         </div>
         <div class="auditing-result2">

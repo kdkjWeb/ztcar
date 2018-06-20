@@ -41,17 +41,26 @@ $(function(){
     </div>`)
     })
     $(".cancel").on("click",function() {
-        $(this).parents('.list').addClass('active');
-        cue("提醒","你确定要取消此订单？取消后不可再进行操作")
-        $("#yes").on("click",function() {
-            $('.active').removeClass('active');
-            $(".pop-box").hide()            
-        })
-        $("#no").on("click",function() {
-            $(".pop-box").hide()
-        })  
+//      $(this).parents('.list').addClass('active');
+//      cue("提醒","你确定要取消此订单？取消后不可再进行操作")
+//      $("#yes").on("click",function() {
+//          $('.active').removeClass('active');
+//          $(".pop-box").hide()            
+//      })
+//      $("#no").on("click",function() {
+//          $(".pop-box").hide()
+//      })  
+        
     })
-    $(".choose").on("click",function() {
-        window.location.href = "flow.html"
-    })
+    
+//  $(".choose").on("click",function() {
+//      window.location.href = "flow.html"
+//  })
+
+ 	function alert(id){
+ 		
+ 	}
+ 
+
+ 
 })

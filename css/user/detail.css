@@ -39,18 +39,6 @@ h1{
     padding-left: .3rem;
     box-sizing: border-box;
 }
-.h-result span{
-    display: inline-block;
-    width: 1.25rem;
-    height: .5rem;
-    border: 1px solid #94c945;
-    border-radius: .5rem;
-    box-sizing: border-box;
-    line-height: .5rem;
-    text-align: center;
-    color: #fff;
-    background-color: #94c945
-}
 /* 某某人的征信结果标题 */
 h2{
     width:100%;
@@ -141,6 +129,7 @@ h2{
 }
 /* 通过 */
 .yes{
+	display: inline-block;
     width: 1.25rem;
     height: .5rem;
     font-size: .32rem;
@@ -154,6 +143,7 @@ h2{
 }
 /* 未通过 */
 .no{
+	display: inline-block;
     width: 1.25rem;
     height: .5rem;
     font-size: .32rem;
