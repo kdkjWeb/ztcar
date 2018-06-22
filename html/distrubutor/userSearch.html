@@ -8,11 +8,11 @@
     <script src="../../js/common/jquery-3.2.1.js"></script>
     <script src="../../js/common/common.js"></script>
     <script src="../../js/common/fastclick.js" type="text/javascript" charset="utf-8"></script>
-		<script>
+		<!-- <script>
 		  $(function() {
 		    FastClick.attach(document.body);
 		  });
-	</script>
+	</script> -->
     <link rel="stylesheet" href="../../css/common/reset.css">
     <link rel="stylesheet" href="../../css/common/weui.min.css">
     <link rel="stylesheet" href="../../css/common/jquery-weui.min.css">
@@ -24,12 +24,12 @@
         <p>客户信息查询</p>
         <div class="type">
             <label>查询类型：</label>
-            <input type="text">
+            <input type="text" value="客户姓名">
             <i class="iconfont icon-xiangxia1"></i>
         </div>
     </header>
     <div class="content">
-        <div class="car-search">
+        <div class="car-search ct">
             <div class="time">
                 <div>
                     <label>时间段：</label>
@@ -61,7 +61,7 @@
                </tbody>
             </table>
         </div>
-        <div class="car-search-price">
+        <div class="car-search-price ct">
             <div class="price">
                 <div>
                     <label>价格区间：</label>
@@ -93,7 +93,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="zx-search">
+        <div class="zx-search ct">
             <div class="time">
                 <div>
                     <label>时间段：</label>
@@ -126,14 +126,14 @@
                 
             </table>
         </div>
-        <div class="user-search">
+        <div class="user-search ct">
             <div class="name">
                 <label>客户姓名：</label>
-                <input type="text">
-                <button>搜索</button>
+                <input type="text" id="input">
+                <button id="search">搜索</button>
             </div>
             <div class="line"></div>
-            <table>
+            <table id="table">
                 <thead>
                     <tr>
                         <th>姓名</th>
@@ -141,10 +141,35 @@
                         <th>身份证号</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody >
                     <tr>
                         <td>张珊</td>
-                        <td>15669874563</td>
+                        <td class="phone">15669874563</td>
+                        <td>544887788963254156</td>
+                    </tr>
+                    <tr>
+                        <td>张4</td>
+                        <td class="phone">15669874563</td>
+                        <td>544887788963254156</td>
+                    </tr>
+                    <tr>
+                        <td>张5</td>
+                        <td class="phone">15669874563</td>
+                        <td>544887788963254156</td>
+                    </tr>
+                    <tr>
+                        <td>李毅</td>
+                        <td class="phone">15669874563</td>
+                        <td>544887788963254156</td>
+                    </tr>
+                    <tr>
+                        <td>王麻子</td>
+                        <td class="phone">15669874563</td>
+                        <td>544887788963254156</td>
+                    </tr>
+                    <tr>
+                        <td>刘备</td>
+                        <td class="phone">15669874563</td>
                         <td>544887788963254156</td>
                     </tr>
                 </tbody>
