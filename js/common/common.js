@@ -1,5 +1,5 @@
 //var path = "http://192.168.20.128:8080";
-      var path="http://114.116.25.220:8081";
+var path="http://114.116.25.220:8081";
 
 //var token=localStorage.getItem('token');
 //var token =  GetRequest()
@@ -39,7 +39,7 @@ $('input[readonly]').on('focus', function () {
 
 //=======弹框=====使用时传入 tit标题 和msg 提示信息两个====使用方法：errAlert('登陆提醒','登陆错误')==
 function errAlert(tit, msg) {
-	let text = '<div id="errBox">'+
+	var text = '<div id="errBox">'+
 			'<div class="mask"></div>'+
 			'<div class="box1">'+
 				'<p class="warn">' + tit + '</p>'+
@@ -57,7 +57,7 @@ $(document).on('click', '#colseErr', function() {
 })
 //====提示====
 function errLay(msg){
-	let text = '<div id="errLay" class="errLay"><span>'+msg+'</span></div>';
+	var text = '<div id="errLay" class="errLay"><span>'+msg+'</span></div>';
 	$('body').append(text);
 	$('#errLay').fadeIn('8000');
 	
@@ -69,17 +69,18 @@ function errLay(msg){
 
 
 function cue(tit,msg){
-	let text=` <div class="pop-box" id="errBox">
-		<div class="mask"></div>
-		<div class="box1">
-			<p class="warn">`+tit+`</p>
-			<p class="wrong">`+msg+`</p>
-			<div class="btn-box">
-				<a href="javascript:;" class="weui-btn weui-btn_primary" id="no">取消</a> 
-				<a href="javascript:;" class="weui-btn weui-btn_primary" id="yes">确定</a>  
-			</div>
-		</div>
-	</div>`
+	var text = '<div class="pop-box" id="errBox">'+
+		'<div class="mask"></div>'+
+		'<div class="box1">'+
+			'<p class="warn">'+tit+'</p>'+
+			'<p class="wrong">'+msg+'</p>'+
+			'<div class="btn-box">'+
+				'<a href="javascript:;" class="weui-btn weui-btn_primary" id="no">取消</a>'+
+				'<a href="javascript:;" class="weui-btn weui-btn_primary" id="yes">确定</a>'+  
+			'</div>'+
+		'</div>'+
+	'</div>';
+	
 	$('body').append(text);
 	$('#errBox').fadeIn('500');
 }
@@ -127,7 +128,7 @@ function getDate(times) {
 
 //=====正则验证===========
 function isPhone(phone,msg) { //手机号
-	let regex = /^1[3|4|5|6|8|7|9][0-9]\d{4,8}$/;
+	var regex = /^1[3|4|5|6|8|7|9][0-9]\d{4,8}$/;
 	if(phone == '') {
 		errLay('手机号不能为空');
 		return false;
@@ -140,7 +141,7 @@ function isPhone(phone,msg) { //手机号
 }
 
 function isName(name, msg) { //姓名
-	let regex = /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/;
+	var regex = /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/;
 	if(name == '') {
 		errLay('姓名不能为空');
 		return false;
@@ -153,7 +154,7 @@ function isName(name, msg) { //姓名
 }
 
 function isDisName(disName){  //经销商代码
-	let regex = /^[A-Z]d{7}$/;
+	var regex = /^[A-Z]d{7}$/;
 	
 	if(disName == '') {
 		errLay('经销商代码不能为空');
@@ -170,7 +171,7 @@ function isDisName(disName){  //经销商代码
 }
 
 function isDate(date,msg){//出生日期
-	let regex= /^(19|20)\d{2}(1[0-2]|0?[1-9])(0?[1-9]|[1-2][0-9]|3[0-1])$/
+	var regex= /^(19|20)\d{2}(1[0-2]|0?[1-9])(0?[1-9]|[1-2][0-9]|3[0-1])$/
 	if(date==""){
 		errLay('出生日期不能为空');
 		return false
@@ -184,7 +185,7 @@ function isDate(date,msg){//出生日期
 }
 
 function isId(id, msg) { //身份证
-	let regex = /^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/;
+	var regex = /^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/;
 	if(id == '') {
 		errLay("身份证号不能为空");
 		return false;
@@ -197,7 +198,7 @@ function isId(id, msg) { //身份证
 }
 
 function isCode(code) { //短信验证码
-	let regex = /^\d{4}$/;
+	var regex = /^\d{4}$/;
 	if(code == '') {
 		errLay("验证码不能为空");
 		return false;
@@ -210,7 +211,7 @@ function isCode(code) { //短信验证码
 }
 
 function isBank(carId) { //银行卡验证
-	let regex = /^([1-9]{1})(\d{14}|\d{18})$/;
+	var regex = /^([1-9]{1})(\d{14}|\d{18})$/;
 	if(carId == '') {
 		return true;
 	} else if(!regex.test(carId)) {
@@ -235,7 +236,7 @@ function isPsd(word){
 
 //=======获取出生日期=====
 function getBirthday(idCard){
-	 let birthday = "";  
+	 var birthday = "";  
         if(idCard != null && idCard != ""){  
             if(idCard.length == 15){  
                 birthday = "19"+idCard.substr(6,6);  
@@ -250,7 +251,7 @@ function getBirthday(idCard){
 
 //=======获取性别=========
 function getSex(idCard){
-	let sex ='';
+	var sex ='';
 	if (parseInt(idCard.substr(16, 1)) % 2 == 1) { 
 		sex  = '男';
 	} else {
