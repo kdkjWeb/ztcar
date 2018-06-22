@@ -1,6 +1,6 @@
 $(function() {
-	let id = GetRequest().id;
-	let phone = GetRequest().phone;
+	var id = GetRequest().id;
+	var phone = GetRequest().phone;
 	
 	if(id != undefined){
 		getResult(id,'id');
@@ -35,11 +35,11 @@ function getResult(num,type) {
 		contentType: "application/json",
 		type: "get",
 		success: function(data) {
-			console.log(data)
-
+			var list = data.data;
 			if(data.code == 0) {
-				if(data.allStatusStr){
-					if(data.allStatusStr == '通过'){
+				if(list.allStatusStr){
+					if(list.allStatusStr == '通过'){
+						
 						$('#allStatusStr').text('通过');
 						$('#allStatusStr').addClass('yes');
 					}else{
@@ -48,10 +48,9 @@ function getResult(num,type) {
 					}
 				}
 				
-				let list = data.data;
 				//        	  	===主申请人====
 				if(list.borrowerName) {
-					let arr = {
+					var arr = {
 						name: list.borrowerName,
 						IDcard: list.borrowerDocumentNo,
 						phone: list.borrowerPhone,
@@ -61,7 +60,7 @@ function getResult(num,type) {
 				}
 			//        	  	===配偶====
 				if(list.spouserName) {
-					let arr = {
+					var arr = {
 						h1: '配偶',
 						name: list.spouserName,
 						IDcard: list.spouserDocumentNo,
@@ -72,7 +71,7 @@ function getResult(num,type) {
 				}
 				
 				if(list.haveLesseeName){
-					let arr = {
+					var arr = {
 						h1: '自然人',
 						name: list.haveLesseeName,
 						IDcard: list.haveLesseeDocumentNo,
@@ -83,7 +82,7 @@ function getResult(num,type) {
 				}
 				
 				if(list.haveGuaranteeName){
-					let arr = {
+					var arr = {
 						h1: '担保人',
 						name: list.haveGuaranteeName,
 						IDcard: list.haveGuaranteeDocumentNo,

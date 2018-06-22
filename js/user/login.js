@@ -5,13 +5,13 @@
     var time = setInterval(
         function(){
                 if(num == 0){
-                    $('.num').removeAttr("disabled");
+                    $('#getCode').removeAttr("disabled");
                     clearInterval(time);
                     num = 60;
-                    $('.num').text('获取验证码');
+                    $('#getCode').text('获取验证码');
                 }else{
                     num -- ;
-                    $('.num').text( num +'S');
+                    $('#getCode').text( num +'S');
                 }
             },1000
         )
@@ -21,7 +21,7 @@
    $(function(){
       
         // 验证码倒计时
-        $(document).on('click','.num',function(){
+        $(document).on('click','#getCode',function(){
             if($(this).attr('disabled') != undefined){
 
             }else{
@@ -57,9 +57,11 @@
                         if(data.code == 0||data.code==200){
 							sessionStorage.setItem('userName',data.data.userName); //用户名
 							sessionStorage.setItem('userPhone',data.data.phone);  //手机号
-                            $(".scs-pop-box").show();   //弹出提示
+//                          $(".scs-pop-box").show();   //弹出提示
+							window.location.href="userMenu.html"
+						
                         }else{
-                            errAlert("提醒",data.msg)
+                            errLay(data.msg)
                             // $(".scs-pop-box").show()         
                         }
                     },	error: function(xhr, type, errorThrown) {
@@ -90,7 +92,7 @@
                     $('.num').attr("disabled",true);
                     timer();
                 }else{
-                    errAlert("提示",data.msg)
+                    errLay(data.msg)
                 }
 			},
 			error: function(xhr, type, errorThrown) {

@@ -45,9 +45,11 @@ $(function() {
 			return false
 		} else if(isId(id, "承租人") == false) {
 			return false
-		} else if(isDate(date, "承租人") == false) {
-			return false
-		} else if(isPhone(tel) == false) {
+		} 
+//		else if(isDate(date, "承租人") == false) {
+//			return false
+//		} 
+		else if(isPhone(tel) == false) {
 			return false
 		} else if(isPhone(phone) == false) {
 			return false

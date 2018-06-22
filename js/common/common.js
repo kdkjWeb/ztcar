@@ -1,5 +1,5 @@
-var path = "http://192.168.20.128:8080";
-//    var path="http://114.116.25.220:8081";
+//var path = "http://192.168.20.128:8080";
+      var path="http://114.116.25.220:8081";
 
 //var token=localStorage.getItem('token');
 //var token =  GetRequest()

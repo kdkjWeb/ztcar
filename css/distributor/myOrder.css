@@ -94,3 +94,22 @@ label, span{
     height: .1rem;
     background-color: #ecf1ff
 }
+
+#errBox{
+	display: block;
+}
+.box1>span{
+	padding: .5rem 0;
+	display: block;
+}
+.box1>input{
+	border: 1px solid #cfcfcf;
+	background-color: #f5f6f8;
+	outline: none;
+	text-align: center;
+	width: 85%;
+	height: .8rem;
+	text-align: left;
+	border-radius: .4rem;
+	text-indent: .2rem;
+}

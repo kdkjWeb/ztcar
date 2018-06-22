@@ -38,7 +38,7 @@ $(function(){
     })
     $("#Cnature").select({
         title:"企业性质",
-        items:["自雇","政府机关",'事业单位','国企','股份制企业','民营','外资或合资','其他']
+        items: ["国有企业","外资企业","民营企业","政府及事业单位","其他"]
     })
     $("#Ctype").select({
         title:"证件类型",
@@ -109,7 +109,7 @@ $(function(){
              listJson.currentAddress=$("#address").val();//居住地址
              listJson.housingNature=$("#nature").val();//先住房性质
              listJson.phoneNumber=$("#tel").val();//担保人手机号码
-             listJson.monthIncome=$("#income").val();//每月净收入
+             listJson.monthlyIncome=$("#income").val();//每月净收入
              listJson.monthAverage=$("#pay").val();//每月均支出
              listJson.companyName=$("#cName").val();//单位名称
              listJson.unitAddress=$("#cAdress").val();//单位地址
@@ -133,7 +133,6 @@ $(function(){
 
   
     function getList(){
-        console.log("供大于求二个人的业务规划环境")
         let data={
             id:1
         }
@@ -184,8 +183,8 @@ $(function(){
                         if(listJson.phoneNumber){
                             $("#tel").val(listJson.phoneNumber)
                         }
-                        if(listJson.monthIncome){
-                            $("#income").val(listJson.monthIncome)
+                        if(listJson.monthlyIncome){
+                            $("#income").val(listJson.monthlyIncome)
                         }
                         if(listJson.monthAverage){
                             $("#pay").val(listJson.monthAverage)
@@ -229,7 +228,7 @@ $(function(){
         })
     }
     function Verification(){
-        $(".weui-input").each(function(){
+        $("#personal .weui-input").each(function(){
             if($(this).val()==''){
                 let msg=$(this).parents(".weui-cell").find('label').text();
                 let str=msg.substr(0,msg.length-1);

@@ -35,11 +35,11 @@ $(function(){
         //     return false
         // }else{
             getNull()
+            
             listJson.applyId = importId;
             listJson.name = $("#name").val();
             listJson.contactNum = $("#tel").val();
-            // listJson.certificateType = parseInt($("#type").val());
-            if( $("#type").val() == '身份证'){
+            if($("#type").val() == '身份证'){
                 listJson.certificateType = 0;
             }
             listJson.certificateNum = $("#id").val();
@@ -54,7 +54,6 @@ $(function(){
     })
 
     function getOldList() {
-        console.log("41111111111111111111111111")
         let data = {
             id: 1
         }
@@ -72,15 +71,16 @@ $(function(){
                 if(data.code == 0) {
                     if(data.data){
                         listJson = data.data;
+                        console.log(listJson)
                         if(listJson.name) {
                             $("#name").val(listJson.name)
                         }
                         if(listJson.contactNum) {
                             $("#tel").val(listJson.contactNum)
                         }
-                        if(listJson.certificateType) {
-                            $("#type").val(listJson.certificateType)
-                        }
+                        if(listJson.certificateType == 0){
+                        	$("#type").val('身份证');
+                     	}
                         if(listJson.certificateNum) {
                             $("#id").val(listJson.certificateNum)
                         }
@@ -110,8 +110,6 @@ $(function(){
     }
 
     function getSaveList() {
-        console.log("555555555555555555")
-
         $.ajax({
             url:path+"/apply/saveSmSpouseInfo",
             data:JSON.stringify(listJson),
@@ -134,7 +132,6 @@ $(function(){
     }
 
     function getNull(){
-        console.log("222222222222222")
         $(".weui-input").each(function(){
             if($(this).val() == '') {
                 let msg = $(this).parents(".weui-cell").find("label").text();

@@ -65,7 +65,7 @@ span{
 /* 列表 */
 .list{
     width:100%;
-    height: 2.1rem;
+    min-height: 2.1rem;
     border-bottom: 1px dashed #ccc;
 }
 .list label{
@@ -79,7 +79,7 @@ span{
 .photo{
     width: 100%;
     height: 1.8rem;
-    /* display: none */
+     /*display: none*/ 
 }
 .photo span{
     line-height: 1.3rem;
@@ -91,56 +91,7 @@ span{
     color: #3b6bf4;
     margin-left: .5rem
 }
-/* 上传图片 */
-.up-load{
-    width:100%;
-    height: 1.8rem;
-    display: none
-}
-.up-load .weui-uploader__input-box:before{
-    width: 2px;
-    height: .2rem
-}
-.up-load .weui-uploader__input-box:after{
-    width: .2rem;
-    height: 2px
-}
-.up-load .weui-uploader__input-box{
-    width: .5rem;
-    height: .5rem;
-    border: 1px solid #ccc;
-    background-color: #3b6bf4;
-    border-radius: .5rem;
-    margin-top: .4rem;
-}
 
-.up-load .weui_uploader_files{
-    list-style: none;
-    display: flex
-}
-.up-load .weui_uploader_file{
-    width: 1.8rem;
-    height: 1.2rem;
-    margin-right: .15rem;
-    background-size: 100% 100%;
-    border-radius: .15rem;
-    position: relative;
-}
-.up-load #closer{
-    position: absolute;
-    top: -.05rem;
-    left: 75%;
-    /* margin-left: 1.6rem; */
-    color: #b4b6bc
-}
-.up-load .weui_uploader_bd{
-    display: flex;
-    margin-left: .3rem
-}
-.up-load .weui_uploader_status_content{
-    text-align: center;
-    line-height: 1.3rem
-}
 /* 说明区 */
 .weui-cells{
     padding: 0;
@@ -179,6 +130,7 @@ span{
     border-radius: .15rem;
     padding-left: .2rem;
 }
+
 /* 下一步 */
 .weui-btn{
     width:5.5rem;
@@ -188,10 +140,79 @@ span{
     background-color: #3b6bf4 !important;
     line-height: .8rem;
 }
+/* 上传图片 */
+.up-load{
+	display: flex;
+    width:100%;
+    min-height: 1.8rem;
+    /*display: none;*/
+}
+.up-load ul{
+	display: block;
+	width: 100%;
+}
+.up-load li{
+	position: relative;
+	display: inline-block;
+	width: 30%;
+	height: 1.5rem;
+	margin-right: 2%;
+	background-size: 100% 100%;
+	border-radius: 5px;
+}
 .weui-btn:after{
     border: none
 }
 
+.inputBox{
+	display: inline-block;
+	position: relative;
+	z-index: 10;
+	width:1rem;
+	height: 1.5rem;
+	background-size: 100% 100%; 
+	margin-right:2%;
+	border-radius: 5px;
+	overflow: hidden;
+}
 
+.inputBox input{
+	position: relative;
+	z-index: 100;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+}
 
-
+.inputBox:after{
+	position: absolute;
+	z-index: 0;
+	top: 50%;left: 50%;
+	transform: translate(-50%,-50%);
+	width: .5rem;
+	height: .5rem;
+	content: '+';
+	color: #FFFFFF;
+	font-size: .4rem;
+	line-height: 0;
+	background-color: #3b6bf4;
+	line-height: .5rem;
+	text-align: center;
+	border-radius: 50%;
+}
+.colseInput{
+	display: inline-block;
+	position: absolute;
+	z-index: 10;
+	top: .05rem;
+	right: .05rem;
+	width: .5rem;
+	height: .5rem;
+	line-height: .5rem;
+	border-radius: .5rem;
+	opacity: .5;
+	background-color: #FFFFFF;
+	color: #3b6bf4;
+	text-align: center;
+	font-size: .2rem;
+}
