@@ -62,6 +62,14 @@ label, span{
     justify-content: space-around;
 }
 /* 选择框 */
+.dislableDiv{
+	width:2.15rem;
+    height: .48rem;
+    background-color: #C6C6C6;
+    margin-top: .4rem;
+    border-radius: .5rem
+}
+
 .choose{
     width:2.15rem;
     height: .48rem;
@@ -69,7 +77,7 @@ label, span{
     margin-top: .4rem;
     border-radius: .5rem
 }
-.choose p{
+.choose p,.dislableDiv p{
     font-size: .26rem;
     color: white;
     text-align: center;
