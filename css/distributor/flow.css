@@ -1,38 +1,57 @@
 .content{
     width:100%;
-    padding: .6rem .2rem 0rem .2rem;
+    padding: .6rem .1rem 0rem .1rem;
     box-sizing: border-box;
 }
-/* 第一排 */
-.first{
+
+.content>div{
+	border: 1px solid red;
+	overflow: hidden;
+	width: 100%;
+}
+
+.leftDiv{
     width:100%;
     height: 1.97rem;
-    display: flex;
 }
-/* 第二排 */
-.secound{
+.leftDiv>div{
+	float: left;
+	height: 1.97rem;
+}
+
+.leftDiv .arrow i{
+	float: left;
+	display: block;
+    transform: rotate(-90deg);
+    margin-left: 0;
+}
+
+.rightDiv{
     width:100%;
     height: 1.97rem;
-    display: flex;
 }
-/* 第三排 */
-.third{
-    width:100%;
-    height: 1.97rem;
-    display: flex;
+.rightDiv>div{
+	float: right;
+	height: 1.97rem;
 }
-/* 第四排 */
-.fouth{
-    width:68%;
-    height: 1.97rem;
-    display: flex;
-   padding-left: 32%
+.rightDiv .arrow i{
+	float: left;
+	display: block;
+    transform: rotate(90deg);
+    margin-left: 0;
 }
+
 /* 选择项 */
 .choose{
-    width:2.2rem;
+    width:30%;
     height: 1.18rem;
     position: relative;
+    text-align: center;
+}
+.arrow{
+	width: 5%;
+	text-align: center;
+	vertical-align: middle;
 }
 /* 图标 */
 .iconfont{
@@ -55,33 +74,12 @@ p{
 }
 
 
-.arrow{
-	text-align: center;
-	vertical-align: middle;
-}
-.first .arrow i,.third .arrow i{
-	float: left;
-	display: block;
-    transform: rotate(-90deg);
-    margin-left: 0;
-}
-.secound .arrow i,.fouth .arrow i{
-	float: left;
-	display: block;
-    transform: rotate(90deg);
-    margin-left: 0;
 
-}
-/* 向下的箭头--单排单独 */
-.down{
-    margin-left: 5.8rem
+.content .Down:nth-of-type(1){
+	background-color: red;
 }
 
-.content>div>div{
-	height: 100%;
-	text-align: center;
-}
 
-.leftDown i{
-	margin-left: .6rem;
+.icon-jiantou3{
+	color: #ef850d;
 }

@@ -75,15 +75,9 @@ $(function() {
 							$('#mortgagePayments').val(listJson.mortgagePayments);
 						}
 					}
-
-					console.log(data)
-
+				}else{
+					errLay(data.msg)
 				}
-			},
-			error: function(xhr, type, errorThrown) {
-				//异常处理；
-				console.log(xhr);
-				console.log(type);
 			}
 		});
 	}
@@ -101,12 +95,9 @@ $(function() {
 			success: function(data) {
 				if(data.code == 0) {
 					window.location.href = "married.html"
+				}else{
+					errLay(data.msg)
 				}
-			},
-			error: function(xhr, type, errorThrown) {
-				//异常处理；
-				console.log(xhr);
-				console.log(type);
 			}
 		});
 	}

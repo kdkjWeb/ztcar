@@ -1,6 +1,6 @@
 $(function() {
 	getList();
-
+	
 	$(document).on('click', '.cancel', function() { //取消订单
 		var id = $(this).parents('.list').attr('dataId')
 		myAlert(id);
@@ -18,7 +18,6 @@ $(function() {
 		} else {
 			errLay('请输入取消原因')
 		}
-
 	})
 
 	//	============弹框============
@@ -53,6 +52,8 @@ $(function() {
 					for(var i = 0; i < data.orderList.length; i++) {
 						setList(data.orderList[i])
 					}
+				}else{
+					errLay(data.msg)
 				}
 			}
 		});
@@ -65,11 +66,9 @@ $(function() {
 			'<div class="basic-msg">' +
 			'<div class="basic">' +
 			'<p class="name">' + arr.borrowerName + '</p>';
-
 		if(arr.borrowerPhone) {
 			text += '<p class="phone">' + arr.borrowerPhone + '</p>';
 		}
-
 		text += '</div>' +
 			'<div class="credit">' +
 			'<label>贷款金额：</label>' +
@@ -82,16 +81,12 @@ $(function() {
 		} else {
 			text += '<div class="choose">';
 		}
-
-		text += '<p>' + arr.nodeName + '</p>' +
-			'</div>';
-
+		text += '<p>' + arr.nodeName + '</p>' + '</div>';
 		if(arr.status == -1) {
 			text += '<div class="dislableDiv">';
 		} else {
 			text += '<div class="cancel">';
 		}
-
 		text += '<p>订单取消</p>' +
 			'</div>' +
 			' </div>' +
@@ -108,7 +103,6 @@ $(function() {
 			cancelCause: mytext,
 			status: -1
 		}
-
 		$.ajax({
 			url: path + "/SmOrder/updateOrderStatus",
 			data: JSON.stringify(data),
@@ -119,9 +113,21 @@ $(function() {
 			contentType: "application/json",
 			type: "post",
 			success: function(data) {
-				console.log(data);
+				if(data.code == 0){
+					document.location.reload();//当前页面 
+				}else{
+					errLay(data.msg)
+				}
+				
 			}
 		});
 	}
+
+//===========================
+	
+	$(document).on('click','.choose',function(){
+		window.location.href = 'flow.html';
+	})
+
 
 })

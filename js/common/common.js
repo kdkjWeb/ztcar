@@ -1,17 +1,6 @@
-//var path = "http://192.168.20.128:8080";
+var path = "http://192.168.20.128:8080";
 //var path = "http://192.168.20.174:8080";
-var path="http://114.116.25.220:8081";
-
-//var token=localStorage.getItem('token');
-//var token =  GetRequest()
-//
-//
-//if(GetRequest().token == undefined || GetRequest().token =='undefined'){
-//	token = localStorage.getItem('token');
-//}else{
-//	token = GetRequest().token;
-//	localStorage.token = token;
-//}
+//var path="http://114.116.25.220:8081";
 
 (function(doc, win) {
 	var docEl = doc.documentElement;

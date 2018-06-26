@@ -145,7 +145,7 @@ span{
 	display: flex;
     width:100%;
     min-height: 1.8rem;
-    /*display: none;*/
+    display: none;
 }
 .up-load ul{
 	display: block;
@@ -203,7 +203,7 @@ span{
 .colseInput{
 	display: inline-block;
 	position: absolute;
-	z-index: 10;
+	z-index: 999;
 	top: .05rem;
 	right: .05rem;
 	width: .5rem;

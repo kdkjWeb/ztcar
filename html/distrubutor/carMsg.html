@@ -18,38 +18,38 @@
        <div class="basic-msg">
            <div class="basic">
                <div class="name">
-                   <label>客户姓名：</label>
-                   <span>张三</span>
+                   <label>客户姓名 :</label>
+                   <span id="userName"></span>
                </div>
                <div class="phone">
-                   <label>电话号码：</label>
-                   <span>12345678945</span>
+                   <label>电话号码 :</label>
+                   <span id="userPhone"></span>
                </div>
            </div>
            <div class="idcard">
-               <label>身份证号：</label>
-               <span>123456789123456789</span>
+               <label>身份证号 :</label>
+               <span id="userId"></span>
            </div>
            <div class="type">
-               <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;车型:</label>
-               <span>别克君威2018运动版</span>
+               <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;车型 :</label>
+               <span id="carModel"></span>
            </div>
        </div>
        <div class="input">
             <div class="weui-cell">
-                <div class="weui-cell__hd"><label class="weui-label">车架号：</label></div>
+                <div class="weui-cell__hd"><label class="weui-label">车架号:</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="number">
+                    <input id="Frame" class="weui-input" type="text" oninput="if(value.length>11)value=value.slice(0,11)">
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">发动机号:</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="number">
+                    <input id="Engine" class="weui-input" type="number">
                 </div>
             </div>
        </div>
-       <a href="javascript:;" class="weui-btn weui-btn_primary">确认提交</a> 
+       <a href="javascript:;" class="weui-btn weui-btn_primary" id="sure">确认提交</a> 
        
    </div>
 </body>

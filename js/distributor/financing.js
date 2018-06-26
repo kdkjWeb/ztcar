@@ -15,13 +15,13 @@ $(function() {
 		items: [{
 			title: "12期",
 			value: "12",
-		},{
+		}, {
 			title: "24期",
 			value: "24",
-		},{
+		}, {
 			title: "36期",
 			value: "36",
-		},{
+		}, {
 			title: "48期",
 			value: "48",
 		}]
@@ -169,126 +169,174 @@ $(function() {
 	var TotalLoan = $('#TotalLoan'); //贷款总额
 	var rate = $('#rate'); //费率
 	var coefficient = $('#coefficient'); //万元还款系数
-	var month = $('#month');  //还款期限
-	var payment = $('#payment');  //预估月供
-	
+	var month = $('#month'); //还款期限
+	var payment = $('#payment'); //预估月供
+	var aa = $('.aa');
 
-	var paymentValCtr = accSub(1, accAdd(CarProportion, AddProportion)); // 1-车贷比例-加融比例
+	var paymentValCtr = accSub(1, accAdd(CarProportion, AddProportion)); // 1-车贷比例-加融比例\
 
-	firstRatio.blur(setFirstRatio); //首付比例失去焦点事件
-	firstPayment.blur(setFirstPayment); //首付比例失去焦点事件
+	//	firstRatio.blur(setFirstRatio); //首付比例失去焦点事件
+	//	firstPayment.blur(setFirstPayment); //首付比例失去焦点事件
+	//	firstRatio.change(setCarFinancing); //填写首付金额
+	//	firstRatio.change(iptDislable); //
+	//	firstRatio.change(setTotalLoan);	
+	//	coefficient.change(setRate)   //填写万元还款系数后，自动修改费率
+	//	rate.change(setCoefficient)  //填写费率后，自动修改万元还款系数
+	//	rate.change(setPayment)  //填写费率后，自动修改万元还款系数
+	//	TotalLoan.change()
 
-	firstRatio.change(setCarFinancing); //填写首付金额
-	firstRatio.change(iptDislable); //
+	//	===========
+
+	ticketPrice.change(setFirstRatio);
+	firstRatio.change(setFirstRatio);
+
+	function setFirstRatio() { //已知开票价和首付比例，自动填写首付金额
+		if(ticketPrice.val() && firstRatio.val()) {
+			var firstRatioVal = accDiv(parseFloat(firstRatio.val()), 100) //获取首付比例
+			if(firstRatioVal >= paymentValCtr) { //如果首付  大于 1-车贷比例-加融比例
+				var text = accMul(ticketPrice.val(), firstRatioVal); //自动填写首付金额
+				firstPayment.val(keepTwo(text));
+				//				firstPayment.change();
+			} else {
+				errLay('首付比例需大于或等于' + paymentValCtr)
+			}
+		}
+	}
+
+	//==================
+	ticketPrice.change(setFirstPayment);
+	firstPayment.change(setFirstPayment);
+
+	function setFirstPayment() { //已知开票价和首付金额，填写首付比例
+		if(ticketPrice.val() && firstPayment.val()) {
+			var firstPaymentVal = parseFloat(firstPayment.val()); //获取首付金额
+			var Ctr = accMul(paymentValCtr, ticketPrice.val()); //（1-车贷比例-加融比例）*车辆开票价
+			if(firstPaymentVal >= Ctr) {
+				var text = accDiv(firstPayment.val(), ticketPrice.val()); //首付比例 = 首付金额/车辆开票价
+				var newText = accMul(text, 100);
+				firstRatio.val(keepTwo(newText));
+				firstRatio.change();
+			} else {
+				errLay('首付金额需大于或等于' + Ctr);
+			}
+		}
+	}
+
+	//=============
+	ticketPrice.change(setCarFinancing);
+	firstRatio.change(setCarFinancing);
+
+	function setCarFinancing() { //已知开票价和首付比例,填写车辆融资额
+		if(ticketPrice.val() && firstRatio.val()) {
+			var firstRatioVal = accDiv(parseFloat(firstRatio.val()), 100) //获取首付比例
+			var shouldDown = accSub(1, firstRatioVal); //1-首付比例
+			if(shouldDown <= CarProportion) { // 1-首付比例  小于或等于车贷比例
+				var text = accMul(ticketPrice.val(), shouldDown); //车辆开票价*（1-首付比例）
+				carFinancing.val(keepTwo(text));
+				carFinancing.change();
+			} else {
+				var text = accMul(ticketPrice.val(), CarProportion); //车辆融资额=车辆开票价*车贷比例.
+				carFinancing.val(keepTwo(text));
+				carFinancing.change();
+			}
+		}
+	}
+
+	//	==============
+	firstRatio.change(iptDislable)
+
+	function iptDislable() { //已知首付比例，判断是否禁用保险费。。。。
+		if(firstRatio.val()) {
+			var firstRatioVal = accDiv(parseFloat(firstRatio.val()), 100) //获取首付比例
+			var shouldDown = accSub(1, firstRatioVal); //1-首付比例
+			if(shouldDown <= CarProportion) { // 1-首付比例  小于或等于车贷比例
+				$('.iptDislable').attr('readonly', 'readonly');
+				$('.iptDislable').css('background-color', '#E3E3E3');
+			} else {
+				$('.iptDislable').removeAttr('readonly');
+				$('.iptDislable').css('background-color', '#FFFFFF');
+			}
+		}
+
+	}
+
+	//===================
+	ticketPrice.change(setTotalLoan);
 	firstRatio.change(setTotalLoan);
-		
-	coefficient.change(setRate)   //填写万元还款系数后，自动修改费率
-	rate.change(setCoefficient)  //填写费率后，自动修改万元还款系数
-	
-	rate.change(setPayment)  //填写费率后，自动修改万元还款系数
+	carFinancing.change(setTotalLoan);
 
-
-	function setFirstRatio() { //已知开票价和首付比例，填写首付金额
-		var firstRatioVal = accDiv(parseFloat(firstRatio.val()),100)//获取首付比例
-//		var firstRatioVal = parseFloat(firstRatio.val())/100;
-
-		if(firstRatioVal >= paymentValCtr) { //如果首付  大于 1-车贷比例-加融比例
-			var text = accMul(ticketPrice.val(), firstRatioVal); //自动填写首付金额
-			firstPayment.val(keepTwo(text));
-		} else {
-			errLay('首付比例需大于或等于' + paymentValCtr)
+	function setTotalLoan() { //已知首付比例，开票价和车贷融资额填写贷款总额
+		if(ticketPrice.val() && firstRatio.val() && carFinancing.val()) {
+			var firstRatioVal = accDiv(parseFloat(firstRatio.val()), 100) //获取首付比例
+			var shouldDown = accSub(1, firstRatioVal); //1-首付比例
+			if(shouldDown <= CarProportion) { // 1-首付比例  小于或等于车贷比例
+				var text = accMul(ticketPrice.val(), shouldDown); //总额 = 车辆开票价*（1-首付比例）
+				TotalLoan.text(keepTwo(text));
+				TotalLoan.change();
+			} else {
+				//当（1-首付比例）大于车贷比例时，贷款总额=车辆融资额（）+车辆开票价*加融比例）
+				var rongzi = accMul(ticketPrice.val(), CarProportion); //车辆融资额=车辆开票价*车贷比例.
+				var myNum = accSub(1, accAdd(firstRatioVal, CarProportion)); //1-首付比例-车贷比例
+				var text = accMul(ticketPrice.val(), myNum);
+				var neText = accAdd(rongzi, text)
+				TotalLoan.text(keepTwo(neText));
+				TotalLoan.change();
+			}
 		}
 	}
 
-	function setFirstPayment() {   //已知开票价和首付金额，填写首付比例
-		var firstPaymentVal = parseFloat(firstPayment.val());   //获取首付金额
-		var Ctr = accMul(paymentValCtr, ticketPrice.val()); //（1-车贷比例-加融比例）*车辆开票价
-		
-		if(firstPaymentVal >= Ctr) {
-			var text = accDiv(firstPayment.val(), ticketPrice.val()); //首付比例 = 首付金额/车辆开票价
-			var newText = accMul(text, 100);
-			firstRatio.val(keepTwo(newText));
-			firstRatio.change();  
-		} else {
-			errLay('首付金额需大于或等于' + Ctr);
+	//========================
+//	month.change(setRate);
+	coefficient.change(setRate);
+
+	function setRate() { //已知期数和万元还款系数，求费率
+		if(month.val() && coefficient.val()) {
+			var m = parseFloat(month.attr('data-values')); //贷款期数	
+			var t = accDiv(parseFloat(coefficient.val()), 100); //获取万元还款系数	
+			var a = accMul(t, m); //万元还款系数*期数
+			var b = accDiv(a, 10000); //万元还款系数*期数/10000
+			var c = accMul(b, 100);
+			var d = accSub(c, 1); //万元还款系数*期数/10000-1
+			var e = accMul(d, 100); //百分比小数转整数
+			rate.val(keepTwo(e)) //填写费率
+			rate.change();
 		}
 	}
 
-	function setCarFinancing() { //填写车辆融资额
-		var firstRatioVal = accDiv(parseFloat(firstRatio.val()),100)//获取首付比例
-		
-		var shouldDown = accSub(1, firstRatioVal); //1-首付比例
-		if(shouldDown <= CarProportion) { // 1-首付比例  小于或等于车贷比例
-			var text = accMul(ticketPrice.val(), shouldDown); //车辆开票价*（1-首付比例）
-			carFinancing.val(keepTwo(text));
-		} else {
-			var text = accMul(ticketPrice.val(), CarProportion); //车辆融资额=车辆开票价*车贷比例.
-			carFinancing.val(keepTwo(text));
+	//	===================
+//	month.change(setCoefficient);
+	rate.change(setCoefficient);
+
+	function setCoefficient() { //已知期数和费率，求万元还款系数\
+		if(month.val() && rate.val()) {
+			console.log('2')
+			var m = parseFloat(month.attr('data-values')); //贷款期数	
+			var t = accDiv(parseFloat(rate.val()), 100); //获取费率
+			var a = accAdd(1, t); // 1+费率
+			var n = accMul(10000, a); //10000*1+费率
+			var b = accDiv(n, m); //  10000*1+费率 / 期数
+			coefficient.val(keepTwo(b)); //输入万元还款系数
 		}
 	}
 
-	function iptDislable() { //警用
-		var firstRatioVal = accDiv(parseFloat(firstRatio.val()),100)//获取首付比例
-		
-		var shouldDown = accSub(1, firstRatioVal); //1-首付比例
-		if(shouldDown <= CarProportion) { // 1-首付比例  小于或等于车贷比例
-			$('.iptDislable').attr('readonly', 'readonly');
-			$('.iptDislable').css('background-color', '#E3E3E3');
-		} else {
-			$('.iptDislable').removeAttr('readonly');
-			$('.iptDislable').css('background-color', '#FFFFFF');
-		}
+
+
+	function setPayment() {
+		var m = parseFloat(month.attr('data-values')); //贷款期数	
+		var t = parseFloat(TotalLoan.text()); //贷款总额
+		var r = accDiv(parseFloat(rate.val()), 100); //获取费率
+		var a = accAdd(1, r)
+		var b = accMul(t, a)
+		var c = accDiv(b, m)
+		payment.text(keepTwo(c));
 	}
 
-	function setTotalLoan() {
-		var firstRatioVal = accDiv(parseFloat(firstRatio.val()),100)//获取首付比例
-		
-		var shouldDown = accSub(1, firstRatioVal); //1-首付比例
-		if(shouldDown <= CarProportion) { // 1-首付比例  小于或等于车贷比例
-			var text = accMul(ticketPrice.val(), shouldDown); //车辆开票价*（1-首付比例）
-			TotalLoan.text(keepTwo(text));
-		} else {
-			//当（1-首付比例）大于车贷比例时，贷款总额=车辆融资额（）+车辆开票价*加融比例）
-			var rongzi = accMul(ticketPrice.val(), CarProportion); //车辆融资额=车辆开票价*车贷比例.
-			var myNum = accSub(1, accAdd(firstRatioVal, CarProportion)); //1-首付比例-车贷比例
-			var text = accMul(ticketPrice.val(), myNum);
-			var neText = accAdd(rongzi, text)
-			TotalLoan.text(keepTwo(neText));
-		}
-	}
+	//	function TotalChange(){
+	//		if(){
+	//			
+	//		}else{
+	//			
+	//		}
+	//	}
 
-	function setRate() {
-		var m = parseFloat(month.attr('data-values'));	 //贷款期数	
-		var t = accDiv(parseFloat(coefficient.val()),100)//获取万元还款系数	
-		var a = accMul(t,m);  //万元还款系数*期数
-		var b = accDiv(a,10000);  //万元还款系数*期数/10000
-		var c = accMul(b,100);
-		var d = accSub(c,1);   //万元还款系数*期数/10000-1
-		var e = accMul(d,100);  //百分比小数转整数
-		rate.val(keepTwo(e))
-		rate.change();
-		
-	}
-	
-	function setCoefficient(){
-		var m = parseFloat(month.attr('data-values'));	 //贷款期数	
-		var t = accDiv(parseFloat(rate.val()),100)//获取费率
-		var a = accAdd(1,t);		// 1+费率
-		var n = accMul(10000,a);    //10000*1+费率
-		var b = accDiv(n,m);   //  10000*1+费率 / 期数
-		coefficient.val(keepTwo(b))
-	}
-	
-	function setPayment(){
-		var m = parseFloat(month.attr('data-values'));	 //贷款期数	
-		var t = parseFloat(TotalLoan.text());	 //贷款总额
-		var r = accDiv(parseFloat(rate.val()),100)//获取费率
-		
-		var a = accAdd(1,r)
-		var b = accMul(t,a)
-		var c = accDiv(b,m)
-		payment.text(c)
-	}
-	
-	
 })
