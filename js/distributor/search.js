@@ -17,9 +17,9 @@ $(function(){
 
 })
 function getUserVal() {
-    let data = {
-        id = 1
-    }
+    // let data = {
+    //     id = 1
+    // }
 
     $.ajax({
         url:path,
