@@ -205,8 +205,8 @@ input[type=button], input[type=submit], input[type=file], input[type=text],input
 	color: #3b6af4 !important;
 }
 /*======滑动报错方法=======*/
-*{
-	/*touch-action: none;*/
+input[type=text],input[type=number],input[type=tel],input[type=password]{
+	touch-action: none;
 }
 /*======================*/
 #errBox{

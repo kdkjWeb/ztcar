@@ -67,6 +67,7 @@ span{
     height:.6rem;
     border: 1px solid #c6c6c6;
     border-radius: .5rem;
+        text-indent:.2rem;
 }
 /* 按钮 */
 .weui-btn{

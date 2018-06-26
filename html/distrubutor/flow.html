@@ -1,23 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>流程图</title>
-    <script src="../../js/common/jquery-3.2.1.js"></script>
-    <script src="../../js/common/common.js"></script>
-    <link rel="stylesheet" href="../../css/common/reset.css">
-    <link rel="stylesheet" href="../../css/common/weui.min.css">
-    <link rel="stylesheet" href="../../css/common/jquery-weui.min.css">
-    <link rel="stylesheet" type="text/css" href="../../css/common/iconfont.css">
-    <link rel="stylesheet" href="../../css/distributor/flow.css">
-</head>
-<body>
-    <div class="content">
-        
-    </div>
-</body>
-<script src="../../js/common/jquery-weui.min.js"></script>
-<script src="../../js/distributor/flow.js"></script>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>流程图</title>
+		<script src="../../js/common/jquery-3.2.1.js"></script>
+		<script src="../../js/common/common.js"></script>
+		<link rel="stylesheet" href="../../css/common/reset.css">
+		<link rel="stylesheet" href="../../css/common/weui.min.css">
+		<link rel="stylesheet" href="../../css/common/jquery-weui.min.css">
+		<link rel="stylesheet" type="text/css" href="../../css/common/iconfont.css">
+		<link rel="stylesheet" href="../../css/distributor/flow.css">
+	</head>
+
+	<body>
+		<div class="content">
+			<!-- 第一排 -->
+				<div class="leftDiv">
+					<div class="choose">
+						<i class="iconfont icon-chanpin"></i>
+						<p>选择产品</p>
+					</div>
+					<div class="arrow">
+						<i class="iconfont icon-jiantou3"></i>
+					</div>
+					<div class="choose" id="distributorMsg">
+						<i class="iconfont icon-xinxi"></i>
+						<p>完善贷款信息</p>
+					</div>
+					<div class="arrow">
+						<i class="iconfont icon-jiantou3"></i>
+					</div>
+					<div class="choose" id="submission">
+						<i class="iconfont icon-jibenziliao"></i>
+						<p>提交初审资料</p>
+					</div>
+				</div>
+				<!-- 向下的箭头 -->
+				<div class="Down">
+					<i class="iconfont icon-jiantou3"></i>
+				</div>
+				<!-- 第二排 -->
+				<div class="rightDiv">
+					<div class="choose">
+						<i class="iconfont icon-shiyongyinzhang"></i>
+						<p>初审资料审核中</p>
+					</div>
+					<div class="arrow">
+						<i class="iconfont icon-jiantou3"></i>
+					</div>
+					<div class="choose" id="carMsg">
+						<i class="iconfont icon-cheliang-"></i>
+						<p>录入车辆信息</p>
+					</div>
+					<div class="arrow">
+						<i class="iconfont icon-jiantou3"></i>
+					</div>
+					<div class="choose">
+						<i class="iconfont icon-tubiaolunkuo-"></i>
+						<p>待签合同</p>
+					</div>
+	
+				</div>
+				<!-- 向下箭头（左侧） -->
+				<div class="Down"><i class="iconfont icon-jiantou3"></i></div>
+	
+				<!-- 第三排 -->
+				<div class="leftDiv">
+					<div class="choose" id="credit">
+						<i class="iconfont icon-jibenziliao"></i>
+						<p>提交放款资料</p>
+					</div>
+					<div class="arrow">
+						<i class="iconfont icon-jiantou3"></i>
+					</div>
+					<div class="choose">
+						<i class="iconfont icon-shiyongyinzhang"></i>
+						<p>放款资料审核中</p>
+					</div>
+					<div class="arrow">
+						<i class="iconfont icon-jiantou3"></i>
+					</div>
+					<div class="choose">
+						<i class="iconfont icon-qian"></i>
+						<p>已放款</p>
+					</div>
+				</div>
+				<!-- 向下的箭头 -->
+				<div class="Down"><i class="iconfont icon-jiantou3"></i></div>
+				<!-- 第四排 -->
+				<div class="rightDiv">
+					<div class="choose" id="afterCredit">
+						<i class="iconfont icon-jibenziliao"></i>
+						<p>提交放款后资料</p>
+					</div>
+	
+					<div class="arrow">
+						<i class="iconfont icon-jiantou3"></i>
+					</div>
+					<div class="choose">
+						<i class="iconfont icon-shiyongyinzhang"></i>
+						<p>放款后资料审核中</p>
+					</div>
+	
+				</div>
+		</div>
+
+		
+	</body>
+	<script src="../../js/common/jquery-weui.min.js"></script>
+	<script src="../../js/distributor/flow.js"></script>
+
 </html>

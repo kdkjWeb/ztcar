@@ -6,7 +6,15 @@ $(function() {
 	var imgArr4 = [];
 	var imgArr5 = [];
 	var imgArr6 = [];
-
+	
+	var listJson = {};
+	var importId = 1;	
+		
+	getList();
+	
+	
+	
+		
 	$(".photo").on("click", function() {
 		$(this).hide();
 		$(this).siblings(".up-load").show();
@@ -16,7 +24,6 @@ $(function() {
 		var _this = $(this);
 		var ulIndex = _this.parents('.list').index(); //第几个数组
 		var files = Array.prototype.slice.call(this.files);
-
 		files.forEach(function(file, i) {
 			var fileType = /\/(?:jpeg|png|gif)/i;
 			if(!fileType.test(file.type)) {
@@ -38,7 +45,6 @@ $(function() {
 			};
 			//注入图片 转换成base64
 			reader.readAsDataURL(file);
-
 			if(!files.length) {
 				return false
 			};
@@ -67,8 +73,9 @@ $(function() {
 					break;
 			}
 
-		})
-
+		});
+		_this.val('');
+		
 	})
 
 	$(document).on('click', '.colseInput', function() {
@@ -99,14 +106,46 @@ $(function() {
 				imgArr6.splice(liIndex, 1);
 				break;
 		}
-
 		$(this).parents('li').remove();
 	})
 
-	$(document).on('click','li',function(){
-		var myurl = $(this).css("background-image");
-		$('#imgLayer').find('span').css("background-image",myurl);
-		$('#imgLayer').show();
-	})
-
+//	$(document).on('click','li',function(){
+//		var myurl = $(this).css("background-image");
+//		$('#imgLayer').find('span').css("background-image",myurl);
+//		$('#imgLayer').show();
+//	})
+	
+	function getList(){
+		var data = {
+			applyId:importId
+		}
+		$.ajax({
+			url: path + "/smAuditing/getAuitingFiles",
+			data: JSON.stringify(data),
+			xhrFields: {
+				withCredentials: true
+			},
+			dataType: "json",
+			contentType: "application/json",
+			type: "post",
+			success: function(data) {
+				if(data.code == 0){
+					
+					listJson = data.data;
+					if(listJson.borrowerName){
+						$('#userName').text(listJson.borrowerName)
+					}
+					if(listJson.borrowerPhone){
+						$('#userPhone').text(listJson.borrowerPhone)
+					}
+					
+					
+				}else{
+					errLay(data.msg)
+				}
+			}
+		});
+	}
+	
+	
 });
