@@ -1,0 +1,12 @@
+diff a/html/distrubutor/submission.html b/html/distrubutor/submission.html	(rejected hunks)
+@@ -34,10 +34,6 @@
+     <div class="line"></div>
+     <div class="content">
+ 
+-<<<<<<< HEAD
+-=======
+-    
+->>>>>>> bf78d7427fef1a491728a35258eb21947850c54c
+         <div class="more12">
+             <div class="c-list" id="myList">
+             	

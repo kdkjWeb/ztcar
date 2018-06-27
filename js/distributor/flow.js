@@ -15,19 +15,21 @@ $(function() {
 	$(document).on('click', '#submission', function() { //提交初审资料
 		var applyId = $(this).attr('applyid');
 		var datatype = $(this).attr('datatype');
-		var dataId = $(this).attr('dataid')
+		var dataId = $(this).attr('dataid');
 		window.location.href = 'submission.html?applyId='+applyId+'&dataType='+datatype+'&dataId='+dataId;
 	})
 
 	$(document).on('click', '#credit', function() { //提交放款资料
 		var applyId = $(this).attr('applyid');
 		var datatype = $(this).attr('datatype');
+		var dataId = $(this).attr('dataid');
 		window.location.href = 'credit.html?applyId='+applyId+'&dataType='+datatype+'&dataId='+dataId;
 	})
 
 	$(document).on('click', '#afterCredit', function() { //提交放款资料
 		var applyId = $(this).attr('applyid');
 		var datatype = $(this).attr('datatype');
+		var dataId = $(this).attr('dataid');
 		window.location.href = 'afterCredit.html?applyId='+applyId+'&dataType='+datatype+'&dataId='+dataId;
 	})
 
