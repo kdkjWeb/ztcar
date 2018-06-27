@@ -88,12 +88,9 @@ function getResult(num,type) {
 					other(arr);
 				}
 
+			}else {
+				errLay(data.msg)
 			}
-		},
-		error: function(xhr, type, errorThrown) {
-			//异常处理；
-			console.log(xhr);
-			console.log(type);
 		}
 	});
 }

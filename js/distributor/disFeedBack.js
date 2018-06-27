@@ -75,9 +75,11 @@ function getList(){
 		contentType:"application/json",
 		type: "post",
 		success: function(data) {
-			console.log(data)
+			
 			if(data.code==0 && data.data.length>0){
 				eachList(data.data);
+			}else{
+				errLay(data.msg)
 			}
 		},
 		error: function(xhr, type, errorThrown) {
@@ -106,9 +108,9 @@ function dowatting(id,num){
 		success: function(data) {
 			console.log(data)
 			if(data.code==0){
-//        	  window.location.href="waitting.html";
 				window.location.reload();
-
+			}else {
+				errLay(data.msg)
 			}
 		},
 		error: function(xhr, type, errorThrown) {

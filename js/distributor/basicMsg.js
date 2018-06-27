@@ -152,12 +152,9 @@ $(function() {
 						$('#aim').val(listJson.carPurpose);
 					}
 
+				}else {
+					errLay(data.msg)
 				}
-			},
-			error: function(xhr, type, errorThrown) {
-				//异常处理；
-				console.log(xhr);
-				console.log(type);
 			}
 		});
 	}
@@ -175,6 +172,8 @@ $(function() {
 			success: function(data) {
 				if(data.code == 0) {
 					window.location.href = "work.html"
+				}else {
+					errLay(data.msg)
 				}
 			},
 			error: function(xhr, type, errorThrown) {
@@ -209,12 +208,9 @@ $(function() {
 						title: "现有车辆品牌",
 						items: arr
 					})
+				}else {
+					errLay(data.msg)
 				}
-			},
-			error: function(xhr, type, errorThrown) {
-				//异常处理；
-				console.log(xhr);
-				console.log(type);
 			}
 		});
 	}

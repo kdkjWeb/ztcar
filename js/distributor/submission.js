@@ -1,21 +1,14 @@
 $(function() {
-	var imgArr0 = [];
-	var imgArr1 = [];
-	var imgArr2 = [];
-	var imgArr3 = [];
-	var imgArr4 = [];
-	var imgArr5 = [];
-	var imgArr6 = [];
-	
+	$('#save').click(function() {
+		mysave();
+	})
+
 	var listJson = {};
-	var importId = 1;	
-		
+	var importId = 1;
+
 	getList();
-	
-	
-	
-		
-	$(".photo").on("click", function() {
+
+	$(document).on('click', '.photo', function() {
 		$(this).hide();
 		$(this).siblings(".up-load").show();
 	})
@@ -49,75 +42,24 @@ $(function() {
 				return false
 			};
 			var myFile = files[0];
-			switch(ulIndex) {
-				case 0:
-					imgArr0.push(myFile);
-					break;
-				case 1:
-					imgArr1.push(myFile);
-					break;
-				case 2:
-					imgArr2.push(myFile);
-					break;
-				case 3:
-					imgArr3.push(myFile);
-					break;
-				case 4:
-					imgArr4.push(myFile);
-					break;
-				case 5:
-					imgArr5.push(myFile);
-					break;
-				case 6:
-					imgArr6.push(myFile);
-					break;
-			}
+
+			addImg(myFile, ulIndex);
 
 		});
 		_this.val('');
-		
 	})
 
 	$(document).on('click', '.colseInput', function() {
 		var _this = $(this);
 		var ulIndex = _this.parents('.list').index(); //第几个数组
 		var liIndex = _this.parents('li').index(); //第几个li
-
-		switch(ulIndex) {
-			case 0:
-				imgArr0.splice(liIndex, 1);
-				break;
-			case 1:
-				imgArr1.splice(liIndex, 1);
-				break;
-			case 2:
-				imgArr2.splice(liIndex, 1);
-				break;
-			case 3:
-				imgArr3.splice(liIndex, 1);
-				break;
-			case 4:
-				imgArr4.splice(liIndex, 1);
-				break;
-			case 5:
-				imgArr5.splice(liIndex, 1);
-				break;
-			case 6:
-				imgArr6.splice(liIndex, 1);
-				break;
-		}
+		deleteImg(ulIndex, liIndex);
 		$(this).parents('li').remove();
 	})
 
-//	$(document).on('click','li',function(){
-//		var myurl = $(this).css("background-image");
-//		$('#imgLayer').find('span').css("background-image",myurl);
-//		$('#imgLayer').show();
-//	})
-	
-	function getList(){
+	function getList() {
 		var data = {
-			applyId:importId
+			applyId: importId
 		}
 		$.ajax({
 			url: path + "/smAuditing/getAuitingFiles",
@@ -129,23 +71,105 @@ $(function() {
 			contentType: "application/json",
 			type: "post",
 			success: function(data) {
-				if(data.code == 0){
-					
+				if(data.code == 0) {
 					listJson = data.data;
-					if(listJson.borrowerName){
+					if(listJson.borrowerName) {
 						$('#userName').text(listJson.borrowerName)
 					}
-					if(listJson.borrowerPhone){
+					if(listJson.borrowerPhone) {
 						$('#userPhone').text(listJson.borrowerPhone)
 					}
-					
-					
-				}else{
+
+					for(var i = 0; i < listJson.smFileOwens.length; i++) {
+						var text = '<div class="list">' +
+							'<label>' + listJson.smFileOwens[i].modelName + '：</label>' +
+							//							'<div class="photo">' +
+							//							'<i class="iconfont icon-xiangji1"><span>拍照或选择图片</span></i>' +
+							//							'</div>' +
+							'<div class="up-load">' +
+							'<ul>' +
+							'<div class="inputBox">' +
+							'<input class="inputFile" type="file" accept="image/jpg,image/jpeg,image/png,image/gif">' +
+							'</div>' +
+							'</ul>' +
+							'</div>' +
+							'</div>'
+						$('#myList').append(text);
+					}
+
+				} else {
 					errLay(data.msg)
 				}
 			}
 		});
 	}
-	
+
+	function addImg(myFile, ulIndex) { //上传图片
+		Fdata = new FormData();
+		Fdata.append('file', myFile);
+
+		$.ajax({
+			url: path + "/file/addFile",
+			data: Fdata,
+			xhrFields: {
+				withCredentials: true
+			},
+			dataType: "json",
+			contentType: "application/json",
+			type: "post",
+			processData: false, // 不处理数据
+			contentType: false, // 不设置内容类型
+			success: function(data) {
+				if(data.code == 0) {
+					listJson.smFileOwens[ulIndex].smFiles.push(data.smFile);
+				} else {
+					errLay(data.msg)
+				}
+			}
+		});
+	}
+
+	function deleteImg(ulIndex, liIndex) { //删除图片
+		var myid = listJson.smFileOwens[ulIndex].smFiles[liIndex].id;
+
+		$.ajax({
+			url: path + "/file/deleteFile?fileId=" + myid,
+			xhrFields: {
+				withCredentials: true
+			},
+			dataType: "json",
+			contentType: "application/json",
+			type: "get",
+			success: function(data) {
+				if(data.code == 0) {
+					listJson.smFileOwens[ulIndex].smFiles.splice(liIndex, 1);
+				} else {
+					errLay(data.msg)
+				}
+			}
+		});
+	}
+
+	function mysave() {
+		$.ajax({
+			url: path + "/smAuditing/auditFirstSubmit",
+			data: JSON.stringify(listJson),
+			xhrFields: {
+				withCredentials: true
+			},
+			dataType: "json",
+			contentType: "application/json",
+			type: "post",
+			success: function(data) {
+				if(data.code == 0) {
+					window.location.href = 'myOrder.html';
+				} else {
+					errLay(data.msg)
+				}
+			}
+		});
+	}
+
+
 	
 });

@@ -100,12 +100,11 @@ $(function(){
                             $("#phone").val(listJson.workPhone)
                         }                        
                     }
-                }
-            },
-            error:function(xhr,type,errorThrown) {
-                console.log(xhr);
-                console.log(type)
+                }else {
+					errLay(data.msg)
+				}
             }
+            
         })
     }
 
@@ -122,11 +121,9 @@ $(function(){
             success: function(data) {
                 if(data.code == 0){
                     window.location.href = "tenant.html"
-                }
-            },
-            error: function(xhr,type,errorThrown) {
-                console.log(xhr);
-                console.log(type)
+                }else {
+					errLay(data.msg)
+				}
             }
         })
     }

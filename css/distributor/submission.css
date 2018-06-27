@@ -79,7 +79,7 @@ span{
 .photo{
     width: 100%;
     height: 1.8rem;
-     /*display: none*/ 
+    display: none; 
 }
 .photo span{
     line-height: 1.3rem;
@@ -145,7 +145,7 @@ span{
 	display: flex;
     width:100%;
     min-height: 1.8rem;
-    display: none;
+    /*display: none;*/
 }
 .up-load ul{
 	display: block;

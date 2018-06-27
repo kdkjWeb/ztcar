@@ -68,12 +68,9 @@ $(function() {
 							}
 						}
 					})
+				}else {
+					errLay(data.msg)
 				}
-			},
-			error: function(xhr, type, errorThrown) {
-				//异常处理；
-				console.log(xhr);
-				console.log(type);
 			}
 		});
 	}
@@ -111,13 +108,10 @@ $(function() {
 							}
 						}
 					})
+				}else {
+					errLay(data.msg)
 				}
 
-			},
-			error: function(xhr, type, errorThrown) {
-				//异常处理；
-				console.log(xhr);
-				console.log(type);
 			}
 		});
 	}
@@ -149,12 +143,9 @@ $(function() {
 						title: "车型",
 						items: arr
 					})
+				}else {
+					errLay(data.msg)
 				}
-			},
-			error: function(xhr, type, errorThrown) {
-				//异常处理；
-				console.log(xhr);
-				console.log(type);
 			}
 		});
 	}
