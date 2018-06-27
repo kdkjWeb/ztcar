@@ -11,111 +11,47 @@
     <link rel="stylesheet" href="../../css/common/weui.min.css">
     <link rel="stylesheet" href="../../css/common/jquery-weui.min.css">
     <link rel="stylesheet" type="text/css" href="../../css/common/iconfont.css">
-    <link rel="stylesheet" href="../../css/distributor/afterCredit.css">
+    <link rel="stylesheet" href="../../css/distributor/submission.css">
 </head>
 <body>
     <header>
         <div class="basic">
             <div class="name">
                 <label>借款人姓名：</label>
-                <span>张三</span>
+                <span id="userName"></span>
             </div>
             <div class="phone">
                 <label>电话号码：</label>
-                <span>12345678945</span>
+                <span id="userPhone"></span>
             </div>
         </div>
         <div class="cause">
             <label>未通过原因：</label>
             <span>拒绝原因..........</span>
         </div>
+
     </header>
     <div class="line"></div>
     <div class="content">
-        <div class="c-list">
-            <div class="list">
-                <label>行驶证：</label>
-                <div class="photo">
-                    <i class="iconfont icon-xiangji1"><span>拍照或选择图片</span></i>
-                </div>
-                <div class="weui_cells weui_cells_form up-load">
-                    <div class="weui_cell">
-                        <div class="weui_cell_bd weui_cell_primary">
-                            <div class="weui_uploader">
-                                <div class="weui_uploader_bd">
-                                    <ul class="weui_uploader_files">
-                                    </ul>
-                                    <div class="weui-uploader__input-box">
-                                        <input id="uploaderInput" class="weui-uploader__input js_file" type="file" accept="image/jpg,image/jpeg,image/png,image/gif" multiple="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+    
+        <div class="more12">
+            <div class="c-list" id="myList">
+            	
+                <!--<div class="list">
+                    <label>验三截图：</label>
+                    <div class="photo">
+                        <i class="iconfont icon-xiangji1"><span>拍照或选择图片</span></i>
                     </div>
-                </div>
-            </div>
-            <div class="list">
-                <label>登记证：</label>
-                <div class="photo">
-                    <i class="iconfont icon-xiangji1"><span>拍照或选择图片</span></i>
-                </div>
-                <div class="weui_cells weui_cells_form up-load">
-                    <div class="weui_cell">
-                        <div class="weui_cell_bd weui_cell_primary">
-                            <div class="weui_uploader">
-                                <div class="weui_uploader_bd">
-                                    <ul class="weui_uploader_files">
-                                    </ul>
-                                    <div class="weui-uploader__input-box">
-                                        <input id="uploaderInput" class="weui-uploader__input js_file" type="file" accept="image/jpg,image/jpeg,image/png,image/gif" multiple="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="up-load">
+                    	<ul>
+                    		<div class="inputBox">
+	                            <input class="inputFile" type="file" accept="image/jpg,image/jpeg,image/png,image/gif">
+                        	</div>
+                    	</ul>
                     </div>
-                </div>
-            </div>
-            <div class="list">
-                <label>购置税发票：</label>
-                <div class="photo">
-                    <i class="iconfont icon-xiangji1"><span>拍照或选择图片</span></i>
-                </div>
-                <div class="weui_cells weui_cells_form up-load">
-                    <div class="weui_cell">
-                        <div class="weui_cell_bd weui_cell_primary">
-                            <div class="weui_uploader">
-                                <div class="weui_uploader_bd">
-                                    <ul class="weui_uploader_files">
-                                    </ul>
-                                    <div class="weui-uploader__input-box">
-                                        <input id="uploaderInput" class="weui-uploader__input js_file" type="file" accept="image/jpg,image/jpeg,image/png,image/gif" multiple="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="list">
-                <label>其他资料：</label>
-                <div class="photo">
-                    <i class="iconfont icon-xiangji1"><span>拍照或选择图片</span></i>
-                </div>
-                <div class="weui_cells weui_cells_form up-load">
-                    <div class="weui_cell">
-                        <div class="weui_cell_bd weui_cell_primary">
-                            <div class="weui_uploader">
-                                <div class="weui_uploader_bd">
-                                    <ul class="weui_uploader_files">
-                                    </ul>
-                                    <div class="weui-uploader__input-box">
-                                        <input id="uploaderInput" class="weui-uploader__input js_file" type="file" accept="image/jpg,image/jpeg,image/png,image/gif" multiple="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </div>-->
+
             </div>
         </div>
         <div class="weui-cells">
@@ -126,20 +62,15 @@
                 </div>
             </div>
         </div>
-        <a href="javascript:;" class="weui-btn weui-btn_primary">确认提交</a> 
+        <a href="javascript:;" class="weui-btn weui-btn_primary" id="save">确认提交</a> 
     </div> 
-    <div class="pop-box">
-        <div class="mask"></div>
-        <div class="box1">
-            <p class="warn">提醒</p>
-            <p class="wrong">你确定要删除本张照片吗？删除之后将无法删除</p>
-            <div class="btn-box">
-                <a href="javascript:;" class="weui-btn weui-btn_primary" id="yes">取消</a> 
-                <a href="javascript:;" class="weui-btn weui-btn_primary" id="no">确定</a>  
-            </div>
-        </div>
-    </div>
+    
+    <div class="weui-gallery" id="imgLayer">
+	  <span class="weui-gallery__img"></span>
+	</div>
+    
+    
 </body>
 <script src="../../js/common/jquery-weui.min.js"></script>
-<script src="../../js/distributor/afterCredit.js"></script>
+<script src="../../js/distributor/submission.js"></script>
 </html>
