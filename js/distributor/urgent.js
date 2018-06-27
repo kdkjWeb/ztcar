@@ -70,11 +70,9 @@ $(function(){
                             }
                         }
                     }
-                }
-            },
-            error: function(xhr,type,errorThrown){
-                console.log(xhr);
-                console.log(type)
+                }else {
+					errLay(data.msg)
+				}
             }
         })
     }
@@ -92,11 +90,12 @@ $(function(){
                 withCredentials:true
             },
             success: function(data){
-                window.location.href = "application.html"
-            },
-            error: function(xhr,type,errorThrown){
-                console.log(xhr);
-                console.log(type)
+            	if(data.code == 0){
+            		 window.location.href = "application.html";
+            	}else {
+					errLay(data.msg)
+				}
+               
             }
         })
     }

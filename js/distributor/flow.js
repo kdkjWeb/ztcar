@@ -46,17 +46,65 @@ $(function() {
 	}
 
 	function pushList(list) {
+		var listLeng = list.length;
+		
 		var text = '';
-		if(list.length > 3) {
-			text += '<div class="leftDiv">';
-			if(list.length > 0) {
-				Choice()
+
+		text += '<div class="leftDiv">'
+		for(var i = 0; i < 3 && i<listLeng; i++) {
+			if(i == 0) {
+				text += addText(list[i].flowId,list[i].status,list[i].flowName);
+			} else {
+				text += arrow();
+				text += addText(list[i].flowId,list[i].status,list[i].flowName);
 			}
-			text += '</div>'
 
 		}
+		text += '</div>'
 
-		$(".content").html(text)
+		if(list.length > 3) {
+			text += Down();
+			text += '<div class="rightDiv">';
+			for(var i = 3; i < 6 && i<listLeng; i++){
+				if(i == 3) {
+					text += addText(list[i].flowId,list[i].status,list[i].flowName);
+				} else {
+					text += arrow();
+					text += addText(list[i].flowId,list[i].status,list[i].flowName);
+				}
+			}
+			text += '</div>';
+		}
+		
+		if(list.length > 6) {
+			text += Down();
+			text += '<div class="leftDiv">';
+			for(var i = 6; i < 9 && i<listLeng; i++){
+				if(i == 6) {
+					text += addText(list[i].flowId,list[i].status,list[i].flowName);
+				} else {
+					text += arrow();
+					text += addText(list[i].flowId,list[i].status,list[i].flowName);
+				}
+			}
+			text += '</div>';
+		}
+		
+		if(list.length > 9) {
+			text += Down();
+			text += '<div class="rightDiv">';
+			for(var i = 9; i < 15 && i<listLeng; i++){
+				if(i == 9) {
+					text += addText(list[i].flowId,list[i].status,list[i].flowName);
+				} else {
+					text += arrow();
+					text += addText(list[i].flowId,list[i].status,list[i].flowName);
+				}
+			}
+			text += '</div>';
+		}
+	
+		$('.content').html(text);
 
 	}
 
@@ -64,24 +112,83 @@ $(function() {
 		var text = '<div class="arrow">' +
 			'<i class="iconfont icon-jiantou3"></i>' +
 			'</div>';
-			return text;
-			
+		return text;
+
 	}
 
-	function Choice() {
-		var text = '<div class="choose">' +
-			'<i class="iconfont icon-chanpin"></i>' +
-			'<p>选择产品</p>' +
-			'</div>';
+	function Down() {
+		var text = '<div class="Down">' +
+			'<i class="iconfont icon-jiantou3"></i>' +
+			'</div>'
 		return text;
 	}
 
-	function distributorMsg() {
-		var text = '<div class="choose" id="distributorMsg">' +
-			'<i class="iconfont icon-xinxi"></i>' +
-			'<p>完善贷款信息</p>' +
-			'</div>';
-		return text;
+	function addText(id,status,flowName) {
+		var mytext = '';
+		var mystatus = '';
+		if(status == 1){
+			mystatus = 'status';
+		}
+		if(id == 1) {
+			mytext = '<div class="choose '+mystatus+'">' +
+				'<i class="iconfont icon-chanpin"></i>' +
+				'<p>'+flowName+'</p>' +
+				'</div>';
+
+		} else if(id == 2) {
+			mytext = '<div class="choose '+mystatus+'"  id="distributorMsg">' +
+				'<i class="iconfont icon-xinxi"></i>' +
+				'<p>'+flowName+'</p>' +
+				'</div>';
+		} else if(id == 3) {
+			mytext = '<div class="choose '+mystatus+'" id="submission">' +
+				'<i class="iconfont icon-jibenziliao"></i>' +
+				'<p>'+flowName+'</p>' +
+				'</div>';
+		} else if(id == 4) {
+			mytext = '<div class="choose '+mystatus+'">' +
+				'<i class="iconfont icon-shiyongyinzhang"></i>' +
+				'<p>'+flowName+'</p>' +
+				'</div>';
+		} else if(id == 5) {
+			mytext = '<div class="choose '+mystatus+'" id="carMsg">' +
+				'<i class="iconfont icon-cheliang-"></i>' +
+				'<p>'+flowName+'</p>' +
+				'</div>';
+		} else if(id == 6) {
+			mytext = '<div class="choose '+mystatus+'">' +
+				'<i class="iconfont icon-tubiaolunkuo-"></i>' +
+				'<p>'+flowName+'</p>' +
+				'</div>';
+		} else if(id == 7) {
+			mytext = '<div class="choose '+mystatus+'">' +
+				'<i class="iconfont icon-jibenziliao"></i>' +
+				'<p>'+flowName+'</p>' +
+				'</div>';
+		} else if(id == 8) {
+			mytext = '<div class="choose '+mystatus+'">' +
+				'<i class="iconfont icon-shiyongyinzhang"></i>' +
+				'<p>'+flowName+'</p>' +
+				'</div>';
+		} else if(id == 9) {
+			mytext = '<div class="choose '+mystatus+'">' +
+				'<i class="iconfont icon-qian"></i>' +
+				'<p>'+flowName+'</p>' +
+				'</div>';
+		} else if(id == 10) {
+			mytext = '<div class="choose '+mystatus+'" id="afterCredit">' +
+				'<i class="iconfont icon-jibenziliao"></i>' +
+				'<p>'+flowName+'</p>' +
+				'</div>';
+		} else if(id == 11) {
+			mytext = '<div class="choose '+mystatus+'">' +
+				'<i class="iconfont icon-shiyongyinzhang"></i>' +
+				'<p>'+flowName+'</p>' +
+				'</div>';
+		}
+		
+		return mytext;
+
 	}
 
 })

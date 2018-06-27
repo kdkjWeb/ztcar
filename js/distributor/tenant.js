@@ -45,17 +45,17 @@ $(function() {
 			return false
 		} else if(isId(id, "承租人") == false) {
 			return false
-		} 
-//		else if(isDate(date, "承租人") == false) {
-//			return false
-//		} 
+		}
+		//		else if(isDate(date, "承租人") == false) {
+		//			return false
+		//		} 
 		else if(isPhone(tel) == false) {
 			return false
 		} else if(isPhone(phone) == false) {
 			return false
 		} else {
 
-			Verification();		
+			Verification();
 
 			listJson.applyId = importId; //id
 			listJson.name = $('#name').val(); //姓名
@@ -80,8 +80,8 @@ $(function() {
 		}
 	})
 
-//获取借贷人信息
-	function getList() { 
+	//获取借贷人信息
+	function getList() {
 		let data = {
 			id: importId
 		}
@@ -150,18 +150,14 @@ $(function() {
 						}
 
 					}
+				} else {
+					errLay(data.msg)
 				}
-			},
-			error: function(xhr, type, errorThrown) {
-				//异常处理；
-				console.log(xhr);
-				console.log(type);
 			}
 		});
 	}
-	
-	
-//保存借贷人信息
+
+	//保存借贷人信息
 	function saveList() {
 		$.ajax({
 			url: path + "/apply/saveTenantInfo",
@@ -177,15 +173,11 @@ $(function() {
 					console.log(data);
 					window.location.href = "guarantor.html"
 				}
-			},
-			error: function(xhr, type, errorThrown) {
-				//异常处理；
-				console.log(xhr);
-				console.log(type);
+			} else {
+				errLay(data.msg)
 			}
 		});
 	}
-
 
 	function Verification() {
 		$('.Required').each(function() {
@@ -197,7 +189,5 @@ $(function() {
 			}
 		})
 	}
-
-
 
 })

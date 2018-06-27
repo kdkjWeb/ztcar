@@ -7,7 +7,7 @@ $(function() {
 
 	$("#nature").select({
 		title: "企业性质",
-		items: ["国有企业","外资企业","民营企业","政府及事业单位","其他"]
+		items: ["国有企业", "外资企业", "民营企业", "政府及事业单位", "其他"]
 	})
 	$("#trade").select({
 		title: "所属行业",
@@ -85,12 +85,9 @@ $(function() {
 
 					console.log(data)
 
+				} else {
+					errLay(data.msg)
 				}
-			},
-			error: function(xhr, type, errorThrown) {
-				//异常处理；
-				console.log(xhr);
-				console.log(type);
 			}
 		});
 	}
@@ -108,12 +105,9 @@ $(function() {
 			success: function(data) {
 				if(data.code == 0) {
 					window.location.href = "address.html"
+				} else {
+					errLay(data.msg)
 				}
-			},
-			error: function(xhr, type, errorThrown) {
-				//异常处理；
-				console.log(xhr);
-				console.log(type);
 			}
 		});
 	}

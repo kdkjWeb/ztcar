@@ -5,7 +5,7 @@
 }
 
 .content>div{
-	border: 1px solid red;
+	/*border: 1px solid red;*/
 	overflow: hidden;
 	width: 100%;
 }
@@ -73,13 +73,19 @@ p{
     white-space:nowrap;
 }
 
-
-
-.content .Down:nth-of-type(1){
-	background-color: red;
+.Down{
+	box-sizing: border-box;
+	padding:0 .73rem;
 }
 
 
+.Down:nth-of-type(2),.Down:nth-of-type(6){
+	text-align: right;
+}
+
 .icon-jiantou3{
 	color: #ef850d;
+}
+.status i{
+	color: #3b6bf4 !important;
 }
