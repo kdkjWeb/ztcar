@@ -6,6 +6,7 @@ $(function() {
 	var listJson = {};
 	var importId = GetRequest().applyId;
 	var importType = GetRequest().dataType;
+	var dataId = GetRequest().dataId;
 
 	getList();
 
@@ -69,7 +70,8 @@ $(function() {
 
 		var data = {
 			applyId: importId,
-			isAuditingType:importType
+			isAuditingType:importType,
+			nodeId:dataId
 		}
 		$.ajax({
 			url: path + "/smAuditing/getAuitingFiles",
@@ -173,7 +175,7 @@ $(function() {
 			type: "post",
 			success: function(data) {
 				if(data.code == 0) {
-					window.location.href = 'myOrder.html';
+					// window.location.href = 'myOrder.html';
 				} else {
 					errLay(data.msg)
 				}
