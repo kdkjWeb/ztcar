@@ -1,5 +1,4 @@
 $(function(){
-
     
     var listJson = {};
     var important = 1;
@@ -27,7 +26,6 @@ $(function(){
         }
     });
     $("#search").on("click",function(){
-        console.log("低分局is电话")
         Name()
     })
     $(".time input").datetimePicker ({
@@ -41,11 +39,8 @@ $(function(){
     
     function Name() {
         var text = $("#input").val();
-        text = $.trim(text)
-        // if($.trim(text) !="") {
+        // text = $.trim(text)
             $("#table tbody tr").hide().find("td:first").filter(":contains('"+ text +"')").parent().show()
-        // }
-      
     }
 })
 

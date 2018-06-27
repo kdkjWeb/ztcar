@@ -18,6 +18,7 @@ $(function() {
 })
 
 function getUserVal() {
+<<<<<<< HEAD
 	let data = {
 		id = 1
 	}
@@ -45,5 +46,10 @@ function getUserVal() {
 			console.log(type)
 		}
 	})
+=======
+    // let data = {
+    //     id = 1
+    // }
+>>>>>>> e4ebae95662af16a1d3687e40a24afbd642aa861
 
 }
