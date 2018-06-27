@@ -58,7 +58,15 @@ $(function() {
 		$(this).parents('li').remove();
 	})
 
-	function getList() {
+
+	//	$(document).on('click','li',function(){
+	//		var myurl = $(this).css("background-image");
+	//		$('#imgLayer').find('span').css("background-image",myurl);
+	//		$('#imgLayer').show();
+	//	})
+	
+	function getList(){
+
 		var data = {
 			applyId: importId,
 			isAuditingType:importType
@@ -105,6 +113,7 @@ $(function() {
 			}
 		});
 	}
+
 
 	function addImg(myFile, ulIndex) { //上传图片
 		Fdata = new FormData();
@@ -171,6 +180,7 @@ $(function() {
 			}
 		});
 	}
+
 
 
 	

@@ -9,8 +9,9 @@ p{
 .comeBack{
     width: 2rem;
     height: .5rem;
-    margin-top: .4rem;
-    margin-left: 70%
+    padding-top: .4rem;
+    margin-left: 70%;
+    box-sizing: border-box
 }
 .comeBack p{
     font-size: .3rem;
@@ -23,18 +24,35 @@ p{
 }
 /* 图标 */
 #iconfont{
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 4rem;
+    height: 4rem;
     border: 1px solid rgb(59,107,244);
     border-radius: 50%;
-    margin: .8rem 2rem;
+    margin: .8rem 1.8rem;
 }
 .iconfont{
-    font-size: 2.1rem;
+    font-size: 1.5rem;
     color: rgb(59,107,244);
-    margin-left: .45rem
+    margin-left: 1rem;
+    margin-top: .3rem;
+}
+.choose{
+    font-size: .3rem;
+    color: #fc7700;
+    padding: 0;
+    text-align: center;
+}
+.car-type{
+    font-size: .28rem;
+    text-align: center;
+    padding: .1rem 0;
 }
 /* 可贷款额度**你的身价为 */
 .price{
     color: #fc7700
+}
+.can{
+    width: 4rem;
+    display: flex;
+    margin: auto;
 }
