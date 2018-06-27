@@ -1,7 +1,7 @@
 $(function() {
 
 	var listJson = {};
-	var importId = 1;
+	var importId = GetRequest().applyId;
 
 	getList(); //回显
 
@@ -94,7 +94,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.code == 0) {
-					window.location.href = "married.html"
+					window.location.href = "married.html?applyId="+importId;
 				}else{
 					errLay(data.msg)
 				}

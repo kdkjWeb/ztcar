@@ -1,6 +1,6 @@
 $(function() {
 	var listJson = {};
-	var importId = 1;
+	var importId = GetRequest().applyId;
 
 	getList();
 	getCar();
@@ -171,15 +171,10 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.code == 0) {
-					window.location.href = "work.html"
+					window.location.href = "work.html?applyId="+importId;
 				}else {
 					errLay(data.msg)
 				}
-			},
-			error: function(xhr, type, errorThrown) {
-				//异常处理；
-				console.log(xhr);
-				console.log(type);
 			}
 		});
 	}

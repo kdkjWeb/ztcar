@@ -1,6 +1,6 @@
 $(function() {
 	var listJson = {};
-	var importId = 1;
+	var importId = GetRequest().applyId;
 
 	getList(); //获取借贷人信息
 
@@ -170,11 +170,10 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.code == 0) {
-					console.log(data);
-					window.location.href = "guarantor.html"
-				}
-			} else {
+					window.location.href = "guarantor.html?applyId="+importId;
+				} else {
 				errLay(data.msg)
+			}
 			}
 		});
 	}

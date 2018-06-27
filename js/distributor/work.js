@@ -1,7 +1,7 @@
 $(function() {
 
 	var listJson = {};
-	var importId = 1;
+	var importId = GetRequest().applyId;
 
 	getList(); //回显
 
@@ -43,7 +43,7 @@ $(function() {
 
 	function getList() { //回显
 		let data = {
-			id: 1
+			id: importId
 		}
 		$.ajax({
 			url: path + "/apply/getBorrowerWorkByApplyId",
@@ -104,7 +104,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.code == 0) {
-					window.location.href = "address.html"
+					window.location.href = "address.html?applyId="+importId;
 				} else {
 					errLay(data.msg)
 				}

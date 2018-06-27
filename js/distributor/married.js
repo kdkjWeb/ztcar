@@ -1,6 +1,6 @@
 $(function(){
     var listJson = {};
-    var importId = 1;
+   var importId = GetRequest().applyId;
     
     getOldList();   // 回显
 
@@ -55,7 +55,7 @@ $(function(){
 
     function getOldList() {
         let data = {
-            id: 1
+            id: importId
         }
         $.ajax({
             url:path+"/apply/getSmSpouseInfoByApplyId",
@@ -120,7 +120,7 @@ $(function(){
             },
             success: function(data) {
                 if(data.code == 0){
-                    window.location.href = "tenant.html"
+                    window.location.href = "tenant.html?applyId="+importId;
                 }else {
 					errLay(data.msg)
 				}

@@ -1,6 +1,7 @@
 $(function() {
-
-	//	getCar(); //获取车辆品牌 
+	var importId = GetRequest().applyId;
+	
+	getCar(); //获取车辆品牌 
 
 	$("#audi").select({
 		title: "请选择车系",
@@ -29,14 +30,12 @@ $(function() {
 	$("#payment").on("blur", function() {
 
 	})
-	$(".weui-btn").on("click", function() {
-		window.location.href = "basicMsg.html"
-	})
+	
 
 	//====================获取汽车品牌=============
 	function getCar() {
 		let data = {
-			id: 1
+			id: importId
 		}
 		$.ajax({
 			url: path + "/apply/getBrandNameList",
@@ -164,17 +163,8 @@ $(function() {
 	var payment = $('#payment'); //预估月供
 	var aa = $('.aa');
 
-	var paymentValCtr = accSub(1, accAdd(CarProportion, AddProportion)); // 1-车贷比例-加融比例\
+	var paymentValCtr = accSub(1, accAdd(CarProportion, AddProportion)); // 1-车贷比例-加融比例
 
-	//	firstRatio.blur(setFirstRatio); //首付比例失去焦点事件
-	//	firstPayment.blur(setFirstPayment); //首付比例失去焦点事件
-	//	firstRatio.change(setCarFinancing); //填写首付金额
-	//	firstRatio.change(iptDislable); //
-	//	firstRatio.change(setTotalLoan);	
-	//	coefficient.change(setRate)   //填写万元还款系数后，自动修改费率
-	//	rate.change(setCoefficient)  //填写费率后，自动修改万元还款系数
-	//	rate.change(setPayment)  //填写费率后，自动修改万元还款系数
-	//	TotalLoan.change()
 
 	//	===========
 
@@ -310,7 +300,7 @@ $(function() {
 		}
 	}
 
-
+	TotalLoan.change(setPayment);
 
 	function setPayment() {
 		var m = parseFloat(month.attr('data-values')); //贷款期数	
@@ -321,13 +311,19 @@ $(function() {
 		var c = accDiv(b, m)
 		payment.text(keepTwo(c));
 	}
+	$("#save").on("click", function() {
+			save();
+	})
 
-	//	function TotalChange(){
-	//		if(){
-	//			
-	//		}else{
-	//			
-	//		}
-	//	}
+	function save(){
+		window.location.href = "basicMsg.html?applyId="+importId;
+	}
+
+
+
+
+
+
+
 
 })
