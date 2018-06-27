@@ -99,8 +99,20 @@ $(function() {
 							//							'<i class="iconfont icon-xiangji1"><span>拍照或选择图片</span></i>' +
 							//							'</div>' +
 							'<div class="up-load">' +
-							'<ul>' +
-							'<div class="inputBox">' +
+							'<ul>';
+							
+							if(listJson.smFileOwens[i].smFiles.length>0){
+								for(var j=0;j<listJson.smFileOwens[i].smFiles.length;j++){
+									text += '<li class="weui_uploader_file weui_uploader_status"  style="background-image: url('+path+listJson.smFileOwens[i].smFiles[j].filePath+');">'+
+									'<span class="colseInput iconfont icon-guanbi2"></span>'+
+								'</li>'
+								}
+								
+							}
+							
+							
+							
+							text += '<div class="inputBox">' +
 							'<input class="inputFile" type="file" accept="image/jpg,image/jpeg,image/png,image/gif">' +
 							'</div>' +
 							'</ul>' +
@@ -164,6 +176,7 @@ $(function() {
 	}
 
 	function mysave() {
+		console.log('1')
 		$.ajax({
 			url: path + "/smAuditing/auditFirstSubmit",
 			data: JSON.stringify(listJson),
