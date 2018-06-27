@@ -4,7 +4,8 @@ $(function() {
 	})
 
 	var listJson = {};
-	var importId = 1;
+	var importId = GetRequest().applyId;
+	var importType = GetRequest().dataType;
 
 	getList();
 
@@ -59,7 +60,8 @@ $(function() {
 
 	function getList() {
 		var data = {
-			applyId: importId
+			applyId: importId,
+			isAuditingType:importType
 		}
 		$.ajax({
 			url: path + "/smAuditing/getAuitingFiles",

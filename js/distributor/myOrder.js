@@ -61,7 +61,7 @@ $(function() {
 
 	//==========遍历列表====
 	function setList(arr) {
-		var text = '<div class="list" dataId="' + arr.id + '">' +
+		var text = '<div class="list" dataId="' + arr.id + '" applyId ="'+arr.applyId+'">' +
 			'<div class="c-list">' +
 			'<div class="basic-msg">' +
 			'<div class="basic">' +
@@ -126,7 +126,8 @@ $(function() {
 //===========================
 	
 	$(document).on('click','.choose',function(){
-		window.location.href = 'flow.html';
+		var applyid = $(this).parents('.list').attr('applyid')
+		window.location.href = 'flow.html?applyId='+applyid;
 	})
 
 
