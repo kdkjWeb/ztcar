@@ -109,11 +109,11 @@ $(function() {
 		$(this).parents('li').remove();
 	})
 
-//	$(document).on('click','li',function(){
-//		var myurl = $(this).css("background-image");
-//		$('#imgLayer').find('span').css("background-image",myurl);
-//		$('#imgLayer').show();
-//	})
+	//	$(document).on('click','li',function(){
+	//		var myurl = $(this).css("background-image");
+	//		$('#imgLayer').find('span').css("background-image",myurl);
+	//		$('#imgLayer').show();
+	//	})
 	
 	function getList(){
 		var data = {
@@ -146,6 +146,6 @@ $(function() {
 			}
 		});
 	}
-	
+
 	
 });

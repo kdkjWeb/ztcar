@@ -15,7 +15,6 @@ header{
     margin: auto;
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px dashed #ccc;
     line-height: 1rem;
     color: #555555
 }
@@ -23,6 +22,7 @@ header{
     width: 6.9rem;
     height: 1rem;
     margin: auto;
+    border-top: 1px dashed #ccc;
     display: none
 }
 label{
@@ -54,9 +54,7 @@ span{
     height: 100%;
     background-color: #fff
 }
-.more12{
-    /*display: none*/
-}
+
 /* 内容列表 */
 .c-list{
     width:6.9rem;
@@ -168,12 +166,12 @@ span{
 	display: inline-block;
 	position: relative;
 	z-index: 10;
-	width:1rem;
+	width:1.5rem;
 	height: 1.5rem;
 	background-size: 100% 100%; 
-	margin-right:2%;
+    margin-right:2%;
 	border-radius: 5px;
-	overflow: hidden;
+    overflow: hidden;
 }
 
 .inputBox input{
@@ -198,7 +196,7 @@ span{
 	background-color: #3b6bf4;
 	line-height: .5rem;
 	text-align: center;
-	border-radius: 50%;
+    border-radius: 50%;
 }
 .colseInput{
 	display: inline-block;
