@@ -90,7 +90,7 @@ $(function(){
                 console.log(data)
             	if(data.code == 0){
                     console.log(data.code )
-            		 window.location.href = "application.html?applyId="+importId;
+//          		 window.location.href = "application.html?applyId="+importId;
             	}else {
 					errLay(data.msg)
 				}
