@@ -69,12 +69,14 @@ p{
 .status p{
     padding: .6rem 0 1.4rem
 }
+.mask{
+    width:100%;
+    background-color: #fff;
+}
 .p-c{
     position: absolute;
     top:1.85rem;
-    left: 10%;
-    /* width: 1.5rem;
-    height: .5rem; */
+    left: 0;
 }
 #money{
     font-size: .26rem;
@@ -82,9 +84,20 @@ p{
     padding: 0;
     color: rgb(252,119,0)
 }
-.status .icon-shixinyuan{
+/* .status .icon-shixinyuan{
     color: rgb(252,119,0);
-    /* margin-left: .5rem; */
+    margin-left: .5rem;
+} */
+#circle{
+    position: absolute;
+    top: calc(130%);
+    left: 0;
+    width:.3rem;
+    height: .3rem;
+    background-color: orangered;
+    padding: 0;
+    margin: 0;
+    border-radius: 50%
 }
 /* 进度条 */
 .process{

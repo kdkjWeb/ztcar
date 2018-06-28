@@ -3,7 +3,7 @@ p{
     color: rgb(59,107,244);
     text-align: center;
     padding: 1.45rem 0 0;
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 /* 你的职业 */
 .occupation{
@@ -18,7 +18,7 @@ p{
 }
 .occupation li{
     width: 33%;
-    margin-top: 1rem
+    margin-top: 1rem;
 }
 .occupation div{
     width:2rem;
@@ -28,18 +28,18 @@ p{
 .occupation .iconfont{
     font-size: .9rem;
     color: rgb(59,107,244);
-    margin-left: .5rem
+    margin-left: .5rem;
 }
 .occupation p{
     font-size: .28rem;
     padding: 0;
-    margin: 0
+    margin: 0;
 }
 .line{
     width: 100%;
     height: .1rem;
     margin-top: 1.5rem;
-    background-color: #ebf2ff
+    background-color: #ebf2ff;
 }
 /* 你的身价 */
 .status{
@@ -49,7 +49,7 @@ p{
     position: relative;
 }
 .status p{
-    padding: .6rem 0 1.4rem
+    padding: .6rem 0 1.4rem;
 }
 .p-c{
     position: absolute;
@@ -62,7 +62,7 @@ p{
     font-size: .26rem;
     margin: 0;
     padding: 0;
-    color: rgb(252,119,0)
+    color: rgb(252,119,0);
 }
 .status .icon-shixinyuan{
     color: rgb(252,119,0);
@@ -80,5 +80,5 @@ p{
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-top: .3rem
+    margin-top: .3rem;
 }
