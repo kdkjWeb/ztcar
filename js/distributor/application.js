@@ -1,13 +1,14 @@
 $(function(){
     var listJson = {}
     var importId = GetRequest().applyId;
+    Create();  //获取合同模板
+
     $(".send").on("click",function(){
-        Create()
         cue("提醒","是否发送至经销商邮箱？")
         $("#yes").on("click",function(){
-            Send()
-            // $(".pop-box").hide()
-            // errLay("已发送至经销商邮箱")
+            listJson.applyId = importId;    
+            console.log(listJson);
+            Send(); //上传
         })
         $("#no").on("click",function(){
             $(".pop-box").hide()
@@ -32,8 +33,7 @@ $(function(){
             },
             success:function(data){
                 if(data.code == 0){
-                  
-                    
+                  listJson.smCompacts = data.data;  
                 }else {
 					errLay(data.msg)
 				}
@@ -51,7 +51,13 @@ $(function(){
             type:"post",
             success: function(data) {
                 console.log(data)
-
+                if(data.code == 0){
+                    $(".pop-box").hide()
+                    errLay("已发送至经销商邮箱")
+                } else{
+                    errLay(data.msg);
+                }   
+            
             },
             error: function(xhr,type,errthrown) {
                 console.log(xhr);
