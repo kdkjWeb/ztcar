@@ -82,6 +82,7 @@ $(function() {
 			text += '<div class="choose">';
 		}
 		text += '<p>' + arr.nodeName + '</p>' + '</div>';
+//		text +=  arr.nodeName + '</div>';
 		if(arr.status == -1) {
 			text += '<div class="dislableDiv">';
 		} else {
