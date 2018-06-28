@@ -10,6 +10,6 @@ $(function(){
         })
     })
     $(".weui-btn").on("click",function(){
-        window.location.href="submission.html"
+        window.location.href="myOrder.html"
     })
 })

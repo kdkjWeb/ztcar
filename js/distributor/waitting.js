@@ -1,4 +1,7 @@
 $(function() {
+
+	getList();
+
 	$(document).on("click", '#no', function() {
 		$('.pop-box').fadeOut('9000');
 		var setRemove = setTimeout(function() {
@@ -7,7 +10,6 @@ $(function() {
 	})
 
 	// 列表遍历
-	getList();
 
 	//    点击转订单
 	$(document).on('click', '.to', function() {
@@ -27,22 +29,20 @@ $(function() {
 		window.location.href = "detail.html?id=" + id;
 	});
 
-})
+	$('#today').click(function() {
+		window.history.back();
+	})
 
-$('#today').click(function() {
-	window.history.back();
-})
-
-//======遍历列表结果=======
-function eachList(arr) {
-	$.each(arr, function(index, el) {
-		let text;
-		if(el.statusStr == '通过') {
-			text += ` <tr class="pass">`
-		} else {
-			text += ` <tr class="noPass">`
-		}
-		text += `<td>${el.borrowerName}</td>
+	//======遍历列表结果=======
+	function eachList(arr) {
+		$.each(arr, function(index, el) {
+			let text;
+			if(el.statusStr == '通过') {
+				text += ` <tr class="pass">`
+			} else {
+				text += ` <tr class="noPass">`
+			}
+			text += `<td>${el.borrowerName}</td>
         <td>${el.createTime}</td>
         <td>${el.statusStr}</td>
         <td class="look" attr-id="${el.id}">查看详情</td>
@@ -53,12 +53,12 @@ function eachList(arr) {
         </td>
     </tr>`
 
-		$("table").append(text);
-	})
-}
+			$("table").append(text);
+		})
+	}
 
-function getList() {
-	$.ajax({
+	function getList() {
+		$.ajax({
 			url: path + "/apply/showCreditByDealers",
 			data: {},
 			xhrFields: {
@@ -68,13 +68,18 @@ function getList() {
 			contentType: "application/json",
 			type: "post",
 			success: function(data) {
-				if(data.code == 0 && data.data.length > 0) {
-					eachList(data.data);
-				} else if((data.code != 0) {
-						errLay(data.msg);
+				if(data.code == 0) {
+					if(data.data.length == 0){
+						errLay('暂无数据');
+					}else{
+						eachList(data.data);
 					}
+					
+				} else {
+					errLay(data.msg);
 				}
-			});
+			}
+		});
 	}
 
 	//======将订单待转==========
@@ -102,3 +107,5 @@ function getList() {
 			}
 		});
 	}
+
+})

@@ -96,7 +96,7 @@ xmp{
   font-size: 100%;
 }
 
-html,body {height: 100%;}
+/*html,body {height: 100%;}*/
 
 article,
 aside,
@@ -195,10 +195,10 @@ svg{overflow: hidden;}
 
 
 input[type=button], input[type=submit], input[type=file], input[type=text],input[type=number],button  { 
-	cursor: pointer; 
+	/*cursor: pointer; 
 	-webkit-appearance: none; 
 	text-decoration: none;
-	outline: none;
+	outline: none;*/
 } 
 
 .icon-danxuanxuanzhong{

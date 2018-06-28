@@ -38,7 +38,7 @@
         <div class="c-list">
             <div class="type">
                 <label>贷款类型：</label>
-                <span>车贷分期-诚易融</span>
+                <span id="loansType"></span>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">车辆品牌：</label></div>
@@ -71,9 +71,9 @@
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">还款期限(月)：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="text" placeholder="请选择还款期限" id="month">
+                    <input class="weui-input" type="text" placeholder="请选择还款期限" id="month" style="border: none;"readonly="readonly">
                 </div>
-                <i class="iconfont icon-xiangxia1"></i>
+                <!--<i class="iconfont icon-xiangxia1"></i>-->
             </div>
              <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">万元还款系数：</label></div>
