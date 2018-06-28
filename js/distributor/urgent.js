@@ -1,6 +1,6 @@
 $(function(){
     var listJson = {};
-    var importId = 1;
+    var importId = GetRequest().applyId;
     
     getOldValue() 
 
@@ -16,9 +16,8 @@ $(function(){
         if(Verification() == false){
             return false;
         }
-
-        var arr = [];
-        $('.urgent').each(function(){
+     
+        $('.urgent').each(function(index,item){
             let obj = {};
             if($(this).find('.myName').val()){
                 obj.contactsName = $(this).find('.myName').val();
@@ -29,20 +28,18 @@ $(function(){
             if($(this).find('.myPhone').val()){
                 obj.contactsWay = $(this).find('.myPhone').val();
             }
-            arr.push(obj)
+            listJson.urgentContactList[index] = obj;
+
         })
-
-        listJson.applyId = importId;
-        listJson.urgentContactList = arr;
-
-        getSave();
+        getSave() 
+       
             
     })
 
     function getOldValue() {
         let data = {
-			id: 1
-		}
+			id: importId
+        }
         $.ajax({
             url: path+"/apply/getContactListByApplyId",
             data: JSON.stringify(data),
@@ -54,18 +51,19 @@ $(function(){
             },
             success: function(data) {
                 if(data.code == 0){
-                    if(data.data) {
-                        listJson = data.data;
-                        for(let i = 0;i < listJson.length;i++) {
-                            if(listJson[i]){
-                                if(listJson[i].contactsName){
-                                    $('.myName').eq(i).val(listJson[i].contactsName)
+                    if(data.form) {
+                        listJson = data.form;
+                      
+                        for(let i = 0;i < listJson.urgentContactList.length;i++) {
+                            if(listJson.urgentContactList[i]){
+                                if(listJson.urgentContactList[i].contactsName){
+                                    $('.myName').eq(i).val(listJson.urgentContactList[i].contactsName)
                                 }
-                                if(listJson[i].relation){
-                                    $('.myType').eq(i).val(listJson[i].relation)
+                                if(listJson.urgentContactList[i].relation){
+                                    $('.myType').eq(i).val(listJson.urgentContactList[i].relation)
                                 }
-                                if(listJson[i].contactsWay){
-                                    $('.myPhone').eq(i).val(listJson[i].contactsWay)
+                                if(listJson.urgentContactList[i].contactsWay){
+                                    $('.myPhone').eq(i).val(listJson.urgentContactList[i].contactsWay)
                                 }
                             }
                         }
@@ -78,7 +76,6 @@ $(function(){
     }
 
     function getSave() {
-     console.log(listJson);
         $.ajax({
             url: path+"/apply/saveContactListByApplyIdInfo",
             data: JSON.stringify(listJson),
@@ -90,8 +87,10 @@ $(function(){
                 withCredentials:true
             },
             success: function(data){
+                console.log(data)
             	if(data.code == 0){
-            		 window.location.href = "application.html";
+                    console.log(data.code )
+            		 window.location.href = "application.html?applyId="+importId;
             	}else {
 					errLay(data.msg)
 				}

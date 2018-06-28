@@ -75,18 +75,16 @@ p{
     position: absolute;
     top:1.85rem;
     left: 10%;
-    width: 1.5rem;
-    height: .5rem;
 }
 #money{
     font-size: .26rem;
-    margin: 0;
+    margin: 0 0 0 -.3rem;
     padding: 0;
     color: rgb(252,119,0)
 }
 .status .icon-shixinyuan{
     color: rgb(252,119,0);
-    margin-left: .5rem;
+    /* margin-left: .5rem; */
 }
 /* 进度条 */
 .process{
