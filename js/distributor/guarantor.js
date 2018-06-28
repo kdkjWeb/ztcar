@@ -118,8 +118,7 @@ $(function(){
              postList()
         }
     })
-    // $("#compony .weui-btn").on("click",function(){
-      
+    // $("#compony .weui-btn").on("click",function(){    
     //     let Cphone=$("#Cphone").val()
     //     let Ctel=$("#Ctel").val()
     //     if(isPhone(Cphone,"个人担保")==false){
@@ -217,7 +216,7 @@ $(function(){
             },
             success:function(data){
                 if(data.code==0){
-                    window.location.href="application.html"
+                    window.location.href="urgent.html"
                 }else {
 					errLay(data.msg)
 				}
