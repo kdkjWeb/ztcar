@@ -1,49 +1,48 @@
-$(function(){
-		$(document).on("click",'#no',function(){
-			$('.pop-box').fadeOut('9000');
-			var setRemove = setTimeout(function(){$('.pop-box').remove()},500);
-    })
-	
-  // 列表遍历
-    getList();
-    
-    //    点击转订单
-    $(document).on('click','.to',function(){
-    		let id = $(this).attr('attr-id');
-			let name = $(this).parents('tr').find('td').first().text();
-				
-    	 	cue("提醒","你确定将【"+name+"】的征信结果转为订单吗？")
-        $("#yes").on("click",function(){
-			dowatting(id,1);
-        })
-        
-    })
-    
-	    //	=====查看详情==========
-		$(document).on('click','.look',function(){
-			let id = $(this).attr('attr-id');
-			window.location.href="detail.html?id="+id; 
-		});
-	
-  
+$(function() {
+	$(document).on("click", '#no', function() {
+		$('.pop-box').fadeOut('9000');
+		var setRemove = setTimeout(function() {
+			$('.pop-box').remove()
+		}, 500);
+	})
+
+	// 列表遍历
+	getList();
+
+	//    点击转订单
+	$(document).on('click', '.to', function() {
+		let id = $(this).attr('attr-id');
+		let name = $(this).parents('tr').find('td').first().text();
+
+		cue("提醒", "你确定将【" + name + "】的征信结果转为订单吗？")
+		$("#yes").on("click", function() {
+			dowatting(id, 1);
+		})
+
+	})
+
+	//	=====查看详情==========
+	$(document).on('click', '.look', function() {
+		let id = $(this).attr('attr-id');
+		window.location.href = "detail.html?id=" + id;
+	});
+
 })
 
-
-$('#today').click(function(){
+$('#today').click(function() {
 	window.history.back();
 })
 
-
 //======遍历列表结果=======
-function eachList(arr){
-    $.each(arr,function(index,el){
-    	let text;
-    	if(el.statusStr == '通过'){
-    		text +=` <tr class="pass">`
-    	}else{
-    		text +=` <tr class="noPass">`
-    	}
-        text += `<td>${el.borrowerName}</td>
+function eachList(arr) {
+	$.each(arr, function(index, el) {
+		let text;
+		if(el.statusStr == '通过') {
+			text += ` <tr class="pass">`
+		} else {
+			text += ` <tr class="noPass">`
+		}
+		text += `<td>${el.borrowerName}</td>
         <td>${el.createTime}</td>
         <td>${el.statusStr}</td>
         <td class="look" attr-id="${el.id}">查看详情</td>
@@ -53,57 +52,53 @@ function eachList(arr){
     </div>
         </td>
     </tr>`
-        
-        $("table").append(text);
-    })
+
+		$("table").append(text);
+	})
 }
 
-
-
-function getList(){
-		$.ajax({
-		url: path + "/apply/showCreditByDealers",
-		data:{} ,
-		xhrFields:{
-            withCredentials: true
-        },
-		dataType: "json",
-		contentType:"application/json",
-		type: "post",
-		success: function(data) {
-			if(data.code==0 && data.data.length>0){
-				eachList(data.data);
-			}else{
-				errLay(data.msg)
-			}
-		}
-	});
-}
-
-
-//======将订单待转==========
-function dowatting(id,num){
-	var data = {
-		id:id,
-		applyStatus:num
-	}
+function getList() {
 	$.ajax({
-		url: path + "/apply/updateApplyStatus",
-		data: 	JSON.stringify(data),
-		xhrFields:{
-	       withCredentials: true
-	    },
-		dataType: "json",
-		contentType:"application/json",
-		type: "post",
-		success: function(data) {
-			console.log(data)
-			if(data.code==0){
-				window.location.reload();
+			url: path + "/apply/showCreditByDealers",
+			data: {},
+			xhrFields: {
+				withCredentials: true
+			},
+			dataType: "json",
+			contentType: "application/json",
+			type: "post",
+			success: function(data) {
+				if(data.code == 0 && data.data.length > 0) {
+					eachList(data.data);
+				} else if((data.code != 0) {
+						errLay(data.msg);
+					}
+				}
+			});
+	}
 
-			}else{
-				errLay(data.msg)
-			}
+	//======将订单待转==========
+	function dowatting(id, num) {
+		var data = {
+			id: id,
+			applyStatus: num
 		}
-	});
-}
+		$.ajax({
+			url: path + "/apply/updateApplyStatus",
+			data: JSON.stringify(data),
+			xhrFields: {
+				withCredentials: true
+			},
+			dataType: "json",
+			contentType: "application/json",
+			type: "post",
+			success: function(data) {
+				console.log(data)
+				if(data.code == 0) {
+					window.location.reload();
+				} else {
+					errLay(data.msg)
+				}
+			}
+		});
+	}

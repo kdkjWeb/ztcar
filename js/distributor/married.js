@@ -1,7 +1,10 @@
 $(function(){
     var listJson = {};
-   var importId = GetRequest().applyId;
+    var importId = GetRequest().applyId;
     
+    var Route;  //路径
+	getExsit();   //判断是否有承租人
+	
     getOldList();   // 回显
 
     $("#date").datetimePicker({
@@ -120,7 +123,7 @@ $(function(){
             },
             success: function(data) {
                 if(data.code == 0){
-                    window.location.href = "tenant.html?applyId="+importId;
+                    window.location.href = Route+".html?applyId="+importId;
                 }else {
 					errLay(data.msg)
 				}
@@ -138,4 +141,33 @@ $(function(){
             }
         })
     }
+    
+    
+    function getExsit(){
+		var data = {
+			id: importId
+		}
+		$.ajax({
+			url: path + "/apply/isExsitOtherPersion",
+			data: JSON.stringify(data),
+			dataType: "json",
+			contentType: "application/json",
+			type: "post",
+			xhrFields: {
+				withCredentials: true
+			},
+			success: function(data) {
+				if(data.code == 0) {
+					if(data.data.isTenant == 1){
+						Route = 'tenant';  //配偶
+					}else{
+						Route = 'urgent';  //紧急联系人
+					}
+				}else{
+					errLay(data.msg)
+				}
+			}
+		});
+	}
+    
 })

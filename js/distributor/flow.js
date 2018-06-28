@@ -4,33 +4,44 @@ $(function() {
 	getList();
 
 	$(document).on('click', '#distributorMsg', function() { //完善贷款信息 
-		var applyId = $(this).attr('applyid');
-		window.location.href = 'distributorMsg.html?applyId='+applyId;
+		if($(this).hasClass('status')){
+			var applyId = $(this).attr('applyid');
+			window.location.href = 'distributorMsg.html?applyId='+applyId;
+		}
 	})
 
 	$(document).on('click', '#carMsg', function() { //录入车辆信息
-		window.location.href = 'carMsg.html';
+		if($(this).hasClass('status')){
+			var applyId = $(this).attr('applyid');
+			window.location.href = 'carMsg.html?applyId='+applyId;
+		}
 	})
 
 	$(document).on('click', '#submission', function() { //提交初审资料
-		var applyId = $(this).attr('applyid');
-		var datatype = $(this).attr('datatype');
-		var dataId = $(this).attr('dataid');
-		window.location.href = 'submission.html?applyId='+applyId+'&dataType='+datatype+'&dataId='+dataId;
+		if($(this).hasClass('status')){
+			var applyId = $(this).attr('applyid');
+			var datatype = $(this).attr('datatype');
+			var dataId = $(this).attr('dataid');
+			window.location.href = 'submission.html?applyId='+applyId+'&dataType='+datatype+'&dataId='+dataId;
+		}
 	})
 
 	$(document).on('click', '#credit', function() { //提交放款资料
-		var applyId = $(this).attr('applyid');
-		var datatype = $(this).attr('datatype');
-		var dataId = $(this).attr('dataid');
-		window.location.href = 'credit.html?applyId='+applyId+'&dataType='+datatype+'&dataId='+dataId;
+		if($(this).hasClass('status')){
+			var applyId = $(this).attr('applyid');
+			var datatype = $(this).attr('datatype');
+			var dataId = $(this).attr('dataid');
+			window.location.href = 'credit.html?applyId='+applyId+'&dataType='+datatype+'&dataId='+dataId;
+		}
 	})
 
 	$(document).on('click', '#afterCredit', function() { //提交放款资料
-		var applyId = $(this).attr('applyid');
-		var datatype = $(this).attr('datatype');
-		var dataId = $(this).attr('dataid');
-		window.location.href = 'afterCredit.html?applyId='+applyId+'&dataType='+datatype+'&dataId='+dataId;
+		if($(this).hasClass('status')){
+			var applyId = $(this).attr('applyid');
+			var datatype = $(this).attr('datatype');
+			var dataId = $(this).attr('dataid');
+			window.location.href = 'afterCredit.html?applyId='+applyId+'&dataType='+datatype+'&dataId='+dataId;
+		}
 	})
 
 	function getList() {

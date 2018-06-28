@@ -2,8 +2,13 @@ $(function() {
 
 	var listJson = {};
 	var importId = GetRequest().applyId;
-
+	
+	var Route;  //路径
+	getExsit();   //判断是否有配偶
 	getList(); //回显
+	
+	
+	
 
 	$("#nature").select({
 		title: "现住房性质",
@@ -40,8 +45,8 @@ $(function() {
 	})
 
 	function getList() { //回显
-		let data = {
-			id: 1
+		var data = {
+			id: importId
 		}
 		$.ajax({
 			url: path + "/apply/getBorrowerAddressByApplyId",
@@ -94,7 +99,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.code == 0) {
-					window.location.href = "married.html?applyId="+importId;
+					window.location.href = Route+".html?applyId="+importId;
 				}else{
 					errLay(data.msg)
 				}
@@ -113,5 +118,34 @@ $(function() {
 		})
 	}
 
-
+	
+	function getExsit(){
+		var data = {
+			id: importId
+		}
+		$.ajax({
+			url: path + "/apply/isExsitOtherPersion",
+			data: JSON.stringify(data),
+			dataType: "json",
+			contentType: "application/json",
+			type: "post",
+			xhrFields: {
+				withCredentials: true
+			},
+			success: function(data) {
+				if(data.code == 0) {
+					if(data.data.isSpouse == 1){
+						Route = 'married';  //配偶
+					}else{
+						Route = 'urgent';  //紧急联系人
+					}
+				}else{
+					errLay(data.msg)
+				}
+			}
+		});
+	}
+	
+	
+	
 })

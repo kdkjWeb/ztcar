@@ -2,6 +2,9 @@ $(function() {
 	var listJson = {};
 	var importId = GetRequest().applyId;
 
+	var Route;  //路径
+	getExsit();   //判断是否有担保
+	
 	getList(); //获取借贷人信息
 
 	$("#birth").datetimePicker({
@@ -170,7 +173,7 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.code == 0) {
-					window.location.href = "guarantor.html?applyId="+importId;
+					window.location.href = Route+".html?applyId="+importId;
 				} else {
 				errLay(data.msg)
 			}
@@ -188,5 +191,33 @@ $(function() {
 			}
 		})
 	}
+	
+	function getExsit(){
+		var data = {
+			id: importId
+		}
+		$.ajax({
+			url: path + "/apply/isExsitOtherPersion",
+			data: JSON.stringify(data),
+			dataType: "json",
+			contentType: "application/json",
+			type: "post",
+			xhrFields: {
+				withCredentials: true
+			},
+			success: function(data) {
+				if(data.code == 0) {
+					if(data.data.isPersonBondsman == 1){
+						Route = 'guarantor';  //配偶
+					}else{
+						Route = 'urgent';  //紧急联系人
+					}
+				}else{
+					errLay(data.msg)
+				}
+			}
+		});
+	}
+	
 
 })

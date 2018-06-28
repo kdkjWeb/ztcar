@@ -1,12 +1,18 @@
 $(function() {
 	var listJson = {};
-	var importId = 1;
+	var importId = GetRequest().applyId;
 
 	getList();
 
 	$("#sure").on("click", function() {
 		listJson.enNumber = $('#Engine').val(); //发动机
 		listJson.viNumber = $('#Frame').val(); //车架
+		if(!$('#Engine').val()){
+			errLay('请填写发动机号')
+		}
+		if(!$('#Frame').val()){
+			errLay('请填写车架号')
+		}
 		saveList();
 	})
 
