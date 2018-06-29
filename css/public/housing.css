@@ -38,7 +38,8 @@ p{
 }
 .housing li{
     width: 33.3%;
-    margin-top: 1rem
+    margin-top: 1rem;
+    text-align: center;
 }
 .housing div{
     width:2rem;
@@ -48,7 +49,6 @@ p{
 .housing .iconfont{
     font-size: .9rem;
     color: rgb(59,107,244);
-    margin-left: .5rem
 }
 .housing p{
     font-size: .28rem;
@@ -88,6 +88,7 @@ p{
 }
 /* 进度条 */
 .process{
+	position: relative;
     width: 100%;
     height: .1rem;
     border-radius: .5rem;
@@ -99,4 +100,11 @@ p{
     display: flex;
     justify-content: space-between;
     margin-top: .3rem
+}
+
+#start{
+	position: absolute;	
+	top: -29px;
+	left: 0%;
+	transform: translateX(-10px);
 }

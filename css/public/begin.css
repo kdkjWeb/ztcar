@@ -1,4 +1,8 @@
 /* 选择车辆文字 */
+div{
+	width: 100%;
+	text-align: center;
+}
 p{
     font-size: .34rem;
     color: rgb(59,107,244);
@@ -8,9 +12,10 @@ p{
 }
 /* 汽车图标 */
 .iconfont{
+	/*text-align: center;*/
     font-size: 2.1rem;
     color: rgb(59,107,244);
-    margin: 0 2.5rem
+    /*margin: 0 2.5rem*/
 }
 /* 开始测试 */
 button{

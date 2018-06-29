@@ -7,7 +7,7 @@ body{
 header{
     width:100%;
     background-color: #fff;
-    margin-bottom: .1rem
+    margin-bottom: .1rem;
 }
 .basic{
     width:6.9rem;
@@ -16,14 +16,14 @@ header{
     display: flex;
     justify-content: space-between;
     line-height: 1rem;
-    color: #555555
+    color: #555555;
 }
 .cause{
     width: 6.9rem;
     height: 1rem;
     margin: auto;
     border-top: 1px dashed #ccc;
-    display: none
+    /*display: none*/
 }
 label{
     font-size: .32rem;
@@ -34,7 +34,7 @@ span{
     line-height: 1rem;
 }
 .cause label, .cause span{
-    color: red
+    color: red;
 }
 .banner{
     width: 6.9rem;

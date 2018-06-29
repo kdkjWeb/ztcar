@@ -310,15 +310,18 @@ function suerAjax() {
 		Fdata.append('haveLessee', myhaveLessee);
 		Fdata.append('lessee', tenantName);
 		Fdata.append('lesseeIdNum', tenantId);
+		Fdata.append('lesseePhone', tenantPhone);
 
 		Fdata.append('isMarryed', myisMarryed);
 		Fdata.append('spouse', marryName);
 		Fdata.append('spouseIdNum', marryId);
+		Fdata.append('spousePhone', marryPhone);
 
 		Fdata.append('haveGuarantee', myhaveGuarantee);
 		Fdata.append('guarantee', guaranteeName);
 		Fdata.append('guaranteeIdNum', guaranteeId);
-
+		Fdata.append('guaranteePhone', guaranteePhone);
+		
 		$.ajax({
 			url: path + "/apply/addApply",
 			data: Fdata,
@@ -334,10 +337,9 @@ function suerAjax() {
 				$('#loading').hide();
 				console.log(data)
 				if(data.code == 0) {
-					
 					errLay('申请成功');
 					var time = setTimeout(function() {
-						window.location.href = 'detail.html?phone=' + userPhone;
+						window.location.href = 'detail.html?applyId=' + data.applyId;
 					}, 1000);
 					
 				} else if(data.code == 1) {

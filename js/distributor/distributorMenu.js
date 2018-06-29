@@ -1,7 +1,6 @@
 $(function(){
 	$('.divList').on('click',function(){
-		$(this).find('ul').fadeToggle();
-		$(this).siblings('.divList').find('ul').fadeOut();
+		$(this).siblings('ul').fadeToggle();
+		$(this).parents('div').siblings('div').find('ul').fadeOut();
 	})
- 
 })

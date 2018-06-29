@@ -1,20 +1,20 @@
 body{
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
 }
 .content{
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
 }
 .content-c{
-    width:100%;
+    width: 100%;
 }
 .content-c1{
-    width:100%;
-    height:4.54rem;
+    width: 100%;
+    height: 4.54rem;
 }
 .mind{
-    width:6.93rem;
+    width: 6.93rem;
     margin: auto;
 }
 .h-result{
@@ -47,7 +47,7 @@ h2{
     color: black;
     font-weight: 700;
     line-height: 1.38rem;
-    text-align: center
+    text-align: center;
 }
 /* 主申请人征信结果 */
 .result{
@@ -118,7 +118,7 @@ h2{
 .line{
     width:100%;
     height:.1rem;
-    background-color: #ebf1ff
+    background-color: #ebf1ff;
 }
 /* 通过与否 */
 .pass-box{
@@ -139,7 +139,8 @@ h2{
     line-height: .5rem;
     text-align: center;
     color: #fff;
-    background-color: #94c945
+    background-color: #94c945;
+    margin-left: 5px;
 }
 /* 未通过 */
 .no{
@@ -153,5 +154,6 @@ h2{
     line-height: .5rem;
     text-align: center;
     color: #fff;
-    background-color: #94c945
+    background-color: #94c945;
+    margin-left: 5px;
 }

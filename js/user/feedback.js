@@ -17,10 +17,10 @@ $(function(){
         </div>
     </a>`)
     })
-    console.log("点击跳转")
-    $(".msg").on("click",function(){
-        console.log("6666666666666666666666")
-        window.location.hash="detail.html"
+
+    $(document).on('click','.msg',function(){
+    	 window.location.href="detail.html"
     })
+
    
 })
