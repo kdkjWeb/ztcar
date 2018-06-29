@@ -36,6 +36,7 @@ label{
     border: 1px solid #c6c6c6;
     box-sizing: border-box;
     margin-top: .25rem;
+    outline: none
 }
 .iconfont{
     position: absolute;
@@ -113,7 +114,31 @@ label{
     border: 1px solid #c6c6c6;
     box-sizing: border-box;
     margin-top: .3rem;
-    margin-left: -.1rem
+    margin-left: -.1rem;
+    outline: none
+}
+/* 客户列表 */
+.list{
+    width:100%;
+}
+.c-list{
+    width: 6.9rem;
+    margin:.2rem auto 0;
+    border-bottom: 1px dashed #ccc
+}
+.c-list p{
+    font-size: .32rem;
+    line-height: .7rem;
+}
+.text{
+    width: 6.9rem;
+    margin:0 auto .2rem;
+    display: flex;
+    justify-content: space-between
+}
+a{
+    font-size: .32rem;
+    text-decoration: underline;
 }
 /* 搜索 */
 button{
@@ -124,7 +149,6 @@ button{
     border-radius: .5rem;
     margin-top: .3rem ;
     background-color: #3b6bf4;
-    
 }
 .line{
     width: 100%;
@@ -158,18 +182,7 @@ td{
     color:#fe7800;
     text-decoration: underline
 }
-.text{
-    width: 6.9rem;
-    margin: auto;
-    display: flex;
-    justify-content: space-between
-}
-a{
-    font-size: .32rem;
-    text-decoration: underline;
-    padding-top: .4rem;
-    box-sizing: border-box
-}
+
 /* 下拉选择框 */
 .toolbar .toolbar-inner{
     width:100%;
@@ -183,7 +196,8 @@ a{
     line-height: 1rem
 }
 .weui-cell{
-    width: 100%
+    width: 100%;
+    padding: 10px 0
 }
 .weui-cell .weui-check_label{
     font-size: .36rem
