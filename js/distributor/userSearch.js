@@ -40,7 +40,104 @@ $(function(){
     function Name() {
         var text = $("#input").val();
         // text = $.trim(text)
-            $("#table tbody tr").hide().find("td:first").filter(":contains('"+ text +"')").parent().show()
+        $("#table tbody tr").hide().find("td:first").filter(":contains('"+ text +"')").parent().show()
+    }
+
+    // 查询客户姓名
+    function getSearchByUsername() {
+        let data = {
+            id:1
+        }
+
+        $.ajax({
+            url: path + "",
+            data: JSON.stringify(data),
+            dataType:"json",
+            contentType:"application/json",
+            type:"",
+            xhrFields:{
+                withCredentials: true
+            },
+            success: function(data) {
+                console.log(data)
+            },
+            error: function(xhr,type,errorThrown) {
+                console.log(xhr);
+                console.log(type)
+            }
+        })
+    }
+    // 查询征信记录
+    function getSearchByZx() {
+        let data = {
+            id:1
+        }
+
+        $.ajax({
+            url: path + "",
+            data: JSON.stringify(data),
+            dataType: "json",
+            contentType: "application/json",
+            type:"",
+            xhrFields:{
+                withCredentials: true
+            },
+            success: function(data) {
+                console.log(data)
+            },
+            error: function(xhr,type,errorThrown) {
+                console.log(xhr);
+                console.log(type)
+            }
+        })
+    }
+    // 查询汽车销售时间
+    function  getSearchByTime() {
+        let data = {
+            id:1
+        }
+
+        $.ajax({
+            url: path + "",
+            data: JSON.stringify(data),
+            dataType: "json",
+            contentType: "application/json",
+            type: "",
+            xhrFields: {
+                withCredentials: true
+            },
+            success: function(data) {
+                console.log(data)
+            },
+            error: function(xhr,type,errorThrown) {
+                console.log(xhr);
+                console.log(type);
+            }
+        })
+    }
+    // 查询汽车售价区间
+    function getSearchByPrice() {
+        let data = {
+            id:1
+        }
+
+        $.ajax({
+            url: path + "",
+            data: JSON.stringify(data),
+            dataType: "json",
+            contentType: "application/json",
+            type: "",
+            xhrFields: {
+                withCredentials: true
+            },
+            success: function(data) {
+                console.log(data);
+            },
+            error: function(xhr,type,errorThrown) {
+                console.log(xhr);
+                console.log(type)
+            }
+        })
     }
 })
 
