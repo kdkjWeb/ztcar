@@ -122,7 +122,7 @@ $(function() {
 					}
 
 				} else {
-					errLay(data.msg)
+					errLay('请求出错');
 				}
 			}
 		});
@@ -148,7 +148,7 @@ $(function() {
 				if(data.code == 0) {
 					listJson.smFileOwens[ulIndex].smFiles.push(data.smFile);
 				} else {
-					errLay(data.msg)
+					errLay('请求出错');
 				}
 			}
 		});
@@ -169,7 +169,7 @@ $(function() {
 				if(data.code == 0) {
 					listJson.smFileOwens[ulIndex].smFiles.splice(liIndex, 1);
 				} else {
-					errLay(data.msg)
+					errLay('请求出错');
 				}
 			}
 		});
@@ -190,7 +190,7 @@ $(function() {
 				if(data.code == 0) {
 					// window.location.href = 'myOrder.html';
 				} else {
-					errLay(data.msg)
+					errLay('请求出错');
 				}
 			}
 		});

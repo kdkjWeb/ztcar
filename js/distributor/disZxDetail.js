@@ -89,7 +89,7 @@ function getResult(num,type) {
 				}
 
 			}else {
-				errLay(data.msg)
+				errLay('请求出错');
 			}
 		}
 	});

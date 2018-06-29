@@ -35,7 +35,7 @@ $(function(){
                 if(data.code == 0){
                   listJson.smCompacts = data.data;  
                 }else {
-					errLay(data.msg)
+					errLay('请求出错');
 				}
             }
         })
@@ -55,7 +55,7 @@ $(function(){
                     $(".pop-box").hide()
                     errLay("已发送至经销商邮箱")
                 } else{
-                    errLay(data.msg);
+                    errLay('请求出错');;
                 }   
             
             },

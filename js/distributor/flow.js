@@ -60,7 +60,7 @@ $(function() {
 				if(data.code == 0) {
 					pushList(data.data)
 				} else {
-					errLay(data.msg)
+					errLay('请求出错');
 				}
 			}
 		});

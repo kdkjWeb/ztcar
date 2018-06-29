@@ -86,7 +86,7 @@ $(function() {
 					console.log(data)
 
 				} else {
-					errLay(data.msg)
+					errLay('请求出错');
 				}
 			}
 		});
@@ -106,7 +106,7 @@ $(function() {
 				if(data.code == 0) {
 					window.location.href = "address.html?applyId="+importId;
 				} else {
-					errLay(data.msg)
+					errLay('请求出错');
 				}
 			}
 		});

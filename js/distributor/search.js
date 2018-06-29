@@ -38,7 +38,7 @@ function getUserVal() {
 				}
 
 			} else {
-				errLay(data.msg)
+				errLay('请求出错');
 			}
 		},
 		error: function(xhr, type, errorThrown) {

@@ -29,7 +29,7 @@ $(function() {
 					if(data.code==0){  //登录成功
 						window.location.href = 'distributorMenu.html'
 					}else{
-						errLay(data.msg)
+						errLay('请求出错');
 					}
 					
 				},

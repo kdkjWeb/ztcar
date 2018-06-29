@@ -199,7 +199,7 @@ $(function(){
                         }
                     }
                 }else {
-					errLay(data.msg)
+					errLay('请求出错');
 				}
             }
         })
@@ -218,7 +218,7 @@ $(function(){
                 if(data.code==0){
                     window.location.href="urgent.html?applyId="+importId;
                 }else {
-					errLay(data.msg)
+					errLay('请求出错');
 				}
             }
         })

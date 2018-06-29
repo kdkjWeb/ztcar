@@ -53,7 +53,7 @@ $(function() {
 						setList(data.orderList[i])
 					}
 				}else{
-					errLay(data.msg)
+					errLay('请求出错');
 				}
 			}
 		});
@@ -117,7 +117,7 @@ $(function() {
 				if(data.code == 0){
 					document.location.reload();//当前页面 
 				}else{
-					errLay(data.msg)
+					errLay('请求出错');
 				}
 				
 			}
