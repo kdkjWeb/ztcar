@@ -23,7 +23,7 @@ header{
     height: 1rem;
     margin: auto;
     border-top: 1px dashed #ccc;
-    /*display: none*/
+    display: none;
 }
 label{
     font-size: .32rem;

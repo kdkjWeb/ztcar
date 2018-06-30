@@ -109,9 +109,7 @@ $(function() {
 								}
 								
 							}
-							
-							
-							
+
 							text += '<div class="inputBox">' +
 							'<input class="inputFile" type="file" accept="image/jpg,image/jpeg,image/png,image/gif">' +
 							'</div>' +

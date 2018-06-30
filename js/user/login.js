@@ -48,7 +48,6 @@
                 $.ajax({
                     url:path+"/login/phoneLogin",
                     data: JSON.stringify(data),
-                    
                     contentType:'application/json',
                     dataType:"json",
                     type:"post",
@@ -57,11 +56,10 @@
                         if(data.code == 0||data.code==200){
 							sessionStorage.setItem('userName',data.data.userName); //用户名
 							sessionStorage.setItem('userPhone',data.data.phone);  //手机号
-//                          $(".scs-pop-box").show();   //弹出提示
 							window.location.href="userMenu.html"
 						
                         }else{
-                            errLay(data.msg)
+                            errLay('登录失败，请稍后重试')
                             // $(".scs-pop-box").show()         
                         }
                     },	error: function(xhr, type, errorThrown) {
@@ -92,7 +90,7 @@
                     $('.num').attr("disabled",true);
                     timer();
                 }else{
-                    errLay(data.msg)
+                    errLay('获取验证码失败')
                 }
 			},
 			error: function(xhr, type, errorThrown) {
