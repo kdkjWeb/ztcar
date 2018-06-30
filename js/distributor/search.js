@@ -1,8 +1,8 @@
 $(function() {
 
 	var listJson = {};
-	var important = 1;
-
+	var importId = GetRequest().applyId;
+	
 	$(".weui-btn").on("click", function() {
 		let name = $("#name").val()
 		let date = $("#date").val()
@@ -18,9 +18,8 @@ $(function() {
 })
 
 function getUserVal() {
-<<<<<<< HEAD
 	let data = {
-		id = 1
+		id:1
 	}
 
 	$.ajax({
@@ -46,10 +45,5 @@ function getUserVal() {
 			console.log(type)
 		}
 	})
-=======
-    // let data = {
-    //     id = 1
-    // }
->>>>>>> e4ebae95662af16a1d3687e40a24afbd642aa861
 
 }

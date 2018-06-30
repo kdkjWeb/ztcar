@@ -6,6 +6,9 @@ header{
     height: 1.9rem;
     margin: auto;
 }
+input{
+    outline: none
+}
 /* 客户信息查询 */
 header p{
     width: 100%;
@@ -36,7 +39,6 @@ label{
     border: 1px solid #c6c6c6;
     box-sizing: border-box;
     margin-top: .25rem;
-    outline: none
 }
 .iconfont{
     position: absolute;
@@ -115,7 +117,6 @@ label{
     box-sizing: border-box;
     margin-top: .3rem;
     margin-left: -.1rem;
-    outline: none
 }
 /* 客户列表 */
 .list{

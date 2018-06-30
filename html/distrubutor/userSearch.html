@@ -33,31 +33,26 @@
             <div class="time">
                 <div>
                     <label>时间段：</label>
-                    <input type="text">
+                    <input type="text" id="carBeginTime">
                 </div>
                 <div>
                     <label>至</label>
-                    <input type="text">
+                    <input type="text" id="carEndTime">
                 </div>
-                <button>搜索</button>
+                <button id="tsbtn">搜索</button>
             </div>
             <div class="line"></div>
             <table>
                 <thead>
                     <tr>
-                        <th>汽车销售时间</th>
+                        <th>转订单时间</th>
                         <th>汽车品牌型号</th>
                         <th>客户姓名</th>
                         <th>查看详情</th>
                     </tr>
                 </thead>
-               <tbody>
-                    <!-- <tr>
-                        <td>2018-03-12</td>
-                        <td></td>
-                        <td>张珊</td>
-                        <td class="look">查看</td>
-                    </tr> -->
+               <tbody id="time-body">
+                    
                </tbody>
             </table>
         </div>
@@ -65,31 +60,26 @@
             <div class="price">
                 <div>
                     <label>价格区间：</label>
-                    <input type="text">
+                    <input type="text" id="beginPrice">
                 </div>
                 <div>
                     <label>至</label>
-                    <input type="text">
+                    <input type="text" id="endPrice">
                 </div>
-                <button>搜索</button>
+                <button id="psbtn">搜索</button>
             </div>
             <div class="line"></div>
             <table>
                 <thead>
                     <tr>
-                        <th>汽车销售时间</th>
+                        <th>转订单时间</th>
                         <th>汽车品牌型号</th>
                         <th>汽车售价</th>
                         <th>查看详情</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <!-- <tr>
-                        <td>2018-03-12</td>
-                        <td></td>
-                        <td>32万</td>
-                        <td class="look">查看</td>
-                    </tr> -->
+                <tbody id="price-body">
+                  
                 </tbody>
             </table>
         </div>
@@ -97,13 +87,13 @@
             <div class="time">
                 <div>
                     <label>时间段：</label>
-                    <input type="text">
+                    <input type="text" id="zxBeginTime">
                 </div>
                 <div>
                     <label>至</label>
-                    <input type="text">
+                    <input type="text" id="zxEndTime">
                 </div>
-                <button>搜索</button>
+                <button id="zxbtn">搜索</button>
             </div>
             <div class="line"></div>
             <table>
@@ -115,13 +105,8 @@
                         <th>备注</th>
                     </tr>
                 </thead>
-               <tbody>
-                    <!-- <tr>
-                        <td>张珊</td>
-                        <td>2018-03-12</td>
-                        <td>良好</td>
-                        <td>暂无</td>
-                    </tr> -->
+               <tbody id="tobody">
+                  
                </tbody>
                 
             </table>
@@ -129,20 +114,12 @@
         <div class="user-search ct">
             <div class="name">
                 <label>客户姓名：</label>
-                <input type="text" id="input">
+                <input type="text" id="inputName">
                 <button id="search">搜索</button>
             </div>
             <div class="line"></div>
             <div class="list">
-                <!-- <div class="c-list">
-                    <p>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：<span>张珊</span></p>
-                    <p>联系电话：<span>15983735209</span></p>
-                    <p>身份证号：<span>510922199408292667</span></p>
-                    <div class="text">
-                        <a href="loanSearch.html" id="loan">车贷分期记录查询</a>
-                        <a href="repaymentSearch.html" id="repay">车贷还款记录查询</a>
-                    </div> 
-                </div> -->
+               
             </div>
         </div>
     </div>
