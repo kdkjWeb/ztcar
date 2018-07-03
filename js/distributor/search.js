@@ -1,49 +1,56 @@
 $(function() {
 
 	var listJson = {};
-	var importId = GetRequest().applyId;
-	
-	$(".weui-btn").on("click", function() {
-		let name = $("#name").val()
-		let date = $("#date").val()
-		if(isName(name, "承租人") == false) {
-			return false
-		} else if(isDate(date, "承租人") == false) {
-			return false
-		} else {
-			return true
-		}
-	})
-
-})
-
-function getUserVal() {
+	var importId = GetRequest().id;
 	let data = {
-		id:1
-	}
-
+		applyId: importId
+	};
 	$.ajax({
-		url: path,
-		data: JSON.stringify(data),
+		url: path + "/smFinancing/getSmFinacingByApplyId",
+		data: data,
 		dataType: "json",
 		contentType: "application/json",
-		type: "post",
+		type: "get",
 		success: function(data) {
 			console.log(data);
 			if(data.code == 0) {
 				if(data.data) {
 					listJson = data.data;
-					if(listJson) {}
+					if(listJson.borrowerName) {
+						$("#name").val(listJson.borrowerName)
+					}
+					if(listJson.productName) {
+						$("#product").val(listJson.productName)
+					}
+					if(listJson.carOpenFare) {
+						$("#price").val(listJson.carOpenFare)
+					}
+					if(listJson.orderTime) {
+						$("#time").val(getDays(listJson.orderTime))
+					}
+					if(listJson.reimbursementDeadline) {
+						$("#num").val(listJson.reimbursementDeadline)
+					}
+					if(listJson.vehicleBrand) {
+						$("#vehicle").val(listJson.vehicleBrand)
+					}
+					if(listJson.carSeries) {
+						$("#type").val(listJson.carSeries)
+					}
+					if(listJson.carModels) {
+						$("#audi").val(listJson.carModels)
+					}
 				}
-
 			} else {
 				errLay('请求出错');
 			}
 		},
-		error: function(xhr, type, errorThrown) {
+		error: function(xhr, type) {
 			console.log(xhr);
 			console.log(type)
 		}
 	})
+	
 
-}
+
+})

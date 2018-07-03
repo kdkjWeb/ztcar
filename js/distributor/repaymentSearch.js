@@ -1,7 +1,6 @@
 $(function() {
     var listJson = [];
     var importId = GetRequest().id;
-    console.log(importId)
     var data = {
         id: importId
     }
@@ -13,7 +12,6 @@ $(function() {
         contentType: "application/json",
         type: "post",
         success: function(data) {
-            console.log(data)
             if(data.code == 0) {
                 if(data.data) {
                     listJson = data.data.list
@@ -33,7 +31,7 @@ function repay(arr) {
     for(let i = 0;i < arr.length;i++) {
      $("table").append(
         '<tr>'+
-            '<td>'+ arr[i].repaymentMoth+'</td>'+
+            '<td>'+ getDays(arr[i].repaymentMoth)+'</td>'+
             '<td>'+ arr[i].totalLoan+'</td>'+
             '<td>'+ arr[i].deadlinesId+'</td>'+
         '</tr>')

@@ -1,7 +1,7 @@
 $(function(){
-    
     var listJson = [];
     allName();
+    // 下拉框切换
     $(".type input").select ({
         title: "选择查询类型",
         items: ["征信记录","客户姓名","汽车销价区间","汽车销售时间段"],
@@ -15,28 +15,28 @@ $(function(){
             }
             if($("input[type=text]").val() == "汽车销价区间") {
                 $(".car-search-price").show().siblings(".ct").hide()
-                carPrice()
-                $(this).siblings("table td").empty()
+                allPrice()
             }
             if($("input[type=text]").val() == "汽车销售时间段") {
                 $(".car-search").show().siblings(".ct").hide()
-                saveTime()
-                $(this).siblings("table").empty()
+                allTime()
             }
         }
     });
+    // 搜索
     $("#search").on("click",function(){
         getSearchByUsername()
     })
-    $("tsbtn").on("click",function() {
-        console.log("销售时间")
+    $("#tsbtn").on("click",function() {
+        getSearchByTime()
     })
-    $("psbtn").on("click",function() {
-        console.log("售价区间")
+    $("#psbtn").on("click",function() {
+        getSearchByPrice()
     })
-    $("zxbtn").on("click",function() {
-        console.log("征信记录")
+    $("#zxbtn").on("click",function() {
+        getSearchByZx()
     })
+    // 时间选择器
     $(".time input").datetimePicker ({
         times: function() {
             return
@@ -45,17 +45,19 @@ $(function(){
     // 记录查询
     $(document).on("click","#loan",function(){
         var id = $(this).attr("userId")
-        window.location.href = "loanSearch.html?id = " + id
+        window.location.href = "loanSearch.html?id="+id
     })
     $(document).on("click","#repay",function(){
         var id = $(this).siblings("a").attr("userId")
-        window.location.href = "repaymentSearch.html?id = " + id
+        window.location.href = "repaymentSearch.html?id="+id
     })
     // 查看
     $(document).on("click",".look",function() {
-        var id = $(this).siblings("td").attr("lookId")
-        window.location.href = "search.html?id = " + id
+        var id = $(this).attr("lookId")
+        console.log(id)
+        window.location.href = "search.html?id=" + id
     })
+  
 
 
 
@@ -97,8 +99,8 @@ $(function(){
             contentType: "application/json",
             type: "post",
             success: function(data) {
-                console.log(data)
                 if(data.code == 0){
+                    console.log(data.code)
                     if(data.data){
                         listJson = data.data.list
                         zxRcord(listJson)
@@ -113,18 +115,20 @@ $(function(){
     }
     // 获取所有汽车销售时间
     function allTime() {
+        console.log("供货商更多")
+        let data = {}
         $.ajax({
-            url: path + "",
-            data: {},
+            url: path + "/smFinancing/getSmFinacingByTime",
+            data: JSON.stringify(data),
             dataType: "json",
             contentType: "application/json",
             type: "post",
             success: function(data) {
-                console.log(data)
                 if(data.code == 0){
                     if(data.data){
-                        // listJson = data.data.list
-                        // userName(listJson);
+                        listJson = data.data
+                        console.log(listJson)
+                        saveTime(listJson);
                     }
                 }
             },
@@ -136,18 +140,18 @@ $(function(){
     }
     // 获取所有汽车售价
     function allPrice() {
+        let data = {}
         $.ajax({
-            url: path + "",
-            data: {},
+            url: path + "/smFinancing/getSmFinacingByPrice",
+            data: JSON.stringify(data),
             dataType: "json",
             contentType: "application/json",
             type: "post",
             success: function(data) {
-                console.log(data)
                 if(data.code == 0){
                     if(data.data){
-                        // listJson = data.data.list
-                        // userName(listJson);
+                        listJson = data.data
+                        carPrice(listJson);
                     }
                 }
             },
@@ -177,11 +181,12 @@ $(function(){
             contentType:"application/json",
             type:"post",
             success: function(data) {
-             if(data.code == 0){
-                 if(data.data){
-                    $(".c-list").hide().find("p:first").filter(":contains('"+ sName +"')").parent().show()
-                 }
-             }
+                if(data.code == 0){
+                    if(data.data){
+                        listJson = data.data.list
+                        userName(listJson);
+                    }
+                }
             },
             error: function(xhr,type,errorThrown) {
                 console.log(xhr);
@@ -191,21 +196,26 @@ $(function(){
     }
     // 查询征信记录
     function getSearchByZx() {
+        var sBeginTime = $("#zxBeginTime").val();
+        var sEndTime = $("#zxEndTime").val();
         let data = {
-            id:1
+            startTime: sBeginTime,
+            endTime: sEndTime
         }
-
         $.ajax({
-            url: path + "/smUrgent/selectSmBorrowerAboutCredit",
+            url: path + "/smUrgent/selectSmBorrowerAboutCreditByUserId",
             data: JSON.stringify(data),
             dataType: "json",
             contentType: "application/json",
-            type:"",
-            xhrFields:{
-                withCredentials: true
-            },
+            type:"post",
             success: function(data) {
-                console.log(data)
+                if(data.code == 0){
+                    console.log(data.code)
+                    if(data.data){
+                        listJson = data.data
+                        zxRcord(listJson)
+                    }
+                }
             },
             error: function(xhr,type,errorThrown) {
                 console.log(xhr);
@@ -215,21 +225,33 @@ $(function(){
     }
     // 查询汽车销售时间
     function  getSearchByTime() {
+        var sBeginTime = $("#carBeginTime").val();
+        var sEndTime = $("#carEndTime").val();
+        console.log(sBeginTime,sEndTime)
         let data = {
-            id:1
+            startTime: sBeginTime,
+            endTime: sEndTime
         }
-
+        
         $.ajax({
-            url: path + "",
+            url: path + "/smFinancing/getSmFinacingByTime",
             data: JSON.stringify(data),
             dataType: "json",
             contentType: "application/json",
-            type: "",
+            type: "post",
             xhrFields: {
                 withCredentials: true
             },
             success: function(data) {
                 console.log(data)
+                if(data.code == 0){
+                    if(data.data){
+                        listJson = data.data
+                        console.log(data.data)
+                        console.log(listJson)
+                        saveTime(listJson);
+                    }
+                }
             },
             error: function(xhr,type,errorThrown) {
                 console.log(xhr);
@@ -239,21 +261,29 @@ $(function(){
     }
     // 查询汽车售价区间
     function getSearchByPrice() {
+        var sBeginPrice = $("#beginPrice").val();
+        var sEndPrice = $("#endPrice").val();
         let data = {
-            id:1
+            startPrice: sBeginPrice,
+            endPrice: sEndPrice
         }
-
         $.ajax({
-            url: path + "",
+            url: path + "/smFinancing/getSmFinacingByPrice",
             data: JSON.stringify(data),
             dataType: "json",
             contentType: "application/json",
-            type: "",
+            type: "post",
             xhrFields: {
                 withCredentials: true
             },
             success: function(data) {
                 console.log(data);
+                if(data.code == 0){
+                    if(data.data){
+                        listJson = data.data
+                        carPrice(listJson);
+                    }
+                }
             },
             error: function(xhr,type,errorThrown) {
                 console.log(xhr);
@@ -264,14 +294,14 @@ $(function(){
    
 
 
-// ======================遍历信息==============================
+// ======================遍历信息=======================
 
 
       // 遍历客户姓名
       function userName(arr) {
+          var text= ''
         for(let i = 0;i < arr.length;i++) {
-         $(".list").append(
-             '<div class="c-list">'+
+             text += '<div class="c-list">'+
                  '<p>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：<span>' + arr[i].name + '</span></p>'+
                  '<p>联系电话：<span>' + arr[i].contactNum + '</span></p>'+
                  '<p>身份证号：<span>' +arr[i].certificateNum + '</span></p>'+
@@ -279,9 +309,9 @@ $(function(){
                      '<a id="loan" userId='+arr[i].id+'>车贷分期记录查询</a>'+
                      '<a id="repay">车贷还款记录查询</a>'+
                  '</div> '+
-             '</div>')
+             '</div>'
          }
-        
+        $(".list").html(text)
      }
      // 遍历征信记录
      function zxRcord(arr) {
@@ -302,45 +332,27 @@ $(function(){
         $("#tobody").html(text)
      }
      // 遍历汽车售价区间
-     function carPrice(){
-         var arr = [{
-             saveTime:"2018-03-12",
-             type:"奥迪-a4",
-             carPrice:"32万"
-         },{
-             saveTime:"2018-03-12",
-             type:"奥迪-a4",
-             carPrice:"32万" 
-         }]
+     function carPrice(arr){
          var text = ""
          for(let i = 0;i < arr.length;i++) {
             text += '<tr>'+
-                 '<td>' + arr[i].saveTime + '</td>'+
-                 '<td>' + arr[i].type + '</td>'+
-                 '<td>' + arr[i].carPrice + '</td>'+
-                 '<td class="look" lookId = ' + arr[i].id+ '>查看</td>'+
+                 '<td>' + getDays(arr[i].orderTime) + '</td>'+
+                 '<td>' + arr[i].vehicleBrand + arr[i].carSeries+'</td>'+
+                 '<td>' + arr[i].totalLoan + '</td>'+
+                 '<td class="look" lookId = ' + arr[i].applyId+ '>查看</td>'+
              '</tr>'
          }
          $("#price-body").html(text)
      }
      // 遍历汽车销售时间
-     function saveTime() {
-         var arr = [{
-             carSaveTime:"2018-03-12",
-             carType:"奥迪-a4",
-             business:"张珊"
-         },{
-             carSaveTime:"2018-03-12",
-             carType:"奥迪-a4",
-             business:"铁拐" 
-         }]
+     function saveTime(arr) {
          var text = ""
-         for(let i = 0;i <arr.length;i++) {
+         for(let i = 0;i < arr.length;i++) {
             text += '<tr>'+
-                 '<td>' + arr[i].carSaveTime + '</td>'+
-                 '<td>' + arr[i].carType + '</td>'+
-                 '<td>' + arr[i].business + '</td>'+
-                 '<td class="look" lookId = ' + arr[i].id+ '>查看</td>'+
+                 '<td>' + getDays(arr[i].orderTime) + '</td>'+
+                 '<td>' + arr[i].vehicleBrand + arr[i].carSeries+ '</td>'+
+                 '<td>' + arr[i].borrowerName + '</td>'+
+                 '<td class="look" lookId = ' + arr[i].applyId+ '>查看</td>'+
              '</tr>'
          }
          $("#time-body").html(text)
