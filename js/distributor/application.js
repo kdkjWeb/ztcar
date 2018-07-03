@@ -55,7 +55,7 @@ $(function(){
                     $(".pop-box").hide()
                     errLay("已发送至经销商邮箱")
                 } else{
-                    errLay('请求出错');;
+                    errLay('请求出错');
                 }   
             
             },
