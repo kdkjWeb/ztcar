@@ -3,13 +3,15 @@ $(function() {
 	$(".rcord").on("click", function() {
 		window.location.href = "loanDetail.html"
 	})
-	
-	getList()
+	$(document).on('click','.rcord',function(){
+		var applyId = $(this).attr('applyId');
+		window.location.href = "loanDetail.html?applyId="+applyId;
+	})
+	getList();
 	
 	function getList(){
 		$.ajax({
 			url: path + "/smBorrower/getBorrowerRecordList",
-//			data:,
 			contentType: "application/json",
 			dataType: "json",
 			type: "post",
@@ -19,7 +21,16 @@ $(function() {
 			success: function(data) {
 				
 				if(data.code == 0){
-					errLay('请求成功')
+//					errLay('请求成功')
+					for(var i = 0;i<data.data.length;i++){
+						var text = ' <div class="rcord" applyId="'+data.data[i].applyId+'">'+
+				            '<p>'+data.data[i].applyDate+'</p>'+
+				            '<p>'+data.data[i].loanTypeName+'</p>'+
+				            '<p>查看详情</p>'+
+				        '</div>'
+				        $('.content').append(text)
+					}
+					
 				}else{
 					errLay(data.msg)
 				}
