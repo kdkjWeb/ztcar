@@ -125,7 +125,7 @@ input{
     color: #fff;
     outline: none
 }
-p{
+.myP{
     margin: -.5rem 0 0 .5rem
 }
 em{

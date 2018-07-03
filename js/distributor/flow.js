@@ -208,6 +208,11 @@ $(function() {
 				'<i class="iconfont icon-shiyongyinzhang"></i>' +
 				'<p>'+flowName+'</p>' +
 				'</div>';
+		}else{
+			mytext = '<div class="choose '+mystatus+'" applyId="'+applyId+'" >' +
+				'<i class="iconfont icon-jieshu"></i>' +
+				'<p>'+flowName+'</p>' +
+				'</div>';
 		}
 		
 		return mytext;
