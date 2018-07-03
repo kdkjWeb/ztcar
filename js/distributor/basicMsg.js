@@ -37,7 +37,7 @@ $(function() {
 			return false
 		} else if(isPhone(tel, "正确的") == false) {
 			return false
-		} else {
+		} else { 
 
 			Verification(); //为空的验证
 

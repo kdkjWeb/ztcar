@@ -54,7 +54,6 @@ $(function(){
     // 查看
     $(document).on("click",".look",function() {
         var id = $(this).attr("lookId")
-        console.log(id)
         window.location.href = "search.html?id=" + id
     })
   
@@ -100,7 +99,6 @@ $(function(){
             type: "post",
             success: function(data) {
                 if(data.code == 0){
-                    console.log(data.code)
                     if(data.data){
                         listJson = data.data.list
                         zxRcord(listJson)
@@ -127,7 +125,6 @@ $(function(){
                 if(data.code == 0){
                     if(data.data){
                         listJson = data.data
-                        console.log(listJson)
                         saveTime(listJson);
                     }
                 }
@@ -210,10 +207,15 @@ $(function(){
             type:"post",
             success: function(data) {
                 if(data.code == 0){
-                    console.log(data.code)
                     if(data.data){
                         listJson = data.data
-                        zxRcord(listJson)
+                        if(sBeginTime == sEndTime){
+                            errLay("结束时间必须大于开始时间")
+                        }
+                        else{
+                            zxRcord(listJson)
+                        }
+                        
                     }
                 }
             },
@@ -243,13 +245,15 @@ $(function(){
                 withCredentials: true
             },
             success: function(data) {
-                console.log(data)
                 if(data.code == 0){
                     if(data.data){
                         listJson = data.data
-                        console.log(data.data)
-                        console.log(listJson)
-                        saveTime(listJson);
+                        if(sBeginTime == sEndTime){
+                            errLay("结束时间必须大于开始时间")
+                        }
+                        else{
+                            saveTime(listJson);
+                        }
                     }
                 }
             },
@@ -277,11 +281,15 @@ $(function(){
                 withCredentials: true
             },
             success: function(data) {
-                console.log(data);
                 if(data.code == 0){
                     if(data.data){
                         listJson = data.data
-                        carPrice(listJson);
+                        if(sBeginPrice == sEndPrice){
+                            errLay("结束价格必须大于开始价格")
+                        }
+                        else{
+                           carPrice(listJson); 
+                        }
                     }
                 }
             },
