@@ -21,7 +21,6 @@ $(function() {
 			success: function(data) {
 				
 				if(data.code == 0){
-//					errLay('请求成功')
 					for(var i = 0;i<data.data.length;i++){
 						var text = ' <div class="rcord" applyId="'+data.data[i].applyId+'">'+
 				            '<p>'+data.data[i].applyDate+'</p>'+

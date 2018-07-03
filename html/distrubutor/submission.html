@@ -13,6 +13,12 @@
 		<link rel="stylesheet" href="../../css/common/jquery-weui.min.css">
 		<link rel="stylesheet" type="text/css" href="../../css/common/iconfont.css">
 		<link rel="stylesheet" href="../../css/distributor/submission.css">
+		<script src="../../js/common/fastclick.js"></script>
+		<script type="text/javascript">  	
+		  $(function() {
+			FastClick.attach(document.body);
+		  });
+		</script>
 	</head>
 
 	<body>
@@ -38,38 +44,10 @@
 			<div class="more12">
 				<div class="c-list" id="myList">
 
-					<!--<div class="list">
-						<label>验三截图：</label>
-						<div class="photo">
-							<i class="iconfont icon-xiangji1"><span>拍照或选择图片</span></i>
-						</div>
-						<div class="up-load">
-							<ul>
-								<li class="weui_uploader_file weui_uploader_status" style="background-image: url(http://192.168.20.128:8080/sourceData/other/20180627/1530102386914.png);">
-									<span class="imgMsg">
-										<i class="iconfont icon-duihao"></i>
-										<span>已通过</span>
-									</span>
-									<span class="colseInput iconfont icon-guanbi2"></span>
-								</li>
-								<div class="inputBox">
-									<input class="inputFile" type="file" accept="image/jpg,image/jpeg,image/png,image/gif">
-								</div>
-							</ul>
-						</div>
-					</div>-->
 
 				</div>
 			</div>
-			<!--<div class="weui-cells">
-            <div class="weui-cell" id="cell">
-            <div class="weui-cell__hd"><label class="weui-label" id="label">备注：</label></div>
-                <div class="weui-cell__bd">
-                    <textarea class="weui-textarea" rows="3"></textarea>
-                </div>
-            </div>
-        </div>-->
-
+			
 			<a href="javascript:;" class="weui-btn weui-btn_primary" id="save">确认提交</a>
 		</div>
 

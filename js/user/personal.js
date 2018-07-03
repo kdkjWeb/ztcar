@@ -15,9 +15,9 @@ $(function(){
 	    window.location.href="change.html"
 	})
 
-	  $("#drop").on("click",function(e){
-	      window.location.href="login.html"
-	  })
+	$("#drop").on("click",function(e){
+		window.location.href="login.html"
+	})
 
 
 

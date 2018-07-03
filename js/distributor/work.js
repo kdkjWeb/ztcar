@@ -83,8 +83,6 @@ $(function() {
 
 					}
 
-					console.log(data)
-
 				} else {
 					errLay('请求出错');
 				}

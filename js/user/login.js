@@ -59,7 +59,6 @@ $(function() {
 
 					} else {
 						errLay('登录失败，请稍后重试')
-						// $(".scs-pop-box").show()         
 					}
 				},
 				error: function(xhr, type, errorThrown) {
@@ -101,10 +100,3 @@ function getcode(phone) {
 		}
 	});
 }
-
-// $("#yes").on("click",function(){
-//     window.location.href="applyChoice.html"
-// })
-// $("#no").on("click",function(){
-//     window.location.href=`personal.html`
-// })

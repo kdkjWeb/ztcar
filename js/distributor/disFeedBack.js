@@ -63,7 +63,6 @@ $(function() {
 
 	//=====获取列表===========
 	function getList() {
-		//	alert(document.cookie)
 
 		$.ajax({
 			url: path + "/apply/showNowCreditByDealers",

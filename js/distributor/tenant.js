@@ -41,18 +41,13 @@ $(function() {
 	$(".weui-btn").on("click", function() {
 		let name = $("#name").val()
 		let id = $("#idNum").val()
-		let date = $("#date").val()
 		let tel = $("#tel").val()
 		let phone = $("#phone").val()
 		if(isName(name, "承租人") == false) {
 			return false
 		} else if(isId(id, "承租人") == false) {
 			return false
-		}
-		//		else if(isDate(date, "承租人") == false) {
-		//			return false
-		//		} 
-		else if(isPhone(tel) == false) {
+		}else if(isPhone(tel) == false) {
 			return false
 		} else if(isPhone(phone) == false) {
 			return false

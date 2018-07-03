@@ -78,7 +78,6 @@ $(function(){
     $("#personal .weui-btn").on("click",function(){
         let name=$("#name").val()
         let id=$("#id").val()
-        let date=$("#date").val()
         let tel=$("#tel").val()
         let phone=$("#phone").val()
        
@@ -86,11 +85,7 @@ $(function(){
             return false
         }else if(isId(id,"个人担保")==false){
             return false
-        }
-        // else if(isDate(date,"个人担保")==false){
-        //     return false
-        // }
-        else if(isPhone(tel,"个人担保")==false){
+        }else if(isPhone(tel,"个人担保")==false){
             return false
         }else if(isPhone(phone,"个人担保")==false){
             return false

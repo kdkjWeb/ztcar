@@ -22,7 +22,6 @@ $(function(){
 	function getList(){
 		$.ajax({
 			url: path + "/earlyrepay/getAuditEarlyRepayList",
-//			data:,
 			xhrFields: {
 				withCredentials: true
 			},
@@ -136,12 +135,9 @@ $(function(){
         
     }
     
-//  $(document).on('click','.apply',function(){
-//  	errLay("你的提前还款申请已经发出，请留意消息");
-//  })
+
 
 	$(document).on('click','.changeStatus',function(){
-//  	errLay("你的提前还款申请已经发出，请留意消息");
 		var Index = $(this).parents('.list').index(); //第几个数组
 		var Status = $(this).attr('mystatus');
 		console.log(Index);

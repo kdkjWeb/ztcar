@@ -87,7 +87,6 @@ $(function(){
                 withCredentials:true
             },
             success: function(data){
-                console.log(data)
             	if(data.code == 0){
             		 window.location.href = "application.html?applyId="+importId;
             	}else {

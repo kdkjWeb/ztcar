@@ -125,7 +125,6 @@ $(document).on('change', 'input[type=file]', function() {
 		//注入图片 转换成base64
 		reader.readAsDataURL(file);
 	})
-	//		console.log(files[0])
 
 })
 

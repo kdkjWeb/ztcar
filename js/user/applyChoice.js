@@ -111,7 +111,6 @@ function query(id, type) { //根据经省份ID查询产品信息
         type: "post",
         success: function (data) {
             if (data.code == 0) {
-                //		console.log(data)
                 var list = data.data;
                 //				================
                 var arr = [];
