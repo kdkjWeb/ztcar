@@ -5,26 +5,46 @@ $(function() {
 	var newCode;
 	
 	
-	var num = 60;
+	var oldNum = 60;
+	var newNUm = 60;
+	
 	// 验证码倒计时
-	var timer = function() {
+	var oldtimer = function() {
 		var time = setInterval(
 			function() {
-				if(num == 0) {
-					$('.num').removeAttr("disabled");
+				if(oldNum == 0) {
+					$('#getOld').removeAttr("disabled");
 					clearInterval(time);
-					num = 60;
-					$('.num').text('获取验证码');
+					oldNum = 60;
+					$('#getOld').text('获取验证码');
 				} else {
-					num--;
-					$('.num').text(num + 'S');
+					oldNum--;
+					$('#getOld').text(oldNum + 'S');
 				}
 			}, 1000
 		)
 	};
 
+	var newtimer = function() {
+		var time = setInterval(
+			function() {
+				if(newNUm == 0) {
+					$('#getNew').removeAttr("disabled");
+					clearInterval(time);
+					newNUm = 60;
+					$('#getNew').text('获取验证码');
+				} else {
+					newNUm--;
+					$('#getNew').text(newNUm + 'S');
+				}
+			}, 1000
+		)
+	};
+
+
 	$("#getOld").on("click", function() {
 		oldPhone = $("#old").val();
+		
 		if(isPhone(oldPhone, '') != false) {
 			if(oldPhone == sessionPhone) {
 				getCodeByOld()
@@ -59,17 +79,12 @@ $(function() {
 			contentType: "application/json",
 			type: "post",
 			success: function(data) {
-				console.log(data)
+				
 				if(data.code == 0 || data.code == 200) {
-					console.log('请求成功')
+					oldtimer();
 				} else {
 					errLay('获取验证码失败')
 				}
-			},
-			error: function(xhr, type, errorThrown) {
-				//异常处理；
-				console.log(xhr);
-				console.log(type);
 			}
 		})
 	};
@@ -86,15 +101,11 @@ $(function() {
 			dataType: "json",
 			type: "post",
 			success: function(data) {
-				//			console.log(data)
-
-				//			window.history.back();location.reload();
-
-			},
-			error: function(xhr, type, errorThrown) {
-				//异常处理；
-				console.log(xhr);
-				console.log(type);
+				if(data.code == 0 || data.code == 200) {
+					newtimer();
+				} else {
+					errLay('获取验证码失败')
+				}
 			}
 		})
 	};
@@ -123,7 +134,11 @@ $(function() {
 			dataType: "json",
 			type: "post",
 			success: function(data) {
-				
+				if(data.data == 0){
+					errLay('修改成功')
+				} else {
+					errLay('获取验证码失败')
+				}
 			},
 			error: function(xhr, type, errorThrown) {
 				//异常处理；
