@@ -218,7 +218,11 @@ $(function() {
 			type: "post",
 			success: function(data) {
 				if(data.code == 0) {
-					// window.location.href = 'myOrder.html';
+					errLay('保存成功');
+					setTimeout(function(){
+						window.location.href = 'myOrder.html';
+					},1500)
+					
 				} else {
 					errLay('请求出错');
 				}

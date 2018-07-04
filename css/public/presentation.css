@@ -1,18 +1,20 @@
 body{
     width: 100%;
-    background-color: #ebebeb
+    background-color: #ebebeb;
 }
 .content{
     width: 6.9rem;
     margin: auto;
     border-radius: .15rem .15rem 0 0;
-    padding-top: .5rem;
-    box-sizing: border-box
+    padding: .5rem 0;
+    box-sizing: border-box;
 }
 
 .list{
     background-color: #fff;
     border-radius: .5rem .5rem 0 0;
+    overflow: hidden;
+    
 }
 /* 列表下的框 */
 .list .list-c{
@@ -28,7 +30,12 @@ body{
     height: 1.6rem;
     border-bottom: 1px solid #ccc;
     padding: .3rem 0 0;
-    box-sizing: border-box
+    box-sizing: border-box;
+    font-size: .26rem;
+   display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
 }
 /* 列表第一个 */
 .list .list-c:first-child {
@@ -65,7 +72,7 @@ body{
     margin: -.3rem 0 0 -.59rem
 }
 .list .list-c:last-child .text{
-    border-bottom: none
+    border-bottom: none;
 }
 .list p{
     font-size: .3rem;
@@ -74,5 +81,5 @@ body{
 .list img{
     width: 1.05rem;
     height: 1.05rem;
-    padding: .3rem .3rem .2rem 
+    padding: .3rem .3rem .2rem; 
 }

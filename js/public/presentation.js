@@ -1,11 +1,10 @@
 $(function() {
-    var listJson = []
-    getValue()
+    var listJson = [];
+    getValue();
 
     $(document).on("click",".list-c",function() {
-        var id = $(this).attr("titleId")
-        console.log(id)
-        window.location.href = "pDetail.html?id="+id
+        var id = $(this).attr("titleId");
+        window.location.href = "pDetail.html?id="+id;
     })
    
     function getValue(arr) {
@@ -23,11 +22,9 @@ $(function() {
                         listJson = data.data.list
                         ary(listJson)
                     }
+                }else{
+                	errLay(data.msg)
                 }
-            },
-            error: function(xhr,type) {
-                console.log(xhr);
-                console.log(type);
             }
         })
     }
@@ -37,7 +34,7 @@ $(function() {
             text += '<div class="list-c" titleId='+arr[i].id+'>'+
             '<div class="mask"></div>'+
             '<div class="text">'+
-                '<p >' + arr[i].informationName + '</p>'+
+                arr[i].informationName+
             '</div>'+
             '<img src=" ' +path+arr[i].showFile +'">'+
        '</div>'

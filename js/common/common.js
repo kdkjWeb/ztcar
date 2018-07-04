@@ -1,12 +1,9 @@
-
 //var path = "http://192.168.20.128:8080";   //张韩
 //var path = "http://192.168.20.127:8080";      //唐彬
-
 //var path = "http://192.168.20.174:8080";   //石宇
-
 //var path="http://114.116.25.220:8081";  //外网
 
-//var path ="https://www.rydit.com.cn/zzbjr";
+var path ="https://www.rydit.com.cn/zzbjr";
 
 (function(doc, win) {
 	var docEl = doc.documentElement;
