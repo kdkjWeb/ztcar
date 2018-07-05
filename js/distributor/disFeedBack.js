@@ -78,6 +78,7 @@ $(function() {
 				if(data.code == 0) {
 					if(data.data.length == 0){
 						errLay('暂无数据');
+						$(".container").append("<span>暂时今日征信结果</span>");
 					}else{
 						eachList(data.data);
 					}

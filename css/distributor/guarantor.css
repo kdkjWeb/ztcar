@@ -167,3 +167,95 @@ span{
     border-radius: .15rem;
     padding-left: .2rem
 }
+
+
+/*=====上传图片弹框==========*/
+.fixBox{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #FFFFFF;
+	text-align: center;
+	color: #333333;
+	display: none; 	
+}
+.tit{
+	font-size: .28rem;
+	padding: .5rem 0;
+}
+.positiveCar{
+	position: relative;
+	width: 5.55rem;
+	height: 3.45rem;
+	border: 1px dashed #CCCCCC;
+	border-radius:.25rem ;
+	margin: 0 auto .44rem;
+	text-align: center;
+}
+.next{
+	margin: 1rem  auto;
+	width: 5.55rem;
+	height: .65rem;
+	line-height: .65rem;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: .32rem;
+	background-color: #3b6bf4;
+	border-radius:.65rem ;
+}
+
+.upId{
+	width: 5rem;
+	height: 3rem;
+	margin: .2rem  auto;
+	background-image: url(../../image/upId.png);
+	background-size: 100% 100%;
+}
+.downId{
+	width: 5rem;
+	height: 3rem;
+	margin: .2rem  auto;
+	background-image: url(../../image/downId.png);
+	background-size: 100% 100%;
+}
+.upbanck,.downback{
+	width: 5rem;
+	height: 3rem;
+	margin: .2rem  auto;
+	background-image: url(../../image/addbank.png);
+	background-size: 100% 100%;
+}
+
+.positiveCar .file{
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+}
+
+.positiveCar span{
+	position: absolute;
+	bottom: .5rem;
+	left: 50%;
+	transform: translateX(-50%);
+	color: #434343;
+	font-size: .26rem;
+}
+
+/*==loading========*/
+.loading{
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 999;
+	background-color: rgba(0,0,0,.5);
+	
+}
+.weui-loadmore{
+	margin-top: 4rem;
+	color: #FFFFFF;
+}

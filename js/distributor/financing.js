@@ -13,25 +13,11 @@ $(function() {
 		title: "请选择车型",
 		items: []
 	})
-	/*$("#month").select({
-		title: "请选择还款期限",
-		items: [{
-			title: "12期",
-			value: "12",
-		}, {
-			title: "24期",
-			value: "24",
-		}, {
-			title: "36期",
-			value: "36",
-		}, {
-			title: "48期",
-			value: "48",
-		}]
-	})
-*/
+
 	$("#save").on("click", function() {
-	
+		if(!Verification()){
+			return false;
+		}
 		listJson.vehicleBrand = $('#Vehicle').val();//车辆品牌
 		listJson.carSeries = $('#audi').val();//车系
 		listJson.carModels = $('#type').val();//车型
@@ -55,6 +41,7 @@ $(function() {
 		listJson.yujiYugong = $('#payment').text();//预估月供
 		
 		saveList();
+		
 	})
 
 	function getList() {
@@ -596,5 +583,20 @@ $(function() {
 			}
 		});
 	}
-
+	
+	function Verification() {
+		var flag = true;
+		$('.weui-input').each(function() {
+			if($(this).val() == '') {
+				let msg = $(this).parents('.weui-cell').find('label').text();
+				let str = msg.substr(0, msg.length - 1);
+				errLay(str + '不能为空');
+				flag = false;
+				return false;
+			}
+		})
+		return flag;
+	}
+	
+	
 })

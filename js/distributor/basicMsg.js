@@ -38,11 +38,13 @@ $(function() {
 		} else if(isPhone(tel, "正确的") == false) {
 			return false
 		} else { 
-
-			Verification(); //为空的验证
-
+			if(!Verification()){
+				return false
+			}
 			if($('#license').val() == '有') { //驾驶证 驾驶信息必填
-				getCar()
+				if(!carVerification()){
+					return false
+				}
 			}
 
 			listJson.applyId = importId;
@@ -71,7 +73,7 @@ $(function() {
 			} else {
 				listJson.firstBuyCar = 1;
 			}
-
+			
 			saveList();
 
 		}
@@ -212,26 +214,32 @@ $(function() {
 
 //=================为空验证============
 	function Verification() {
+		var flag = true;
 		$('.Required').each(function() {
 			if($(this).val() == '') {
 				let msg = $(this).parents('.weui-cell').find('label').text();
 				let str = msg.substr(0, msg.length - 1);
 				errLay(str + '不能为空');
+				flag = false;
 				return false;
 			}
 		})
+		return flag;
 	}
 
 //===========如果有驾驶证需要验证的====================
 	function carVerification() {
+		var flag = true;
 		$('.carSur').each(function() {
 			if($(this).val() == '') {
 				let msg = $(this).parents('.weui-cell').find('label').text();
 				let str = msg.substr(0, msg.length - 1);
 				errLay(str + '不能为空');
+				flag = false;
 				return false;
 			}
 		})
+		return flag;
 	}
 
 })

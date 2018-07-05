@@ -95,7 +95,7 @@ $('.mycheckbox').click(function() {
 
 $(document).on('change', 'input[type=file]', function() {
 	var files = Array.prototype.slice.call(this.files);
-	var _this = $(this)
+	var _this = $(this);
 	files.forEach(function(file, i) {
 		//jpeg png gif    "/image/jpeg"     i对大小写不敏感
 		var fileType = /\/(?:jpeg|png|gif)/i;
@@ -344,19 +344,72 @@ function suerAjax() {
 					isSecondTrue = 1;
 					SecondTrue(userName)
 				} else {
-					errAlert('提醒', data.msg)
+					errLay(data.msg)
 				}
-			},
-			error: function(xhr, type, errorThrown) {
-				//异常处理；
-				$('#loading').hide();
-
-				errAlert('提醒', xhr.responseJSON.msg)
-
-				console.log(xhr);
-				console.log(type);
 			}
 		});
 	}
 
 }
+
+
+$('.Positive').change(function(){
+	var _this = $(this);
+	var files = Array.prototype.slice.call(this.files);
+	var mydata = new FormData();
+	mydata.append('file',files[0]);
+	mydata.append('ocrCode',0);
+	
+	$.ajax({
+			url: path + "/file/addFileUseOCR",
+			data: mydata,
+			dataType: "json",
+			contentType: "application/json",
+			type: "post",
+			processData: false,
+			contentType: false,
+			beforeSend: function() {
+				$('#loading').show();
+			},
+			success: function(data) {
+				$('#loading').hide();
+				if(data.code == 0) {
+					if(_this.attr('id') == 'a'){  //主借贷人
+						if(data.data.code){
+							$('#userId').val(data.data.code)
+						}
+						if(data.data.name){
+							$('#userName').val(data.data.name)
+						}
+					}else if(_this.attr('id') == 'e'){   //配偶
+						if(data.data.code){
+							$('#marryId').val(data.data.code)
+						}
+						if(data.data.name){
+							$('#marryName').val(data.data.name)
+						}
+					}else if(_this.attr('id') == 'g'){   //承租人
+						if(data.data.code){
+							$('#tenantId').val(data.data.code)
+						}
+						if(data.data.name){
+							$('#tenantName').val(data.data.name)
+						}
+					}else if(_this.attr('id') == 'i'){   //担保人
+						if(data.data.code){
+							$('#guaranteeId').val(data.data.code)
+						}
+						if(data.data.name){
+							$('#guaranteeName').val(data.data.name)
+						}
+					}
+					
+					
+				}else{
+					errLay(data.msg)
+				}
+			},error:function(data){
+				$('#loading').hide();
+			}
+		});
+})

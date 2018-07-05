@@ -60,7 +60,7 @@
                 <div class="weui-cell__bd">
                     <input class="weui-input" type="number" placeholder="请输入证件号码" id="id" oninput="if(value.length>18)value=value.slice(0,18)">
                 </div>
-                <i class="iconfont icon-xiangji1"></i>
+                <i class="iconfont icon-xiangji1" id="IDcamera"></i>
             </div>
             <div class="weui-cell">
                     <div class="weui-cell__hd"><label for="time3" class="weui-label">出生日期：</label></div>
@@ -95,6 +95,31 @@
         </div>
         <a href="javascript:;" class="weui-btn weui-btn_primary">下一步</a>  
     </div>
+    
+    <div class="fixBox" id="userIdbox">
+		<div class="tit">请上传证件正反面照片</div>
+		<div class="positiveCar">
+			<div class="upId image-item">
+				<input class="file userfile Positive" type="file" id="a"/>
+				<span>上传证件正面照片</span>
+			</div>
+		</div>
+		<div class="positiveCar">
+			<div class="downId image-item">
+				<input class="file userfile" type="file" id="b"/>
+				<span>上传证件反面照片</span>
+			</div>
+		</div>
+		<div class="next">返回</div>
+	</div>
+    
+    <div class="loading" id="loading">
+		<div class="weui-loadmore">
+		  <i class="weui-loading"></i>
+		  <span class="weui-loadmore__tips">正在加载</span>
+		</div>
+	</div>
+    
 </body>
 <script src="../../js/common/jquery-weui.min.js"></script>
 <script src="../../js/distributor/married.js"></script>

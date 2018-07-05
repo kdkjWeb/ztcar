@@ -23,8 +23,9 @@ $(function() {
 		} else if(isPhone(tel, "正确的") == false) {
 			return false
 		} else {
-
-			Verification(); //正则 
+			if(!Verification()){  //Verification(); //正则 
+				return false;
+			}
 
 			listJson.applyId = importId;
 
@@ -111,13 +112,16 @@ $(function() {
 	}
 
 	function Verification() {
+		var flag = true;
 		$('.Required').each(function() {
 			if($(this).val() == '') {
 				let msg = $(this).parents('.weui-cell').find('label').text();
 				let str = msg.substr(0, msg.length - 1);
 				errLay(str + '不能为空');
+				flag = false;
 				return false;
 			}
 		})
+		return flag;
 	}
 })

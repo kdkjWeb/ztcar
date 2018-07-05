@@ -16,14 +16,17 @@ $(function(){
 			type: "get",
 			success: function(data) {
 				if(data.code == 0) {
-					
-					for(var i = 0;i<data.data.length;i++){
-					
-						var text = '<div class="msg" urlId="'+data.data[i].id+'">'+
-				            '<p>征信日期： '+getDays(data.data[i].createTime)+'</p>'+
-				            '<span>'+data.data[i].statusStr+'</span>'+
-				        '</div>';
-				        $(".content").append(text)
+					if(data.data.length>0){
+						for(var i = 0;i<data.data.length;i++){
+						
+							var text = '<div class="msg" urlId="'+data.data[i].id+'">'+
+					            '<p>征信日期： '+getDays(data.data[i].createTime)+'</p>'+
+					            '<span>'+data.data[i].statusStr+'</span>'+
+					        '</div>';
+					        $(".content").append(text)
+						}
+					}else{
+						 $(".content").text('暂时没有征信反馈')
 					}
 					
 					

@@ -90,7 +90,13 @@ $(function(){
         }else if(isPhone(phone,"个人担保")==false){
             return false
         }else{
-             Verification();
+        	
+        	if(!Verification()){
+        		return false;
+        	};
+             
+             
+             
              listJson.applyId=importId;
 
              listJson.name=$("#name").val();//担保人姓名
@@ -219,13 +225,114 @@ $(function(){
         })
     }
     function Verification(){
+    	var flag = true;
         $("#personal .weui-input").each(function(){
             if($(this).val()==''){
                 let msg=$(this).parents(".weui-cell").find('label').text();
                 let str=msg.substr(0,msg.length-1);
                 errLay(str+"不能为空");
+                flag = false;
                 return false;
             }
         })
+        return flag;
     }
+    
+    
+    
+    //==========================
+$("#IDcamera").on("click", function() {
+	$('#userIdbox').fadeIn(100)
+})    
+$('.next').on('click', function() {
+	$(this).parent('.fixBox').fadeOut(100)
+})
+    
+//  图片上传回显
+	$(document).on('change', 'input[type=file]', function() {
+		var files = Array.prototype.slice.call(this.files);
+		var _this = $(this);
+		files.forEach(function(file, i) {
+			//jpeg png gif    "/image/jpeg"     i对大小写不敏感
+			var fileType = /\/(?:jpeg|png|gif)/i;
+			if(!fileType.test(file.type)) {
+				alert("请选择正确的图片格式(jpeg || png || gif)");
+				return;
+			}
+			//HTML 5.1  新增file接口
+			var reader = new FileReader();
+			//读取失败
+			reader.onerror = function() {
+				alert("读取失败");
+			};
+			//读取中断
+			reader.onabort = function() {
+				alert("网络异常!");
+			};
+			//读取成功
+			reader.onload = function() {
+				var result = this.result; //读取失败时  null   否则就是读取的结果
+				var image = new Image();
+				image.src = result;
+	
+				_this.parents('.image-item').css("background-image", 'url(' + result + ')');
+	
+			};
+			//注入图片 转换成base64
+			reader.readAsDataURL(file);
+		})
+	
+	})
+    
+    $('#a').change(function(){
+		var _this = $(this);
+		var files = Array.prototype.slice.call(this.files);
+		var mydata = new FormData();
+		mydata.append('file',files[0]);
+		mydata.append('ocrCode',0);
+		
+		$.ajax({
+				url: path + "/file/addFileUseOCR",
+				data: mydata,
+				dataType: "json",
+				contentType: "application/json",
+				type: "post",
+				processData: false,
+				contentType: false,
+				beforeSend: function() {
+					$('#loading').show();
+				},
+				success: function(data) {
+					$('#loading').hide();
+					if(data.code == 0) {
+						if(data.data.code){   //身份证
+							$('#id').val(data.data.code)
+						}
+						if(data.data.name){  //姓名
+							$('#name').val(data.data.name)
+						}
+						if(data.data.sex){  //性别
+							$('#gender').val(data.data.sex)
+						}
+						if(data.data.birthday){  //生日
+							var a = data.data.birthday.substr(0,4);
+							var b = data.data.birthday.substr(4,2);
+							var c = data.data.birthday.substr(6,2);
+							$('#time3').val(a+'-'+b+'-'+c);
+						}
+					}else{
+						errLay(data.msg)
+					}
+				},error:function(data){
+					$('#loading').hide();
+				}
+		});
+    })
+
+    
+    
+    
+    
+    
+    
 })

@@ -2,6 +2,9 @@ $(function() {
 
 	getList();
 
+	
+
+
 	$(document).on("click", '#no', function() {
 		$('.pop-box').fadeOut('9000');
 		var setRemove = setTimeout(function() {
@@ -9,7 +12,6 @@ $(function() {
 		}, 500);
 	})
 
-	// 列表遍历
 
 	//    点击转订单
 	$(document).on('click', '.to', function() {
@@ -71,6 +73,8 @@ $(function() {
 				if(data.code == 0) {
 					if(data.data.length == 0){
 						errLay('暂无数据');
+						$("#waitting").append("<span>暂时没有待转订单</span>");
+						
 					}else{
 						eachList(data.data);
 					}

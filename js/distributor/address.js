@@ -31,8 +31,10 @@ $(function() {
 		items: ["有自然担保人", "有法人担保人", "无"]
 	})
 	$(".weui-btn").on("click", function() {
-		Verification(); //为空的验证
-
+		if(!Verification()){//为空的验证
+			return false;
+		}
+		
 		listJson.applyId = importId;
 		listJson.currentAddress = $('#currentAddress').val(); //现居地址
 		listJson.permanentAddress = $('#address').val(); //户籍地址
@@ -108,14 +110,17 @@ $(function() {
 	}
 
 	function Verification() {
+		var flag = true;
 		$('.Required').each(function() {
 			if($(this).val() == '') {
 				let msg = $(this).parents('.weui-cell').find('label').text();
 				let str = msg.substr(0, msg.length - 1);
 				errLay(str + '不能为空');
+				flag = false;
 				return false;
 			}
 		})
+		return flag;
 	}
 
 	
