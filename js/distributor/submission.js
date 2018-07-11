@@ -150,7 +150,7 @@ $(function() {
 					}
 
 				} else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});
@@ -177,7 +177,7 @@ $(function() {
 				if(data.code == 0) {
 					listJson.smFileOwens[ulIndex].smFiles.push(data.smFile);
 				} else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});
@@ -199,7 +199,7 @@ $(function() {
 					delDom.remove();
 					$('#errbox').remove();
 				} else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});
@@ -224,7 +224,7 @@ $(function() {
 					},1500)
 					
 				} else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});

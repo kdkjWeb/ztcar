@@ -17,29 +17,23 @@ $(function() {
 	})
 
 	$("#next").on("click", function() {
-		let tel = $("#tel").val()
-		if(isPhone(tel, "正确的") == "") {
-			return false
-		} else if(isPhone(tel, "正确的") == false) {
-			return false
-		} else {
-			if(!Verification()){  //Verification(); //正则 
-				return false;
-			}
 
-			listJson.applyId = importId;
-
-			listJson.companyName = $('#companyName').val(); //单位名称
-			listJson.unitAddress = $('#unitAddress').val(); //单位地址
-			listJson.enterpriseNature = $('#nature').val(); // 企业性质
-			listJson.workTelephone = $('#tel').val(); //单位电话
-			listJson.industryInvolved = $('#trade').val(); // 所属行业
-			listJson.yearsOfWorking = $('#yearsOfWorking').val() //单位工作年限
-			listJson.position = $('#position').val() //单位工作年限
-
-			postList(); //上传
-
+		if(!Verification()) { //Verification(); //正则 
+			return false;
 		}
+
+		listJson.applyId = importId;
+
+		listJson.companyName = $('#companyName').val(); //单位名称
+		listJson.unitAddress = $('#unitAddress').val(); //单位地址
+		listJson.enterpriseNature = $('#nature').val(); // 企业性质
+		listJson.workTelephone = $('#tel').val(); //单位电话
+		listJson.industryInvolved = $('#trade').val(); // 所属行业
+		listJson.yearsOfWorking = $('#yearsOfWorking').val() //单位工作年限
+		listJson.position = $('#position').val() //单位工作年限
+
+		postList(); //上传
+
 	})
 
 	function getList() { //回显
@@ -85,7 +79,7 @@ $(function() {
 					}
 
 				} else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});
@@ -103,9 +97,9 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.code == 0) {
-					window.location.href = "address.html?applyId="+importId;
+					window.location.href = "address.html?applyId=" + importId;
 				} else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});
@@ -113,15 +107,25 @@ $(function() {
 
 	function Verification() {
 		var flag = true;
-		$('.Required').each(function() {
-			if($(this).val() == '') {
-				let msg = $(this).parents('.weui-cell').find('label').text();
-				let str = msg.substr(0, msg.length - 1);
-				errLay(str + '不能为空');
-				flag = false;
-				return false;
-			}
-		})
+		var inputVal = $('#trade').val();
+
+		if(inputVal == '') {
+			errLay('所属行业不能为空');
+			flag = false;
+		}
+
+		if(inputVal != "自由职业者" && inputVal != "其他") {
+			$('.Required').each(function() {
+				if($(this).val() == '') {
+					let msg = $(this).parents('.weui-cell').find('label').text();
+					let str = msg.substr(0, msg.length - 1);
+					errLay(str + '不能为空');
+					flag = false;
+					return false;
+				}
+			})
+		}
+
 		return flag;
 	}
 })

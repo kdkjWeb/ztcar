@@ -61,7 +61,6 @@ $('.next').on('click', function() {
 
 $('#getCode').click(function() { //获取验证码
 	let _that = $(this);
-
 	let userPhone = $('#userPhone').val(); //用户电话
 	if(isPhone(userPhone) == false) {
 		return false;
@@ -70,9 +69,7 @@ $('#getCode').click(function() { //获取验证码
 
 		} else {
 			_that.attr("disabled", true);
-
 			getcode(userPhone)
-			console.log(userPhone)
 		}
 	}
 
@@ -118,9 +115,7 @@ $(document).on('change', 'input[type=file]', function() {
 			var result = this.result; //读取失败时  null   否则就是读取的结果
 			var image = new Image();
 			image.src = result;
-
 			_this.parents('.image-item').css("background-image", 'url(' + result + ')');
-
 		};
 		//注入图片 转换成base64
 		reader.readAsDataURL(file);
@@ -132,7 +127,6 @@ function getcode(phone) {
 	var data = {
 		phone: phone
 	};
-
 	$.ajax({
 		url: path + "/apply/sendVitify",
 		data: JSON.stringify(data),
@@ -143,22 +137,16 @@ function getcode(phone) {
 			if(data.code == 0) {
 				timer();
 			}
-		},
-		error: function(xhr, type, errorThrown) {
-			//异常处理；
-			console.log(xhr);
-			console.log(type);
+		},error:function(request, textStatus, errorThrown){
+			errLay(request.responseJSON.msg)
 		}
 	});
 }
 
 function getImg(name, dom) {
 	var text = "#" + dom + "";
-
 	console.log($(text))
-
 	var fDom = $(text).get(0);
-
 	var files = Array.prototype.slice.call(fDom.files);
 	if(!files.length) {
 		return false
@@ -172,7 +160,6 @@ function getImg(name, dom) {
 	}
 
 	Fdata.append(name, file);
-
 }
 
 function SecondTrue(userName) {
@@ -206,6 +193,8 @@ function suerAjax() {
 	var carProperty = JSON.parse(localStorage.getItem('carProperty')); //新车
 
 	var dealersId = JSON.parse(localStorage.getItem('dealersId')); //经销商id
+	
+	var productAge = JSON.parse(localStorage.getItem('age')); //经销商id
 
 	var loanId = JSON.parse(localStorage.getItem('loanId'));
 	var loanMonth = JSON.parse(localStorage.getItem('loanMonth'));
@@ -232,6 +221,19 @@ function suerAjax() {
 	var myisMarryed = 0; //是否有配偶欧
 	var myhaveLessee = 0; //是否有承租人
 	var myhaveGuarantee = 0; //是否有担保人
+	
+	
+	
+	var userAge = GetAge(userId); //借款人当前年纪
+	var age = Number(localStorage.getItem('age')); // 年龄限制
+	var month = localStorage.getItem('month');  //期数
+	var year = accDiv(month,12);    //贷款期数折合年数 
+	var present =  accAdd(userAge,year);  //借款人当前年纪+贷款期数折合年数
+	
+	if(present>age){
+		errLay('你的年龄已超过产品限制贷款期数,请返回重试');
+		return false;
+	}
 
 	if(isName(userName, '借款人') == false) { //判断用户姓名
 		return false;
@@ -346,6 +348,9 @@ function suerAjax() {
 				} else {
 					errLay(data.msg)
 				}
+			},error:function(request, textStatus, errorThrown){
+				$('#loading').hide();
+				errLay(request.responseJSON.msg)
 			}
 		});
 	}
@@ -408,8 +413,40 @@ $('.Positive').change(function(){
 				}else{
 					errLay(data.msg)
 				}
-			},error:function(data){
+			},error:function(request, textStatus, errorThrown){
 				$('#loading').hide();
+				errLay(request.responseJSON.msg)
 			}
 		});
 })
+
+
+
+function GetAge(identityCard) {
+    var len = (identityCard + "").length;
+    if (len == 0) {
+        return 0;
+    } else {
+        if ((len != 15) && (len != 18))//身份证号码只能为15位或18位其它不合法
+        {
+            return 0;
+        }
+    }
+    var strBirthday = "";
+    if (len == 18)//处理18位的身份证号码从号码中得到生日和性别代码
+    {
+        strBirthday = identityCard.substr(6, 4) + "/" + identityCard.substr(10, 2) + "/" + identityCard.substr(12, 2);
+    }
+    if (len == 15) {
+        strBirthday = "19" + identityCard.substr(6, 2) + "/" + identityCard.substr(8, 2) + "/" + identityCard.substr(10, 2);
+    }
+    //时间字符串里，必须是“/”
+    var birthDate = new Date(strBirthday);
+    var nowDateTime = new Date();
+    var age = nowDateTime.getFullYear() - birthDate.getFullYear();
+    //再考虑月、天的因素;.getMonth()获取的是从0开始的，这里进行比较，不需要加1
+    if (nowDateTime.getMonth() < birthDate.getMonth() || (nowDateTime.getMonth() == birthDate.getMonth() && nowDateTime.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}

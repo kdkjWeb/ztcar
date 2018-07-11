@@ -90,7 +90,7 @@ function getcode(phone) {
 				$('.num').attr("disabled", true);
 				timer();
 			} else {
-				errLay('获取验证码失败')
+				errLay(data.msg)
 			}
 		},
 		error: function(xhr, type, errorThrown) {

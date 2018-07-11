@@ -71,7 +71,7 @@ function getResult(num, type) {
 
 				if(list.haveLesseeName) {
 					var arr = {
-						h1: '自然人',
+						h1: '共同承租人',
 						name: list.haveLesseeName,
 						IDcard: list.haveLesseeDocumentNo,
 						phone: list.haveLesseePhone,

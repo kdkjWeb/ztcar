@@ -199,6 +199,7 @@ input[type=button], input[type=submit], input[type=file], input[type=text],input
 	-webkit-appearance: none; 
 	text-decoration: none;
 	outline: none;*/
+	-webkit-appearance: none;
 } 
 
 .icon-danxuanxuanzhong{
@@ -331,7 +332,7 @@ body{
 
 /* =======下拉框样式覆盖========== */
 .weui-picker-container .weui-select-modal .weui-cells {
-  height: 4rem !important;
+  height: 3rem !important;
   overflow-y: scroll !important;
 }
 .weui-picker-container .toolbar .toolbar-inner{
@@ -375,7 +376,7 @@ body{
 }
 /* 整个盒子高度 */
 .weui-picker-modal{
-  height: 5rem !important;
+  height: 4rem !important;
 }
 /* 高亮框高度 */
 .weui-picker-modal .picker-items-col{

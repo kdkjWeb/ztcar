@@ -1,9 +1,5 @@
 $(function() {
-
 	getList();
-
-	
-
 
 	$(document).on("click", '#no', function() {
 		$('.pop-box').fadeOut('9000');
@@ -17,7 +13,6 @@ $(function() {
 	$(document).on('click', '.to', function() {
 		let id = $(this).attr('attr-id');
 		let name = $(this).parents('tr').find('td').first().text();
-
 		cue("提醒", "你确定将【" + name + "】的征信结果转为订单吗？")
 		$("#yes").on("click", function() {
 			dowatting(id, 1);
@@ -32,7 +27,9 @@ $(function() {
 	});
 
 	$('#today').click(function() {
-		window.history.back();
+		if (/(iPhone|iPad|iPod)/i.test(navigator.userAgent)) {       
+            window.location.href = window.document.referrer;  
+   		} else { window.history.go("-1"); }  
 	})
 
 	//======遍历列表结果=======
@@ -72,15 +69,14 @@ $(function() {
 			success: function(data) {
 				if(data.code == 0) {
 					if(data.data.length == 0){
-						errLay('暂无数据');
-						$("#waitting").append("<span>暂时没有待转订单</span>");
-						
+//						errLay('暂无数据');
+						$("#waitting").append("<div style='text-align: center;'>暂无待转订单</div>");
 					}else{
 						eachList(data.data);
 					}
 					
 				} else {
-					errLay('请求出错');;
+					errLay(data.msg);;
 				}
 			}
 		});
@@ -106,7 +102,7 @@ $(function() {
 				if(data.code == 0) {
 					window.location.reload();
 				} else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});

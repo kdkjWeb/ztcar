@@ -7,8 +7,6 @@ $(function() {
 	getExsit();   //判断是否有配偶
 	getList(); //回显
 	
-	
-	
 
 	$("#nature").select({
 		title: "现住房性质",
@@ -83,7 +81,7 @@ $(function() {
 						}
 					}
 				}else{
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});
@@ -103,7 +101,7 @@ $(function() {
 				if(data.code == 0) {
 					window.location.href = Route+".html?applyId="+importId;
 				}else{
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});
@@ -145,12 +143,16 @@ $(function() {
 						Route = 'urgent';  //紧急联系人
 					}
 				}else{
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});
 	}
 	
-	
+	$('#nature').change(function(){
+		if($(this).val() == '无按揭自置'){
+			$('#mortgagePayments').val('0');
+		}
+	})
 	
 })

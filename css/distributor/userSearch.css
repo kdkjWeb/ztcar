@@ -7,7 +7,8 @@ header{
     margin: auto;
 }
 input{
-    outline: none
+    outline: none;
+    font-size: .36rem;
 }
 /* 客户信息查询 */
 header p{
@@ -21,7 +22,8 @@ header p{
     box-sizing: border-box;
 }
 label{
-    width:64px;
+	/*display: inline-block;*/
+    /*width:1.5rem;*/
     font-size: .3rem;
     color: #5c5c5c;
 }

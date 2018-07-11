@@ -34,7 +34,7 @@ $(function(){
 					}
 					
 				} else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});

@@ -21,13 +21,17 @@ $(function() {
 			success: function(data) {
 				
 				if(data.code == 0){
-					for(var i = 0;i<data.data.length;i++){
+					if(data.data.length>0){
+						for(var i = 0;i<data.data.length;i++){
 						var text = ' <div class="rcord" applyId="'+data.data[i].applyId+'">'+
 				            '<p>'+data.data[i].applyDate+'</p>'+
 				            '<p>'+data.data[i].loanTypeName+'</p>'+
 				            '<p>查看详情</p>'+
 				        '</div>'
 				        $('.content').append(text)
+						}
+					}else{
+						 $('.content').append("<span>暂无借款记录</span>")
 					}
 					
 				}else{

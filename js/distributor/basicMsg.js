@@ -31,6 +31,14 @@ $(function() {
 		items: ["自用", "他用", "商务用车", "其他"]
 	})
 
+	$("#isFirst").change(function(){
+		if($(this).val() == '是'){
+			$('#hasCar').fadeOut();
+		}else{
+			$('#hasCar').fadeIn();
+		}
+	})
+
 	$("#next").on("click", function() {
 		let tel = $("#tel").val()
 		if(isPhone(tel, "正确的") == "") {
@@ -46,7 +54,14 @@ $(function() {
 					return false
 				}
 			}
-
+			
+			if($('#isFirst').val() == "否"){
+				if($('#Vehicle').val() == '') {
+					errLay('请填写现有车辆品牌')
+					return false;
+				}
+			}
+		
 			listJson.applyId = importId;
 
 			listJson.standardCulture = $('#edu').val(); //文化程度
@@ -143,19 +158,20 @@ $(function() {
 					if(listJson.firstBuyCar != null) { //家庭首次购车
 						if(listJson.firstBuyCar == 0) {
 							$('#isFirst').val('是');
+							$('#hasCar').hide()
 						} else {
-							$('#isFirst').val('不是');
+							$('#isFirst').val('否');
 						}
 					}
-					if(listJson.monthAverage != null) { //现有车辆品牌
-						$('#Vehicle').val(listJson.monthAverage);
+					if(listJson.nowVehicleBrands != null) { //现有车辆品牌
+						$('#Vehicle').val(listJson.nowVehicleBrands);
 					}
 					if(listJson.carPurpose != null) { //购车目的
 						$('#aim').val(listJson.carPurpose);
 					}
 
 				}else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});
@@ -175,7 +191,7 @@ $(function() {
 				if(data.code == 0) {
 					window.location.href = "work.html?applyId="+importId;
 				}else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});
@@ -206,7 +222,7 @@ $(function() {
 						items: arr
 					})
 				}else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});

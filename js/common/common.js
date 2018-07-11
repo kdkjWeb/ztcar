@@ -53,11 +53,12 @@ function errLay(msg) {
 	$('#errLay').fadeIn('8000');
 
 	var set = setTimeout(function() {
-		$('#errLay').fadeOut('8000');
+		$('#errLay').fadeOut('12000');
 		var setRemove = setTimeout(function() {
 			$('#errLay').remove()
-		}, 800);
-	}, 1200);
+		}, 1200);
+	}, 1600);
+	
 }
 
 function cue(tit, msg) {

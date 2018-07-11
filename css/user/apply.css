@@ -10,13 +10,13 @@ body{
 /* 姓名 */
 .name{
     width:100%;
-    height: .6rem;
+    height: .8rem;
     padding-bottom: .4rem 
 }
 /* 身份证 */
 .IDcard{
     width:100%;
-    height: .6rem;
+    height: .8rem;
     margin-bottom: .4rem
 }
 .IDcard span{
@@ -34,7 +34,7 @@ body{
 /* 银行卡 */
 .card{
     width:100%;
-    height: .6rem;
+    height: .8rem;
     margin-bottom: .4rem
 }
 .card .label{
@@ -49,23 +49,23 @@ body{
 /* 手机号 */
 .phone{
     width:100%;
-    height: .6rem;
+    height: .8rem;
     margin-bottom: .4rem;
     display: flex;
     flex-direction: row;
 }
 .phone .ipt{
     width:2.8rem;
-    height:.6rem;
+    height:.8rem;
     border-radius: .5rem;
     text-indent: .2rem;
     outline: none;
-    margin-right:.3rem
+    margin-right:.15rem
 }
 /* 短信验证码 */
 .msg{
     width:100%;
-    height: .6rem;
+    height: .8rem;
     margin-bottom: .4rem
 }
 /* *必填项 */
@@ -77,28 +77,36 @@ body{
 }
 /* 文字 */
 .label{
-    font-size: .28rem;
+    font-size: .32rem;
     color:#5c5c5c;
     line-height: .6rem;
 }
 /* 输入框 */
 .ipt{
     width:3.5rem;
-    height:.6rem;
+    height:.8rem;
     border-radius: .5rem;
     text-indent: .2rem;
     outline: none;
-}
-input{
+    background-color: #FFFFFF;
     border:1px solid #dcdcdc;
-    box-sizing: border-box;
-    font-size: .26rem;
-    color: #b2b2b2
+    font-size: .30rem;
+    color: #000000;
+    text-decoration: none;
+    outline: none;
+    -webkit-appearance: none;
 }
+/*input{
+    border:1px solid #dcdcdc;
+    font-size: .30rem;
+    color: #000000;
+    text-decoration: none;
+    outline: none;
+}*/
 /* 获取验证码 */
 .get{
     width:1.9rem;
-    height:.55rem;
+    height:.77rem;
     background-color: #4371f8;
     border:1px solid #4371f8;
     box-sizing: border-box;

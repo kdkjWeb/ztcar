@@ -7,7 +7,6 @@ $(function(){
         cue("提醒","是否发送至经销商邮箱？")
         $("#yes").on("click",function(){
             listJson.applyId = importId;    
-            console.log(listJson);
             Send(); //上传
         })
         $("#no").on("click",function(){
@@ -35,7 +34,7 @@ $(function(){
                 if(data.code == 0){
                   listJson.smCompacts = data.data;  
                 }else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
             }
         })
@@ -55,7 +54,7 @@ $(function(){
                     $(".pop-box").hide()
                     errLay("已发送至经销商邮箱")
                 } else{
-                    errLay('请求出错');
+                    errLay(data.msg);
                 }   
             
             },

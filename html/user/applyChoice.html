@@ -12,7 +12,12 @@
     <title>我要申请-产品选择</title>
     <script src="../../js/common/jquery-3.2.1.js"></script>
     <script src="../../js/common/common.js"></script>
-    <script src="../../js/common/fastclick.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="../../css/common/reset.css">
+    <link rel="stylesheet" href="../../css/common/weui.min.css">
+    <link rel="stylesheet" href="../../css/common/jquery-weui.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/common/iconfont.css">
+	<link rel="stylesheet" href="../../css/user/applyChoice.css">
+	<script src="../../js/common/fastclick.js" type="text/javascript" charset="utf-8"></script>
 	<script>
 	   if ('addEventListener' in document) {
         document.addEventListener('DOMContentLoaded', function() {
@@ -21,21 +26,13 @@
          }, false);
      }
 	</script>
-    
-    <link rel="stylesheet" href="../../css/common/reset.css">
-    <link rel="stylesheet" href="../../css/common/weui.min.css">
-    <link rel="stylesheet" href="../../css/common/jquery-weui.min.css">
-    <link rel="stylesheet" type="text/css" href="../../css/common/iconfont.css">
-	<link rel="stylesheet" href="../../css/user/applyChoice.css">
-	
-		
 </head>
 <body>
     <div class="content">
     	<div class="top_head">
     		<span>经销商名称</span>
-    		<span class="input_span iconfont" >
-    			<input type="text"  id="distributor" readonly="readonly"/>
+    		<span class="input_span iconfont" id="myHeader">
+    			<input type="text"  id="distributor"/>
     		</span>
     	</div>
     	<div class="header">
@@ -55,7 +52,7 @@
     		<div class="content_div">
     			<div class="time-car">
 					<div class="car"><i class="iconfont icon-danxuan2 iconBox" box='false' num='1' Adata=''></i>车贷分期</div>
-					<span class="input_span iconfont spanName"><input type="text" id="Carloan" readonly="readonly" unselectable="on"/></span>
+					<span class="input_span iconfont spanName"><input type="text" id="Carloan" unselectable="on"/></span>
 				</div>
     			<div class="time_tit">
 					<span class="number">贷款期数</span>   

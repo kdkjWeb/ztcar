@@ -18,7 +18,6 @@ $(function(){
 				if(data.code == 0) {
 					if(data.data.length>0){
 						for(var i = 0;i<data.data.length;i++){
-						
 							var text = '<div class="msg" urlId="'+data.data[i].id+'">'+
 					            '<p>征信日期： '+getDays(data.data[i].createTime)+'</p>'+
 					            '<span>'+data.data[i].statusStr+'</span>'+
@@ -26,12 +25,12 @@ $(function(){
 					        $(".content").append(text)
 						}
 					}else{
-						 $(".content").text('暂时没有征信反馈')
+						 $(".content").text('暂无征信结果')
 					}
 					
 					
 				}else{
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});

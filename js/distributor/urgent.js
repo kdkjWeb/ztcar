@@ -69,7 +69,7 @@ $(function(){
                         }
                     }
                 }else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
             }
         })
@@ -90,7 +90,7 @@ $(function(){
             	if(data.code == 0){
             		 window.location.href = "application.html?applyId="+importId;
             	}else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
                
             }

@@ -53,7 +53,7 @@ $(function() {
 						}
 					}
 				} else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});
@@ -73,7 +73,7 @@ $(function() {
 				if(data.code == 0) {
 					window.location.href = "myOrder.html";	
 				} else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});

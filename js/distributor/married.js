@@ -86,7 +86,7 @@ $(function(){
                         }                        
                     }
                 }else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
             }
             
@@ -107,7 +107,7 @@ $(function(){
                 if(data.code == 0){
                     window.location.href = Route+".html?applyId="+importId;
                 }else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
             }
         })
@@ -149,7 +149,7 @@ $(function(){
 						Route = 'urgent';  //紧急联系人
 					}
 				}else{
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});

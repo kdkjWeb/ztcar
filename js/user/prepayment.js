@@ -36,7 +36,7 @@ $(function(){
 					}
 					
 				} else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});
@@ -165,7 +165,7 @@ $(function(){
 							window.location.reload()
 						},1500)
 				} else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});

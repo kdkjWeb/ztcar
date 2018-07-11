@@ -77,13 +77,13 @@ $(function() {
 			success: function(data) {
 				if(data.code == 0) {
 					if(data.data.length == 0){
-						errLay('暂无数据');
-						$(".container").append("<span>暂时今日征信结果</span>");
+//						errLay('暂无数据');
+						$(".container").append("<div style='text-align: center;'>暂无征信结果</div>");
 					}else{
 						eachList(data.data);
 					}
 				} else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});
@@ -109,7 +109,7 @@ $(function() {
 				if(data.code == 0) {
 					window.location.reload();
 				} else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			},
 			error: function(xhr, type, errorThrown) {

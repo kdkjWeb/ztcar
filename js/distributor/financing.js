@@ -1,6 +1,31 @@
 $(function() {
 	var importId = GetRequest().applyId;
 	var listJson;
+	var carList;   //汽车品牌数组
+//	===================
+	var CarProportion; //车贷比例
+	var AddProportion; //加融比例
+
+	var firstRatio = $('#firstRatio'); //首付比例
+	var firstPayment = $('#firstPayment'); //首付金额
+	var ticketPrice = $('#ticketPrice') //车辆开票价
+	var carFinancing = $('#carFinancing'); //车辆融资额
+	var TotalLoan = $('#TotalLoan'); //贷款总额
+	var rate = $('#rate'); //费率
+	var coefficient = $('#coefficient'); //万元还款系数
+	var month = $('#month'); //还款期限
+	var payment = $('#payment'); //预估月供
+	var aa = $('.aa');
+		
+	var insurance = $('#insurance'); //保险费
+	var purchase = $('#purchase'); //购置税
+	var ship = $('#ship'); //车船税
+	var gps = $('#gps'); //GPS服务费
+	var other = $('#other'); //其他
+	var iptDislable = $('.iptDislable');
+	
+	var paymentValCtr;// 1-车贷比例-加融比例
+	
 	
 	getCar(); //获取车辆品牌 
 	getList(); //回显
@@ -29,7 +54,6 @@ $(function() {
 		listJson.proportionDownPayment = $('#firstRatio').val();//首付比例
 		listJson.downPaymentAmount = $('#firstPayment').val();//首付金额
 		listJson.vehicleFinancing = $('#carFinancing').val();//车辆融资额
-		
 		
 		listJson.insurancePremium = $('#insurance').val();//保险费
 		listJson.purchaseTax = $('#purchase').val();//购置税
@@ -121,9 +145,38 @@ $(function() {
 						ruleTwo();
 					}
 					
+				    CarProportion = accDiv(listJson.vehicleLoanRatio,100); //车贷比例
+					AddProportion = accDiv(listJson.proportionsRatio,100); //加融比例
+					paymentValCtr = accSub(1, accAdd(CarProportion, AddProportion)); // 1-车贷比例-加融比例
+					
+					if(listJson.intervalValue == 0){  //费率为区间还是定值，0是定制
+						var arr;
+						$("#rate").select({
+							title: "费率",
+							items: listJson.rateList,
+							onChange: function() {
+								
+							}
+						})
+						$("#rate").parents('.weui-cell').append('<i class="iconfont icon-xiangxia1"></i>')
+					}else{
+						$("#rate").attr('rateDown',listJson.rateDown);
+						$("#rate").attr('rateUp',listJson.rateUp);
+						$(document).on('change','#rate',function(){
+							var num = Number($(this).val());
+							var down = Number($("#rate").attr('rateDown'));  //5
+							var up = Number($("#rate").attr('rateUp'));   //15
+							if(num<down || num>up){
+								errLay('费率需小于'+up+',大于'+down);
+								$("#rate").val('');
+								$('#coefficient').val('');
+							}
+						})
+					}
+					
 					
 				} else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});
@@ -145,29 +198,22 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.code == 0) {
-					var arr = [];
-					for(var i = 0; i < data.data.length; i++) {
-						let car = {
-							title: data.data[i].text,
-							value: data.data[i].code
-						};
-						arr.push(car);
-					}
-					$("#Vehicle").select({
-						title: "现有车辆品牌",
-						items: arr,
-						onChange: function() {
-							let dataVal = $(this)[0].data.values;
-							if(dataVal != undefined) {
-								$('#audi').val('');
-								getCartype(dataVal);
-							}
-							$('#audi').val('');
-							$('#type').val('');
-						}
+					carList = data.data;
+					
+					$(document).on('focus', '#Vehicle', function() {
+						Distributor(data.data);
 					})
+					
+					$(document).on('input', '#Vehicle', function() {
+						search($(this).val());
+					})		
+					
+					$(document).on('click', '#selectSure', function() {
+						$('#mySelect').remove();
+					})
+					
 				} else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});
@@ -208,7 +254,7 @@ $(function() {
 						}
 					})
 				} else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 
 			}
@@ -243,32 +289,13 @@ $(function() {
 						items: arr
 					})
 				} else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});
 	}
 
 	function ruleTwo() {
-		var CarProportion = 0.8; //车贷比例
-		var AddProportion = 0.8; //加融比例
-
-		var firstRatio = $('#firstRatio'); //首付比例
-		var firstPayment = $('#firstPayment'); //首付金额
-		var ticketPrice = $('#ticketPrice') //车辆开票价
-		var carFinancing = $('#carFinancing'); //车辆融资额
-		var TotalLoan = $('#TotalLoan'); //贷款总额
-		var rate = $('#rate'); //费率
-		var coefficient = $('#coefficient'); //万元还款系数
-		var month = $('#month'); //还款期限
-		var payment = $('#payment'); //预估月供
-
-		var insurance = $('#insurance'); //保险费
-		var purchase = $('#purchase'); //购置税
-		var ship = $('#ship'); //车船税
-		var gps = $('#gps'); //GPS服务费
-		var other = $('#other'); //其他
-		var iptDislable = $('.iptDislable');
 
 		function getOther() {
 			var num = 0;
@@ -398,21 +425,6 @@ $(function() {
 	}
 
 	function ruleOne() {
-		var CarProportion = 0.8; //车贷比例
-		var AddProportion = 0.15; //加融比例
-
-		var firstRatio = $('#firstRatio'); //首付比例
-		var firstPayment = $('#firstPayment'); //首付金额
-		var ticketPrice = $('#ticketPrice') //车辆开票价
-		var carFinancing = $('#carFinancing'); //车辆融资额
-		var TotalLoan = $('#TotalLoan'); //贷款总额
-		var rate = $('#rate'); //费率
-		var coefficient = $('#coefficient'); //万元还款系数
-		var month = $('#month'); //还款期限
-		var payment = $('#payment'); //预估月供
-		var aa = $('.aa');
-
-		var paymentValCtr = accSub(1, accAdd(CarProportion, AddProportion)); // 1-车贷比例-加融比例
 
 		//	===========
 
@@ -427,7 +439,8 @@ $(function() {
 					firstPayment.val(keepTwo(text));
 					//				firstPayment.change();
 				} else {
-					errLay('首付比例需大于或等于' + paymentValCtr)
+					var a = paymentValCtr*100
+					errLay('首付比例需大于或等于' + paymentValCtr+"%")
 				}
 			}
 		}
@@ -578,12 +591,13 @@ $(function() {
 				if(data.code == 0) {
 					window.location.href = "basicMsg.html?applyId=" + importId;
 				} else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});
 	}
 	
+//	=======为空验证============
 	function Verification() {
 		var flag = true;
 		$('.weui-input').each(function() {
@@ -598,5 +612,68 @@ $(function() {
 		return flag;
 	}
 	
+	
+//	======模糊查询下拉=============
+	function search(keyWord) {
+		var len = carList.length;
+		var arr = [];
+		for(var i = 0; i < len; i++) {
+			//如果字符串中不包含目标字符会返回-1
+			if(carList[i].text.indexOf(keyWord) >= 0) {
+				arr.push(carList[i]);
+			}
+		}
+		Distributor(arr);
+	}
+
+//===========车辆品牌下拉===========
+	function Distributor(arr) {
+		var brandVal = $('#Vehicle').val();
+		$('#mySelect').remove();
+		var text = '<div id="mySelect">' +
+			'<div id="selectContent">';
+
+		for(var i = 0; i < arr.length; i++) {
+			if(brandVal == arr[i].text){
+				text += '<div class="mylabel active" code="' + arr[i].code + '">';
+			}else{
+				text += '<div class="mylabel" code="' + arr[i].code + '">';
+			}
+			text += '<p>' + arr[i].text + '</p>' +
+			'</div>';
+		}
+
+		text += '</div>' +
+			'</div>'
+		$('body').append(text);
+		$('#mySelect').fadeIn();
+	}
+	
+	$(document).on('click', '.mylabel', function() {
+		$(this).addClass('active').siblings('.mylabel').removeClass('active')
+		var myVal = $(this).find('p').text();
+		var code = $(this).attr('code');
+
+		$('#Vehicle').val(myVal);
+		$('#Vehicle').attr('code', code);
+		
+		clear(code); //清空下拉框
+		$('#mySelect').fadeOut();
+		setTimeout(function() {
+			$('#mySelect').remove();
+		}, 1500);
+	})
+	
+	
+	function clear(code) { ////==========清除输入框
+		getCartype(code)
+		$('#audi').val('');
+		$('#audi').attr('value','');
+		$('#audi').attr('data-values','');
+		
+		$('#type').val('');
+		$('#type').attr('value','');
+		$('#type').attr('data-values','');
+	}
 	
 })

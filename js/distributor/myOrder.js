@@ -48,12 +48,17 @@ $(function() {
 			contentType: "application/json",
 			type: "get",
 			success: function(data) {
-				if(data.code == 0 && data.orderList) {
-					for(var i = 0; i < data.orderList.length; i++) {
-						setList(data.orderList[i])
+				if(data.code == 0) {
+					if(data.orderList.length>0){
+						for(var i = 0; i < data.orderList.length; i++) {
+							setList(data.orderList[i])
+						}
+					}else{
+						$('.content').html('<div style="text-align: center;">暂无订单数据</div>')
 					}
+					
 				}else{
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});
@@ -71,9 +76,13 @@ $(function() {
 		}
 		text += '</div>' +
 			'<div class="credit">' +
-			'<label>贷款金额：</label>' +
-			'<span>' + arr.totalLoan + '</span>' +
-			'</div>' +
+			'<label>贷款金额：</label>';
+			if(arr.totalLoan){
+				text += '<span>' + arr.totalLoan + '</span>';
+			}else{
+				text += '<span>无</span>';
+			}
+			text += '</div>' +
 			'</div>' +
 			'<div class="btn">';
 		if(arr.status == -1) {
@@ -117,7 +126,7 @@ $(function() {
 				if(data.code == 0){
 					document.location.reload();//当前页面 
 				}else{
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 				
 			}

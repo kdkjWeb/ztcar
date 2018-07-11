@@ -4,7 +4,7 @@ $(function() {
 
 	getList();
 
-	$(".weui-btn").on("click", function() {
+	$("#next").on("click", function() {
 		let disName = $("#disName").val()
 		let disPhone = $("#disPhone").val()
 		if(isName(disName, "销售顾问") == false) {
@@ -53,7 +53,7 @@ $(function() {
 					}
 
 				} else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});
@@ -73,10 +73,17 @@ $(function() {
 				if(data.code == 0) {
 					window.location.href = "financing.html?applyId="+importId;
 				} else {
-					errLay('请求出错');
+					errLay(data.msg);
 				}
 			}
 		});
 	}
-
+	
+//	function showNode(){
+//		if(){
+//			
+//		}
+//	}
+	
+	
 })
