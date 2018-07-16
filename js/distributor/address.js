@@ -2,11 +2,11 @@ $(function() {
 
 	var listJson = {};
 	var importId = GetRequest().applyId;
-	
-	var Route;  //路径
-	getExsit();   //判断是否有配偶
+
+	var Route; //路径
+	getExsit(); //判断路劲
+
 	getList(); //回显
-	
 
 	$("#nature").select({
 		title: "现住房性质",
@@ -29,10 +29,10 @@ $(function() {
 		items: ["有自然担保人", "有法人担保人", "无"]
 	})
 	$(".weui-btn").on("click", function() {
-		if(!Verification()){//为空的验证
+		if(!Verification()) { //为空的验证
 			return false;
 		}
-		
+
 		listJson.applyId = importId;
 		listJson.currentAddress = $('#currentAddress').val(); //现居地址
 		listJson.permanentAddress = $('#address').val(); //户籍地址
@@ -57,10 +57,17 @@ $(function() {
 			xhrFields: {
 				withCredentials: true
 			},
+			beforeSend: function() {
+				showLoading(); //显示loading	
+			},
 			success: function(data) {
+				hideLoading(); //隐藏load
 				if(data.code == 0) {
 					if(data.data) {
 						listJson = data.data;
+
+						content(listJson.smProductApplycontent); ////显示和必填验证
+
 						if(listJson.currentAddress) { //现居地址
 							$('#currentAddress').val(listJson.currentAddress);
 						}
@@ -80,9 +87,13 @@ $(function() {
 							$('#mortgagePayments').val(listJson.mortgagePayments);
 						}
 					}
-				}else{
+				} else {
 					errLay(data.msg);
 				}
+			},
+			error: function(request, textStatus, errorThrown) {
+				hideLoading(); //隐藏load	
+				errLay(request.responseJSON.msg);
 			}
 		});
 	}
@@ -97,19 +108,27 @@ $(function() {
 			xhrFields: {
 				withCredentials: true
 			},
+			beforeSend: function() {
+				showLoading(); //显示loading	
+			},
 			success: function(data) {
+				hideLoading(); //隐藏load
 				if(data.code == 0) {
-					window.location.href = Route+".html?applyId="+importId;
-				}else{
+					window.location.href = Route + ".html?applyId=" + importId;
+				} else {
 					errLay(data.msg);
 				}
+			},
+			error: function(request, textStatus, errorThrown) {
+				hideLoading(); //隐藏load	
+				errLay(request.responseJSON.msg);
 			}
 		});
 	}
 
 	function Verification() {
 		var flag = true;
-		$('.Required').each(function() {
+		$('.must').each(function() {
 			if($(this).val() == '') {
 				let msg = $(this).parents('.weui-cell').find('label').text();
 				let str = msg.substr(0, msg.length - 1);
@@ -121,8 +140,73 @@ $(function() {
 		return flag;
 	}
 
-	
-	function getExsit(){
+	$('#nature').change(function() {
+		if($(this).val() == '无按揭自置') {
+			$('#mortgagePayments').val('0');
+		}
+	})
+
+	//=-=========显示。是否必填==========
+	function content(mycontent) {
+
+		for(var i = 0; i < mycontent.smProductApplycontents.length; i++) {
+
+			if(mycontent.smProductApplycontents[i].label == "cuAddr") { //现居地址
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#currentAddress').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#currentAddress').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "peAddr") { //户籍地址
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#address').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#address').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "naHousing") { //现住房性质
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#nature').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#nature').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "hoLocation") { //房产地点
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#housingLocation').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#housingLocation').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "hoType") { //房产类型
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#type').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#type').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "moPayments") { //房贷月供
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#mortgagePayments').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#mortgagePayments').addClass("must");
+					}
+				}
+
+			}
+
+		}
+
+	}
+	//=-=========显示。是否必填==========	
+
+	function getExsit() {
 		var data = {
 			id: importId
 		}
@@ -137,22 +221,27 @@ $(function() {
 			},
 			success: function(data) {
 				if(data.code == 0) {
-					if(data.data.isSpouse == 1){
-						Route = 'married';  //配偶
-					}else{
-						Route = 'urgent';  //紧急联系人
+					var content = data.data;
+
+					if(content.isPo == 1) {
+						Route = 'married'; //配偶
+						return
+					} else if(content.isGtcz == 1) {
+						Route = 'tenant'; //承租人
+						return
+					} else if(content.isZrdb == 1) {
+						Route = 'guarantor'; //个人担保
+						return
+					} else if(content.isJjlx == 1) {
+						Route = 'urgent'; //紧急联系人
+						return
 					}
-				}else{
+
+				} else {
 					errLay(data.msg);
 				}
 			}
 		});
 	}
-	
-	$('#nature').change(function(){
-		if($(this).val() == '无按揭自置'){
-			$('#mortgagePayments').val('0');
-		}
-	})
-	
+
 })

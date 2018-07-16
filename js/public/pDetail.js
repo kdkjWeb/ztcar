@@ -35,9 +35,7 @@ $(function() {
              '</div>'+
          '</div>'+
          '<img src="'+ path + obj.showFile +'" alt="">'+
-         '<div class="main">'+
-             '<p>'+ obj.text +'</p>'+
-         '</div>'
+         '<div class="main">'+ obj.informationContent + '</div>'
          $(".content").append(text)
      }
 })

@@ -8,95 +8,101 @@
 }
 /* 列表内容 */
 .c-list{
-    width:6.92rem;
-    height: 2.1rem;
+    /*height: 2.1rem;*/
     margin: auto;
 }
 /* 基本信息 */
 .basic-msg{
-    width:100%;
     height:.9rem;
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px dashed #ccc
+    border-bottom: 1px dashed #ccc;
+    padding: 0 .4rem;
+}
+.basic-msg>div{
+	float: left;
 }
 /* 字体垂直居中 */
 .basic-msg p{
     line-height: .9rem
 }
-.basic-msg div{
-    flex: 1
-}
 /* 姓名和电话 */
 .basic{
-    width:3rem;
-    height: 100%;
-    display: flex;
     font-size: .3rem;
+    line-height: .9rem;
+}
+.titName{
+	width: 100%;
+	font-size: .3rem;
+	line-height: .9rem;
+	  overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+/* 贷款 */
+.cre{
+	margin-left: .3rem;
+    line-height: .9rem;
+    font-size: .3rem
 }
 /* 姓名 */
 .name{
-    width: 1.16rem;
+	display: inline-block;
+    width: 1.4rem;
 }
 /* 电话 */
 .phone{
-    width:1.84rem;
+	display: inline-block;
+/*    width:1.84rem;*/
     text-decoration: underline
 }
 label, span{
     font-size: .3rem;
 }
-/* 贷款 */
-.credit{
-    width: 3rem;
-    height: 100%;
-    display: flex;
-    line-height: .9rem;
-    font-size: .32rem
-}
+
 /* 按钮 */
 .btn{
-    width:100%;
-    height:1.3rem;
-    display: flex;
-    justify-content: space-around;
+	position: relative;
+   height:1.3rem;
+   text-align: center;
+   padding: 0 .2rem;
 }
 /* 选择框 */
 .dislableDiv{
-	width:2.15rem;
-    height: .48rem;
     background-color: #C6C6C6;
-    margin-top: .4rem;
-    border-radius: .5rem
+    float: left;
 }
 
 .choose{
-    width:2.15rem;
-    height: .48rem;
     background-color: #3b6bf4;
-    margin-top: .4rem;
-    border-radius: .5rem
+    float: left;
 }
-.choose p,.dislableDiv p{
-    font-size: .26rem;
-    color: white;
-    text-align: center;
-    line-height: .48rem
-}
+
 /* 订单取消 */
 .cancel{
-    width:2.15rem;
-    height: .48rem;
     background-color: #fe7800;
-    margin-top: .4rem;
-    border-radius: .5rem
+    float: right;
 }
-.cancel p{
-    font-size: .26rem;
+
+.middle{
+	background-color: #4CAF50;
+	display: inline-block;
+}
+.errCan{
+	background-color: #C6C6C6;
+	float: right;
+}
+
+.choose,.dislableDiv,.cancel,.middle,.errCan{
+	width: 2.2rem;
+    font-size: .3rem;
     color: white;
     text-align: center;
-    line-height: .48rem
+    line-height: .6rem;
+    margin-top: .4rem;
+    border-radius: .5rem;
+    height: .6rem;
+    line-height: .6rem;
 }
+
 .line{
     width:100%;
     height: .1rem;
@@ -120,4 +126,27 @@ label, span{
 	text-align: left;
 	border-radius: .4rem;
 	text-indent: .2rem;
+}
+
+.tit{
+	display: none;
+	position: absolute;
+	width: 2.5rem;
+	top: 1.1rem;
+	left: 0;
+	right: 0;	
+	margin: 0 auto;
+	border: 1px solid #C4C4C4;
+	background-color: #FFFFFF;
+	border-radius:.1rem;
+	filter: progid:DXImageTransform.Microsoft.Shadow(color='#c3c3c3', Direction=135, Strength=5);/*for ie6,7,8*/ 
+	-moz-box-shadow:0px 2px 5px #c3c3c3;/*firefox*/ 
+	-webkit-box-shadow:0px 2px 5px #c3c3c3;/*webkit*/ 
+	box-shadow:0px 2px 5px #c3c3c3;/*opera或ie9*/ 
+}
+
+.tit div{
+	height: .7rem;
+	line-height: .7rem;
+	font-size: .30rem;
 }

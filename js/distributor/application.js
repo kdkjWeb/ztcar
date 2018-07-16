@@ -3,7 +3,7 @@ $(function(){
     var importId = GetRequest().applyId;
     Create();  //获取合同模板
 
-    $(".send").on("click",function(){
+    $("#send").on("click",function(){
         cue("提醒","是否发送至经销商邮箱？")
         $("#yes").on("click",function(){
             listJson.applyId = importId;    
@@ -13,9 +13,14 @@ $(function(){
             $(".pop-box").hide()
         })
     })
-    $(".weui-btn").on("click",function(){
-        window.location.href="myOrder.html"
+    
+    $('#again').click(function(){
+    	Create();
     })
+    
+//  $(".weui-btn").on("click",function(){
+//      window.location.href="myOrder.html"
+//  })
 
     function Create() {
         var data = {
@@ -30,38 +35,63 @@ $(function(){
             xhrFields:{
                 withCredentials: true
             },
+            beforeSend: function() {
+				showLoading();//显示loading	
+			},
             success:function(data){
+            	hideLoading();  //隐藏load
                 if(data.code == 0){
-                  listJson.smCompacts = data.data;  
+                  listJson.smCompacts = data.data; 
+                  $('#true').show();
+                  $('#send').show();
+                  
+                  $('#false').hide();
+                  $('#again').hide();
+                  
                 }else {
 					errLay(data.msg);
+					$('#false').show();
+					$('#again').show();
 				}
-            }
+            },error:function(request, textStatus, errorThrown){
+				hideLoading();  //隐藏load	
+				$('#false').show();
+				$('#again').show();
+				errLay(request.responseJSON.msg);
+			}
         })
     }
 
     function Send() {
-
         $.ajax({
             url: path + "/compact/sendCompact",
             data:JSON.stringify(listJson),
             dataType:"json",
             contentType:"application/json",
             type:"post",
+            beforeSend: function() {
+				showLoading();//显示loading	
+			},
             success: function(data) {
-                console.log(data)
+            	hideLoading();  //隐藏load
                 if(data.code == 0){
                     $(".pop-box").hide()
-                    errLay("已发送至经销商邮箱")
+                    errLay("已发送至经销商邮箱");
+                    var setRemove = setTimeout(function() {
+						 window.location.href="myOrder.html"
+					}, 2500);
                 } else{
                     errLay(data.msg);
                 }   
-            
-            },
-            error: function(xhr,type,errthrown) {
-                console.log(xhr);
-                console.log(type)
-            }
+            },error:function(request, textStatus, errorThrown){
+				hideLoading();  //隐藏load	
+				errLay(request.responseJSON.msg);
+			}
         })
     }
+    
+
+   
+    
+    
 })

@@ -1,8 +1,8 @@
 $(function(){
 	
 	
-	var phone = sessionStorage.getItem('userPhone');
-	var name = sessionStorage.getItem('userName');
+	var phone = localStorage.getItem('userPhone');
+	var name = localStorage.getItem('userName');
 	
 	if(phone != '' && phone != undefined){
 		$('#userPhone').attr('placeholder',phone);

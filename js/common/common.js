@@ -1,7 +1,7 @@
 //var path = "http://192.168.20.128:8080";   //张韩
-//var path = "http://192.168.20.127:8080";      //唐彬
+//var path = "http://192.168.20.129:8080";      //唐彬
 //var path = "http://192.168.20.174:8080";   //石宇
-var path ="https://www.rydit.com.cn/zzbjr";//外网
+var path = "https://www.rydit.com.cn/zzbjr"; //外网
 
 (function(doc, win) {
 	var docEl = doc.documentElement;
@@ -53,12 +53,12 @@ function errLay(msg) {
 	$('#errLay').fadeIn('8000');
 
 	var set = setTimeout(function() {
-		$('#errLay').fadeOut('12000');
+		$('#errLay').fadeOut('25000');
 		var setRemove = setTimeout(function() {
 			$('#errLay').remove()
-		}, 1200);
-	}, 1600);
-	
+		}, 2500);
+	}, 2500);
+
 }
 
 function cue(tit, msg) {
@@ -296,7 +296,7 @@ function accSub(arg1, arg2) {
 function keepTwo(num) {
 	var result = parseFloat(num);
 	if(isNaN(result)) {
-//		alert('传递参数错误，请检查！');
+		//		alert('传递参数错误，请检查！');
 		console.log('传递参数错误，请检查')
 		return false;
 	}
@@ -312,3 +312,60 @@ function keepTwo(num) {
 	}
 	return s_x;
 }
+
+//============Loading==============
+function showLoading() {
+	var loading = '<div class="loading" id="loading">' +
+		'<div class="weui-loadmore">' +
+		'<i class="weui-loading"></i>' +
+		'<span class="weui-loadmore__tips">正在加载</span>' +
+		'</div>' +
+		'</div>';
+	$('body').append(loading);
+}
+
+function hideLoading() {
+	$('#loading').fadeOut('800');
+	var setRemove = setTimeout(function() {
+		$('#loading').remove()
+	}, 900);
+}
+//============Loading==============
+
+//=======拖动兼容=========
+var ModalHelper = (function(bodyCls) {
+	var scrollTop;
+	return {
+		afterOpen: function() {
+			scrollTop = document.scrollingElement.scrollTop;
+			document.body.classList.add(bodyCls);
+			document.body.style.top = -scrollTop + 'px';
+		},
+		beforeClose: function() {
+			document.body.classList.remove(bodyCls);
+			// scrollTop lost after set position:fixed, restore it back.
+			document.scrollingElement.scrollTop = scrollTop;
+		}
+	};
+})('modal-open');
+//=======拖动兼容=========
+
+//==========输入框光标在最后一位================
+$(document).on('focus', 'input', function() {
+	var obj = $(this).get(0);
+})
+
+function moveEnd(obj) {
+//	obj.focus();
+	var len = obj.value.length;
+	if(document.selection) {
+		var sel = obj.createTextRange();
+		sel.moveStart('character', len); //设置开头的位置
+		sel.collapse();
+		sel.select();
+	} else if(typeof obj.selectionStart == 'number' && typeof obj.selectionEnd == 'number') {
+		obj.selectionStart = obj.selectionEnd = len;
+	}
+}
+
+//==========输入框光标在最后一位================

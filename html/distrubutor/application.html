@@ -12,11 +12,11 @@
     <link rel="stylesheet" href="../../css/common/jquery-weui.min.css">
     <link rel="stylesheet" type="text/css" href="../../css/common/iconfont.css">
     <link rel="stylesheet" href="../../css/distributor/application.css">
-    <script src="../../js/common/fastclick.js" type="text/javascript" charset="utf-8"></script>
-    <script>
-        $(function() {
-            FastClick.attach(document.body);
-        });
+    <script src="../../js/common/fastclick.js"></script>
+    <script type="text/javascript">  	
+	  $(function() {
+	    FastClick.attach(document.body);
+	  });
     </script>
 </head>
 <body>
@@ -37,9 +37,14 @@
     <div class="line"></div>
     <div class="banner">
         <div class="content">
-            <h2><span>《个人车贷分期申请表》</span>已经生成</h2>
-            <p class="send">发送至经销商邮箱</p>
-            <a href="javascript:;" class="weui-btn weui-btn_primary">完成</a>
+            <h2 id="true"><span>《个人车贷分期申请表》</span>已经生成</h2>
+            <p id="send">发送至经销商邮箱</p>
+            
+            
+            <h2 id="false"><span>《个人车贷分期申请表》</span>生成失败</h2>
+            <div id="again">点击重新生成</div>
+            
+            
         </div>
     </div>
 </body>

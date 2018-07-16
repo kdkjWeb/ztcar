@@ -242,7 +242,9 @@
 			if ((deviceIsIOS && target.type === 'file') || target.disabled) {
 				return true;
 			}
-
+//			if ((/\bfocusPositionInit\b/).test(target.className) && (target.type === 'number') && target.value.length > 0) {
+//				return true;
+//			}
 			break;
 		case 'label':
 		case 'iframe': // iOS8 homescreen apps can prevent events bubbling into frames
@@ -279,6 +281,7 @@
 
 			// No point in attempting to focus disabled inputs
 			return !target.disabled && !target.readOnly;
+//			return !target.disabled && !target.readOnly && (target.value.length == 0);
 		default:
 			return (/\bneedsfocus\b/).test(target.className);
 		}

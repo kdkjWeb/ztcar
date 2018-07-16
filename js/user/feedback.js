@@ -4,7 +4,7 @@ $(function(){
     	var id = $(this).attr('urlId');
     	window.location.href="detail.html?id="+id
     })
-    getList()
+    getList();
     function getList(){
     	$.ajax({
 			url: path + "/apply/getUserCreditList",
@@ -19,7 +19,7 @@ $(function(){
 					if(data.data.length>0){
 						for(var i = 0;i<data.data.length;i++){
 							var text = '<div class="msg" urlId="'+data.data[i].id+'">'+
-					            '<p>征信日期： '+getDays(data.data[i].createTime)+'</p>'+
+					            '<p>征信日期： '+data.data[i].modifyTime+'</p>'+
 					            '<span>'+data.data[i].statusStr+'</span>'+
 					        '</div>';
 					        $(".content").append(text)

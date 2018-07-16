@@ -72,17 +72,19 @@ $(function() {
 		dataType: "json",
 		contentType: "application/json",
 		type: "post",
+		beforeSend: function() {
+			showLoading();//显示loading	
+		},
 		success: function(data) {
+			hideLoading();  //隐藏load	
 			if(data.code == 0) {
 				listJson = data.list;
 			} else {
 				errLay('请求超时');
 			}
-		},
-		error: function(xhr, type, errorThrown) {
-			//异常处理；
-			console.log(xhr);
-			console.log(type);
+		},error:function(request, textStatus, errorThrown){
+			hideLoading();  //隐藏load	
+			errLay(request.responseJSON.msg);
 		}
 	});
 
@@ -329,9 +331,11 @@ $(function() {
 	$(document).on('focus', '#distributor', function() {
 		Distributor(listJson);
 	})
-	$(document).on('click', '#distributor', function() {
-		Distributor(listJson);
-	})
+	
+//	$(document).on('click', '#distributor', function() {
+//		Distributor(listJson);
+//	})
+	
 	$(document).on('click', '.mylabel', function() {
 		$(this).addClass('active');
 		var myVal = $(this).find('p').text();
@@ -346,10 +350,8 @@ $(function() {
 		getOne(); //默认选中车贷分期
 
 		$('#mySelect').fadeOut();
-		setTimeout(function() {
-			$('#mySelect').remove();
-		}, 1500);
-
+		$('#mySelect').remove();
+		$('body').removeClass('modal-open');
 	})
 
 	function search(keyWord) {
@@ -365,6 +367,7 @@ $(function() {
 	}
 
 	function Distributor(arr) {
+		$('body').addClass('modal-open');
 		$('#mySelect').remove();
 		var text = '<div id="mySelect">' +
 			'<div id="selectContent" >';

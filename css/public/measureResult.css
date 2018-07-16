@@ -1,4 +1,4 @@
-p{
+p,span{
     font-size: .34rem;
     color: rgb(59,107,244);
     text-align: center;
@@ -52,7 +52,8 @@ p{
     color: #fc7700
 }
 .can{
-    width: 4rem;
-    display: flex;
+    /*width: 4rem;*/
+    /*display: flex;*/
     margin: auto;
+    text-align: center;
 }

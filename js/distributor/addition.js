@@ -85,7 +85,7 @@ $(function() {
 			nodeId:dataId
 		}
 		$.ajax({
-			url: path + "/smAuditing/getAuitingFiles",
+			url: path + "/smAuditing/getAuitingRzjrFiles",
 			data: JSON.stringify(data),
 			xhrFields: {
 				withCredentials: true
@@ -107,11 +107,11 @@ $(function() {
 						$('#userPhone').text(listJson.borrowerPhone)
 					}
 					
-					if(listJson.isOtherNext == 1){
-						$('#save').text('下一步');
-					}else{
-						$('#save').text('确认提交');
-					}
+//					if(listJson.isOtherNext == 1){
+//						$('#save').text('下一步');
+//					}else{
+//						$('#save').text('确认提交');
+//					}
 					
 					for(var i = 0; i < listJson.smFileOwens.length; i++) {
 						var text = '<div class="list">' +
@@ -246,11 +246,7 @@ $(function() {
 				if(data.code == 0) {
 					errLay('保存成功');
 					setTimeout(function(){
-						if(listJson.isOtherNext == 1){
-							window.location.href = 'addition.html?applyId='+importId+"&dataType="+importType+"&dataId"+dataId;
-						}else{
-							window.location.href = 'myOrder.html';
-						}
+						window.location.href = 'myOrder.html';
 					},1500)
 					
 				} else {

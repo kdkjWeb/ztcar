@@ -32,8 +32,10 @@ img{
     margin: .5rem 0
 }
 /* 文章 */
-.main p{
-    font-size: .26rem;
+.main{
+    /*font-size: .26rem;
     color: #515151;
-    text-indent: .1rem
+    text-indent: .1rem;*/
+   font-size: .24rem;
+   margin-top: .5rem;
 }

@@ -12,17 +12,19 @@
     <link rel="stylesheet" href="../../css/common/jquery-weui.min.css">
     <link rel="stylesheet" type="text/css" href="../../css/common/iconfont.css">
     <link rel="stylesheet" href="../../css/distributor/distributorLogin.css">
-    <script src="../../js/common/fastclick.js"></script>
+    <!--<script src="../../js/common/fastclick.js" ></script>
     <script type="text/javascript">  	
 	  $(function() {
 	    FastClick.attach(document.body);
 	  });
-    </script>
+    </script>-->
 </head>
 <body>
     <div class="content">
-    	<div class="text">经销商登录</div>
-    	
+    	<!--<div class="text">经销商登录</div>-->
+    	 <header>
+	        <img src="../../image/logo.jpg" alt="" class="img">
+	    </header>
         <div class="inputDiv">
         	 <i class="iconfont icon-shurushoujihao-baise"></i>
             <input class="weui-input" type="text"  placeholder="请输入经销商代码" id="username" maxlength="8">
@@ -31,6 +33,11 @@
         <div class="inputDiv">
         	 <i class="iconfont icon-mima"></i>
             <input class="weui-input" type="password"  placeholder="请输入密码" id="password">
+        </div>
+        
+        <div class="saveDiv">
+        	<input type="checkbox" id="savePsd" checked/>	
+        	<span>记住密码</span>
         </div>
         
         <a href="javascript:;" class="weui-btn weui-btn_primary" id="btn">经销商登录</a>

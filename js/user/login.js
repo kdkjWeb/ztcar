@@ -1,3 +1,8 @@
+var showPhone = localStorage.getItem('showPhone'); //用户名
+if(showPhone) {
+	$('#phone').val(showPhone);
+}
+
 var phone;
 var num = 60;
 var number;
@@ -24,7 +29,7 @@ $(function() {
 		if($(this).attr('disabled') != undefined) {
 
 		} else {
-			phone = $(".phone").val();
+			phone = $("#phone").val();
 			if(isPhone(phone, '用户') == false) {
 				return false
 			} else {
@@ -34,8 +39,8 @@ $(function() {
 	})
 	// 点击获取按钮，判断手机号是否正确
 	$("#btn").click(function() {
-		phone = $(".phone").val()
-		number = $(".identifying").val();
+		phone = $("#phone").val()
+		number = $("#identifying").val();
 		// 点击获取按钮，判断验证码是否正确
 		if(isCode(number) == false) {
 			return false
@@ -50,21 +55,27 @@ $(function() {
 				contentType: 'application/json',
 				dataType: "json",
 				type: "post",
+				beforeSend: function() {
+					showLoading(); //显示loading	
+				},
 				success: function(data) {
-					console.log("登录数据", data);
+					hideLoading(); //隐藏load	
 					if(data.code == 0 || data.code == 200) {
-						sessionStorage.setItem('userName', data.data.userName); //用户名
-						sessionStorage.setItem('userPhone', data.data.phone); //手机号
+						if($('#savePsd').is(':checked')) {
+							localStorage.setItem('showPhone', phone); //手机号
+						}
+						
+						localStorage.setItem('userName',data.data.userName); //用户名
+						localStorage.setItem('userPhone',phone); //手机号
+						
 						window.location.href = "userMenu.html"
-
 					} else {
 						errLay('登录失败，请稍后重试')
 					}
 				},
-				error: function(xhr, type, errorThrown) {
-					//异常处理；
-					console.log(xhr);
-					console.log(type);
+				error: function(request, textStatus, errorThrown) {
+					hideLoading(); //隐藏load	
+					errLay(request.responseJSON.msg)
 				}
 			})
 

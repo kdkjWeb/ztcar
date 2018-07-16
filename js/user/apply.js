@@ -69,7 +69,8 @@ $('#getCode').click(function() { //获取验证码
 
 		} else {
 			_that.attr("disabled", true);
-			getcode(userPhone)
+			$('#userPhone').attr("readonly","readonly")
+			getcode(userPhone);
 		}
 	}
 
@@ -331,11 +332,10 @@ function suerAjax() {
 			processData: false,
 			contentType: false,
 			beforeSend: function() {
-				$('#loading').show();
+				showLoading();//显示loading	
 			},
 			success: function(data) {
-				$('#loading').hide();
-				console.log(data)
+				hideLoading();  //隐藏load	
 				if(data.code == 0) {
 					errLay('申请成功');
 					var time = setTimeout(function() {
@@ -349,8 +349,8 @@ function suerAjax() {
 					errLay(data.msg)
 				}
 			},error:function(request, textStatus, errorThrown){
-				$('#loading').hide();
-				errLay(request.responseJSON.msg)
+				hideLoading();  //隐藏load	
+				errLay(request.responseJSON.msg);
 			}
 		});
 	}
@@ -374,10 +374,10 @@ $('.Positive').change(function(){
 			processData: false,
 			contentType: false,
 			beforeSend: function() {
-				$('#loading').show();
+				showLoading();//显示loading	
 			},
 			success: function(data) {
-				$('#loading').hide();
+				hideLoading();  //隐藏load	
 				if(data.code == 0) {
 					if(_this.attr('id') == 'a'){  //主借贷人
 						if(data.data.code){
@@ -414,7 +414,7 @@ $('.Positive').change(function(){
 					errLay(data.msg)
 				}
 			},error:function(request, textStatus, errorThrown){
-				$('#loading').hide();
+				hideLoading();  //隐藏load	
 				errLay(request.responseJSON.msg)
 			}
 		});

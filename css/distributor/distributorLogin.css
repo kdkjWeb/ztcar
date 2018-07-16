@@ -1,8 +1,19 @@
 body{
     width:100%
 }
+header{
+    width:50%;
+    height: 3.8rem;
+    line-height:5.6rem;
+    text-align: center;
+    margin: 0 auto;
+}
+.img {
+    width: 1.5rem;
+    height: 1.5rem;
+}
 .content{
-    width:5.52rem;
+    width:70%;
     margin: auto;
     box-sizing: border-box;
 }
@@ -44,4 +55,19 @@ body{
     line-height: .8rem;
     text-align: center; 
     margin-top: 1rem;
+}
+
+/*===记住密码========*/
+.saveDiv{
+	padding: .2rem;
+	font-size: .30rem;
+}
+.saveDiv span{
+	vertical-align: middle;
+	margin-left: .2rem;
+}
+#savePsd{
+	width: .4rem;
+	height: .4rem;
+	vertical-align: middle;
 }

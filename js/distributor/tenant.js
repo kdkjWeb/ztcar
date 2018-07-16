@@ -2,9 +2,9 @@ $(function() {
 	var listJson = {};
 	var importId = GetRequest().applyId;
 
-	var Route;  //路径
-	getExsit();   //判断是否有担保
-	
+	var Route; //路径
+	getExsit(); //判断路径
+
 	getList(); //获取借贷人信息
 
 	$("#birth").datetimePicker({
@@ -39,44 +39,31 @@ $(function() {
 	});
 
 	$(".weui-btn").on("click", function() {
-		let name = $("#name").val()
-		let id = $("#idNum").val()
-		let tel = $("#tel").val()
-		let phone = $("#phone").val()
-		if(isName(name, "承租人") == false) {
-			return false
-		} else if(isId(id, "承租人") == false) {
-			return false
-		}else if(isPhone(tel) == false) {
-			return false
-		} else if(isPhone(phone) == false) {
-			return false
-		} else {
-			if(!Verification()){
-				return false;
-			};
 
-			listJson.applyId = importId; //id
-			listJson.name = $('#name').val(); //姓名
-			listJson.sex = $('#gender').val(); //性别
-			listJson.certificateType = $('#type').val(); //证件类型
-			listJson.certificatePhone = $('#idNum').val(); //证件号码
-			listJson.birth = $('#birth').val(); //出生日期
-			listJson.standardCulture = $('#edu').val(); //文化程度
-			listJson.maritalStatus = $('#isMarried').val(); //婚姻状况
-			listJson.hujiNature = $('#register').val(); //户籍性质
-			listJson.currentAddress = $('#zjAdress').val(); //居住地址
-			listJson.housingNature = $('#nature').val(); //现住房性质
-			listJson.phoneNumber = $('#tel').val(); //手机号码
-			listJson.monthlyIncome = $('#monthlyIncome').val(); //每月净收入
-			listJson.monthAverage = $('#monthAverage').val(); //每月均支出
-			listJson.companyName = $('#companyName').val(); //单位名称
-			listJson.unitAddress = $('#unitAddress').val(); //单位地址
-			listJson.workTelephone = $('#phone').val(); //单位电话
+		if(!Verification()) {
+			return false;
+		};
 
-			saveList();
+		listJson.applyId = importId; //id
+		listJson.name = $('#name').val(); //姓名
+		listJson.sex = $('#gender').val(); //性别
+		listJson.certificateType = $('#type').val(); //证件类型
+		listJson.certificatePhone = $('#idNum').val(); //证件号码
+		listJson.birth = $('#birth').val(); //出生日期
+		listJson.standardCulture = $('#edu').val(); //文化程度
+		listJson.maritalStatus = $('#isMarried').val(); //婚姻状况
+		listJson.hujiNature = $('#register').val(); //户籍性质
+		listJson.currentAddress = $('#zjAdress').val(); //居住地址
+		listJson.housingNature = $('#nature').val(); //现住房性质
+		listJson.phoneNumber = $('#tel').val(); //手机号码
+		listJson.monthlyIncome = $('#monthlyIncome').val(); //每月净收入
+		listJson.monthAverage = $('#monthAverage').val(); //每月均支出
+		listJson.companyName = $('#companyName').val(); //单位名称
+		listJson.unitAddress = $('#unitAddress').val(); //单位地址
+		listJson.workTelephone = $('#phone').val(); //单位电话
 
-		}
+		saveList();
+
 	})
 
 	//获取借贷人信息
@@ -93,11 +80,16 @@ $(function() {
 			xhrFields: {
 				withCredentials: true
 			},
+			beforeSend: function() {
+				showLoading(); //显示loading	
+			},
 			success: function(data) {
-				console.log(data)
+				hideLoading(); //隐藏load
 				if(data.code == 0) {
 					if(data.data) {
 						listJson = data.data;
+
+						content(listJson.smProductApplycontent); ////显示和必填验证
 
 						if(listJson.name) { //姓名
 							$('#name').val(listJson.name);
@@ -152,6 +144,10 @@ $(function() {
 				} else {
 					errLay(data.msg);
 				}
+			},
+			error: function(request, textStatus, errorThrown) {
+				hideLoading(); //隐藏load	
+				errLay(request.responseJSON.msg);
 			}
 		});
 	}
@@ -167,19 +163,27 @@ $(function() {
 			xhrFields: {
 				withCredentials: true
 			},
+			beforeSend: function() {
+				showLoading(); //显示loading	
+			},
 			success: function(data) {
+				hideLoading(); //隐藏load
 				if(data.code == 0) {
-					window.location.href = Route+".html?applyId="+importId;
+					window.location.href = Route + ".html?applyId=" + importId;
 				} else {
-				errLay(data.msg);
-			}
+					errLay(data.msg);
+				}
+			},
+			error: function(request, textStatus, errorThrown) {
+				hideLoading(); //隐藏load	
+				errLay(request.responseJSON.msg);
 			}
 		});
 	}
 
 	function Verification() {
 		var flag = true;
-		$('.Required').each(function() {
+		$('.must').each(function() {
 			if($(this).val() == '') {
 				let msg = $(this).parents('.weui-cell').find('label').text();
 				let str = msg.substr(0, msg.length - 1);
@@ -190,44 +194,16 @@ $(function() {
 		})
 		return flag;
 	}
-	
-	function getExsit(){
-		var data = {
-			id: importId
-		}
-		$.ajax({
-			url: path + "/apply/isExsitOtherPersion",
-			data: JSON.stringify(data),
-			dataType: "json",
-			contentType: "application/json",
-			type: "post",
-			xhrFields: {
-				withCredentials: true
-			},
-			success: function(data) {
-				if(data.code == 0) {
-					if(data.data.isPersonBondsman == 1){
-						Route = 'guarantor';  //个人担保
-					}else{
-						Route = 'urgent';  //紧急联系人
-					}
-				}else{
-					errLay(data.msg);
-				}
-			}
-		});
-	}
-	
 
-//==========================
-$("#IDcamera").on("click", function() {
-	$('#userIdbox').fadeIn(100)
-})    
-$('.next').on('click', function() {
-	$(this).parent('.fixBox').fadeOut(100)
-})
-    
-//  图片上传回显
+	//==========================
+	$("#IDcamera").on("click", function() {
+		$('#userIdbox').fadeIn(100)
+	})
+	$('.next').on('click', function() {
+		$(this).parent('.fixBox').fadeOut(100)
+	})
+
+	//  图片上传回显
 	$(document).on('change', 'input[type=file]', function() {
 		var files = Array.prototype.slice.call(this.files);
 		var _this = $(this);
@@ -253,59 +229,234 @@ $('.next').on('click', function() {
 				var result = this.result; //读取失败时  null   否则就是读取的结果
 				var image = new Image();
 				image.src = result;
-	
+
 				_this.parents('.image-item').css("background-image", 'url(' + result + ')');
-	
+
 			};
 			//注入图片 转换成base64
 			reader.readAsDataURL(file);
 		})
-	
+
 	})
-    
-    $('#a').change(function(){
+
+	$('#a').change(function() {
 		var _this = $(this);
 		var files = Array.prototype.slice.call(this.files);
 		var mydata = new FormData();
-		mydata.append('file',files[0]);
-		mydata.append('ocrCode',0);
-		
+		mydata.append('file', files[0]);
+		mydata.append('ocrCode', 0);
+
 		$.ajax({
-				url: path + "/file/addFileUseOCR",
-				data: mydata,
-				dataType: "json",
-				contentType: "application/json",
-				type: "post",
-				processData: false,
-				contentType: false,
-				beforeSend: function() {
-					$('#loading').show();
-				},
-				success: function(data) {
-					$('#loading').hide();
-					if(data.code == 0) {
-						if(data.data.code){   //身份证
-							$('#idNum').val(data.data.code)
-						}
-						if(data.data.name){  //姓名
-							$('#name').val(data.data.name)
-						}
-						if(data.data.sex){  //性别
-							$('#gender').val(data.data.sex)
-						}
-						if(data.data.birthday){  //生日
-							var a = data.data.birthday.substr(0,4);
-							var b = data.data.birthday.substr(4,2);
-							var c = data.data.birthday.substr(6,2);
-							$('#birth').val(a+'-'+b+'-'+c);
-						}
-					}else{
-						errLay(data.msg)
+			url: path + "/file/addFileUseOCR",
+			data: mydata,
+			dataType: "json",
+			contentType: "application/json",
+			type: "post",
+			processData: false,
+			contentType: false,
+			beforeSend: function() {
+				showLoading(); //显示loading	
+			},
+			success: function(data) {
+				hideLoading(); //隐藏load	
+				if(data.code == 0) {
+					if(data.data.code) { //身份证
+						$('#idNum').val(data.data.code)
 					}
-				},error:function(data){
-					$('#loading').hide();
+					if(data.data.name) { //姓名
+						$('#name').val(data.data.name)
+					}
+					if(data.data.sex) { //性别
+						$('#gender').val(data.data.sex)
+					}
+					if(data.data.birthday) { //生日
+						var a = data.data.birthday.substr(0, 4);
+						var b = data.data.birthday.substr(4, 2);
+						var c = data.data.birthday.substr(6, 2);
+						$('#birth').val(a + '-' + b + '-' + c);
+					}
+				} else {
+					errLay(data.msg)
 				}
+			},
+			error: function(request, textStatus, errorThrown) {
+				hideLoading(); //隐藏load	
+				errLay(request.responseJSON.msg);
+			}
 		});
-    })
+	})
+
+	//=-=========显示。是否必填==========
+	function content(mycontent) {
+
+		for(var i = 0; i < mycontent.smProductApplycontents.length; i++) {
+
+			if(mycontent.smProductApplycontents[i].label == "teName") { //承租人姓名
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#name').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#name').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "teSex") { //性别
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#gender').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#gender').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "teCerType") { //证件类型
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#type').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#type').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "teCerPhone") { //证件号码
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#idNum').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#idNum').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "teBirth") { //出生日期
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#birth').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#birth').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "teStaCul") { //文化程度
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#edu').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#edu').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "teMarSta") { //婚姻状况
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#isMarried').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#isMarried').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "teHujiNat") { //户籍性质
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#register').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#register').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "teCurAddr") { //居住地址
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#zjAdress').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#zjAdress').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "teHouNat") { //现住房性质
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#nature').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#nature').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "tePhone") { //手机号码
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#tel').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#tel').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "teMonIn") { //每月净收入
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#monthlyIncome').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#monthlyIncome').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "teMonAve") { //每月均支出
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#monthAverage').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#monthAverage').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "teComName") { //单位名称
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#companyName').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#companyName').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "teUnitAddr") { //单位地址
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#unitAddress').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#unitAddress').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "teWorkTel") { //单位电话
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#phone').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#phone').addClass("must");
+					}
+				}
+
+			}
+
+		}
+
+	}
+	//=-=========显示。是否必填==========	
+
+	//	==========路劲
+	function getExsit() {
+		var data = {
+			id: importId
+		}
+		$.ajax({
+			url: path + "/apply/isExsitOtherPersion",
+			data: JSON.stringify(data),
+			dataType: "json",
+			contentType: "application/json",
+			type: "post",
+			xhrFields: {
+				withCredentials: true
+			},
+			success: function(data) {
+				if(data.code == 0) {
+					var content = data.data;
+
+					if(content.isZrdb == 1) {
+						Route = 'guarantor'; //个人担保
+						return
+					} else if(content.isJjlx == 1) {
+						Route = 'urgent'; //紧急联系人
+						return
+					}
+
+				} else {
+					errLay(data.msg);
+				}
+			}
+		});
+	}
 
 })

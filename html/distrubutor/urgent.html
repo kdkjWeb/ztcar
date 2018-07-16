@@ -35,69 +35,69 @@
         </ul>
     </header>
     <div class="line"></div>
-    <section class="relative urgent " id="relative" >
-        <div class="weui-cell">
+    <section class="relative" id="relative">
+        <div class="weui-cell hide">
             <div class="weui-cell__hd"><label class="weui-label">直属亲人姓名：</label></div>
             <div class="weui-cell__bd">
                 <input class="weui-input myName" type="text" id="name" placeholder="请输入直属亲人姓名">
             </div>
         </div>
-        <div class="weui-cell">
+        <div class="weui-cell hide">
             <div class="weui-cell__hd"><label class="weui-label">与申请人关系：</label></div>
             <div class="weui-cell__bd">
-                <input class="weui-input myType" type="text" placeholder="请选择关系">
+                <input class="weui-input myType" type="text" placeholder="请选择关系" id="type">
             </div>
             <i class="iconfont icon-xiangxia1"></i>
         </div>
-        <div class="weui-cell">
+        <div class="weui-cell hide">
             <div class="weui-cell__hd"><label class="weui-label">联系电话：</label></div>
             <div class="weui-cell__bd">
-                <input class="weui-input myPhone" type="number" id="tel" oninput="if(value.length>11)value=value.slice(0,11)" placeholder="请输入联系电话">
+                <input class="weui-input myPhone" type="tel" id="tel" oninput="if(value.length>11)value=value.slice(0,11)" placeholder="请输入联系电话">
             </div>
         </div>
         <div class="bar"><p>以上请填写为与申请人不同的直系亲属</p></div> 
     </section>
     <div class="line"></div>
     <section class="relative urgent">
-        <div class="weui-cell">
+        <div class="weui-cell hide">
             <div class="weui-cell__hd"><label class="weui-label">紧急联系人1姓名：</label></div>
             <div class="weui-cell__bd">
                 <input class="weui-input myName" type="text" id="name1" placeholder="请输入联系人姓名">
             </div>
         </div>
-        <div class="weui-cell">
+        <div class="weui-cell hide">
             <div class="weui-cell__hd"><label class="weui-label">与申请人关系:</label></div>
             <div class="weui-cell__bd">
-                <input class="weui-input myType" type="text" placeholder="请选择关系">
+                <input class="weui-input myType" type="text" placeholder="请选择关系" id="type1">
             </div>
             <i class="iconfont icon-xiangxia1"></i>
         </div>
-        <div class="weui-cell">
+        <div class="weui-cell hide">
             <div class="weui-cell__hd"><label class="weui-label">联系电话：</label></div>
             <div class="weui-cell__bd">
-                <input class="weui-input myPhone" type="number" id="tel1" oninput="if(value.length>11)value=value.slice(0,11)" placeholder="请输入联系方式">
+                <input class="weui-input myPhone" type="tel" id="tel1" oninput="if(value.length>11)value=value.slice(0,11)" placeholder="请输入联系方式">
             </div>
         </div>
     </section>
     <div class="line"></div>
     <section class="urgent">
-        <div class="weui-cell">
+        <div class="weui-cell hide">
             <div class="weui-cell__hd"><label class="weui-label">紧急联系人2姓名：</label></div>
             <div class="weui-cell__bd">
                 <input class="weui-input myName" type="text" id="name2" placeholder="请输入联系人姓名">
             </div>
         </div>
-        <div class="weui-cell">
+        <div class="weui-cell hide">
             <div class="weui-cell__hd"><label class="weui-label">与申请人关系：</label></div>
             <div class="weui-cell__bd">
-                <input class="weui-input myType" type="text" placeholder="请选择关系">
+                <input class="weui-input myType" type="text" placeholder="请选择关系" id="type2">
             </div>
             <i class="iconfont icon-xiangxia1"></i>
         </div>
-        <div class="weui-cell">
+        <div class="weui-cell hide">
             <div class="weui-cell__hd"><label for="name" class="weui-label">联系电话：</label></div>
             <div class="weui-cell__bd">
-                <input class="weui-input myPhone" type="number" id="tel2" oninput="if(value.length>11)value=value.slice(0,11)" placeholder="请输入联系方式">
+                <input class="weui-input myPhone" type="tel" id="tel2" oninput="if(value.length>11)value=value.slice(0,11)" placeholder="请输入联系方式">
             </div>
         </div>
     </section>

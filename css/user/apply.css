@@ -58,9 +58,10 @@ body{
     width:2.8rem;
     height:.8rem;
     border-radius: .5rem;
-    text-indent: .2rem;
+    text-indent: .3rem;
     outline: none;
-    margin-right:.15rem
+    margin-right:.15rem;
+    vertical-align: middle;
 }
 /* 短信验证码 */
 .msg{
@@ -79,7 +80,8 @@ body{
 .label{
     font-size: .32rem;
     color:#5c5c5c;
-    line-height: .6rem;
+    line-height: .8rem;
+    vertical-align: middle;
 }
 /* 输入框 */
 .ipt{
@@ -313,22 +315,6 @@ em{
 	font-size: .26rem;
 }
 
-/*==loading========*/
-.loading{
-	display: none;
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	z-index: 999;
-	background-color: rgba(0,0,0,.5);
-	
-}
-.weui-loadmore{
-	margin-top: 4rem;
-	color: #FFFFFF;
-}
 
 /*==============*/
 #errbox{

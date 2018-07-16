@@ -42,7 +42,8 @@ span{
 }
 /* 按钮 */
 
-.send{
+#send,#again{
+	display: none;
     width: 2.5rem;
     height: .54rem;
     border: 1px solid #ed7e10;
@@ -64,3 +65,8 @@ span{
     background-color: #3a6bf4 !important;
     margin-top: 1rem;
 }
+
+h2{
+	display: none;
+}
+

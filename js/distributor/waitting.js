@@ -35,22 +35,24 @@ $(function() {
 	//======遍历列表结果=======
 	function eachList(arr) {
 		$.each(arr, function(index, el) {
-			let text;
+			var text;
 			if(el.statusStr == '通过') {
-				text += ` <tr class="pass">`
+				text += '<tr class="pass">';
 			} else {
-				text += ` <tr class="noPass">`
+				text += '<tr class="noPass">';
 			}
-			text += `<td>${el.borrowerName}</td>
-        <td>${el.createTime}</td>
-        <td>${el.statusStr}</td>
-        <td class="look" attr-id="${el.id}">查看详情</td>
-        <td>
-        <div class="shift">
-        <p class="to" attr-id="${el.id}">转订单</p>
-    </div>
-        </td>
-    </tr>`
+			text += '<td>'+el.borrowerName+'</td>'+
+		        '<td>'+el.createTime+'</td>'+
+		        '<td>'+el.statusStr+'</td>'+
+		        '<td class="look" attr-id="'+el.id+'">查看详情</td><td>'+
+		        '<div class="shift">';
+		        
+		        if(el.statusStr == '通过') {
+					text += '<p class="to" attr-id="'+el.id+'">转订单</p>';
+				}
+		        text += '</div>'+
+		        '</td>'+
+		  		'</tr>';
 
 			$("table").append(text);
 		})
@@ -98,9 +100,12 @@ $(function() {
 			contentType: "application/json",
 			type: "post",
 			success: function(data) {
-				console.log(data)
 				if(data.code == 0) {
-					window.location.reload();
+					if(num == 1){
+						window.location.href="distributorMsg.html?applyId="+id
+					}else{
+						window.location.reload();
+					}
 				} else {
 					errLay(data.msg);
 				}

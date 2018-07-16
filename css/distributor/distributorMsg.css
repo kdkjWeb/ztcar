@@ -19,6 +19,7 @@ header ul{
 /* 内容 */
 .content{
     width:100%;
+    padding-bottom: .5rem;
 }
 .c-list{
     width:6.9rem;
@@ -101,3 +102,4 @@ label{
     background-color: #3b6bf4 !important;
     line-height: .8rem;
 }
+

@@ -9,11 +9,21 @@ $(function() {
 		title: "企业性质",
 		items: ["国有企业", "外资企业", "民营企业", "政府及事业单位", "其他"]
 	})
+
 	$("#trade").select({
 		title: "所属行业",
 		items: ["部队、公、检、法等执法机构", "餐饮、酒店、旅行社", "传统制造业(含能源)", "服务业", "高新产业", "公用事业单位  邮电通信  交通运输  仓储物流", "国家机关、党政机关  公益类社会团体  外国政府或国际公益组织",
 			"建筑、工程", "教育行业", "金融机构", "律师事务所、会计事务所(四大)、税务师事务所等机构", "商贸类", "医疗行业", "专业性事务所", "自由职业者", "其他"
 		]
+	})
+
+	$("#trade").change(function() {
+		if($(this).val() == '自由职业者' || $(this).val() == '其他') {
+			$('.Required').parents('.weui-cell').addClass('hide');
+			$('.Required').removeClass('must');
+		} else {
+			ohter(listJson.smProductApplycontent); ////显示和必填验证
+		}
 	})
 
 	$("#next").on("click", function() {
@@ -49,10 +59,16 @@ $(function() {
 			xhrFields: {
 				withCredentials: true
 			},
+			beforeSend: function() {
+				showLoading(); //显示loading	
+			},
 			success: function(data) {
+				hideLoading(); //隐藏load
 				if(data.code == 0) {
 					if(data.data) {
 						listJson = data.data;
+
+						content(listJson.smProductApplycontent); ////显示和必填验证
 
 						if(listJson.companyName) { //单位名称
 							$('#companyName').val(listJson.companyName);
@@ -68,6 +84,9 @@ $(function() {
 						}
 						if(listJson.industryInvolved) { //所属行业
 							$('#trade').val(listJson.industryInvolved);
+							if(listJson.industryInvolved != "其他" && listJson.industryInvolved != "自由职业者") {
+								ohter(listJson.smProductApplycontent); 
+							}
 						}
 						if(listJson.yearsOfWorking) { //单位工作年限
 							$('#yearsOfWorking').val(listJson.yearsOfWorking);
@@ -75,12 +94,15 @@ $(function() {
 						if(listJson.position) { //职务
 							$('#position').val(listJson.position);
 						}
-
 					}
 
 				} else {
 					errLay(data.msg);
 				}
+			},
+			error: function(request, textStatus, errorThrown) {
+				hideLoading(); //隐藏load	
+				errLay(request.responseJSON.msg);
 			}
 		});
 	}
@@ -95,37 +117,111 @@ $(function() {
 			xhrFields: {
 				withCredentials: true
 			},
+			beforeSend: function() {
+				showLoading(); //显示loading	
+			},
 			success: function(data) {
+				hideLoading(); //隐藏load
 				if(data.code == 0) {
 					window.location.href = "address.html?applyId=" + importId;
 				} else {
 					errLay(data.msg);
 				}
+			},
+			error: function(request, textStatus, errorThrown) {
+				hideLoading(); //隐藏load	
+				errLay(request.responseJSON.msg);
 			}
 		});
 	}
 
 	function Verification() {
 		var flag = true;
-		var inputVal = $('#trade').val();
 
-		if(inputVal == '') {
-			errLay('所属行业不能为空');
-			flag = false;
-		}
-
-		if(inputVal != "自由职业者" && inputVal != "其他") {
-			$('.Required').each(function() {
-				if($(this).val() == '') {
-					let msg = $(this).parents('.weui-cell').find('label').text();
-					let str = msg.substr(0, msg.length - 1);
-					errLay(str + '不能为空');
-					flag = false;
-					return false;
-				}
-			})
-		}
+		$('.must').each(function() {
+			if($(this).val() == '') {
+				let msg = $(this).parents('.weui-cell').find('label').text();
+				let str = msg.substr(0, msg.length - 1);
+				errLay(str + '不能为空');
+				flag = false;
+				return false;
+			}
+		})
 
 		return flag;
 	}
+
+	//=-=========显示。是否必填==========
+	function content(mycontent) {
+		for(var i = 0; i < mycontent.smProductApplycontents.length; i++) {
+			if(mycontent.smProductApplycontents[i].label == "inInvolved") { //所属行业
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#trade').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#trade').addClass("must");
+					}
+				}
+
+			}
+
+		}
+
+	}
+	//=-=========显示。是否必填==========	
+
+	function ohter(mycontent) {
+		for(var i = 0; i < mycontent.smProductApplycontents.length; i++) {
+			if(mycontent.smProductApplycontents[i].label == "comName") { //单位名称
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#companyName').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#companyName').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "unitAddr") { //单位地址
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#unitAddress').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#unitAddress').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "enNature") { //企业性质
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#nature').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#nature').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "workTel") { //单位电话
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#tel').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#tel').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "yearsOfWork") { //单位工作年限
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#yearsOfWorking').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#yearsOfWorking').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "position") { //职务
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#position').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#position').addClass("must");
+					}
+				}
+
+			}
+		}
+
+	}
+
 })

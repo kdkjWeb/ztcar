@@ -1,6 +1,6 @@
 /* 顺序框 */
 .myspan{
-	font-size: .18rem;
+	font-size: .32rem;
     margin-left: 0;
     color: #5c5c5c;
 }
@@ -25,6 +25,7 @@ header ul{
 }
 .content{
     width:100%;
+    padding-bottom: .5rem;
 }
 .c-list{
     width:6.9rem;
