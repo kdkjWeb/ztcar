@@ -154,7 +154,7 @@ $(function() {
 							}
 
 							text += '<div class="inputBox">' +
-							'<input class="inputFile" type="file" accept="image/jpg,image/jpeg,image/png,image/gif">' +
+							'<input class="inputFile" type="file" accept="image/jpg,image/jpeg,image/png,image/gif" multiple="multiple">' +
 							'</div>' +
 							'</ul>' +
 							'</div>' +
@@ -229,6 +229,8 @@ $(function() {
 	}
 
 	function mysave() {
+		listJson.nodeType = importType;
+		
 		$.ajax({
 			url: path + "/smAuditing/submitAuditInfo",
 			data: JSON.stringify(listJson),
@@ -247,7 +249,7 @@ $(function() {
 					errLay('保存成功');
 					setTimeout(function(){
 						window.location.href = 'myOrder.html';
-					},1500)
+					},1000)
 					
 				} else {
 					errLay(data.msg);

@@ -359,3 +359,14 @@ em{
 	margin-top: .5rem;
 	margin: 0 auto;
 }
+.btn-box{
+	overflow: hidden;
+}
+#sure{
+	float: left;
+	margin-left: .5rem;
+}
+#login{
+	float: right;
+	margin-right: .5rem;
+}

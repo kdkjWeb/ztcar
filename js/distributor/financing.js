@@ -155,9 +155,6 @@ $(function() {
 					CarProportion = accDiv(listJson.vehicleLoanRatio, 100); //车贷比例
 					AddProportion = accDiv(listJson.proportionsRatio, 100); //加融比例
 					
-//					CarProportion = Number(listJson.vehicleLoanRatio); //车贷比例
-//					AddProportion = Number(listJson.proportionsRatio); //加融比例
-					
 					paymentValCtr = accSub(1, accAdd(CarProportion, AddProportion)); // 1-车贷比例-加融比例
 
 					AmountDown = Number(listJson.financingAmountDown); //融资额下限
@@ -165,13 +162,9 @@ $(function() {
 
 					
 					if(listJson.intervalValue == 0) { //费率为区间还是定值，0是定制
-						var arr;
 						$("#rate").select({
 							title: "费率",
-							items: listJson.rateList,
-							onChange: function() {
-
-							}
+							items:quickSort(listJson.rateList,0,listJson.rateList.length-1)
 						})
 						$("#rate").parents('.weui-cell').append('<i class="iconfont icon-xiangxia1"></i>')
 					} else {
@@ -189,14 +182,12 @@ $(function() {
 						})
 					}
 					
-					
 					if(listJson.accountMethod == 0) {
 						ruleOne();
 					} else {
 						ruleTwo();
+						$('#thawing').before($('#thawingDom'));  //加融选项放在首付比例前
 					}
-					
-					
 
 				} else {
 					errLay(data.msg);
@@ -426,7 +417,6 @@ $(function() {
 
 		//	=================
 		ticketPrice.change(getCarFinancing);
-
 		function getCarFinancing() { //已知，车辆开票价,车贷比例    、//填写车辆融资额
 			var mytext = accMul(ticketPrice.val(), CarProportion) //车辆融资额=车辆开票价*车贷比例
 
@@ -434,8 +424,8 @@ $(function() {
 				carFinancing.val(keepTwo(mytext));
 			} else {
 				errLay('融资额须介于' + AmountDown + '到' + AmountUp + "之间");
-				carFinancing.attr("placeholder",'当前融资额为'+mytext);
-//				carFinancing.val(keepTwo(mytext));
+				carFinancing.val('');
+				carFinancing.attr("placeholder",'当前融资额为'+ keepTwo(mytext));
 			}
 
 		}
@@ -504,8 +494,8 @@ $(function() {
 					var text = accMul(ticketPrice.val(), firstRatioVal); //自动填写首付金额
 					firstPayment.val(keepTwo(text));
 				} else {
-					var a = paymentValCtr * 100
-					errLay('首付比例需大于或等于' + a + "%");
+					var a = keepTwo(paymentValCtr * 100);
+					errLay('首付比例须大于或等于' + a + "%");
 					firstRatio.val('');
 					firstPayment.val('');
 				}
@@ -549,7 +539,8 @@ $(function() {
 						carFinancing.change();
 					} else {
 						errLay('融资额须介于' + AmountDown + '到' + AmountUp + "之间");
-						carFinancing.attr("placeholder",'当前融资额为'+mytext);
+						carFinancing.val('');
+						carFinancing.attr("placeholder",'当前融资额为'+ keepTwo(mytext));
 					}
 
 				} else {
@@ -559,7 +550,8 @@ $(function() {
 						carFinancing.change();
 					} else {
 						errLay('融资额须介于' + AmountDown + '到' + AmountUp + "之间");
-						carFinancing.attr("placeholder",'当前融资额为'+mytext);
+						carFinancing.val('');
+						carFinancing.attr("placeholder",'当前融资额为'+ keepTwo(mytext));
 					}
 
 				}
@@ -578,18 +570,17 @@ $(function() {
 				var firstRatioVal = accDiv(parseFloat(firstRatio.val()), 100); //获取首付比例
 				var shouldDown = accSub(1, firstRatioVal); //1-首付比例
 
-				console.log(shouldDown);
-				console.log(CarProportion);
-				
 				if(shouldDown <= CarProportion) { // 1-首付比例  小于或等于车贷比例
-					console.log('1')
 					$('.iptDislable').attr('readonly', 'readonly');
 					$('.iptDislable').css('background-color', '#E3E3E3');
 					$('.iptDislable').val(0);
+					$('body').on('focus','.iptDislable',function(){
+						$(this).blur();
+					})
 				} else {
-					console.log('2')
 					$('.iptDislable').removeAttr('readonly');
 					$('.iptDislable').css('background-color', '#FFFFFF');
+					$("body").off("focus",".iptDislable");
 				}
 			}
 
@@ -714,8 +705,7 @@ $(function() {
 			text += '<p>' + arr[i].text + '</p>' +
 				'</div>';
 		}
-		text += '</div>' +
-			'</div>'
+		text += '</div>' + '</div>';
 		$('#addselect').append(text);
 		$('#mySelect').fadeIn();
 	}
@@ -927,5 +917,6 @@ $(function() {
 			}
 		});
 	}
+
 
 })

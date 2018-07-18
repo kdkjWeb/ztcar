@@ -235,7 +235,7 @@ $(function() {
 			success: function(data) {
 				if(data.code == 0) {
 					var arr = [];
-					for(var i = 0; i < data.list.length; i++) {
+					for(var i = 1; i < data.list.length; i++) {
 						let car = {
 							title: data.list[i].name,
 							value: data.list[i].id

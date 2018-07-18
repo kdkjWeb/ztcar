@@ -87,6 +87,8 @@ $(function() {
 							if(listJson.industryInvolved != "其他" && listJson.industryInvolved != "自由职业者") {
 								ohter(listJson.smProductApplycontent); 
 							}
+						}else{
+							ohter(listJson.smProductApplycontent); 
 						}
 						if(listJson.yearsOfWorking) { //单位工作年限
 							$('#yearsOfWorking').val(listJson.yearsOfWorking);

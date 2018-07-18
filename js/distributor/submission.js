@@ -7,10 +7,8 @@ $(function() {
 	var importId = GetRequest().applyId;
 	var importType = GetRequest().dataType;
 	var dataId = GetRequest().dataId;
-	var delDom;
+	var delDom;  //当前点击删除的节点
 	getList();
-	
-//	var Route; //下一个页面
 	
 
 	$(document).on('click', '.photo', function() {
@@ -37,15 +35,15 @@ $(function() {
 		files.forEach(function(file, i) {
 			var fileType = /\/(?:jpeg|png|gif)/i;
 			if(!fileType.test(file.type)) {
-				alert("请选择正确的图片格式(jpeg || png || gif)");
+				errLay("请选择正确的图片格式(jpeg || png || gif)");
 				return;
 			}
 			var reader = new FileReader();
 			reader.onerror = function() {
-				alert("读取失败");
+				errLay("读取失败");
 			};
 			reader.onabort = function() {
-				alert("网络异常!");
+				errLay("网络异常!");
 			};
 			reader.onload = function() {
 				var result = this.result; //读取失败时  null   否则就是读取的结果
@@ -63,9 +61,7 @@ $(function() {
 			addImg(myFile, ulIndex);
 
 		});
-		_this.val('');
-		
-		console.log(listJson)
+		_this.val(''); //清空当前input，解决同一张图片不能重复点的问题
 		
 	})
 
@@ -75,7 +71,6 @@ $(function() {
 		var liIndex = _this.parents('li').index(); //第几个li
 		shanchuImg(ulIndex, liIndex);
 		delDom = $(this).parents('li');
-//		$(this).parents('li').remove();
 	})
 	
 	function getList(){
@@ -116,9 +111,6 @@ $(function() {
 					for(var i = 0; i < listJson.smFileOwens.length; i++) {
 						var text = '<div class="list">' +
 							'<label>' + listJson.smFileOwens[i].modelName + '：</label>' +
-							//							'<div class="photo">' +
-							//							'<i class="iconfont icon-xiangji1"><span>拍照或选择图片</span></i>' +
-							//							'</div>' +
 							'<div class="up-load">' +
 							'<ul>';
 							
@@ -154,7 +146,7 @@ $(function() {
 							}
 
 							text += '<div class="inputBox">' +
-							'<input class="inputFile" type="file" accept="image/jpg,image/jpeg,image/png,image/gif">' +
+							'<input class="inputFile" type="file" accept="image/jpg,image/jpeg,image/png,image/gif" multiple="multiple">' +
 							'</div>' +
 							'</ul>' +
 							'</div>' +
@@ -213,17 +205,25 @@ $(function() {
 			xhrFields: {
 				withCredentials: true
 			},
+			beforeSend: function() {
+				showLoading(); //显示loading	
+			},
 			dataType: "json",
 			contentType: "application/json",
 			type: "get",
 			success: function(data) {
+				hideLoading(); //隐藏load	
 				if(data.code == 0) {
 					listJson.smFileOwens[ulIndex].smFiles.splice(liIndex, 1);
 					delDom.remove();
 					$('#errbox').remove();
+					errLay('删除成功');
 				} else {
 					errLay(data.msg);
 				}
+			},error: function(request, textStatus, errorThrown) {
+				hideLoading(); //隐藏load	
+				errLay(request.responseJSON.msg);
 			}
 		});
 	}
@@ -251,7 +251,7 @@ $(function() {
 						}else{
 							window.location.href = 'myOrder.html';
 						}
-					},1500)
+					},1000)
 					
 				} else {
 					errLay(data.msg);

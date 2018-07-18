@@ -46,19 +46,20 @@ header{
 .line{
     width: 100%;
     height: .1rem;
-    background-color: #ebf2ff
+    background-color: #ebf2ff;
 }
 /* 提交内容 */
 .content{
     width: 100%;
     height: 100%;
-    background-color: #fff
+    background-color: #fff;
+    padding-bottom: 1rem;
 }
 
 /* 内容列表 */
 .c-list{
     width:6.9rem;
-    margin: auto
+    margin: auto;
 }
 /* 列表 */
 .list{
@@ -82,12 +83,12 @@ header{
 .photo span{
     line-height: 1.3rem;
     color: #b0b0b0 !important;
-    margin-left: .3rem
+    margin-left: .3rem;
 }
 .photo .icon-xiangji1{
     font-size: .5rem;
     color: #3b6bf4;
-    margin-left: .5rem
+    margin-left: .5rem;
 }
 
 /* 说明区 */
@@ -100,17 +101,17 @@ header{
     background-color: unset;
 }
 .weui-cells:after{
-    border: none
+    border: none;
 }
 .weui-cells:after, .weui-cells:before{
-    border: none
+    border: none;
 }
 #cell{
     width: 100%;
     height: 2.25rem;
     flex-direction: column;
     border: none;
-    padding: 0
+    padding: 0;
 }
 .weui-cells #label{
     display: inline-block;
@@ -118,7 +119,7 @@ header{
     height: .72rem;
     text-align: left;
     line-height: .72rem;
-    margin-left: .3rem
+    margin-left: .3rem;
 }
 .weui-textarea{
     width:6.8rem;
@@ -154,12 +155,14 @@ header{
 	display: inline-block;
 	width: 30%;
 	height: 1.5rem;
+	margin-bottom: .2rem;
 	margin-right: 2%;
 	background-size: 100% 100%;
 	border-radius: 5px;
+	vertical-align: middle;
 }
 .weui-btn:after{
-    border: none
+    border: none;
 }
 
 .inputBox{
@@ -172,6 +175,7 @@ header{
     margin-right:2%;
 	border-radius: 5px;
     overflow: hidden;
+    vertical-align: middle;
 }
 
 .inputBox input{
@@ -192,9 +196,8 @@ header{
 	content: '+';
 	color: #FFFFFF;
 	font-size: .4rem;
-	line-height: 0;
 	background-color: #3b6bf4;
-	line-height: .5rem;
+	line-height: .4rem;
 	text-align: center;
     border-radius: 50%;
 }
@@ -210,7 +213,7 @@ header{
 	border-radius: .5rem;
 	opacity: .5;
 	background-color: #FFFFFF;
-	color: #3b6bf4;
+	color: #000;
 	text-align: center;
 	font-size: .2rem;
 }
@@ -254,9 +257,6 @@ header{
 	background-color: #fb9f30;
 }
 
-
-
-/*===========*/
 /*==============*/
 #errbox{
 	position: fixed;
@@ -306,6 +306,7 @@ header{
 	width: 30%;
 	margin-top: .5rem;
 	margin: 0 auto;
+	font-size: .32rem;
 }
 #cancel{
 	float: left;

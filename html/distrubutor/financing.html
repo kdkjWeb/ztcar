@@ -85,7 +85,9 @@
                     <input class="weui-input" type="number" placeholder="请输入万元还款系数" id="coefficient"><span class="myspan">元</span>
                 </div>
             </div>
-            <div class="weui-cell hide">
+            
+            
+            <div class="weui-cell hide" id="thawing">
                 <div class="weui-cell__hd"><label class="weui-label">首付比例：</label></div>
                 <div class="weui-cell__bd">
                     <input class="weui-input aa" type="number" placeholder="请输入首付比例" id="firstRatio"><span class="myspan">%</span>
@@ -103,6 +105,8 @@
                     <input class="weui-input aa" type="number" id="carFinancing" style="border: none;"readonly="readonly"><span class="myspan">元</span>
                 </div>
             </div>
+            
+            <div id="thawingDom">
             <div class="weui-cell hide">
                 <div class="weui-cell__hd"><label class="weui-label">保险费：</label></div>
                 <div class="weui-cell__bd">
@@ -115,7 +119,7 @@
                     <input class="weui-input iptDislable" type="number" placeholder="请输入购置税" id="purchase"><span class="myspan">元</span>
                 </div>
             </div>
-             <div class="weui-cell hide">
+            <div class="weui-cell hide">
                 <div class="weui-cell__hd"><label class="weui-label">车船税：</label></div>
                 <div class="weui-cell__bd">
                     <input class="weui-input iptDislable" type="number" placeholder="请输入车船税" id="ship"><span class="myspan">元</span>
@@ -127,12 +131,15 @@
                     <input class="weui-input iptDislable" type="number" placeholder="请输入GPS服务费" id="gps"><span class="myspan">元</span>
                 </div>
             </div>
-             <div class="weui-cell hide">
+            <div class="weui-cell hide">
                 <div class="weui-cell__hd"><label class="weui-label">其他费用：</label></div>
                 <div class="weui-cell__bd">
                     <input class="weui-input iptDislable" type="number" placeholder="请输入其他费用" id="other"><span class="myspan">元</span>
                 </div>
             </div>
+            </div>
+            
+            
             <div class="total">
                 <label>贷款总额：</label>
                 <span id="TotalLoan"></span><span class="myspan">元</span>

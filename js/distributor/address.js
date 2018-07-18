@@ -27,7 +27,14 @@ $(function() {
 	$("#isGuarantor").select({
 		title: "有无担保人",
 		items: ["有自然担保人", "有法人担保人", "无"]
+	});
+	
+	$("#nature").change(function(){
+		if($(this).val() == '无按揭自置'){
+			$('#mortgagePayments').val('0')
+		}
 	})
+	
 	$(".weui-btn").on("click", function() {
 		if(!Verification()) { //为空的验证
 			return false;

@@ -45,25 +45,16 @@ span{
 #send,#again{
 	display: none;
     width: 2.5rem;
-    height: .54rem;
+    height: .8rem;
     border: 1px solid #ed7e10;
     border-radius: .5rem;
     font-size: .28rem;
     color: #fff;
     text-align: center;
-    line-height: .54rem;
+    line-height: .8rem;
     margin-top: 1rem;
     margin-left: 2rem;
     background-color: #ed7e10;
-}
-/* 完成 */
-.content .weui-btn{
-    width: 5.5rem;
-    height:.64rem;
-    border-radius: .5rem;
-    line-height: .7rem;
-    background-color: #3a6bf4 !important;
-    margin-top: 1rem;
 }
 
 h2{

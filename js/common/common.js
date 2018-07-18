@@ -249,6 +249,40 @@ function getSex(idCard) {
 	return sex;
 }
 
+
+//============获取年龄============
+function GetAge(identityCard) {
+    var len = (identityCard + "").length;
+    if (len == 0) {
+        return 0;
+    } else {
+        if ((len != 15) && (len != 18))//身份证号码只能为15位或18位其它不合法
+        {
+            return 0;
+        }
+    }
+    var strBirthday = "";
+    if (len == 18)//处理18位的身份证号码从号码中得到生日和性别代码
+    {
+        strBirthday = identityCard.substr(6, 4) + "/" + identityCard.substr(10, 2) + "/" + identityCard.substr(12, 2);
+    }
+    if (len == 15) {
+        strBirthday = "19" + identityCard.substr(6, 2) + "/" + identityCard.substr(8, 2) + "/" + identityCard.substr(10, 2);
+    }
+    //时间字符串里，必须是“/”
+    var birthDate = new Date(strBirthday);
+    var nowDateTime = new Date();
+    var age = nowDateTime.getFullYear() - birthDate.getFullYear();
+    //再考虑月、天的因素;.getMonth()获取的是从0开始的，这里进行比较，不需要加1
+    if (nowDateTime.getMonth() < birthDate.getMonth() || (nowDateTime.getMonth() == birthDate.getMonth() && nowDateTime.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}
+//============获取年龄============
+
+
+
 /**除法函数，用来得到精确的除法结果
  说明：javascript的除法结果会有误差，在两个浮点数相除的时候会比较明显。这个函数返回较为精确的除法结果。
  调用：accDiv(arg1,arg2)
@@ -314,14 +348,26 @@ function keepTwo(num) {
 }
 
 //============Loading==============
+
+(function($) { 
+	$.fn.exist = function() {  
+		if($(this).length >= 1) {   
+			return true;  
+		}  
+		return false; 
+	};
+})(jQuery);
+
 function showLoading() {
-	var loading = '<div class="loading" id="loading">' +
-		'<div class="weui-loadmore">' +
-		'<i class="weui-loading"></i>' +
-		'<span class="weui-loadmore__tips">正在加载</span>' +
-		'</div>' +
-		'</div>';
-	$('body').append(loading);
+	if(!$('#loading').exist()) {
+		var loading = '<div class="loading" id="loading">' +
+			'<div class="weui-loadmore">' +
+			'<i class="weui-loading"></i>' +
+			'<span class="weui-loadmore__tips">正在加载</span>' +
+			'</div>' +
+			'</div>';
+		$('body').append(loading);
+	}
 }
 
 function hideLoading() {
@@ -350,13 +396,16 @@ var ModalHelper = (function(bodyCls) {
 })('modal-open');
 //=======拖动兼容=========
 
+
 //==========输入框光标在最后一位================
 $(document).on('focus', 'input', function() {
-	var obj = $(this).get(0);
+	if(typeof($(this).attr("readonly")) == "undefined") {
+		var obj = $(this).get(0);
+		moveEnd(obj)
+	}
 })
 
 function moveEnd(obj) {
-//	obj.focus();
 	var len = obj.value.length;
 	if(document.selection) {
 		var sel = obj.createTextRange();
@@ -369,3 +418,24 @@ function moveEnd(obj) {
 }
 
 //==========输入框光标在最后一位================
+
+//=============快速排序===========
+function quickSort(array, left, right) {　　
+	if(left < right) {　　　　
+		var x = array[right],
+			i = left - 1,
+			temp;　　　　
+		for(var j = left; j <= right; j++) {　　　　　　
+			if(array[j] <= x) {　　　　　　　　
+				i++;　　　　　　　　
+				temp = array[i];　　　　　　　　
+				array[i] = array[j];　　　　　　　　
+				array[j] = temp;　　　　　　
+			}　　　　
+		}　　　　
+		quickSort(array, left, i - 1);　　　　
+		quickSort(array, i + 1, right);　　
+	}　　
+	return array;
+}
+//=============快速排序===========

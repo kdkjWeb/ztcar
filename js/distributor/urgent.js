@@ -28,8 +28,8 @@ $(function() {
 				obj.contactsWay = $(this).find('.myPhone').val();
 			}
 			listJson.urgentContactList[index] = obj;
-
 		})
+		
 		getSave()
 
 	})
@@ -115,19 +115,19 @@ $(function() {
 
 	// ==========
 	function Verification() {
-		var sta = true;
-		$('.relative').each(function() {
+		var flag = true;
+		$('.must').each(function() {
 			$(this).find('input').each(function() {
 				if($(this).val() == '') {
 					let msg = $(this).parents('.weui-cell').find('label').text();
 					let str = msg.substr(0, msg.length - 1);
 					errLay(str + '不能为空');
-					sta = false
+					flag = false
 					return false;
 				}
 			})
 		})
-		return sta;
+		return flag;
 	}
 	// ==========
 

@@ -13,7 +13,11 @@ $(function() {
 		if(!Verification()) {
 			return false;
 		}
-
+		
+		if(!isPhone(disPhone,'销售顾问')){
+			return false;
+		}
+		
 		listJson.applyId = importId;
 		listJson.salesConsultant = disName;
 		listJson.consultantPhone = disPhone;
@@ -114,6 +118,10 @@ $(function() {
 					if(mycontent.smProductApplycontents[i].isRequire == 1) {
 						$('#disPhone').addClass("must");
 					}
+				}
+			} else if(mycontent.smProductApplycontents[i].label == "spName") { //sp代理名称
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#agentName').parents(".weui-cell").removeClass("hide");
 				}
 			}
 		}

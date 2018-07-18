@@ -341,7 +341,7 @@ input[type=text],input[type=number],input[type=tel],input[type=password]{
 .weui-picker-container .toolbar .picker-button{
 	line-height: 1rem !important;
 	height: auto !important;
-	font-size: .22rem !important;
+	font-size: .36rem !important;
 	color: #3b6af4 !important;
 }
 .weui-picker-container .toolbar .title{
