@@ -107,11 +107,6 @@ $(function() {
 						$('#userPhone').text(listJson.borrowerPhone)
 					}
 					
-//					if(listJson.isOtherNext == 1){
-//						$('#save').text('下一步');
-//					}else{
-//						$('#save').text('确认提交');
-//					}
 					
 					for(var i = 0; i < listJson.smFileOwens.length; i++) {
 						var text = '<div class="list">' +
@@ -124,7 +119,9 @@ $(function() {
 							
 							if(listJson.smFileOwens[i].smFiles.length>0){   ///如果有图片，进行回显
 								for(var j=0;j<listJson.smFileOwens[i].smFiles.length;j++){
-									text += '<li class="weui_uploader_file weui_uploader_status"  style="background-image: url('+path+listJson.smFileOwens[i].smFiles[j].filePath+');">'+
+									var newUrl = listJson.smFileOwens[i].smFiles[j].filePath.replace('.','_compress.');
+									
+									text += '<li class="weui_uploader_file weui_uploader_status"  style="background-image: url('+path+newUrl+');">'+
 									'<span class="imgMsg">';
 									//0未审核
 									//1通过、

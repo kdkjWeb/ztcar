@@ -1,7 +1,8 @@
 $(function() {
 	var listJson = {};
 	var importId = GetRequest().applyId;
-
+	var Route; //路径
+	
 	getList();
 	getCar();
 
@@ -121,7 +122,7 @@ $(function() {
 				hideLoading(); //隐藏load
 				if(data.code == 0) {
 					listJson = data.data
-					content(listJson.smProductApplycontent); ////显示和必填验证
+					
 					$('#Name').text(listJson.name); //姓名
 					$('#Phone').text(listJson.phone); //电话号码
 					$('#idNumber').text(listJson.certificatePhone); //身份证
@@ -182,7 +183,11 @@ $(function() {
 					if(listJson.carPurpose != null) { //购车目的
 						$('#aim').val(listJson.carPurpose);
 					}
-
+					
+					getUrl(); //获取地址
+					
+					content(listJson.smProductApplycontent); ////显示和必填验证
+					
 				} else {
 					errLay(data.msg);
 				}
@@ -210,7 +215,7 @@ $(function() {
 			success: function(data) {
 				hideLoading(); //隐藏load	
 				if(data.code == 0) {
-					window.location.href = "work.html?applyId=" + importId;
+					window.location.href = Route+".html?applyId=" + importId;
 				} else {
 					errLay(data.msg);
 				}
@@ -241,11 +246,11 @@ $(function() {
 							value: data.list[i].id
 						};
 						arr.push(car);
-					}
+					};
 					$("#Vehicle").select({
 						title: "现有车辆品牌",
 						items: arr
-					})
+					});
 				} else {
 					errLay(data.msg);
 				}
@@ -271,7 +276,7 @@ $(function() {
 	//===========如果有驾驶证需要验证的====================
 	function carVerification() {
 		var flag = true;
-		$('.carSur').each(function() {
+		$('.must').each(function() {
 			if($(this).val() == '') {
 				let msg = $(this).parents('.weui-cell').find('label').text();
 				let str = msg.substr(0, msg.length - 1);
@@ -421,5 +426,63 @@ $(function() {
 		}
 	}
 	
+	
+	
+//	============获取地址========
+	function getUrl(){
+		var data = listJson.smProductApplycontent;
+		
+		if(data.isShowWork==1){
+			Route = 'work'; //借款人工作信心
+			return;
+		}else if(data.isShowAddr == 1){
+			Route = 'address'; //借款人地址
+			return;
+		}else{
+			getExsit();
+		}
+	}
+	
+	
+	function getExsit() {
+		var data = {
+			id: importId
+		}
+		$.ajax({
+			url: path + "/apply/isExsitOtherPersion",
+			data: JSON.stringify(data),
+			dataType: "json",
+			contentType: "application/json",
+			type: "post",
+			xhrFields: {
+				withCredentials: true
+			},
+			success: function(data) {
+				if(data.code == 0) {
+					var content = data.data;
+					
+					if(content.isPo == 1){
+						Route = 'married';  //配偶
+						return
+					}
+					else if(content.isGtcz == 1){
+						Route = 'tenant';  //承租人
+						return
+					}
+					else if(content.isZrdb == 1){
+						Route = 'guarantor';  //个人担保
+						return
+					}
+					else if(content.isJjlx == 1){
+						Route = 'urgent';  //紧急联系人
+						return
+					}
+					
+				} else {
+					errLay(data.msg);
+				}
+			}
+		});
+	}
 	
 })

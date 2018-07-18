@@ -116,7 +116,9 @@ $(function() {
 							
 							if(listJson.smFileOwens[i].smFiles.length>0){   ///如果有图片，进行回显
 								for(var j=0;j<listJson.smFileOwens[i].smFiles.length;j++){
-									text += '<li class="weui_uploader_file weui_uploader_status"  style="background-image: url('+path+listJson.smFileOwens[i].smFiles[j].filePath+');">'+
+									var newUrl = listJson.smFileOwens[i].smFiles[j].filePath.replace('.','_compress.');
+									
+									text += '<li class="weui_uploader_file weui_uploader_status"  style="background-image: url('+path+newUrl+');">'+
 									'<span class="imgMsg">';
 									//0未审核
 									//1通过、

@@ -2,6 +2,7 @@ $(function() {
 
 	var listJson = {};
 	var importId = GetRequest().applyId;
+	var Route; //路径
 
 	getList(); //回显
 
@@ -67,9 +68,7 @@ $(function() {
 				if(data.code == 0) {
 					if(data.data) {
 						listJson = data.data;
-
-						content(listJson.smProductApplycontent); ////显示和必填验证
-
+						
 						if(listJson.companyName) { //单位名称
 							$('#companyName').val(listJson.companyName);
 						}
@@ -96,6 +95,10 @@ $(function() {
 						if(listJson.position) { //职务
 							$('#position').val(listJson.position);
 						}
+						
+						getUrl(); //获取地址
+						
+						content(listJson.smProductApplycontent); ////显示和必填验证
 					}
 
 				} else {
@@ -225,5 +228,61 @@ $(function() {
 		}
 
 	}
+	
+	
+	//	============获取地址========
+	function getUrl(){
+		var data = listJson.smProductApplycontent;
+		
+		if(data.isShowAddr == 1){
+			Route = 'address'; //借款人地址
+			return;
+		}else{
+			getExsit();
+		}
+	}
+	
+	
+	function getExsit() {
+		var data = {
+			id: importId
+		}
+		$.ajax({
+			url: path + "/apply/isExsitOtherPersion",
+			data: JSON.stringify(data),
+			dataType: "json",
+			contentType: "application/json",
+			type: "post",
+			xhrFields: {
+				withCredentials: true
+			},
+			success: function(data) {
+				if(data.code == 0) {
+					var content = data.data;
+					
+					if(content.isPo == 1){
+						Route = 'married';  //配偶
+						return
+					}
+					else if(content.isGtcz == 1){
+						Route = 'tenant';  //承租人
+						return
+					}
+					else if(content.isZrdb == 1){
+						Route = 'guarantor';  //个人担保
+						return
+					}
+					else if(content.isJjlx == 1){
+						Route = 'urgent';  //紧急联系人
+						return
+					}
+					
+				} else {
+					errLay(data.msg);
+				}
+			}
+		});
+	}
+	
 
 })

@@ -159,10 +159,6 @@ $(function() {
 				if(data.code == 0) {
 					var content = data.data;
 					
-//					if(content.isJxs == 1){
-//						Route = 'distributorMsg'; //经销商信息
-//					}
-					
 					if(content.isRj == 1){
 						Route = 'financing'; //填写融资信息
 						return;
@@ -195,6 +191,5 @@ $(function() {
 			}
 		});
 	}
-
 
 })
