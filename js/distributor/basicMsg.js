@@ -400,7 +400,6 @@ $(function() {
 						$('#drivingNumber').addClass("must");
 					}
 				}
-
 			} else if(mycontent.smProductApplycontents[i].label == "driAbbr") { //驾驶证档案号
 				if(mycontent.smProductApplycontents[i].isShow == 1) {
 					$('#drivingRecordNumber').parents(".weui-cell").removeClass("hide");

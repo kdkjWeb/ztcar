@@ -1,98 +1,121 @@
 /* 顺序框 */
-body{
+
+body {
 	padding-bottom: .5rem;
 }
-header{
-    width:100%;
-    height: .94rem;
-}
-header ul{
-    display: flex;
-    justify-content: space-around;
-    line-height: .94rem
-}
-/* 直属亲戚 */
-#relative{
-    width: 6.9rem;
-    height: 3.62rem;
-    margin: auto;
+
+header {
+	width: 100%;
+	height: .94rem;
 }
 
-.relative .weui-cell{
-    height: 1rem
+header ul {
+	display: flex;
+	justify-content: space-around;
+	line-height: .94rem
 }
-.bar p{
-    width: 100%;
-    height: .6rem;
-    font-size: .3rem;
-    line-height: .6rem;
-    color: #4164f4;
-    text-align: center
+
+
+/* 直属亲戚 */
+
+.relative .weui-cell {
+	height: 1rem;
 }
+
+.bar p {
+	width: 100%;
+	height: .6rem;
+	font-size: .3rem;
+	line-height: .6rem;
+	color: #4164f4;
+	text-align: center;
+}
+
+
 /* 紧急联系人 */
-.urgent{
-    width:6.9rem;
-    height: 3.2rem;
-    margin: auto;
+
+.urgent {
+	width: 6.9rem;
+	margin: auto;
 }
-.urgent .weui-cell:last-child{
-    border: none
+
+.urgent .weui-cell:last-child {
+	border: none;
 }
+
+
 /* 图标 */
-.iconfont{
-    color: #c6cbc9;
+
+.iconfont {
+	color: #c6cbc9;
 }
+
+
 /* 分割线 */
-.line{
-    width: 100%;
-    height: .1rem;
-    background-color: #ebf2ff
+
+.line {
+	width: 100%;
+	height: .1rem;
+	background-color: #ebf2ff;
 }
-.weui-cell{
-    padding: 0;
-    width: 100%;
-    height: 1.05rem;
-    border-bottom: 1px dashed #dddddd
+
+.weui-cell {
+	padding: 0;
+	width: 100%;
+	height: 1.05rem;
+	border-bottom: 1px dashed #dddddd;
 }
-.weui-cell:before{
-    border: none
+
+.weui-cell:before {
+	border: none;
 }
-.weui-label{
-    width: 3rem;
-    font-size: .32rem;
-    text-align: left;
-    line-height: .6rem;
-    margin-right: .3rem;
-    color: #585858
+
+.weui-label {
+	width: 3rem;
+	font-size: .32rem;
+	text-align: left;
+	line-height: .6rem;
+	margin-right: .3rem;
+	color: #585858;
 }
-.weui-input{
-    width:3.7rem;
-    height:.6rem;
-    font-size: .26rem;
-    border: 1px solid #c6c6c6;
-    border-radius: .5rem;
-    padding-left: .2rem;
-    margin-left: -.7rem;
-    position: relative;
+
+.weui-input {
+	width: 3.7rem;
+	height: .6rem;
+	font-size: .26rem;
+	border: 1px solid #c6c6c6;
+	border-radius: .5rem;
+	padding-left: .2rem;
+	margin-left: -.7rem;
+	position: relative;
 }
+
+
 /* 向下图标 */
-.weui-cell .icon-xiangxia1{
-    position: absolute;
-    top: .3rem;
-    left: 85%
+
+.weui-cell .icon-xiangxia1 {
+	position: absolute;
+	top: .3rem;
+	left: 85%;
 }
+
+
 /* 相机图标 */
-.weui-cell .icon-xiangji1{
-   width:.4rem;
-   height: .35rem;
-   color: #3b6bf4
+
+.weui-cell .icon-xiangji1 {
+	width: .4rem;
+	height: .35rem;
+	color: #3b6bf4;
 }
+
+
 /* 按钮 */
-.weui-btn{
-    width:5.5rem;
-    height: .8rem;
-    border-radius: .5rem;
-    margin: .35rem auto;
-    background-color: #3b6bf4 !important;
-    line-height: .8rem;
+
+.weui-btn {
+	width: 5.5rem;
+	height: .8rem;
+	border-radius: .5rem;
+	margin: .35rem auto;
+	background-color: #3b6bf4 !important;
+	line-height: .8rem;
 }

@@ -80,7 +80,7 @@ $(function() {
 			nodeId:dataId
 		}
 		$.ajax({
-			url: path + "/smAuditing/getAuitingFiles",
+			url: path + "/smAuditing/getAuitingFiles?time=" + (new Date()).getTime(),
 			data: JSON.stringify(data),
 			xhrFields: {
 				withCredentials: true
@@ -148,7 +148,7 @@ $(function() {
 							}
 
 							text += '<div class="inputBox">' +
-							'<input class="inputFile" type="file" accept="image/jpg,image/jpeg,image/png,image/gif" multiple="multiple">' +
+							'<input class="inputFile" type="file" accept="image/*">' +
 							'</div>' +
 							'</ul>' +
 							'</div>' +

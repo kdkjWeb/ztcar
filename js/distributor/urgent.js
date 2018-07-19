@@ -2,22 +2,31 @@ $(function() {
 	var listJson = {};
 	var importId = GetRequest().applyId;
 
-	getOldValue()
+	getOldValue();//获取回显
 
 	var relationship = ["夫妻", "父子", "父女", "母子", "母女"];
+	
+//	============名字删除完之后，关系,电话变为空
+	$(document).on('input','.myName',function(){
+		if($(this).val()==''){
+			$(this).parents('.urgent').find('.myType').val('');
+			$(this).parents('.urgent').find('.myType').removeAttr('data-values');
+			$(this).parents('.urgent').find('.myPhone').val('');
+		}
+	});
 
 	$(".myType").select({
 		title: "与申请人关系",
 		items: relationship
-	})
+	});
+	
 	$(".weui-btn").on("click", function() {
-
-		if(Verification() == false) {
+		if(!Verification()) {
 			return false;
-		}
+		};
 
 		$('.urgent').each(function(index, item) {
-			let obj = {};
+			var obj = {};
 			if($(this).find('.myName').val()) {
 				obj.contactsName = $(this).find('.myName').val();
 			}
@@ -28,11 +37,9 @@ $(function() {
 				obj.contactsWay = $(this).find('.myPhone').val();
 			}
 			listJson.urgentContactList[index] = obj;
-		})
-		
-		getSave()
-
-	})
+		});
+		getSave();
+	});
 
 	function getOldValue() {
 		let data = {
@@ -44,7 +51,7 @@ $(function() {
 			dataType: "json",
 			contentType: "application/json",
 			type: "post",
-			xhrFields: {
+			xhrFields:{
 				withCredentials: true
 			},
 			beforeSend: function() {
@@ -55,10 +62,8 @@ $(function() {
 				if(data.code == 0) {
 					if(data.form) {
 						listJson = data.form;
-
 						content(listJson.smProductApplycontent); ////显示和必填验证
-
-						for(let i = 0; i < listJson.urgentContactList.length; i++) {
+						for(var i = 0; i < listJson.urgentContactList.length; i++) {
 							if(listJson.urgentContactList[i]) {
 								if(listJson.urgentContactList[i].contactsName) {
 									$('.myName').eq(i).val(listJson.urgentContactList[i].contactsName)
@@ -81,7 +86,7 @@ $(function() {
 				errLay(request.responseJSON.msg);
 			}
 		})
-	}
+	};
 
 	function getSave() {
 		$.ajax({
@@ -111,7 +116,7 @@ $(function() {
 				errLay(request.responseJSON.msg);
 			}
 		})
-	}
+	};
 
 	// ==========
 	function Verification() {
@@ -128,8 +133,7 @@ $(function() {
 			})
 		})
 		return flag;
-	}
-	// ==========
+	};
 
 	//=-=========显示。是否必填==========
 	function content(mycontent) {
@@ -211,6 +215,6 @@ $(function() {
 			}
 
 		}
-	}
-
+	};
+	
 })

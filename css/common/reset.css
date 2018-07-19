@@ -331,6 +331,7 @@ input[type=text],input[type=number],input[type=tel],input[type=password]{
 
 /* =======下拉框样式覆盖========== */
 .weui-picker-container .weui-select-modal .weui-cells {
+	width: 100% !important;
   height: 3rem !important;
   overflow-y: scroll !important;
 }

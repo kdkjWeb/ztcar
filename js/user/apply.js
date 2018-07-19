@@ -17,11 +17,6 @@ var timer = function() {
 	)
 }
 
-//点击下一步提交
-$('#btn').click(function() {
-	suerAjax();
-})
-
 // 告诉用户身份证输入正确
 $('.IDcard .ipt').blur(function() {
 	let p = $('.IDcard .ipt').val();
@@ -178,6 +173,10 @@ function SecondTrue(userName) {
 	$('#errbox').fadeIn('500');
 }
 
+//点击下一步提交
+$('#btn').click(function() {
+	suerAjax();
+})
 $(document).on('click', '#sure', function() {
 	$('#errbox').remove();
 	suerAjax();
@@ -188,6 +187,9 @@ $(document).on('click', '#login', function() {
 })
 
 function suerAjax() {
+	errLay('征信正在查询中');
+	showCredit();//显示loading	
+	
 	Fdata = new FormData();
 
 	var carProperty = JSON.parse(localStorage.getItem('carProperty')); //新车
@@ -221,8 +223,6 @@ function suerAjax() {
 	var myisMarryed = 0; //是否有配偶欧
 	var myhaveLessee = 0; //是否有承租人
 	var myhaveGuarantee = 0; //是否有担保人
-	
-	
 	
 	var userAge = GetAge(userId); //借款人当前年纪
 	var age = Number(localStorage.getItem('age')); // 年龄限制
@@ -280,11 +280,10 @@ function suerAjax() {
 	if($('#agreen').attr('box') != 'true') {
 		errAlert('提醒', '请阅读征信授权书');
 	} else {
-
 		getImg('identa', 'a'); //用户身份证a
 		getImg('identb', 'b'); //用户身份证b
-		//			getImg('dd','c');   //银行卡 a
-		//			getImg('dd','d');   //银行卡b
+		//getImg('dd','c');   //银行卡 a
+		//getImg('dd','d');   //银行卡b
 		getImg('spouseidenta', 'e'); // 配偶 a
 		getImg('spouseidentb', 'f'); //配偶b
 		getImg('lesseeidenta', 'g'); //承租人 a
@@ -330,9 +329,9 @@ function suerAjax() {
 			type: "post",
 			processData: false,
 			contentType: false,
-			beforeSend: function() {
-				showLoading();//显示loading	
-			},
+//			beforeSend: function() {
+//				showLoading();//显示loading	
+//			},
 			success: function(data) {
 				if(data.code == 0) {
 					errLay('申请成功');

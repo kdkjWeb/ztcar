@@ -1,6 +1,3 @@
-//var path = "http://192.168.20.128:8080";   //张韩
-//var path = "http://192.168.20.129:8080";      //唐彬
-//var path = "http://192.168.20.174:8080";   //石宇
 var path = "https://www.rydit.com.cn/zzbjr"; //外网
 
 (function(doc, win) {
@@ -27,6 +24,22 @@ var path = "https://www.rydit.com.cn/zzbjr"; //外网
 $('input[readonly]').on('focus', function() {
 	$(this).trigger('blur');
 });
+
+
+//=========限制数字类型的输入框只能输入数字===========
+$('input[number]').on('keydown', function() {
+	onlyNumber();
+});
+
+$('input[tel]').on('keydown', function() {
+	onlyNumber();
+});
+
+function onlyNumber(){     //限制只能输入数字
+	if(!(event.keyCode==46)&&!(event.keyCode==8)&&!(event.keyCode==37)&&!(event.keyCode==39))
+	if(!((event.keyCode>=48&&event.keyCode<=57)||(event.keyCode>=96&&event.keyCode<=105)))
+	event.returnValue=false;
+};
 
 //=======弹框=====使用时传入 tit标题 和msg 提示信息两个====使用方法：errAlert('登陆提醒','登陆错误')==
 function errAlert(tit, msg) {
@@ -369,6 +382,19 @@ function showLoading() {
 		$('body').append(loading);
 	}
 }
+
+function showCredit() {
+	if(!$('#loading').exist()) {
+		var loading = '<div class="loading" id="loading">' +
+			'<div class="weui-loadmore">' +
+			'<i class="weui-loading"></i>' +
+			'<span class="weui-loadmore__tips">征信正在查询中</span>' +
+			'</div>' +
+			'</div>';
+		$('body').append(loading);
+	}
+}
+
 
 function hideLoading() {
 	$('#loading').fadeOut('800');

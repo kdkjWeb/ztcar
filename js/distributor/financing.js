@@ -78,7 +78,7 @@ $(function() {
 			applyId: importId
 		}
 		$.ajax({
-			url: path + "/smFinancing/selectFinancingByApplyId",
+			url: path + "/smFinancing/selectFinancingByApplyIdEx",
 			data: data,
 			dataType: "json",
 			contentType: "application/json",

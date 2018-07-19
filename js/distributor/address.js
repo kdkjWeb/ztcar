@@ -121,7 +121,7 @@ $(function() {
 			success: function(data) {
 				hideLoading(); //隐藏load
 				if(data.code == 0) {
-					window.location.href = Route + ".html?applyId=" + importId;
+					window.location.href = Route+".html?applyId=" + importId;
 				} else {
 					errLay(data.msg);
 				}

@@ -5,7 +5,8 @@ body{
 .content{
     width:6.9rem;
     margin:auto;
-    padding-top: .4rem
+    padding-top: .4rem;
+    padding-bottom: .8rem;
 }
 /* 姓名 */
 .name{
