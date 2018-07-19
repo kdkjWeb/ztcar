@@ -114,7 +114,7 @@
                 <div class="weui-cell__bd">
                     <input class="weui-input carSur" type="text" id="drivingName" placeholder="请输入驾驶证姓名">
                 </div>
-                <!--<i class="iconfont icon-xiangji1"></i>/-->
+                <i class="iconfont icon-xiangji1" id="xiangji"></i>
             </div>
             <div class="weui-cell hide">
                 <div class="weui-cell__hd"><label class="weui-label">驾驶证号码：</label></div>
@@ -166,6 +166,28 @@
         </div>
         <a href="javascript:;" class="weui-btn weui-btn_primary" id="next">下一步</a>  
     </div>
+    
+    
+    <!--=用户身份证====-->
+		<div class="fixBox" id="userIdbox">
+			<div class="tit">请上传驾驶证正反面照片</div>
+			<div class="positiveCar">
+				<div class="upId image-item">
+					<input class="file userfile Positive" type="file" id="carA"/>
+					<span>上传驾驶证正面照片</span>
+				</div>
+			</div>
+			<div class="positiveCar">
+				<div class="downId image-item">
+					<input class="file userfile" type="file" id="carB"/>
+					<span>上传驾驶证反面照片</span>
+				</div>
+			</div>
+			<div class="next">返回</div>
+		</div>
+		<!--=用户身份证====-->
+    
+    
 </body>
 <script src="../../js/common/jquery-weui.min.js"></script>
 <script src="../../js/distributor/basicMsg.js"></script>

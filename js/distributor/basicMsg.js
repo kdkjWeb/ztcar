@@ -484,4 +484,54 @@ $(function() {
 		});
 	}
 	
+	
+	
+	$("#xiangji").on("click", function() {
+		$('#userIdbox').show();
+	})
+	
+	$(".next").on("click", function() {
+		$('#userIdbox').hide();
+	})
+	
+	
+	$('#carA').change(function(){
+	var _this = $(this);
+	var files = Array.prototype.slice.call(this.files);
+	var mydata = new FormData();
+	mydata.append('file',files[0]);
+	mydata.append('ocrCode',1);
+	
+	$.ajax({
+			url: path + "/file/addFileUseOCR",
+			data: mydata,
+			dataType: "json",
+			contentType: "application/json",
+			type: "post",
+			processData: false,
+			contentType: false,
+			beforeSend: function() {
+				showLoading();//显示loading	
+			},
+			success: function(data) {
+				hideLoading();  //隐藏load	
+				if(data.code == 0) {
+					if(data.data.cardId){  //驾驶证号码
+						$('#drivingNumber').val(data.data.cardId)
+					}
+					if(data.data.name){  //驾驶证姓名
+						$('#drivingName').val(data.data.name)
+					}
+					
+				}else{
+					errLay(data.msg)
+				}
+			},error:function(request, textStatus, errorThrown){
+				hideLoading();  //隐藏load	
+				errLay(request.responseJSON.msg)
+			}
+		});
+	})
+	
+	
 })

@@ -1,5 +1,7 @@
 var path = "https://www.rydit.com.cn/zzbjr"; //外网
 
+//var path = "http://192.168.20.129:8080"; //
+
 (function(doc, win) {
 	var docEl = doc.documentElement;
 	resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';

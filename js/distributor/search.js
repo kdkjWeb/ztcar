@@ -11,6 +11,9 @@ $(function() {
 		dataType: "json",
 		contentType: "application/json",
 		type: "get",
+		xhrFields: {
+			withCredentials: true
+		},
 		success: function(data) {
 			console.log(data);
 			if(data.code == 0) {

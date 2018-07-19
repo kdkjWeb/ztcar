@@ -12,19 +12,28 @@ $(function() {
         dataType: "json",
         contentType: "application/json",
         type: "post",
+        xhrFields: {
+			withCredentials: true
+		},
+		beforeSend: function() {
+			showLoading(); //显示loading	
+		},
         success: function(data) {
-            console.log(data)
+            hideLoading(); //隐藏load	
             if(data.code == 0) {
                 if(data.data) {
-                    listJson = data.data.list
-                    loan(listJson)
+                	if(data.data.list.length == 0){
+                		$('.content').append('<div style="text-align: center;">暂无记录</div>')
+                	}else{
+                	 	loan(data.data.list)	
+                	}
+                   
                 }
             }
-        },
-        error: function(xhr,type,errorThrown) {
-            console.log(xhr);
-            console.log(type)
-        }
+        },error: function(request, textStatus, errorThrown) {
+				hideLoading(); //隐藏load	
+				errLay(request.responseJSON.msg);
+			}
     })
 })
 
