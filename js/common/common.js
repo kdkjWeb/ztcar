@@ -1,4 +1,5 @@
-var path = "https://www.rydit.com.cn/zzbjr"; //外网
+// var path = "https://www.rydit.com.cn/zzbjr"; //外网
+var path = "http://192.168.20.126:8080"; //外网
 
 (function(doc, win) {
 	var docEl = doc.documentElement;
@@ -91,6 +92,8 @@ function cue(tit, msg) {
 	$('#errBox').fadeIn('500');
 }
 
+
+
 //=========== 带参跳转=====
 function jumpSet(src, isNumber) {
 	window.location.href = src + "?isNumber=" + isNumber;
@@ -131,6 +134,13 @@ function getDate(times) {
 	return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
 };
 
+function getTime(times){
+	var str = times;
+	str = str.replace('-','/');
+	var date = new Date(str);
+	var time = date.getTime();
+	return time;
+}
 //=====正则验证===========
 function isPhone(phone, msg) { //手机号
 	var regex = /^1[3|4|5|6|8|7|9][0-9]\d{4,8}$/;
