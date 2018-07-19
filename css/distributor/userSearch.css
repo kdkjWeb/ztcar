@@ -152,6 +152,8 @@ button{
     border-radius: .5rem;
     margin-top: .3rem ;
     background-color: #3b6bf4;
+    outline: none;
+    text-decoration: none;
 }
 .line{
     width: 100%;

@@ -1,25 +1,26 @@
 $(function(){
     var listJson = [];
-    allName();
+    getSearchByUsername();
     // 下拉框切换
     $(".type input").select ({
         title: "选择查询类型",
         items: ["征信记录","客户姓名","汽车销价区间","汽车销售时间段"],
         onChange: function() {
             if($("input[type=text]").val() == "客户姓名") {
-                $(".user-search").show().siblings(".ct").hide()
+                $(".user-search").show().siblings(".ct").hide();
+                 getSearchByUsername();
             }
             if($("input[type=text]").val() == "征信记录") {
                 $(".zx-search").show().siblings(".ct").hide()
-                allZx()
+                getSearchByZx()
             }
             if($("input[type=text]").val() == "汽车销价区间") {
                 $(".car-search-price").show().siblings(".ct").hide()
-                allPrice()
+                getSearchByPrice()
             }
             if($("input[type=text]").val() == "汽车销售时间段") {
                 $(".car-search").show().siblings(".ct").hide()
-                allTime()
+                getSearchByTime()
             }
         }
     });
@@ -59,110 +60,106 @@ $(function(){
   
 //  ===============获取信息=============== 
 
-    // 获取所有客户姓名
-    function allName() {
-        let data = {}
-        $.ajax({
-            url: path + "/smBorrower/selectSmBorrowerAboutOfficial",
-            data: JSON.stringify(data),
-            dataType:"json",
-            contentType:"application/json",
-            type:"post",
-            success: function(data) {
-                if(data.code == 0){
-                    if(data.data){
-                        listJson = data.data.list
-                        userName(listJson);
-                    }
-                }
-            },
-            error: function(xhr,type,errorThrown) {
-                console.log(xhr);
-                console.log(type);
-            }
-        })
-        
-    }
-    // 获取所有征信记录
-    function allZx() {
-        let data = {}
-        $.ajax({
-            url: path + "/smUrgent/selectSmBorrowerAboutCredit",
-            data: JSON.stringify(data),
-            dataType: "json",
-            contentType: "application/json",
-            type: "post",
-            success: function(data) {
-                if(data.code == 0){
-                    if(data.data){
-                        listJson = data.data.list
-                        zxRcord(listJson)
-                    }
-                }
-            },
-            error: function(xhr,type,errorThrown) {
-                console.log(xhr);
-                console.log(type)
-            }
-        })
-    }
-    // 获取所有汽车销售时间
-    function allTime() {
-        console.log("供货商更多")
-        let data = {}
-        $.ajax({
-            url: path + "/smFinancing/getSmFinacingByTime",
-            data: JSON.stringify(data),
-            dataType: "json",
-            contentType: "application/json",
-            type: "post",
-            success: function(data) {
-                if(data.code == 0){
-                    if(data.data){
-                        listJson = data.data
-                        saveTime(listJson);
-                    }
-                }
-            },
-            error: function(xhr,type,errorThrown) {
-                console.log(xhr);
-                console.log(type)
-            }
-        })
-    }
-    // 获取所有汽车售价
-    function allPrice() {
-        let data = {}
-        $.ajax({
-            url: path + "/smFinancing/getSmFinacingByPrice",
-            data: JSON.stringify(data),
-            dataType: "json",
-            contentType: "application/json",
-            type: "post",
-            success: function(data) {
-                if(data.code == 0){
-                    if(data.data){
-                        listJson = data.data
-                        carPrice(listJson);
-                    }
-                }
-            },
-            error: function(xhr,type,errorThrown) {
-                console.log(xhr)
-                console.log(type)
-            }
-        })
-    }
-
-
+//  // 获取所有客户姓名
+//  function allName() {
+//      let data = {}
+//      $.ajax({
+//          url: path + "/smBorrower/selectSmBorrowerAboutOfficial",
+//          data: JSON.stringify(data),
+//          dataType:"json",
+//          contentType:"application/json",
+//          type:"post",
+//          success: function(data) {
+//              if(data.code == 0){
+//                  if(data.data){
+//                      listJson = data.data.list
+//                      userName(listJson);
+//                  }
+//              }
+//          },
+//          error: function(xhr,type,errorThrown) {
+//              console.log(xhr);
+//              console.log(type);
+//          }
+//      })
+//      
+//  }
+//  // 获取所有征信记录
+//  function allZx() {
+//      let data = {}
+//      $.ajax({
+//          url: path + "/smUrgent/selectSmBorrowerAboutCredit",
+//          data: JSON.stringify(data),
+//          dataType: "json",
+//          contentType: "application/json",
+//          type: "post",
+//          success: function(data) {
+//              if(data.code == 0){
+//                  if(data.data){
+//                      listJson = data.data.list
+//                      zxRcord(listJson)
+//                  }
+//              }
+//          },
+//          error: function(xhr,type,errorThrown) {
+//              console.log(xhr);
+//              console.log(type)
+//          }
+//      })
+//  }
+//  // 获取所有汽车销售时间
+//  function allTime() {
+//      console.log("供货商更多")
+//      let data = {}
+//      $.ajax({
+//          url: path + "/smFinancing/getSmFinacingByTime",
+//          data: JSON.stringify(data),
+//          dataType: "json",
+//          contentType: "application/json",
+//          type: "post",
+//          success: function(data) {
+//              if(data.code == 0){
+//                  if(data.data){
+//                      listJson = data.data
+//                      saveTime(listJson);
+//                  }
+//              }
+//          },
+//          error: function(xhr,type,errorThrown) {
+//              console.log(xhr);
+//              console.log(type)
+//          }
+//      })
+//  }
+//  // 获取所有汽车售价
+//  function allPrice() {
+//      let data = {}
+//      $.ajax({
+//          url: path + "/smFinancing/getSmFinacingByPrice",
+//          data: JSON.stringify(data),
+//          dataType: "json",
+//          contentType: "application/json",
+//          type: "post",
+//          success: function(data) {
+//              if(data.code == 0){
+//                  if(data.data){
+//                      listJson = data.data
+//                      carPrice(listJson);
+//                  }
+//              }
+//          },
+//          error: function(xhr,type,errorThrown) {
+//              console.log(xhr)
+//              console.log(type)
+//          }
+//      })
+//  }
 
 // ========================查询信息=====================
 
-
-
     // 查询客户姓名
     function getSearchByUsername() {
-        var sName = $("#inputName").val()
+        var sName = $("#inputName").val();
         var data = {
             name: sName
         }
@@ -172,7 +169,14 @@ $(function(){
             dataType:"json",
             contentType:"application/json",
             type:"post",
+            xhrFields: {
+				withCredentials: true
+			},
+			beforeSend: function() {
+				showLoading(); //显示loading	
+			},
             success: function(data) {
+            	hideLoading(); //隐藏load	
                 if(data.code == 0){
                     if(data.data){
                         listJson = data.data.list
@@ -180,10 +184,10 @@ $(function(){
                     }
                 }
             },
-            error: function(xhr,type,errorThrown) {
-                console.log(xhr);
-                console.log(type)
-            }
+			error: function(request, textStatus, errorThrown) {
+				hideLoading(); //隐藏load	
+				errLay(request.responseJSON.msg);
+			}
         })
     }
     // 查询征信记录
@@ -200,7 +204,14 @@ $(function(){
             dataType: "json",
             contentType: "application/json",
             type:"post",
+            xhrFields: {
+				withCredentials: true
+			},
+			beforeSend: function() {
+				showLoading(); //显示loading	
+			},
             success: function(data) {
+            	hideLoading(); //隐藏load	
                 if(data.code == 0){
                     if(data.data){
                         listJson = data.data
@@ -214,10 +225,10 @@ $(function(){
                     }
                 }
             },
-            error: function(xhr,type,errorThrown) {
-                console.log(xhr);
-                console.log(type)
-            }
+			error: function(request, textStatus, errorThrown) {
+				hideLoading(); //隐藏load	
+				errLay(request.responseJSON.msg);
+			}
         })
     }
     // 查询汽车销售时间
@@ -230,6 +241,7 @@ $(function(){
             endTime: sEndTime
         }
         
+        
         $.ajax({
             url: path + "/smFinancing/getSmFinacingByTime",
             data: JSON.stringify(data),
@@ -237,14 +249,18 @@ $(function(){
             contentType: "application/json",
             type: "post",
             xhrFields: {
-                withCredentials: true
-            },
+				withCredentials: true
+			},
+			beforeSend: function() {
+				showLoading(); //显示loading	
+			},
             success: function(data) {
+            	hideLoading(); //隐藏load	
                 if(data.code == 0){
                     if(data.data){
                         listJson = data.data
                         if(sBeginTime == sEndTime){
-                            errLay("结束时间必须大于开始时间")
+                            errLay("结束时间必须大于开始时间");
                         }
                         else{
                             saveTime(listJson);
@@ -252,10 +268,10 @@ $(function(){
                     }
                 }
             },
-            error: function(xhr,type,errorThrown) {
-                console.log(xhr);
-                console.log(type);
-            }
+			error: function(request, textStatus, errorThrown) {
+				hideLoading(); //隐藏load	
+				errLay(request.responseJSON.msg);
+			}
         })
     }
     // 查询汽车售价区间
@@ -266,6 +282,7 @@ $(function(){
             startPrice: sBeginPrice,
             endPrice: sEndPrice
         }
+        
         $.ajax({
             url: path + "/smFinancing/getSmFinacingByPrice",
             data: JSON.stringify(data),
@@ -273,9 +290,13 @@ $(function(){
             contentType: "application/json",
             type: "post",
             xhrFields: {
-                withCredentials: true
-            },
+				withCredentials: true
+			},
+			beforeSend: function() {
+				showLoading(); //显示loading	
+			},
             success: function(data) {
+            	hideLoading(); //隐藏load	
                 if(data.code == 0){
                     if(data.data){
                         listJson = data.data
@@ -288,10 +309,10 @@ $(function(){
                     }
                 }
             },
-            error: function(xhr,type,errorThrown) {
-                console.log(xhr);
-                console.log(type)
-            }
+			error: function(request, textStatus, errorThrown) {
+				hideLoading(); //隐藏load	
+				errLay(request.responseJSON.msg);
+			}
         })
     }
    
