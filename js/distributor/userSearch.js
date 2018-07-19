@@ -1,5 +1,4 @@
 $(function(){
-    var listJson = [];
     
     getSearchByUsername();
     // 下拉框切换
@@ -83,8 +82,7 @@ $(function(){
             	hideLoading(); //隐藏load	
                 if(data.code == 0){
                     if(data.data){
-                        listJson = data.data.list
-                        userName(listJson);
+                        userName(data.data.list);
                     }
                 }
             },
@@ -121,8 +119,7 @@ $(function(){
                     hideLoading(); //隐藏load	
                     if(data.code == 0){
                         if(data.data){
-                            listJson = data.data
-                            zxRcord(listJson)
+                            zxRcord(data.data);
                         }
                     }
                 },
@@ -161,8 +158,7 @@ $(function(){
                     hideLoading(); //隐藏load	
                     if(data.code == 0){
                         if(data.data){
-                            listJson = data.data
-                            saveTime(listJson);
+                            saveTime(data.data);
                         }
                     }
                 },
@@ -202,8 +198,7 @@ $(function(){
             	hideLoading(); //隐藏load	
                 if(data.code == 0){
                     if(data.data){
-                        listJson = data.data
-                        carPrice(listJson); 
+                        carPrice(data.data); 
                     }
                 }
             },

@@ -1,5 +1,4 @@
-// var path = "https://www.rydit.com.cn/zzbjr"; //外网
-var path = "http://192.168.20.126:8080"; //外网
+var path = "https://www.rydit.com.cn/zzbjr"; //外网
 
 (function(doc, win) {
 	var docEl = doc.documentElement;
