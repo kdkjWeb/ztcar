@@ -45,7 +45,7 @@ $(function(){
     
     function doSomething(arr){
     	var text;
-    	if(arr.status == 0){
+    	if(arr.status == 0 || arr.status == null){
     		var text = '<div class="list">';
     	}else{
     		if(arr.auditState == 0){
@@ -78,9 +78,14 @@ $(function(){
                 '</li>'+
                 '<li>'+
                     '<div>'+
-                        '<label>已还款金额：</label>'+
-                        '<p>'+arr.alreadyRepay+'</p>'+
-                    '</div>'+
+                        '<label>已还款金额：</label>';
+                        if(arr.alreadyRepay){
+                        	text +='<p>'+arr.alreadyRepay+'</p>';
+                        }else{
+                        	text +='<p>0</p>';
+                        }
+                        
+                    text +='</div>'+
                 '</li>'+
                 '<li>'+
                     '<div>'+
@@ -89,7 +94,7 @@ $(function(){
                     '</div>'+
                 '</li>';
                 
-                if(arr.status == 0){   //未申请的
+                if(arr.status == 0 || arr.status == null){   //未申请的
                 	text += '<li>'+
 						'<p class="pXian apply changeStatus" myStatus="1">申请提前还款</p>'+  //变成1
 					'</li>';

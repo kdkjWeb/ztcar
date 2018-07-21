@@ -8,11 +8,19 @@ $(function() {
 		listJson.enNumber = $('#Engine').val(); //发动机
 		listJson.viNumber = $('#Frame').val(); //车架
 		if(!$('#Engine').val()){
-			errLay('请填写发动机号')
+			errLay('请填写发动机号');
+			return false;
 		}
 		if(!$('#Frame').val()){
-			errLay('请填写车架号')
+			errLay('请填写车架号');
+			return false;
 		}
+		if($('#Frame').val().length != 17){
+			errLay('请填写完整车架号');
+			return false;
+		}
+		
+		
 		saveList();
 	})
 

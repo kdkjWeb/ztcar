@@ -2,13 +2,13 @@ $(function() {
 	var listJson = {};
 	var importId = GetRequest().applyId;
 
-	getOldValue();//获取回显
+	getOldValue(); //获取回显
 
 	var relationship = ["夫妻", "父子", "父女", "母子", "母女"];
-	
-//	============名字删除完之后，关系,电话变为空
-	$(document).on('input','.myName',function(){
-		if($(this).val()==''){
+
+	//	============名字删除完之后，关系,电话变为空
+	$(document).on('input', '.myName', function() {
+		if($(this).val() == '') {
 			$(this).parents('.urgent').find('.myType').val('');
 			$(this).parents('.urgent').find('.myType').removeAttr('data-values');
 			$(this).parents('.urgent').find('.myPhone').val('');
@@ -19,7 +19,7 @@ $(function() {
 		title: "与申请人关系",
 		items: relationship
 	});
-	
+
 	$(".weui-btn").on("click", function() {
 		if(!Verification()) {
 			return false;
@@ -51,7 +51,7 @@ $(function() {
 			dataType: "json",
 			contentType: "application/json",
 			type: "post",
-			xhrFields:{
+			xhrFields: {
 				withCredentials: true
 			},
 			beforeSend: function() {
@@ -122,15 +122,13 @@ $(function() {
 	function Verification() {
 		var flag = true;
 		$('.must').each(function() {
-			$(this).find('input').each(function() {
-				if($(this).val() == '') {
-					let msg = $(this).parents('.weui-cell').find('label').text();
-					let str = msg.substr(0, msg.length - 1);
-					errLay(str + '不能为空');
-					flag = false
-					return false;
-				}
-			})
+			if($(this).val() == '') {
+				let msg = $(this).parents('.weui-cell').find('label').text();
+				let str = msg.substr(0, msg.length - 1);
+				errLay(str + '不能为空');
+				flag = false
+				return false;
+			}
 		})
 		return flag;
 	};
@@ -216,5 +214,5 @@ $(function() {
 
 		}
 	};
-	
+
 })

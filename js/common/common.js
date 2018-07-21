@@ -63,17 +63,18 @@ $(document).on('click', '#colseErr', function() {
 })
 //====提示====
 function errLay(msg) {
-	var text = '<div id="errLay" class="errLay"><span>' + msg + '</span></div>';
-	$('body').append(text);
-	$('#errLay').fadeIn('8000');
-
-	var set = setTimeout(function() {
-		$('#errLay').fadeOut('25000');
-		var setRemove = setTimeout(function() {
-			$('#errLay').remove()
+	if(!$('#errLay').exist()) {
+		var text = '<div id="errLay" class="errLay"><span>' + msg + '</span></div>';
+		$('body').append(text);
+		$('#errLay').fadeIn('800');
+		
+		var set = setTimeout(function() {
+			$('#errLay').fadeOut('25000');
+			var setRemove = setTimeout(function() {
+				$('#errLay').remove()
+			}, 200);
 		}, 2500);
-	}, 2500);
-
+	}
 }
 
 function cue(tit, msg) {
@@ -92,8 +93,6 @@ function cue(tit, msg) {
 	$('body').append(text);
 	$('#errBox').fadeIn('500');
 }
-
-
 
 //=========== 带参跳转=====
 function jumpSet(src, isNumber) {

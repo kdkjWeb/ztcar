@@ -276,4 +276,16 @@ $(function() {
 		window.location.href = 'carMsg.html?applyId=' + applyid;
 	})
 
+
+	pushHistory();
+    function pushHistory() {
+        var state = {
+            title: "title",
+            url: "#"    };
+        window.history.pushState(state, "title", "#");
+    };
+    window.onpopstate = function() {
+        location.href="distributorMenu.html";
+    };
+		
 })

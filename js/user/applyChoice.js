@@ -1,4 +1,7 @@
 $(function() {
+	$('#distributor').val('')
+	
+	
 	var listJson; //经销商数据
 
 	//	==========
@@ -247,15 +250,22 @@ $(function() {
 			return false;
 		}
 
+		localStorage.removeItem("carProperty");
+		localStorage.removeItem("dealersId");
+		localStorage.removeItem("age");
+		localStorage.removeItem("loanId");
+		localStorage.removeItem("loanMonth");
+		localStorage.removeItem("month");
+		localStorage.removeItem("loanType");
+
+
 		localStorage.setItem('carProperty', JSON.stringify(carProperty)); //新车
 		localStorage.setItem('dealersId', JSON.stringify(dealersId)); //经销商id
-
-		localStorage.setItem('age', age); //经销商
-
-		localStorage.setItem('loanId', JSON.stringify(loanId));
-		localStorage.setItem('loanMonth', JSON.stringify(loanMonth));
-		localStorage.setItem('month', JSON.stringify(month));
-		localStorage.setItem('loanType', JSON.stringify(loanType));
+		localStorage.setItem('age', age); //产品年龄
+		localStorage.setItem('loanId', JSON.stringify(loanId));   //产品id
+		localStorage.setItem('loanMonth', JSON.stringify(loanMonth));  //产品期数id
+		localStorage.setItem('month', JSON.stringify(month));     //产品期数
+		localStorage.setItem('loanType', JSON.stringify(loanType));   // 产品类型
 
 		window.location.href = "apply.html";
 
@@ -331,10 +341,6 @@ $(function() {
 	$(document).on('focus', '#distributor', function() {
 		Distributor(listJson);
 	})
-	
-//	$(document).on('click', '#distributor', function() {
-//		Distributor(listJson);
-//	})
 	
 	$(document).on('click', '.mylabel', function() {
 		$(this).addClass('active');

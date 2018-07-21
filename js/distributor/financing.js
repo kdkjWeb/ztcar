@@ -857,9 +857,9 @@ $(function() {
 
 				} else if(mycontent.smProductApplycontents[i].label == "chechuan") { //车船税
 					if(mycontent.smProductApplycontents[i].isShow == 1) {
-						$('#purchase').parents(".weui-cell").removeClass("hide");
+						$('#ship').parents(".weui-cell").removeClass("hide");
 						if(mycontent.smProductApplycontents[i].isRequire == 1) {
-							$('#purchase').addClass("must");
+							$('#ship').addClass("must");
 						}
 					}
 

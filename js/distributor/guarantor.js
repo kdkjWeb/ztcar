@@ -267,7 +267,7 @@ $(function() {
 
 	})
 
-	$('#a').change(function() {
+	$('#photoA').change(function() {
 		var _this = $(this);
 		var files = Array.prototype.slice.call(this.files);
 		var mydata = new FormData();

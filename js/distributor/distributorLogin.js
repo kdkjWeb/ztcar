@@ -37,6 +37,9 @@ $(function() {
 				hideLoading();  //隐藏load	
 				if(data.code == 0) { //登录成功
 					if($('#savePsd').is(':checked')) {
+						localStorage.removeItem("distributorName");
+						localStorage.removeItem("distributorPassword");
+						
 						localStorage.setItem('distributorName', userName); //用户名			
 						localStorage.setItem('distributorPassword', userPassword); //密码		
 					}
@@ -50,6 +53,6 @@ $(function() {
 				errLay(request.responseJSON.msg)
 			}
 		});
-
 	})
+	
 })

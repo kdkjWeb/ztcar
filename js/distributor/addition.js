@@ -9,6 +9,18 @@ $(function() {
 	var dataId = GetRequest().dataId;
 	var delDom;
 	getList();
+	tit();
+	
+	function tit(){
+		if(importType==0){
+			$('title').text('提交初审资料');
+		}else if(importType==1){
+			$('title').text('提交放款资料');
+		}else{
+			$('title').text('提交放款后资料');
+		}
+	}
+	
 	
 //	var Route; //下一个页面
 	
