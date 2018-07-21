@@ -281,7 +281,8 @@ $(function() {
     function pushHistory() {
         var state = {
             title: "title",
-            url: "#"    };
+            url: "#"    
+        };
         window.history.pushState(state, "title", "#");
     };
     window.onpopstate = function() {
