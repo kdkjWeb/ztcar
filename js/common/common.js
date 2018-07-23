@@ -31,11 +31,11 @@ $('input[readonly]').on('focus', function() {
 
 
 //=========限制数字类型的输入框只能输入数字===========
-$('input[number]').on('keydown', function() {
+$('input[number]').on('onkeyup', function() {
 	onlyNumber();
 });
 
-$('input[tel]').on('keydown', function() {
+$('input[tel]').on('onkeyup', function() {
 	onlyNumber();
 });
 
@@ -270,7 +270,6 @@ function getSex(idCard) {
 	} else {
 		sex = '女';
 	}
-
 	return sex;
 }
 
@@ -374,7 +373,8 @@ function keepTwo(num) {
 
 //============Loading==============
 
-(function($) { 
+//判断这个页面内有没有这个元素
+(function($) {  
 	$.fn.exist = function() {  
 		if($(this).length >= 1) {   
 			return true;  
@@ -382,6 +382,7 @@ function keepTwo(num) {
 		return false; 
 	};
 })(jQuery);
+
 
 function showLoading() {
 	if(!$('#loading').exist()) {

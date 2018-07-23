@@ -185,7 +185,9 @@ $(function() {
 					
 					if(listJson.accountMethod == 0) {
 						ruleOne();
+						console.log('规则一');
 					} else {
+						console.log('规则二')
 						ruleTwo();
 						$('#thawing').before($('#thawingDom'));  //加融选项放在首付比例前
 					}
@@ -376,7 +378,8 @@ $(function() {
 		ticketPrice.change(getFirstRatio);
 		iptDislable.change(getFirstRatio);
 
-		function getFirstRatio() { //已知保险+gps+车船+购置   车贷比例加融比例 ，开票价   //填写首付比例
+		function getFirstRatio() { //已知保险+gps+车船+购置   车贷比例,加融比例 ，开票价   //填写首付比例
+			console.log('填写首付比例');
 			if(ticketPrice.val()) {
 				var a = getOther(); //其他加成税
 				var b = accMul(a, AddProportion); //（保费+GPS+车船税……）*加融比例
@@ -402,7 +405,6 @@ $(function() {
 				TotalLoan.text(keepTwo(d)); //填写贷款总额：	
 				TotalLoan.change(); //填写贷款总额：	
 			}
-
 		}
 
 		//	=====================
@@ -478,7 +480,6 @@ $(function() {
 				var c = accDiv(b, m)
 				payment.text(keepTwo(c)); //填写月供
 			}
-
 		}
 
 	}

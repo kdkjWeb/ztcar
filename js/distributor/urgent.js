@@ -24,6 +24,11 @@ $(function() {
 		if(!Verification()) {
 			return false;
 		};
+		
+//		if(){
+//			
+//		}
+		
 
 		$('.urgent').each(function(index, item) {
 			var obj = {};

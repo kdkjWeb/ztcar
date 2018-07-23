@@ -23,35 +23,35 @@ $('.IDcard .ipt').blur(function() {
 	if(!(/^[1-9]\d{5}[1-2]\d{3}[0-1]\d{1}[0-2]\d{1}\d{3}[0-9Xx]$/.test(p))) {
 
 	} else {
-		$(".IDcard span").show()
+		$(".IDcard span").show();
 	}
 })
 // 上传身份证照片
 $("#IDcamera").on("click", function() {
-	$('#userIdbox').fadeIn(100)
+	$('#userIdbox').fadeIn(100);
 })
 // 上传银行卡照片
 $("#Ccamera").on("click", function() {
-	$('#userBankbox').fadeIn(100)
+	$('#userBankbox').fadeIn(100);
 });
 
 //上传配偶身份证
 $("#mcamera").on("click", function() {
-	$('#marryIdbox').fadeIn(100)
+	$('#marryIdbox').fadeIn(100);
 });
 
 //上传  承租人身份证
 $("#tcamera").on("click", function() {
-	$('#tenantIdbox').fadeIn(100)
+	$('#tenantIdbox').fadeIn(100);
 });
 
 //上传担保人身份证
 $("#gcamera").on("click", function() {
-	$('#guaranteeIdbox').fadeIn(100)
+	$('#guaranteeIdbox').fadeIn(100);
 });
 
 $('.next').on('click', function() {
-	$(this).parent('.fixBox').fadeOut(100)
+	$(this).parent('.fixBox').fadeOut(100);
 })
 
 $('#getCode').click(function() { //获取验证码
@@ -64,7 +64,7 @@ $('#getCode').click(function() { //获取验证码
 
 		} else {
 			_that.attr("disabled", true);
-			$('#userPhone').attr("readonly","readonly")
+			$('#userPhone').attr("readonly","readonly");
 			getcode(userPhone);
 		}
 	}
@@ -349,12 +349,11 @@ function suerAjax() {
 					hideLoading();//隐藏load
 				}
 			},error:function(request, textStatus, errorThrown){
-				hideLoading();  //隐藏load	
 				errLay(request.responseJSON.msg);
+				hideLoading();  //隐藏load	
 			}
 		});
 	}
-
 }
 
 
@@ -418,5 +417,3 @@ $('.Positive').change(function(){  //身份证ocr接口
 			}
 		});
 })
-
-

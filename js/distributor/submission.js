@@ -118,7 +118,7 @@ $(function() {
 								for(var j=0;j<listJson.smFileOwens[i].smFiles.length;j++){
 									var newUrl = listJson.smFileOwens[i].smFiles[j].filePath.replace('.','_compress.');
 									
-									text += '<li class="weui_uploader_file weui_uploader_status"  style="background-image: url('+path+newUrl+');">'+
+									text += '<li class="weui_uploader_file weui_uploader_status" smFileOwens="'+i+'"  smFiles="'+j+'" style="background-image: url('+path+newUrl+');">'+
 									'<span class="imgMsg">';
 									//0未审核
 									//1通过、
@@ -148,7 +148,7 @@ $(function() {
 							}
 
 							text += '<div class="inputBox">' +
-							'<input class="inputFile" type="file" accept="image/*">' +
+							'<input class="inputFile" type="file" accept="image/*" multiple="multiple">' +
 							'</div>' +
 							'</ul>' +
 							'</div>' +
@@ -283,7 +283,29 @@ $(function() {
 	}
 	
 	
-
+	
+	$(document).on('click','li',function(){  //展示图片，并且展示不通过原因
+		var i = $(this).attr('smfileowens');
+		var j = $(this).attr('smfiles');
+		var newUrl = path+listJson.smFileOwens[i].smFiles[j].filePath;
+		var Remark = '';
+		if(listJson.smFileOwens[i].smFiles[j].auditRemark){
+			Remark = listJson.smFileOwens[i].smFiles[j].auditRemark;
+		}
+		var pb2 = $.photoBrowser({
+		  items: [
+		    {
+		      image: newUrl,
+		      caption: Remark
+		    }],
+		    onClose: function() { 
+		    	$('.weui-photo-browser-modal').remove();
+		    }
+		});
+		pb2.open();
+	})
+	
+	
 	
 });
 
