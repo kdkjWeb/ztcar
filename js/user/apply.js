@@ -116,7 +116,6 @@ $(document).on('change', 'input[type=file]', function() {
 		//注入图片 转换成base64
 		reader.readAsDataURL(file);
 	})
-
 })
 
 function getcode(phone) {
@@ -158,25 +157,28 @@ function getImg(name, dom) {
 	Fdata.append(name, file);
 }
 function SecondTrue(userName) {
-	let text = ` <div class="pop-box" id="errbox">
-		<div class="mask"></div>
-		<div class="box1">
-			<p class="warn">提醒</p>
-			<p class="wrong">` + userName + `,您是否需要办理新的借款业务,</br>如果是请点击【确定】,如否请点击【登录】</p>
-				<div class="btn-box">
-			<a href="javascript:;" class="weui-btn weui-btn_primary" id="sure">确定</a> 
-			<a href="javascript:;" class="weui-btn weui-btn_primary" id="login">登录</a>  
-		</div>
-		</div>
-		</div>`
+	var text = '<div class="pop-box" id="errbox">'+
+		'<div class="mask"></div>'+
+		'<div class="box1">'+
+			'<p class="warn">提醒</p>'+
+			'<p class="wrong">'+userName+',您是否需要办理新的借款业务,</br>如果是请点击【确定】,如否请点击【登录】</p>'+
+				'<div class="btn-box">'+
+			'<a href="javascript:;" class="weui-btn weui-btn_primary" id="sure">确定</a>'+ 
+			'<a href="javascript:;" class="weui-btn weui-btn_primary" id="login">登录</a>'+  
+		'</div>'+
+		'</div>'+
+		'</div>';
+		
 	$('body').append(text);
 	$('#errbox').fadeIn('500');
 }
 
 //点击下一步提交
-$('#btn').click(function() {
+
+$(document).on('click', '#btn', function() {
 	suerAjax();
 })
+
 $(document).on('click', '#sure', function() {
 	$('#errbox').remove();
 	suerAjax();
@@ -187,9 +189,6 @@ $(document).on('click', '#login', function() {
 })
 
 function suerAjax() {
-	errLay('征信正在查询中');
-	showCredit();//显示loading	
-	
 	Fdata = new FormData();
 
 	var carProperty = JSON.parse(localStorage.getItem('carProperty')); //新车
@@ -234,7 +233,7 @@ function suerAjax() {
 		errLay('你的年龄已超过产品限制贷款期数,请返回重试');
 		return false;
 	}
-
+	
 	if(isName(userName, '借款人') == false) { //判断用户姓名
 		return false;
 	} else if(isId(userId, '借款人') == false) { //判断用户身份证
@@ -246,6 +245,7 @@ function suerAjax() {
 	} else if(isCode(userCode) == false) { //验证码
 		return false;
 	}
+	
 	if($('#marry').attr('box') == 'true') { //如果勾选配偶
 		myisMarryed = 1; //是否有配偶欧
 		if(isName(marryName, '配偶') == false) { //配偶姓名
@@ -256,6 +256,7 @@ function suerAjax() {
 			return false;
 		}
 	}
+	
 	if($('#tenant').attr('box') == 'true') { //如果勾选承租人
 		myhaveLessee = 1; //是否有承租人
 		if(isName(tenantName, '承租人') == false) { //承租人姓名
@@ -266,6 +267,7 @@ function suerAjax() {
 			return false;
 		}
 	}
+	
 	if($('#guarantee').attr('box') == 'true') { //如果勾选担保人
 		myhaveGuarantee = 1; //是否有担保人
 		if(isName(guaranteeName, '担保人') == false) { //担保人姓名
@@ -321,6 +323,9 @@ function suerAjax() {
 		Fdata.append('guaranteeIdNum', guaranteeId);
 		Fdata.append('guaranteePhone', guaranteePhone);
 		
+		errLay('征信正在查询中');
+		showCredit();//显示loading
+		
 		$.ajax({
 			url: path + "/apply/addApply",
 			data: Fdata,
@@ -329,14 +334,10 @@ function suerAjax() {
 			type: "post",
 			processData: false,
 			contentType: false,
-//			beforeSend: function() {
-//				showLoading();//显示loading	
-//			},
 			success: function(data) {
 				if(data.code == 0) {
 					errLay('申请成功');
 					var time = setTimeout(function() {
-						hideLoading();  //隐藏load
 						window.location.href = 'detail.html?applyId=' + data.applyId;
 					}, 500);
 				} else if(data.code == 1) {
@@ -345,7 +346,7 @@ function suerAjax() {
 					hideLoading();  //隐藏load
 				} else {
 					errLay(data.msg);
-					hideLoading();  //隐藏load
+					hideLoading();//隐藏load
 				}
 			},error:function(request, textStatus, errorThrown){
 				hideLoading();  //隐藏load	
@@ -357,7 +358,7 @@ function suerAjax() {
 }
 
 
-$('.Positive').change(function(){
+$('.Positive').change(function(){  //身份证ocr接口
 	var _this = $(this);
 	var files = Array.prototype.slice.call(this.files);
 	var mydata = new FormData();
@@ -407,7 +408,6 @@ $('.Positive').change(function(){
 							$('#guaranteeName').val(data.data.name)
 						}
 					}
-					
 					
 				}else{
 					errLay(data.msg)

@@ -1,6 +1,8 @@
 var path = "https://www.rydit.com.cn/zzbjr"; //外网
 
-//var path = "http://192.168.20.129:8080"; //
+//var path = "http://192.168.1.153:8080"; //唐彬
+
+//var path = "http://192.168.31.200:8080"; //张韩
 
 (function(doc, win) {
 	var docEl = doc.documentElement;
@@ -69,11 +71,11 @@ function errLay(msg) {
 		$('#errLay').fadeIn('800');
 		
 		var set = setTimeout(function() {
-			$('#errLay').fadeOut('25000');
+			$('#errLay').fadeOut('35000');
 			var setRemove = setTimeout(function() {
 				$('#errLay').remove()
 			}, 200);
-		}, 2500);
+		}, 3500);
 	}
 }
 

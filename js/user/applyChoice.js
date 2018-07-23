@@ -1,6 +1,5 @@
 $(function() {
-	$('#distributor').val('')
-	
+	$('#distributor').val('');
 	
 	var listJson; //经销商数据
 

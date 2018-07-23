@@ -534,4 +534,38 @@ $(function() {
 	})
 	
 	
+	$(document).on('change', 'input[type=file]', function() {
+		var files = Array.prototype.slice.call(this.files);
+		var _this = $(this);
+		files.forEach(function(file,i) {
+			//jpeg png gif    "/image/jpeg"     i对大小写不敏感
+			var fileType = /\/(?:jpeg|png|gif)/i;
+			if(!fileType.test(file.type)) {
+				alert("请选择正确的图片格式(jpeg || png || gif)");
+				return;
+			}
+			//HTML 5.1  新增file接口
+			var reader = new FileReader();
+			//读取失败
+			reader.onerror = function() {
+				alert("读取失败");
+			};
+			//读取中断
+			reader.onabort = function() {
+				alert("网络异常!");
+			};
+			//读取成功
+			reader.onload = function() {
+				var result = this.result; //读取失败时  null   否则就是读取的结果
+				var image = new Image();
+				image.src = result;
+				_this.parents('.image-item').css("background-image", 'url(' + result + ')');
+			};
+			//注入图片 转换成base64
+			reader.readAsDataURL(file);
+		})
+	})
+	
+	
+	
 })

@@ -64,7 +64,7 @@
             <div class="weui-cell hide">
                 <div class="weui-cell__hd"><label class="weui-label">车辆开票价：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input aa" type="number" placeholder="请输入车辆开票价" id="ticketPrice"><span class="myspan">元</span>
+                    <input class="weui-input" type="number" placeholder="请输入车辆开票价" id="ticketPrice"><span class="myspan">元</span>
                 </div>
             </div>
             <div class="weui-cell hide">
@@ -90,22 +90,24 @@
             <div class="weui-cell hide" id="thawing">
                 <div class="weui-cell__hd"><label class="weui-label">首付比例：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input aa" type="number" placeholder="请输入首付比例" id="firstRatio"><span class="myspan">%</span>
+                    <input class="weui-input" type="number" placeholder="请输入首付比例" id="firstRatio"><span class="myspan">%</span>
                 </div>
             </div>
             <div class="weui-cell hide">
                 <div class="weui-cell__hd"><label class="weui-label">首付金额：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input aa" type="number" placeholder="请输入首付金额" id="firstPayment"><span class="myspan">元</span>
+                    <input class="weui-input" type="number" placeholder="请输入首付金额" id="firstPayment"><span class="myspan">元</span>
                 </div>
             </div>
             <div class="weui-cell hide">
                 <div class="weui-cell__hd"><label class="weui-label">车辆融资额：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input aa" type="number" id="carFinancing" style="border: none;"readonly="readonly"><span class="myspan">元</span>
+                    <input class="weui-input" type="number" id="carFinancing" style="border: none;"readonly="readonly"><span class="myspan">元</span>
                 </div>
             </div>
             
+            <span id="errorFinan"></span>
+             
             <div id="thawingDom">
             <div class="weui-cell hide">
                 <div class="weui-cell__hd"><label class="weui-label">保险费：</label></div>

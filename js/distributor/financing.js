@@ -15,12 +15,13 @@ $(function() {
 	var firstPayment = $('#firstPayment'); //首付金额
 	var ticketPrice = $('#ticketPrice') //车辆开票价
 	var carFinancing = $('#carFinancing'); //车辆融资额
+	var errorFinan = $('#errorFinan'); //融资额的错误信息
 	var TotalLoan = $('#TotalLoan'); //贷款总额
 	var rate = $('#rate'); //费率
 	var coefficient = $('#coefficient'); //万元还款系数
 	var month = $('#month'); //还款期限
 	var payment = $('#payment'); //预估月供
-	var aa = $('.aa');
+	
 
 	var insurance = $('#insurance'); //保险费
 	var purchase = $('#purchase'); //购置税
@@ -422,10 +423,12 @@ $(function() {
 
 			if(mytext > AmountDown && mytext < AmountUp) { //车辆融资额大于下限，高于上限
 				carFinancing.val(keepTwo(mytext));
+				errorFinan.hide();  //隐藏错误的融资额信息
 			} else {
 				errLay('融资额须介于' + AmountDown + '到' + AmountUp + "之间");
-				carFinancing.val('');
-				carFinancing.attr("placeholder",'当前融资额为'+ keepTwo(mytext));
+				carFinancing.val('');  //清空融资额
+                errorFinan.show();     //展示错误融资额信息
+				errorFinan.text('当前融资额为:'+keepTwo(mytext)+'元,不在融资范围内');
 			}
 
 		}
@@ -537,10 +540,12 @@ $(function() {
 					if(mytext > AmountDown && mytext < AmountUp) { //车辆融资额大于下限，高于上限
 						carFinancing.val(keepTwo(mytext));
 						carFinancing.change();
+						errorFinan.hide();  //隐藏融资额错误信息
 					} else {
 						errLay('融资额须介于' + AmountDown + '到' + AmountUp + "之间");
-						carFinancing.val('');
-						carFinancing.attr("placeholder",'当前融资额为'+ keepTwo(mytext));
+						carFinancing.val('');  //清空融资额
+						errorFinan.show();    //显示融资额
+						errorFinan.text('当前融资额为:'+keepTwo(mytext)+'元,不在融资范围内');
 					}
 
 				} else {
@@ -548,10 +553,12 @@ $(function() {
 					if(mytext > AmountDown && mytext < AmountUp) { //车辆融资额大于下限，高于上限
 						carFinancing.val(keepTwo(mytext));
 						carFinancing.change();
+						errorFinan.hide();//隐藏融资额错误信息..
 					} else {
 						errLay('融资额须介于' + AmountDown + '到' + AmountUp + "之间");
-						carFinancing.val('');
-						carFinancing.attr("placeholder",'当前融资额为'+ keepTwo(mytext));
+						carFinancing.val('');//清空融资额
+						errorFinan.show(); //显示融资额
+						errorFinan.text('当前融资额为:'+keepTwo(mytext)+'元,不在融资范围内');
 					}
 
 				}
