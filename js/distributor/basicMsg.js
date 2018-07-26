@@ -6,14 +6,14 @@ $(function() {
 	getList();
 	getCar();
 
+	var trueMarr = ["已婚无子女", "已婚有子女"];
+	var falseMarr = [ "未婚", "离异", "丧偶"];
+
 	$("#edu").select({
 		title: "请选择您的文化程度",
 		items: ["高中及以下", "高中/技校/中专", "专科", "本科", "本科以上"]
 	})
-	$("#ismarried").select({
-		title: "婚姻状况",
-		items: ["已婚无子女", "已婚有子女", "未婚", "离异", "丧偶"]
-	})
+	
 	$("#register").select({
 		title: "户籍性质",
 		items: ["本省本市", "本省外市", "外省"]
@@ -58,18 +58,23 @@ $(function() {
 			return false
 		}
 
-		if($('#license').val() == '有') { //驾驶证 驾驶信息必填
-			if(!carVerification()) {
-				return false
-			}
-		}
+		if(!PhoneVerification()) {  //正确的手机号正则验证
+			return false;
+		};
+		
+		
+//		if($('#license').val() == '有') { //驾驶证 驾驶信息必填
+//			if(!carVerification()) {
+//				return false
+//			}
+//		}
 
-		if($('#isFirst').val() == "否") {
-			if($('#Vehicle').val() == '') {
-				errLay('请填写现有车辆品牌')
-				return false;
-			}
-		}
+//		if($('#isFirst').val() == "否") {
+//			if($('#Vehicle').val() == '') {
+//				errLay('请填写现有车辆品牌')
+//				return false;
+//			}
+//		}
 
 		listJson.applyId = importId;
 
@@ -184,6 +189,20 @@ $(function() {
 						$('#aim').val(listJson.carPurpose);
 					}
 					
+					if(listJson.isMarray == 1){   //已婚
+						$("#ismarried").select({
+							title: "婚姻状况",
+							items: trueMarr
+						})
+					}else{
+						$("#ismarried").select({   //未婚
+							title: "婚姻状况",
+							items: falseMarr
+						})
+					}
+					
+					
+					
 					getUrl(); //获取地址
 					
 					content(listJson.smProductApplycontent); ////显示和必填验证
@@ -258,35 +277,6 @@ $(function() {
 		});
 	}
 
-	//=================为空验证============
-	function Verification() {
-		var flag = true;
-		$('.must').each(function() {
-			if($(this).val() == '') {
-				let msg = $(this).parents('.weui-cell').find('label').text();
-				let str = msg.substr(0, msg.length - 1);
-				errLay(str + '不能为空');
-				flag = false;
-				return false;
-			}
-		})
-		return flag;
-	}
-
-	//===========如果有驾驶证需要验证的====================
-	function carVerification() {
-		var flag = true;
-		$('.must').each(function() {
-			if($(this).val() == '') {
-				let msg = $(this).parents('.weui-cell').find('label').text();
-				let str = msg.substr(0, msg.length - 1);
-				errLay(str + '不能为空');
-				flag = false;
-				return false;
-			}
-		})
-		return flag;
-	}
 
 	//=-=========显示。是否必填==========
 	function content(mycontent) {
@@ -425,7 +415,21 @@ $(function() {
 		}
 	}
 	
-	
+//===========如果有驾驶证需要验证的====================
+//	function carVerification() {
+//		var flag = true;
+//		$('.must').each(function() {
+//			if($(this).val() == '') {
+//				let msg = $(this).parents('.weui-cell').find('label').text();
+//				let str = msg.substr(0, msg.length - 1);
+//				errLay(str + '不能为空');
+//				flag = false;
+//				return false;
+//			}
+//		})
+//		return flag;
+//	}
+
 	
 //	============获取地址========
 	function getUrl(){

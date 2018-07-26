@@ -5,6 +5,7 @@ $(function() {
 	getOldValue(); //获取回显
 
 	var relationship = ["夫妻", "父子", "父女", "母子", "母女"];
+	var relationshipOne = ["夫妻", "父子", "父女", "母子", "母女","朋友"];
 
 	//	============名字删除完之后，关系,电话变为空
 	$(document).on('input', '.myName', function() {
@@ -14,21 +15,47 @@ $(function() {
 			$(this).parents('.urgent').find('.myPhone').val('');
 		}
 	});
-
-	$(".myType").select({
+	
+	$("#type1").select({
 		title: "与申请人关系",
 		items: relationship
 	});
-
+	
+	$("#type2").select({
+		title: "与申请人关系",
+		items: relationshipOne
+	});
+	
+	
 	$(".weui-btn").on("click", function() {
-		if(!Verification()) {
+		if(!Verification()) {   //为空的正则验证
 			return false;
 		};
 		
-//		if(){
-//			
-//		}
+		if(!PhoneVerification()) {  //正确的手机号正则验证
+			return false;
+		};
 		
+	
+		var name1 = $('#name1').val();
+		var name2 = $('#name2').val();
+		
+		if(name1 && name2){
+			if(name1 === name2){
+				errLay('联系人姓名不能重复');
+				return false;
+			}
+		}
+		
+		var tel1 = $('#tel1').val();
+		var tel2 = $('#tel2').val();
+		
+		if(tel1 && tel2){
+			if(tel1 === tel2){
+				errLay('联系人电话不能重复');
+				return false;
+			}
+		}
 
 		$('.urgent').each(function(index, item) {
 			var obj = {};
@@ -123,51 +150,11 @@ $(function() {
 		})
 	};
 
-	// ==========
-	function Verification() {
-		var flag = true;
-		$('.must').each(function() {
-			if($(this).val() == '') {
-				let msg = $(this).parents('.weui-cell').find('label').text();
-				let str = msg.substr(0, msg.length - 1);
-				errLay(str + '不能为空');
-				flag = false
-				return false;
-			}
-		})
-		return flag;
-	};
-
 	//=-=========显示。是否必填==========
 	function content(mycontent) {
 
 		for(var i = 0; i < mycontent.smProductApplycontents.length; i++) {
-
-			if(mycontent.smProductApplycontents[i].label == "zxName") { //直属亲人姓名
-				if(mycontent.smProductApplycontents[i].isShow == 1) {
-					$('#name').parents(".weui-cell").removeClass("hide");
-					if(mycontent.smProductApplycontents[i].isRequire == 1) {
-						$('#name').addClass("must");
-					}
-				}
-
-			} else if(mycontent.smProductApplycontents[i].label == "zxRel") { //直属亲人与申请人关系
-				if(mycontent.smProductApplycontents[i].isShow == 1) {
-					$('#type').parents(".weui-cell").removeClass("hide");
-					if(mycontent.smProductApplycontents[i].isRequire == 1) {
-						$('#type').addClass("must");
-					}
-				}
-
-			} else if(mycontent.smProductApplycontents[i].label == "zxConWay") { //直属亲人联系电话
-				if(mycontent.smProductApplycontents[i].isShow == 1) {
-					$('#tel').parents(".weui-cell").removeClass("hide");
-					if(mycontent.smProductApplycontents[i].isRequire == 1) {
-						$('#tel').addClass("must");
-					}
-				}
-
-			} else if(mycontent.smProductApplycontents[i].label == "jinjName1") { //紧急联系人1姓名
+			if(mycontent.smProductApplycontents[i].label == "jinjName1") { //紧急联系人1姓名
 				if(mycontent.smProductApplycontents[i].isShow == 1) {
 					$('#name1').parents(".weui-cell").removeClass("hide");
 					if(mycontent.smProductApplycontents[i].isRequire == 1) {

@@ -1,6 +1,6 @@
 var path = "https://www.rydit.com.cn/zzbjr"; //外网
 
-//var path = "http://192.168.1.153:8080"; //唐彬
+//var path = "http://192.168.31.42:8080"; //唐彬
 
 //var path = "http://192.168.31.200:8080"; //张韩
 
@@ -29,7 +29,6 @@ $('input[readonly]').on('focus', function() {
 	$(this).trigger('blur');
 });
 
-
 //=========限制数字类型的输入框只能输入数字===========
 $('input[number]').on('onkeyup', function() {
 	onlyNumber();
@@ -39,10 +38,10 @@ $('input[tel]').on('onkeyup', function() {
 	onlyNumber();
 });
 
-function onlyNumber(){     //限制只能输入数字
-	if(!(event.keyCode==46)&&!(event.keyCode==8)&&!(event.keyCode==37)&&!(event.keyCode==39))
-	if(!((event.keyCode>=48&&event.keyCode<=57)||(event.keyCode>=96&&event.keyCode<=105)))
-	event.returnValue=false;
+function onlyNumber() { //限制只能输入数字
+	if(!(event.keyCode == 46) && !(event.keyCode == 8) && !(event.keyCode == 37) && !(event.keyCode == 39))
+		if(!((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)))
+			event.returnValue = false;
 };
 
 //=======弹框=====使用时传入 tit标题 和msg 提示信息两个====使用方法：errAlert('登陆提醒','登陆错误')==
@@ -69,7 +68,7 @@ function errLay(msg) {
 		var text = '<div id="errLay" class="errLay"><span>' + msg + '</span></div>';
 		$('body').append(text);
 		$('#errLay').fadeIn('800');
-		
+
 		var set = setTimeout(function() {
 			$('#errLay').fadeOut('35000');
 			var setRemove = setTimeout(function() {
@@ -136,14 +135,27 @@ function getDate(times) {
 	return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
 };
 
-function getTime(times){
+function getTime(times) {
 	var str = times;
-	str = str.replace('-','/');
+	str = str.replace('-', '/');
 	var date = new Date(str);
 	var time = date.getTime();
 	return time;
 }
 //=====正则验证===========
+function truePhone(phone) { //手机号
+	var regex = /^1[3|4|5|6|8|7|9][0-9]\d{4,8}$/;
+	if(phone.length != 11) {
+		errLay('请填写完整的手机号');
+		return false;
+	} else if(!regex.test(phone)) {
+		errLay('请填写正确的手机号');
+		return false;
+	} else {
+		return true;
+	}
+}
+
 function isPhone(phone, msg) { //手机号
 	var regex = /^1[3|4|5|6|8|7|9][0-9]\d{4,8}$/;
 	if(phone == '') {
@@ -273,39 +285,36 @@ function getSex(idCard) {
 	return sex;
 }
 
-
 //============获取年龄============
 function GetAge(identityCard) {
-    var len = (identityCard + "").length;
-    if (len == 0) {
-        return 0;
-    } else {
-        if ((len != 15) && (len != 18))//身份证号码只能为15位或18位其它不合法
-        {
-            return 0;
-        }
-    }
-    var strBirthday = "";
-    if (len == 18)//处理18位的身份证号码从号码中得到生日和性别代码
-    {
-        strBirthday = identityCard.substr(6, 4) + "/" + identityCard.substr(10, 2) + "/" + identityCard.substr(12, 2);
-    }
-    if (len == 15) {
-        strBirthday = "19" + identityCard.substr(6, 2) + "/" + identityCard.substr(8, 2) + "/" + identityCard.substr(10, 2);
-    }
-    //时间字符串里，必须是“/”
-    var birthDate = new Date(strBirthday);
-    var nowDateTime = new Date();
-    var age = nowDateTime.getFullYear() - birthDate.getFullYear();
-    //再考虑月、天的因素;.getMonth()获取的是从0开始的，这里进行比较，不需要加1
-    if (nowDateTime.getMonth() < birthDate.getMonth() || (nowDateTime.getMonth() == birthDate.getMonth() && nowDateTime.getDate() < birthDate.getDate())) {
-        age--;
-    }
-    return age;
+	var len = (identityCard + "").length;
+	if(len == 0) {
+		return 0;
+	} else {
+		if((len != 15) && (len != 18)) //身份证号码只能为15位或18位其它不合法
+		{
+			return 0;
+		}
+	}
+	var strBirthday = "";
+	if(len == 18) //处理18位的身份证号码从号码中得到生日和性别代码
+	{
+		strBirthday = identityCard.substr(6, 4) + "/" + identityCard.substr(10, 2) + "/" + identityCard.substr(12, 2);
+	}
+	if(len == 15) {
+		strBirthday = "19" + identityCard.substr(6, 2) + "/" + identityCard.substr(8, 2) + "/" + identityCard.substr(10, 2);
+	}
+	//时间字符串里，必须是“/”
+	var birthDate = new Date(strBirthday);
+	var nowDateTime = new Date();
+	var age = nowDateTime.getFullYear() - birthDate.getFullYear();
+	//再考虑月、天的因素;.getMonth()获取的是从0开始的，这里进行比较，不需要加1
+	if(nowDateTime.getMonth() < birthDate.getMonth() || (nowDateTime.getMonth() == birthDate.getMonth() && nowDateTime.getDate() < birthDate.getDate())) {
+		age--;
+	}
+	return age;
 }
 //============获取年龄============
-
-
 
 /**除法函数，用来得到精确的除法结果
  说明：javascript的除法结果会有误差，在两个浮点数相除的时候会比较明显。这个函数返回较为精确的除法结果。
@@ -374,7 +383,7 @@ function keepTwo(num) {
 //============Loading==============
 
 //判断这个页面内有没有这个元素
-(function($) {  
+(function($) { 
 	$.fn.exist = function() {  
 		if($(this).length >= 1) {   
 			return true;  
@@ -382,7 +391,6 @@ function keepTwo(num) {
 		return false; 
 	};
 })(jQuery);
-
 
 function showLoading() {
 	if(!$('#loading').exist()) {
@@ -408,12 +416,11 @@ function showCredit() {
 	}
 }
 
-
 function hideLoading() {
 	$('#loading').fadeOut('800');
 	var setRemove = setTimeout(function() {
 		$('#loading').remove()
-	}, 900);
+	}, 100);
 }
 //============Loading==============
 
@@ -434,7 +441,6 @@ var ModalHelper = (function(bodyCls) {
 	};
 })('modal-open');
 //=======拖动兼容=========
-
 
 //==========输入框光标在最后一位================
 $(document).on('focus', 'input', function() {
@@ -478,3 +484,33 @@ function quickSort(array, left, right) {　　
 	return array;
 }
 //=============快速排序===========
+
+
+//=================为空验证============
+function Verification() {
+	var flag = true;
+	$(".must").each(function() {
+		if($(this).val() == '') {
+			let msg = $(this).parents(".weui-cell").find("label").text();
+			let str = msg.substr(0, msg.length - 1);
+			errLay(str + '不能为空');
+			flag = false;
+			return false;
+		}
+	})
+	return flag;
+}
+
+function PhoneVerification() { //手机号
+	var flag = true;
+	$('.truePhone').each(function() {
+		var phone = $(this).val();
+		if(phone) {
+			if(!truePhone(phone)) {
+				flag = false
+				return false;
+			}
+		}
+	})
+	return flag;
+}

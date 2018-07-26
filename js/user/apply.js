@@ -140,7 +140,6 @@ function getcode(phone) {
 
 function getImg(name, dom) {
 	var text = "#" + dom + "";
-	console.log($(text))
 	var fDom = $(text).get(0);
 	var files = Array.prototype.slice.call(fDom.files);
 	if(!files.length) {
@@ -323,12 +322,13 @@ function suerAjax() {
 		Fdata.append('guaranteeIdNum', guaranteeId);
 		Fdata.append('guaranteePhone', guaranteePhone);
 		
-		errLay('征信正在查询中');
+//		errLay('征信正在查询中');
 		showCredit();//显示loading
 		
 		$.ajax({
 			url: path + "/apply/addApply",
 			data: Fdata,
+			timeout : 600000, //超时时间设置，单位毫秒,10分钟
 			dataType: "json",
 			contentType: "application/json",
 			type: "post",

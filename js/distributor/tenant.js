@@ -43,6 +43,10 @@ $(function() {
 		if(!Verification()) {
 			return false;
 		};
+		
+		if(!PhoneVerification()) {  //正确的手机号正则验证
+			return false;
+		};
 
 		listJson.applyId = importId; //id
 		listJson.name = $('#name').val(); //姓名
@@ -179,20 +183,6 @@ $(function() {
 				errLay(request.responseJSON.msg);
 			}
 		});
-	}
-
-	function Verification() {
-		var flag = true;
-		$('.must').each(function() {
-			if($(this).val() == '') {
-				let msg = $(this).parents('.weui-cell').find('label').text();
-				let str = msg.substr(0, msg.length - 1);
-				errLay(str + '不能为空');
-				flag = false;
-				return false;
-			}
-		})
-		return flag;
 	}
 
 	//==========================

@@ -29,9 +29,13 @@ $(function() {
 		items: ["有自然担保人", "有法人担保人", "无"]
 	});
 	
-	$("#nature").change(function(){
-		if($(this).val() == '无按揭自置'){
-			$('#mortgagePayments').val('0')
+	$('#nature').change(function() {
+		if($(this).val() == '有按揭自置') {
+			$('#mortgagePayments').parents(".weui-cell").removeClass("hide");
+			$('#mortgagePayments').addClass("must");
+		}else{
+			$('#mortgagePayments').parents(".weui-cell").addClass("hide");
+			$('#mortgagePayments').removeClass("must");
 		}
 	})
 	
@@ -47,7 +51,7 @@ $(function() {
 		listJson.housingLocation = $('#housingLocation').val(); //房产地点
 		listJson.housingType = $('#type').val(); //房产类型
 		listJson.mortgagePayments = $('#mortgagePayments').val(); //房贷月供
-
+		
 		postList(); //上传
 	})
 
@@ -132,27 +136,7 @@ $(function() {
 			}
 		});
 	}
-
-	function Verification() {
-		var flag = true;
-		$('.must').each(function() {
-			if($(this).val() == '') {
-				let msg = $(this).parents('.weui-cell').find('label').text();
-				let str = msg.substr(0, msg.length - 1);
-				errLay(str + '不能为空');
-				flag = false;
-				return false;
-			}
-		})
-		return flag;
-	}
-
-	$('#nature').change(function() {
-		if($(this).val() == '无按揭自置') {
-			$('#mortgagePayments').val('0');
-		}
-	})
-
+	
 	//=-=========显示。是否必填==========
 	function content(mycontent) {
 
@@ -197,20 +181,11 @@ $(function() {
 						$('#type').addClass("must");
 					}
 				}
-
-			} else if(mycontent.smProductApplycontents[i].label == "moPayments") { //房贷月供
-				if(mycontent.smProductApplycontents[i].isShow == 1) {
-					$('#mortgagePayments').parents(".weui-cell").removeClass("hide");
-					if(mycontent.smProductApplycontents[i].isRequire == 1) {
-						$('#mortgagePayments').addClass("must");
-					}
-				}
-
 			}
-
 		}
 
 	}
+	
 	//=-=========显示。是否必填==========	
 
 	function getExsit() {

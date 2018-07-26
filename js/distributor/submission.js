@@ -10,7 +10,6 @@ $(function() {
 	var delDom;  //当前点击删除的节点
 	getList();
 	
-
 	$(document).on('click', '.photo', function() {
 		$(this).hide();
 		$(this).siblings(".up-load").show();
@@ -20,14 +19,56 @@ $(function() {
 		$('#errbox').remove();
 	})
 	
-	$(document).on('click','#sure',function(){
+	$(document).on('click','#sure',function(event){  //删除
+		event.stopPropagation();//阻止事件冒泡即可
 		var ulIndex = $(this).attr('ulIndex');
 		var liIndex = $(this).attr('liIndex');
 		deleteImg(ulIndex, liIndex);
 	})
+	
+	$(document).on('click', '.colseInput', function(event) {  //关闭按钮点击
+		event.stopPropagation();//阻止事件冒泡即可
+		var _this = $(this);
+		var ulIndex = _this.parents('.list').index(); //第几个数组
+		var liIndex = _this.parents('li').index(); //第几个li
+		shanchuImg(ulIndex, liIndex);
+		delDom = $(this).parents('li');
+	})
+	
+	$(document).on('click','.imgMsg',function(){
+//		alert('span');
+	})
+	
+	
+	
+	$(document).on('click','li',function(event){  //展示图片，并且展示不通过原因
+		event.stopPropagation();//阻止事件冒泡即可\\\
 		
-
-
+		var i = $(this).attr('smfileowens');
+		var j = $(this).attr('smfiles');
+			
+		var Remark = '';
+		if(i){
+			if(listJson.smFileOwens[i].smFiles[j].auditRemark){
+				Remark = listJson.smFileOwens[i].smFiles[j].auditRemark;
+			}
+		}
+		
+		var newUrl = $(this).attr('bigUrl');
+		var pb2 = $.photoBrowser({
+		  items: [
+		    {
+		      image: newUrl,
+		      caption: Remark
+		    }],
+		    onClose: function() { 
+		    	$('.weui-photo-browser-modal').remove();
+		    }
+		});
+		pb2.open();
+	})
+	
+	
 	$(document).on('change', '.inputFile', function() {
 		var _this = $(this);
 		var ulIndex = _this.parents('.list').index(); //第几个数组
@@ -47,30 +88,38 @@ $(function() {
 			};
 			reader.onload = function() {
 				var result = this.result; //读取失败时  null   否则就是读取的结果
-				var preview = '<li class="weui_uploader_file weui_uploader_status" style="background-image:url(' + result + ')"><span class="colseInput iconfont icon-guanbi2"></span></li>';
-				_this.parents('.inputBox').before(preview);
+//				var preview = '<li class="weui_uploader_file weui_uploader_status" style="background-image:url(' + result + ')"><span class="colseInput iconfont icon-guanbi2"></span></li>';
+//				_this.parents('.inputBox').before(preview);
+			
+				var myFile = files[i];
+				
+				var fileName = files[i].name;
+				var name = fileName.substring(0,fileName.indexOf("."));	
+				
+				var img = new Image();
+				img.src = result;
 
+				if (img.complete) {
+	                callback();
+	            } else {
+	                img.onload = callback;
+	            }
+				function callback() {
+					var data = compress(img);		
+					var inputData = upload(data, file.type);		
+					addImg(inputData, ulIndex,name);
+					img = null;
+				}
+				
 			};
+			
 			//注入图片 转换成base64
 			reader.readAsDataURL(file);
-			if(!files.length) {
-				return false
-			};
-			var myFile = files[0];
-
-			addImg(myFile, ulIndex);
-
+			
 		});
-		_this.val(''); //清空当前input，解决同一张图片不能重复点的问题
 		
-	})
+		_this.val(''); //清空当前input，解决同一张图片不能重复点的问题
 
-	$(document).on('click', '.colseInput', function() {
-		var _this = $(this);
-		var ulIndex = _this.parents('.list').index(); //第几个数组
-		var liIndex = _this.parents('li').index(); //第几个li
-		shanchuImg(ulIndex, liIndex);
-		delDom = $(this).parents('li');
 	})
 	
 	function getList(){
@@ -102,12 +151,6 @@ $(function() {
 						$('#userPhone').text(listJson.borrowerPhone)
 					}
 					
-					if(listJson.isOtherNext == 1){
-						$('#save').text('下一步');
-					}else{
-						$('#save').text('确认提交');
-					}
-					
 					for(var i = 0; i < listJson.smFileOwens.length; i++) {
 						var text = '<div class="list">' +
 							'<label>' + listJson.smFileOwens[i].modelName + '：</label>' +
@@ -118,7 +161,7 @@ $(function() {
 								for(var j=0;j<listJson.smFileOwens[i].smFiles.length;j++){
 									var newUrl = listJson.smFileOwens[i].smFiles[j].filePath.replace('.','_compress.');
 									
-									text += '<li class="weui_uploader_file weui_uploader_status" smFileOwens="'+i+'"  smFiles="'+j+'" style="background-image: url('+path+newUrl+');">'+
+									text += '<li class="weui_uploader_file weui_uploader_status" smFileOwens="'+i+'"  smFiles="'+j+'" bigUrl="'+path+listJson.smFileOwens[i].smFiles[j].filePath+'" style="background-image: url('+path+newUrl+');">'+
 									'<span class="imgMsg">';
 									//0未审核
 									//1通过、
@@ -167,9 +210,9 @@ $(function() {
 	}
 
 
-	function addImg(myFile, ulIndex) { //上传图片
+	function addImg(myFile, ulIndex,name) { //上传图片
 		Fdata = new FormData();
-		Fdata.append('file', myFile);
+		Fdata.append('file', myFile,name+'.jpg');
 		Fdata.append('fileCode', 2);
 
 		$.ajax({
@@ -190,6 +233,11 @@ $(function() {
 				hideLoading(); //隐藏load	
 				if(data.code == 0) {
 					listJson.smFileOwens[ulIndex].smFiles.push(data.smFile);
+					var newUrl = data.smFile.filePath.replace('.','_compress.');
+					
+					var preview = '<li class="weui_uploader_file weui_uploader_status" bigUrl="'+path+data.smFile.filePath+'" style="background-image:url('+path+newUrl+')" ><span class="colseInput iconfont icon-guanbi2"></span></li>';
+					$('.list').eq(ulIndex).find('.inputBox').before(preview)
+					
 				} else {
 					errLay(data.msg);
 				}
@@ -248,11 +296,7 @@ $(function() {
 				if(data.code == 0) {
 					errLay('保存成功');
 					setTimeout(function(){
-						if(listJson.isOtherNext == 1){
-							window.location.href = 'addition.html?applyId='+importId+"&dataType="+importType+"&dataId"+dataId;
-						}else{
-							window.location.href = 'myOrder.html';
-						}
+						window.location.href = 'myOrder.html';
 					},1000)
 					
 				} else {
@@ -281,32 +325,7 @@ $(function() {
 		
 		$('body').append(text)
 	}
-	
-	
-	
-	$(document).on('click','li',function(){  //展示图片，并且展示不通过原因
-		var i = $(this).attr('smfileowens');
-		var j = $(this).attr('smfiles');
-		var newUrl = path+listJson.smFileOwens[i].smFiles[j].filePath;
-		var Remark = '';
-		if(listJson.smFileOwens[i].smFiles[j].auditRemark){
-			Remark = listJson.smFileOwens[i].smFiles[j].auditRemark;
-		}
-		var pb2 = $.photoBrowser({
-		  items: [
-		    {
-		      image: newUrl,
-		      caption: Remark
-		    }],
-		    onClose: function() { 
-		    	$('.weui-photo-browser-modal').remove();
-		    }
-		});
-		pb2.open();
-	})
-	
-	
-	
+
 });
 
 

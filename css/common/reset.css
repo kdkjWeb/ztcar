@@ -254,9 +254,9 @@ input[type=text],input[type=number],input[type=tel],input[type=password]{
   height: .65rem;
   display: flex;
   justify-content: space-between;
-  margin-top: 1rem
+  margin-top: .8rem
 }
-#errBox #yes {
+#errBox #yes,#errBox #distributorYes {
   display: inline-block;
   width: 2rem;
   height: .65rem;
@@ -270,7 +270,7 @@ input[type=text],input[type=number],input[type=tel],input[type=password]{
   background-color: #3b6af4;
   margin-top: 0
 }
-#errBox #no {
+#errBox #no,#errBox #distributorNo{
   display: inline-block;
   width: 2rem;
   height: .65rem;
@@ -354,7 +354,6 @@ input[type=text],input[type=number],input[type=tel],input[type=password]{
   padding-left: .3rem;
 }
 
-
 /* =======下拉框样式覆盖========== */
 
 /* 时间选择器 */
@@ -394,8 +393,22 @@ input[type=text],input[type=number],input[type=tel],input[type=password]{
 .weui-photo-browser-modal{
 	z-index: 999;
 }
+.weui-photo-browser-modal .caption{
+	min-height: 1rem !important;
+	bottom: 0 !important;
+	top: 10px;
+	color: red !important;
+	font-weight: 600;
+	font-size: .33rem !important;
+}
 
+.weui-photo-browser-modal .swiper-container .swiper-pagination{
+	display: none;
+}
 
+.weui-photo-browser-modal .photo-container img{
+	width: 100%;
+}
 /*==loading========*/
 .loading{
 	/*display: none;*/

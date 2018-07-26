@@ -20,7 +20,6 @@ $(function() {
 			return false;
 		}
 		
-		
 		saveList();
 	})
 
@@ -37,7 +36,11 @@ $(function() {
 			xhrFields: {
 				withCredentials: true
 			},
+			beforeSend: function() {
+				showLoading(); //显示loading	
+			},
 			success: function(data) {
+				hideLoading(); //隐藏load	
 				if(data.code == 0) {
 					if(data.data) {
 						listJson = data.data;
@@ -63,6 +66,10 @@ $(function() {
 				} else {
 					errLay(data.msg);
 				}
+			},
+			error: function(request, textStatus, errorThrown) {
+				hideLoading(); //隐藏load	
+				errLay(request.responseJSON.msg);
 			}
 		});
 	}
@@ -77,12 +84,20 @@ $(function() {
 			xhrFields: {
 				withCredentials: true
 			},
+			beforeSend: function() {
+				showLoading(); //显示loading	
+			},
 			success: function(data) {
+				hideLoading(); //隐藏load	
 				if(data.code == 0) {
 					window.location.href = "myOrder.html";	
 				} else {
 					errLay(data.msg);
 				}
+			},
+			error: function(request, textStatus, errorThrown) {
+				hideLoading(); //隐藏load	
+				errLay(request.responseJSON.msg);
 			}
 		});
 	}

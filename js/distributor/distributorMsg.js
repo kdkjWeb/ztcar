@@ -128,20 +128,6 @@ $(function() {
 
 	}
 
-	function Verification() {
-		var flag = true;
-		$('.must').each(function() {
-			if($(this).val() == '') {
-				let msg = $(this).parents('.weui-cell').find('label').text();
-				let str = msg.substr(0, msg.length - 1);
-				errLay(str + '不能为空');
-				flag = false;
-				return false;
-			}
-		})
-		return flag;
-	}
-
 	function getExsit() {
 		var data = {
 			id: importId

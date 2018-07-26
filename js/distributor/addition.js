@@ -40,7 +40,30 @@ $(function() {
 		deleteImg(ulIndex, liIndex);
 	})
 		
-
+	$(document).on('click','li',function(event){  //展示图片，并且展示不通过原因
+		event.stopPropagation();//阻止事件冒泡即可
+		var i = $(this).attr('smfileowens');
+		var j = $(this).attr('smfiles');
+		
+		var Remark = '';
+		if(i){
+			if(listJson.smFileOwens[i].smFiles[j].auditRemark){
+				Remark = listJson.smFileOwens[i].smFiles[j].auditRemark;
+			}
+		}
+		var newUrl = $(this).css("background-image").split("\"")[1];	
+		var pb2 = $.photoBrowser({
+		  items: [
+		    {
+		      image: newUrl,
+		      caption: Remark
+		    }],
+		    onClose: function() { 
+		    	$('.weui-photo-browser-modal').remove();
+		    }
+		});
+		pb2.open();
+	})
 
 	$(document).on('change', '.inputFile', function() {
 		var _this = $(this);
@@ -70,14 +93,25 @@ $(function() {
 			if(!files.length) {
 				return false
 			};
-			var myFile = files[0];
 
+			var myFile = files[i];
 			addImg(myFile, ulIndex);
 
+//			var fileUrl = _this.val();
+//			var urlArr = fileUrl.split("\\");        //截取路径
+//			var getName = urlArr[urlArr.length - 1]; //获取文件的名字	
+//			var name = getName.substring(0,getName.indexOf("."));
+			
+//			photoCompress(myFile, {
+//				quality: 0.2
+//			}, function(base64Codes) {
+//				var inputData = convertBase64UrlToBlob(base64Codes);		
+//				addImg(inputData, ulIndex,name);
+//			});
+			
 		});
-		_this.val('');
 		
-		console.log(listJson)
+		_this.val('');//清空当前input，解决同一张图片不能重复点的问题
 		
 	})
 
@@ -190,7 +224,7 @@ $(function() {
 		$.ajax({
 			url: path + "/file/addFile",
 			data: Fdata,
-			xhrFields: {
+			xhrFields:{
 				withCredentials: true
 			},
 			beforeSend: function() {
@@ -286,27 +320,6 @@ $(function() {
 		
 		$('body').append(text)
 	}
-	
-	$(document).on('click','li',function(){  //展示图片，并且展示不通过原因
-		var i = $(this).attr('smfileowens');
-		var j = $(this).attr('smfiles');
-		var newUrl = path+listJson.smFileOwens[i].smFiles[j].filePath;
-		var Remark = '';
-		if(listJson.smFileOwens[i].smFiles[j].auditRemark){
-			Remark = listJson.smFileOwens[i].smFiles[j].auditRemark;
-		}
-		var pb2 = $.photoBrowser({
-		  items: [
-		    {
-		      image: newUrl,
-		      caption: Remark
-		    }],
-		    onClose: function() { 
-		    	$('.weui-photo-browser-modal').remove();
-		    }
-		});
-		pb2.open();
-	})
 
 	
 });

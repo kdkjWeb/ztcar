@@ -19,6 +19,7 @@
 }
 .basic-msg>div{
 	float: left;
+	line-height: .9rem;
 }
 /* 字体垂直居中 */
 .basic-msg p{
@@ -28,9 +29,10 @@
 .basic{
     font-size: .3rem;
     line-height: .9rem;
+    /*width: 1.4rem;*/
 }
 .titName{
-	width: 100%;
+	width: 50%;
 	font-size: .3rem;
 	line-height: .9rem;
 	  overflow: hidden;
@@ -38,6 +40,9 @@
     white-space: nowrap;
 }
 /* 贷款 */
+.credit{
+	margin-left: .5rem;
+}
 .cre{
 	margin-left: .3rem;
     line-height: .9rem;
@@ -46,12 +51,11 @@
 /* 姓名 */
 .name{
 	display: inline-block;
-    width: 1.4rem;
 }
 /* 电话 */
 .phone{
 	display: inline-block;
-/*    width:1.84rem;*/
+	margin-left: .3rem;
     text-decoration: underline
 }
 label, span{
@@ -149,4 +153,24 @@ label, span{
 	height: .7rem;
 	line-height: .7rem;
 	font-size: .30rem;
+}
+
+/*======流程查看===========*/
+.orderProcess,.seeProcess{
+	float:left;
+	width: 25%;	
+	text-align: center;
+	font-size: .3rem;
+	color: #FFFFFF;
+	border-radius: .5rem;
+	line-height: .6rem !important;
+	margin-top: .15rem;
+}
+.orderProcess{
+	background-color: #5bc0de;
+	
+	
+}
+.seeProcess{
+	background-color: #8a6de9;
 }

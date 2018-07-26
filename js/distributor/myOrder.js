@@ -41,7 +41,7 @@ $(function() {
 	//================获取列表============
 	function getList() {
 		$.ajax({
-			url: path + "/SmOrder/getOrderFormListByDealersId",
+			url: path + "/SmOrder/getOrderFormListByDealersId?time=" + (new Date()).getTime(),
 			data: {},
 			xhrFields: {
 				withCredentials: true
@@ -191,13 +191,39 @@ $(function() {
 		$(this).siblings('.tit').toggle();
 	})
 
-	//===========================
 
+
+
+	//==============修改贷款信息=============
 	$(document).on('click', '.distributorMsg', function() {
 		var applyid = $(this).parents('.list').attr('applyid');
-		getExsit(applyid);
+		if($(this).hasClass('middle')){
+			distributorMsgAlert(applyid);  //弹框确认
+		}else{
+			getExsit(applyid);
+		}
 	})
-
+	
+	function distributorMsgAlert(id) {
+		var text = '<div class="pop-box" id="errBox">' +
+			'<div class="mask"></div>' +
+			'<div class="box1">' +
+			'<span style="margin-top: .3rem">是否要修改贷款信息</span>' +
+			'<div class="btn-box">' +
+			'<a href="javascript:;" class="weui-btn weui-btn_primary" id="no">取消</a>' +
+			'<a href="javascript:;" class="weui-btn weui-btn_primary" id="distributorYes" dataId="' + id + '">确定</a>' +
+			'</div>' +
+			'</div>' +
+			'</div>'
+		$('body').append(text);
+	}
+	
+	$(document).on('click','#distributorYes',function(){    //弹框信息点击了确定按钮
+		var importId = $(this).attr('dataId');
+		getExsit(importId);
+	})
+	
+//============确定修改贷款信息要跳到哪个页面====
 	function getExsit(importId) {
 		var data = {
 			id: importId
@@ -236,7 +262,7 @@ $(function() {
 						Route = 'urgent'; //紧急联系人
 						return
 					}
-
+					
 					window.location.href = Route + '.html?applyId=' + importId;
 				} else {
 					errLay(data.msg);
@@ -267,9 +293,40 @@ $(function() {
 		var applyid = $(this).parents('.list').attr('applyid');
 		var nodeId = $(this).parents('.list').attr('nodeId');
 		var type = $(this).attr('type');
-		window.location.href = 'afterCredit.html?applyId=' + applyid + '&dataType=' + type + '&dataId=' + nodeId;
-	})
+		
+		
+		$.ajax({
+			url: path + "/smAuditing/validateCarInfo?applyId="+applyid,
+			dataType: "json",
+			contentType: "application/json",
+			type: "get",
+			xhrFields: {
+				withCredentials: true
+			},
+			beforeSend: function() {
+				showLoading(); //显示loading	
+			},
+			success: function(data) {
+				hideLoading(); //隐藏load	
+				if(data.data == 0){   //如果没有填写过车辆信息，跳转到填写车辆信息
+					errLay('请先填写车辆信息');
+					var set = setTimeout(function(){
+						window.location.href = 'carMsg.html?applyId=' + applyid;
+					},1500)
+				}else{   //如果已经填写过车辆信息，跳转到提交放款后自理
+					window.location.href = 'afterCredit.html?applyId=' + applyid + '&dataType=' + type + '&dataId=' + nodeId;
+				}
+			},
+			error: function(request, textStatus, errorThrown) {
+				hideLoading(); //隐藏load	
+				errLay(request.responseJSON.msg);
+			}
+		});
 
+		
+	})
+	
+	
 	//	=====车辆信息录入=========
 	$(document).on('click', '.carMsg', function() {
 		var applyid = $(this).parents('.list').attr('applyid');
@@ -277,6 +334,8 @@ $(function() {
 	})
 
 
+
+//=============================
 	pushHistory();
     function pushHistory() {
         var state = {

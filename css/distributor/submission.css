@@ -152,6 +152,7 @@ header{
 }
 .up-load li{
 	position: relative;
+	z-index: 0;
 	display: inline-block;
 	width: 30%;
 	height: 1.5rem;
