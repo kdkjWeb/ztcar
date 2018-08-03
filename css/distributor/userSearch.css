@@ -226,3 +226,25 @@ td{
     border: 1px solid #d9d9d9
 }
 
+/*=====================*/
+/*======流程查看===========*/
+.userName{
+	display: inline-block;
+	width: 45%;
+}
+.orderProcess,.seeProcess{
+	display: inline-block;
+	width: 25%;	
+	text-align: center;
+	font-size: .3rem;
+	color: #FFFFFF;
+	border-radius: .5rem;
+	line-height: .6rem !important;
+}
+.orderProcess{
+	background-color: #5bc0de;
+}
+.seeProcess{
+	background-color: #8a6de9;
+	margin-left: 5%;
+}

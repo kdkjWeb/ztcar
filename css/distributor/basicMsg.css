@@ -193,3 +193,10 @@ span{
 	color: #434343;
 	font-size: .26rem;
 }
+
+.myspan{
+	font-size: .32rem;
+    margin-left: 0;
+    color: #5c5c5c;
+    line-height: .79rem;
+}

@@ -220,7 +220,11 @@ $(function(){
           var text= ''
         for(let i = 0;i < arr.length;i++) {
              text += '<div class="c-list">'+
-                 '<p>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：<span>' + arr[i].name + '</span></p>'+
+                 '<p>'+
+                 '<span class="userName">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：' + arr[i].name +'</span>'+
+               	 '<span class="orderProcess" appId="'+arr[i].applyId+'">订单详情</span>'+
+				 '<span class="seeProcess" appId="'+arr[i].applyId+'">流程查看</span>'+
+                 '</p>'+
                  '<p>联系电话：<span>' + arr[i].contactNum + '</span></p>'+
                  '<p>身份证号：<span>' +arr[i].certificateNum + '</span></p>'+
                  '<div class="text">'+
@@ -275,5 +279,18 @@ $(function(){
          }
          $("#time-body").html(text)
      }
+     
+     
+     
+    $(document).on('click','.orderProcess',function(){
+     	var appId = $(this).attr('appId');
+     	window.location.href='orderDetails.html?applyId='+appId;
+     })
+     
+    $(document).on('click','.seeProcess',function(){
+     	var appId = $(this).attr('appId');
+     	window.location.href='orderFlow.html?applyId='+appId;
+    })
+     
 })
 

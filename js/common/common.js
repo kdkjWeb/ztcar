@@ -1,8 +1,8 @@
-var path = "https://www.rydit.com.cn/zzbjr"; //外网
+var path = "https://rydit.rydit.com.cn/zzbjr"; //外网
 
-//var path = "http://192.168.31.42:8080"; //唐彬
+//var path = "http://192.168.1.10:8080"; //唐彬
 
-//var path = "http://192.168.31.200:8080"; //张韩
+//var path = "http://192.168.1.26:8080"; //张韩
 
 (function(doc, win) {
 	var docEl = doc.documentElement;
@@ -145,13 +145,29 @@ function getTime(times) {
 //=====正则验证===========
 function truePhone(phone) { //手机号
 	var regex = /^1[3|4|5|6|8|7|9][0-9]\d{4,8}$/;
-	if(phone.length != 11) {
-		errLay('请填写完整的手机号');
-		return false;
-	} else if(!regex.test(phone)) {
+//	var zuoji = /0\d{2}-\d{7,8}/;
+//	if(phone.length == 11) {
+//		if(!regex.test(phone)){
+//			errLay('请填写正确的手机号');
+//			return false;
+//		}else{
+//			return true;
+//		}
+//	} else if(phone.length == 12){
+//		if(!zuoji.test(phone)){
+//			errLay('请填写正确的座机号');
+//			return false;
+//		}else{
+//			return true;
+//		}
+//	}else{
+//		errLay('请填写完整的手机号');
+//		return false;
+//	}
+	if(!regex.test(phone)){
 		errLay('请填写正确的手机号');
 		return false;
-	} else {
+	}else{
 		return true;
 	}
 }

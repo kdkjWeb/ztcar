@@ -53,7 +53,6 @@ $(function() {
 	})
 
 	$("#next").on("click", function() {
-
 		if(!Verification()) {
 			return false
 		}
@@ -61,20 +60,6 @@ $(function() {
 		if(!PhoneVerification()) {  //正确的手机号正则验证
 			return false;
 		};
-		
-		
-//		if($('#license').val() == '有') { //驾驶证 驾驶信息必填
-//			if(!carVerification()) {
-//				return false
-//			}
-//		}
-
-//		if($('#isFirst').val() == "否") {
-//			if($('#Vehicle').val() == '') {
-//				errLay('请填写现有车辆品牌')
-//				return false;
-//			}
-//		}
 
 		listJson.applyId = importId;
 
@@ -90,7 +75,8 @@ $(function() {
 		listJson.nowVehicleBrands = $('#Vehicle').val(); //现有车辆品牌
 		listJson.recalDriver = $('#recalDriver').val(); //实际用车人
 		listJson.drivingPhone = $('#tel').val(); //实际用车人联系电话
-
+		listJson.payCardNum  =  $('#payCardNum').val(); //还款卡号
+		
 		if($('#license').val() == '有') { //驾驶证
 			listJson.drivingLicence = 1;
 		} else {
@@ -112,7 +98,7 @@ $(function() {
 			id: importId
 		}
 		$.ajax({
-			url: path + "/apply/getBorrowerInfo",
+			url: path + "/apply/getBorrowerInfo?time=" + new Date().getTime(),
 			data: JSON.stringify(data),
 			dataType: "json",
 			contentType: "application/json",
@@ -134,22 +120,22 @@ $(function() {
 					$('#Birthday').text(getBirthday(listJson.certificatePhone)); //生日
 					$('#Sex').text(getSex(listJson.certificatePhone)); //性别
 
-					if(listJson.standardCulture != null) { //文化程度
+					if(listJson.standardCulture) { //文化程度
 						$('#edu').val(listJson.standardCulture);
 					}
-					if(listJson.maritalStatus != null) { //婚姻状况
+					if(listJson.maritalStatus) { //婚姻状况
 						$('#ismarried').val(listJson.maritalStatus);
 					}
-					if(listJson.hujiNature != null) { //户籍性质
+					if(listJson.hujiNature) { //户籍性质
 						$('#register').val(listJson.hujiNature);
 					}
-					if(listJson.monthlyIncome != null) { //每月净收入
+					if(listJson.monthlyIncome) { //每月净收入
 						$('#monthlyIncome').val(listJson.monthlyIncome);
 					}
-					if(listJson.monthAverage != null) { //每月均支出
+					if(listJson.monthAverage) { //每月均支出
 						$('#monthAverage').val(listJson.monthAverage);
 					}
-					if(listJson.drivingLicence != null) { //驾驶证有无
+					if(listJson.drivingLicence) { //驾驶证有无
 						if(listJson.drivingLicence == 1) {
 							$('#license').val('有');
 							carContent(listJson.smProductApplycontent);
@@ -157,23 +143,27 @@ $(function() {
 							$('#license').val('无');
 						}
 					}
-					if(listJson.drivingName != null) { // 驾驶人姓名
+					if(listJson.drivingName) { // 驾驶人姓名
 						$('#drivingName').val(listJson.drivingName);
 					}
-					if(listJson.drivingNumber != null) { //驾驶证号码
+					if(listJson.drivingNumber) { //驾驶证号码
 						$('#drivingNumber').val(listJson.drivingNumber);
 					}
-					if(listJson.drivingRecordNumber != null) { //驾驶证档案号
+					if(listJson.drivingRecordNumber) { //驾驶证档案号
 						$('#drivingRecordNumber').val(listJson.drivingRecordNumber);
 					}
-					if(listJson.recalDriver != null) { //实际用车人
+					if(listJson.recalDriver) { //实际用车人
 						$('#recalDriver').val(listJson.recalDriver);
 					}
-					if(listJson.drivingPhone != null) { //联系电话
+					if(listJson.drivingPhone) { //联系电话
 						$('#tel').val(listJson.drivingPhone);
 					}
-
-					if(listJson.firstBuyCar != null) { //家庭首次购车
+					
+					if(listJson.payCardNum){
+						$('#payCardNum').val(listJson.payCardNum);
+					}
+					
+					if(listJson.firstBuyCar != undefined) { //家庭首次购车
 						if(listJson.firstBuyCar == 0) {
 							$('#isFirst').val('是');
 							$('#hasCar').hide();
@@ -182,14 +172,15 @@ $(function() {
 							fistContent(listJson.smProductApplycontent);
 						}
 					}
-					if(listJson.nowVehicleBrands != null) { //现有车辆品牌
+					
+					if(listJson.nowVehicleBrands) { //现有车辆品牌
 						$('#Vehicle').val(listJson.nowVehicleBrands);
 					}
-					if(listJson.carPurpose != null) { //购车目的
+					if(listJson.carPurpose) { //购车目的
 						$('#aim').val(listJson.carPurpose);
 					}
 					
-					if(listJson.isMarray == 1){   //已婚
+					if(listJson.isMarray){   //已婚
 						$("#ismarried").select({
 							title: "婚姻状况",
 							items: trueMarr
@@ -219,6 +210,7 @@ $(function() {
 	}
 
 	function saveList() {
+		console.log('1')
 		$.ajax({
 			url: path + "/apply/saveBorrowerInfo",
 			data: JSON.stringify(listJson),
@@ -365,6 +357,13 @@ $(function() {
 					}
 				}
 
+			}else if(mycontent.smProductApplycontents[i].label == "payCardNum") { //还款银行卡号
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#payCardNum').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#payCardNum').addClass("must");
+					}
+				}
 			}
 
 		}

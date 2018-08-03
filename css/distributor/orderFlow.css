@@ -1,0 +1,17 @@
+.contList{
+	padding: 5px .3rem;
+}
+.contList{
+	border-bottom:1px dashed #ccc;
+}
+.contList div{
+	line-height: .6rem;
+	font-size: .32rem;
+}
+.listOne{
+	float: left;
+	width: 50%;
+}
+.Opinion{
+	width: 100%;
+}

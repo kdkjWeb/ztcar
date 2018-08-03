@@ -25,6 +25,23 @@
            <label>订单号：</label>
            <span id="orderNum"></span>
        </header>
+       <div class="product">
+       		<div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">申请日期：</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" readonly="readonly" id="applyDate">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">放款日期：</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" readonly="readonly" id="fkDate">
+                </div>
+            </div>
+            
+       </div>
+       
+       
        <div class="line"></div>
        <div class="product">
             <div class="weui-cell">
@@ -52,7 +69,7 @@
                     <input id="vehicleBrand" class="weui-input" type="text" readonly="readonly">
                 </div>
             </div>
-            <div class="car-msg">
+            <!--<div class="car-msg">-->
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">车系：</label></div>
                     <div class="weui-cell__bd">
@@ -65,7 +82,7 @@
                         <input id="carModels" class="weui-input" type="text" readonly="readonly">
                     </div>
                 </div>
-            </div>
+            <!--</div>-->
        </div>
        <div class="line"></div>
        <div class="car">
@@ -75,17 +92,17 @@
                     <input id="carOpenFare" class="weui-input" type="text" readonly="readonly">
                 </div>
             </div>
-            <div class="weui-cell">
+            <!--<div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">车辆融资额：</label></div>
                 <div class="weui-cell__bd">
                     <input id="vehicleFinancing" class="weui-input" type="text" readonly="readonly">
                 </div>
-            </div>
-            <!-- <div class="first"> -->
+            </div>-->
+
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">首付比例：</label></div>
                     <div class="weui-cell__bd" id="ipt">
-                        <input id="proportionDownPayment" class="weui-input" type="text" readonly="readonly"><p>%</p>
+                        <input id="proportionDownPayment" class="weui-input" type="text" readonly="readonly">
                     </div>
                 </div>
                 <div class="weui-cell" id="sum">
@@ -94,9 +111,9 @@
                         <input id="downPaymentAmount" class="weui-input" type="text" readonly="readonly">
                     </div>
                 </div>
-            <!-- </div> -->
-            <!-- <div class="s-charge"> -->
-                <div class="weui-cell">
+
+
+                <!--<div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label" id="safe">保险费：</label></div>
                     <div class="weui-cell__bd">
                         <input id="insurancePremium" class="weui-input" type="text" readonly="readonly">
@@ -108,8 +125,7 @@
                         <input id="serviceCharge" class="weui-input" type="text" readonly="readonly">
                     </div>
                 </div>
-            <!-- </div> -->
-           <!--<div class="tax">-->
+  
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">购置税：</label></div>
                     <div class="weui-cell__bd">
@@ -127,8 +143,22 @@
                     <div class="weui-cell__bd">
                         <input id="otherTax" class="weui-input" type="text" readonly="readonly">
                     </div>
+                </div>-->
+         <div class="line"></div>
+            	 <div class="weui-cell" id="sum">
+                    <div class="weui-cell__hd"><label class="weui-label">预估月供：</label></div>
+                    <div class="weui-cell__bd">
+                        <input id="yuegong" class="weui-input" type="text" readonly="readonly">
+                    </div>
                 </div>
-           <!--</div>-->
+                
+                 <div class="weui-cell" id="sum">
+                    <div class="weui-cell__hd"><label class="weui-label">贷款期数：</label></div>
+                    <div class="weui-cell__bd">
+                        <input id="qishu" class="weui-input" type="text" readonly="readonly">
+                    </div>
+                </div>
+            
             
        </div>
        <div class="line"></div>

@@ -4,7 +4,7 @@ $(function(){
     Create();  //获取合同模板
 
     $("#send").on("click",function(){
-        cue("提醒","是否发送至经销商邮箱？")
+        cue("提醒","是否发送申请表至经销商邮箱？")
         $("#yes").on("click",function(){
             listJson.applyId = importId;    
             Send(); //上传
@@ -18,9 +18,6 @@ $(function(){
     	Create();
     })
     
-//  $(".weui-btn").on("click",function(){
-//      window.location.href="myOrder.html"
-//  })
 
     function Create() {
         var data = {
@@ -42,6 +39,7 @@ $(function(){
             	hideLoading();  //隐藏load
                 if(data.code == 0){
                   listJson.smCompacts = data.data; 
+                  listJson.applyId = importId;
                   $('#true').show();
                   $('#send').show();
                   
@@ -78,8 +76,9 @@ $(function(){
                     $(".pop-box").hide()
                     errLay("已发送至经销商邮箱");
                     var setRemove = setTimeout(function() {
-						 window.location.href="myOrder.html"
-					}, 2500);
+						 window.location.href="myOrder.html";
+						 window.location.href="submission.html?applyId="+importId+'&dataType=0'+'&dataId='+data.nodeId;
+					}, 200);
                 } else{
                     errLay(data.msg);
                 }   

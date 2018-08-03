@@ -15,6 +15,7 @@ $(function() {
 		let name = $(this).parents('tr').find('td').first().text();
 		cue("提醒", "你确定将【" + name + "】的征信结果转为订单吗？")
 		$("#yes").on("click", function() {
+			showLoading(); //显示loading	
 			dowatting(id, 1);
 		})
 
@@ -65,13 +66,16 @@ $(function() {
 			xhrFields: {
 				withCredentials: true
 			},
+			beforeSend: function() {
+				showLoading(); //显示loading	
+			},
 			dataType: "json",
 			contentType: "application/json",
 			type: "post",
 			success: function(data) {
+				hideLoading(); //隐藏load	
 				if(data.code == 0) {
 					if(data.data.length == 0){
-//						errLay('暂无数据');
 						$("#waitting").append("<div style='text-align: center;'>暂无待转订单</div>");
 					}else{
 						eachList(data.data);
@@ -80,6 +84,10 @@ $(function() {
 				} else {
 					errLay(data.msg);;
 				}
+			},
+			error: function(request, textStatus, errorThrown) {
+				hideLoading(); //隐藏load	
+				errLay(request.responseJSON.msg);
 			}
 		});
 	}
@@ -96,10 +104,14 @@ $(function() {
 			xhrFields: {
 				withCredentials: true
 			},
+			beforeSend: function() {
+				showLoading(); //显示loading	
+			},
 			dataType: "json",
 			contentType: "application/json",
 			type: "post",
 			success: function(data) {
+				hideLoading(); //隐藏load	
 				if(data.code == 0) {
 					if(num == 1){
 						window.location.href="distributorMsg.html?applyId="+id
@@ -109,6 +121,10 @@ $(function() {
 				} else {
 					errLay(data.msg);
 				}
+			},
+			error: function(request, textStatus, errorThrown) {
+				hideLoading(); //隐藏load	
+				errLay(request.responseJSON.msg);
 			}
 		});
 	}

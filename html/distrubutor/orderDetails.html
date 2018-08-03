@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>订单详情</title>
+		<script src="../../js/common/jquery-3.2.1.js"></script>
+		<script src="../../js/common/common.js"></script>
+		<link rel="stylesheet" href="../../css/common/reset.css">
+		<link rel="stylesheet" href="../../css/common/weui.min.css">
+		<link rel="stylesheet" href="../../css/common/jquery-weui.min.css">
+		<link rel="stylesheet" type="text/css" href="../../css/common/iconfont.css">
+		<link rel="stylesheet" href="../../css/distributor/orderDetails.css">
+		<script src="../../js/common/fastclick.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				FastClick.attach(document.body);
+			});
+		</script>
+	</head>
+
+	<body>
+		<div class="content">
+			<div>
+				<span class="leftSpanone">申请人姓名:</span>
+				<span id="boNameOne"></span>
+			</div>	
+			<div>
+				<span class="leftSpanone">订单创建时间:</span>
+				<span id="createTime"></span>
+			</div>
+			<!--==================================================-->
+			<div class="tit">经销商信息</div>
+			<div>
+				<span class="leftSpan">经销商名称:</span>
+				<span id="deName"></span>
+			</div>
+			<div>
+				<span class="leftSpan">销售顾问:</span>
+				<span id="salesCon"></span>
+			</div>
+			<div>
+				<span class="leftSpan">业务渠道:</span>
+				<span id="dcName"></span>
+			</div>
+			<div>
+				<span class="leftSpan">SP代理名称:</span>
+				<span id="spName"></span>
+			</div>
+			<div>
+				<span class="leftSpan">渠道经理:</span>
+				<span id="cmName"></span>
+			</div>
+			<div>
+				<span class="leftSpan">渠道经理电话:</span>
+				<span id="cmPhone"></span>
+			</div>
+			
+			
+			<!--==================================================-->
+			<div class="tit">融资信息</div>
+			<div>
+				<span class="leftSpan">产品名称:</span>
+				<span id="prName"></span>
+			</div>
+			<div>
+				<span class="leftSpan">贷款类型:</span>
+				<span id="loName"></span>
+			</div>
+			<div>
+				<span class="leftSpan">车辆品牌:</span>
+				<span id="vehicle"></span>
+			</div>
+			<div>
+				<span class="leftSpan">车系:</span>
+				<span id="carSeries"></span>
+			</div>
+			<div>
+				<span class="leftSpan">车型:</span>
+				<span id="carModels"></span>
+			</div>
+			<div>
+				<span class="leftSpan">车辆开票价:</span>
+				<span id="carOpenFare"></span>
+			</div>
+			<div>
+				<span class="leftSpan">还款期限:</span>
+				<span id="deadline"></span>
+			</div>
+			<div>
+				<span class="leftSpan">费率:</span>
+				<span id="rate"></span>
+			</div>
+			<div>
+				<span class="leftSpan">万元还款系数:</span>
+				<span id="wyhkxs"></span>
+			</div>
+			<div>
+				<span class="leftSpan">首付比例:</span>
+				<span id="doPayment"></span>
+			</div>
+			<div>
+				<span class="leftSpan">首付金额:</span>
+				<span id="doPayAmount"></span>
+			</div>
+			<div>
+				<span class="leftSpan">车辆融资额:</span>
+				<span id="vehicleFin"></span>
+			</div>
+			<div>
+				<span class="leftSpan">保险费:</span>
+				<span id="inPremium"></span>
+			</div>
+			<div>
+				<span class="leftSpan">GPS服务费:</span>
+				<span id="gpsCharge"></span>
+			</div>
+			<div>
+				<span class="leftSpan">购置税:</span>
+				<span id="purTax"></span>
+			</div>
+			<div>
+				<span class="leftSpan">车船税:</span>
+				<span id="chechuan"></span>
+			</div>
+			<div>
+				<span class="leftSpan">其他:</span>
+				<span id="other"></span>
+			</div>
+			<div>
+				<span class="leftSpan">贷款总额:</span>
+				<span id="totalLoan"></span>
+			</div>
+			<div>
+				<span class="leftSpan">预估月供:</span>
+				<span id="yujiYugong"></span>
+			</div>
+			
+			<!--==================================================-->
+			<div class="tit">申请人信息</div>
+			<div>
+				<span class="leftSpan">姓名:</span>
+				<span id="boName"></span>
+			</div>
+			<div>
+				<span class="leftSpan">性别:</span>
+				<span id="sex"></span>
+			</div>
+			<div>
+				<span class="leftSpan">出生日期:</span>
+				<span id="birth"></span>
+			</div>
+			<div>
+				<span class="leftSpan">证件类型:</span>
+				<span id="cerType"></span>
+			</div>
+			<div>
+				<span class="leftSpan">证件号码:</span>
+				<span id="cerNum"></span>
+			</div>
+			<div>
+				<span class="leftSpan">文化程度:</span>
+				<span id="stCulture"></span>
+			</div>
+			<div>
+				<span class="leftSpan">婚姻状况:</span>
+				<span id="maStatus"></span>
+			</div>
+			<div>
+				<span class="leftSpan">户籍性质:</span>
+				<span id="hujiNat"></span>
+			</div>
+			<div>
+				<span class="leftSpan">银行预留手机号码:</span>
+				<span id="rePhone"></span>
+			</div>
+			<div>
+				<span class="leftSpan">每月净收入:</span>
+				<span id="moIncome"></span>
+			</div>
+			<div>
+				<span class="leftSpan">月平均支出:</span>
+				<span id="moAverage"></span>
+			</div>
+			<div>
+				<span class="leftSpan">购车目的:</span>
+				<span id="carPurpose"></span>
+			</div>
+			<div>
+				<span class="leftSpan">还款银行卡号:</span>
+				<span id="payCardNum"></span>
+			</div>
+			<div>
+				<span class="leftSpan">有无驾驶证:</span>
+				<span id="isDrivers"></span>
+			</div>
+			<div>
+				<span class="leftSpan">驾驶证姓名:</span>
+				<span id="driName"></span>
+			</div>
+			<div>
+				<span class="leftSpan">驾驶证档案号:</span>
+				<span id="driAbbr"></span>
+			</div>
+			<div>
+				<span class="leftSpan">驾驶证号码:</span>
+				<span id="driNum"></span>
+			</div>
+			<div>
+				<span class="leftSpan">是否家庭首次购车:</span>
+				<span id="firstBuy"></span>
+			</div>
+			<div>
+				<span class="leftSpan">现有车辆品牌:</span>
+				<span id="nowVehic"></span>
+			</div>
+			<div>
+				<span class="leftSpan">实际用车人:</span>
+				<span id="actualMan"></span>
+			</div>
+			<div>
+				<span class="leftSpan">联系电话:</span>
+				<span id="conNum"></span>
+			</div>
+			<div>
+				<span class="leftSpan">单位名称:</span>
+				<span id="comName"></span>
+			</div>
+			<div>
+				<span class="leftSpan">单位地址:</span>
+				<span id="unitAddr"></span>
+			</div>
+			<div>
+				<span class="leftSpan">职务:</span>
+				<span id="position"></span>
+			</div>
+			<div>
+				<span class="leftSpan">单位电话:</span>
+				<span id="workTel"></span>
+			</div>
+			<div>
+				<span class="leftSpan">企业性质:</span>
+				<span id="enNature"></span>
+			</div>
+			<div>
+				<span class="leftSpan">所属行业:</span>
+				<span id="inInvolved"></span>
+			</div>
+			<div>
+				<span class="leftSpan">当前单位工作年限:</span>
+				<span id="yearsOfWork"></span>
+			</div>
+			<div>
+				<span class="leftSpan">现居地址:</span>
+				<span id="cuAddr"></span>
+			</div>
+			<div>
+				<span class="leftSpan">户籍地址:</span>
+				<span id="peAddr"></span>
+			</div>
+			<div>
+				<span class="leftSpan">现住房性质:</span>
+				<span id="naHousing"></span>
+			</div>
+			<div>
+				<span class="leftSpan">房产类型:</span>
+				<span id="hoType"></span>
+			</div>
+			<div>
+				<span class="leftSpan">房产地点:</span>
+				<span id="hoLocation"></span>
+			</div>
+			<div>
+				<span class="leftSpan">房贷月供:</span>
+				<span id="moPayments"></span>
+			</div>
+			
+			
+			<!--==================================================-->
+			<div class="tit">配偶信息</div>
+			<div>
+				<span class="leftSpan">配偶姓名:</span>
+				<span id="spoName"></span>
+			</div>
+			<div>
+				<span class="leftSpan">出生日期:</span>
+				<span id="spoBirth"></span>
+			</div>
+			<div>
+				<span class="leftSpan">职务:</span>
+				<span id="spoPosition"></span>
+			</div>
+			<div>
+				<span class="leftSpan">联系电话:</span>
+				<span id="spoConNum"></span>
+			</div>
+			<div>
+				<span class="leftSpan">证件类型:</span>
+				<span id="spoCerType"></span>
+			</div>
+			<div>
+				<span class="leftSpan">证件号码:</span>
+				<span id="spoCerNum"></span>
+			</div>
+			<div>
+				<span class="leftSpan">单位电话:</span>
+				<span id="spoWorkPhone"></span>
+			</div>
+			<div>
+				<span class="leftSpan">单位名称:</span>
+				<span id="spoWorkName"></span>
+			</div>
+			<div>
+				<span class="leftSpan">单位地址:</span>
+				<span id="spoWorkAddr"></span>
+			</div>
+			
+			<!--==================================================-->
+			<div class="tit">承租人信息</div>
+			<div>
+				<span class="leftSpan">承租人姓名:</span>
+				<span id="teName"></span>
+			</div>
+			<div>
+				<span class="leftSpan">承租人性别:</span>
+				<span id="teSex"></span>
+			</div>
+			<div>
+				<span class="leftSpan">承租人出生日期:</span>
+				<span id="teBirth"></span>
+			</div>
+			<div>
+				<span class="leftSpan">文化程度:</span>
+				<span id="teStaCul"></span>
+			</div>
+			<div>
+				<span class="leftSpan">婚姻状况:</span>
+				<span id="teMarSta"></span>
+			</div>
+			<div>
+				<span class="leftSpan">承租人户籍性质:</span>
+				<span id="teHujiNat"></span>
+			</div>
+			<div>
+				<span class="leftSpan">承租人证件类型:</span>
+				<span id="teCerType"></span>
+			</div>
+			<div>
+				<span class="leftSpan">承租人证件号码:</span>
+				<span id="teCerPhone"></span>
+			</div>
+			<div>
+				<span class="leftSpan">承租人居住地址:</span>
+				<span id="teCurAddr"></span>
+			</div>
+			<div>
+				<span class="leftSpan">承租人现住房性质:</span>
+				<span id="teHouNat"></span>
+			</div>
+			<div>
+				<span class="leftSpan">承租人手机号码:</span>
+				<span id="tePhone"></span>
+			</div>
+			<div>
+				<span class="leftSpan">承租人每月净收入:</span>
+				<span id="teMonIn"></span>
+			</div>
+			<div>
+				<span class="leftSpan">承租人月平均支出:</span>
+				<span id="teMonAve"></span>
+			</div>
+			<div>
+				<span class="leftSpan">承租人单位电话:</span>
+				<span id="teWorkTel"></span>
+			</div>
+			<div>
+				<span class="leftSpan">承租人单位名称:</span>
+				<span id="teComName"></span>
+			</div>
+			<div>
+				<span class="leftSpan">承租人单位地址:</span>
+				<span id="teUnitAddr"></span>
+			</div>
+			
+			
+			<!--==================================================-->
+			<div class="tit">担保人信息</div>
+			<div>
+				<span class="leftSpan">担保人姓名:</span>
+				<span id="dbName"></span>
+			</div>
+			<div>
+				<span class="leftSpan">担保人性别:</span>
+				<span id="dbSex"></span>
+			</div>
+			<div>
+				<span class="leftSpan">担保人出生日期:</span>
+				<span id="dbBirth"></span>
+			</div>
+			<div>
+				<span class="leftSpan">文化程度:</span>
+				<span id="dbStanCul"></span>
+			</div>
+			<div>
+				<span class="leftSpan">婚姻状况:</span>
+				<span id="dbMarSta"></span>
+			</div>
+			<div>
+				<span class="leftSpan">担保人户籍性质:</span>
+				<span id="dbHujiNat"></span>
+			</div>
+			<div>
+				<span class="leftSpan">担保人证件类型:</span>
+				<span id="dbCerType"></span>
+			</div>
+			<div>
+				<span class="leftSpan">担保人证件号码:</span>
+				<span id="dbCerPhone"></span>
+			</div>
+			<div>
+				<span class="leftSpan">担保人居住地址:</span>
+				<span id="dbCurAddr"></span>
+			</div>
+			<div>
+				<span class="leftSpan">担保人现住房性质:</span>
+				<span id="dbHouNat"></span>
+			</div>
+			<div>
+				<span class="leftSpan">担保人手机号码:</span>
+				<span id="dbPhone"></span>
+			</div>
+			<div>
+				<span class="leftSpan">担保人每月净收入:</span>
+				<span id="dbMonIn"></span>
+			</div>
+			<div>
+				<span class="leftSpan">担保人月平均支出:</span>
+				<span id="dbMonAve"></span>
+			</div>
+			<div>
+				<span class="leftSpan">担保人单位电话:</span>
+				<span id="dbWorkTel"></span>
+			</div>
+			<div>
+				<span class="leftSpan">担保人单位名称:</span>
+				<span id="dbComName"></span>
+			</div>
+			<div>
+				<span class="leftSpan">担保人单位地址:</span>
+				<span id="dbUnitAddr"></span>
+			</div>
+			
+			
+			<!--==================================================-->
+			<div class="tit">紧急联系人信息</div>
+			<div>
+				<span class="leftSpan">直系亲属名称:</span>
+				<span id="jinjName1"></span>
+			</div>
+			<div>
+				<span class="leftSpan">直系亲属与申请人关系:</span>
+				<span id="jinjRel1"></span>
+			</div>
+			<div>
+				<span class="leftSpan">直系亲属联系方式:</span>
+				<span id="jinjConWay1"></span>
+			</div>
+			<div>
+				<span class="leftSpan">紧急联系人名称:</span>
+				<span id="jinjName2"></span>
+			</div>
+			<div>
+				<span class="leftSpan">紧急联系人与申请人关系:</span>
+				<span id="jinjRel2"></span>
+			</div>
+			<div>
+				<span class="leftSpan">紧急联系人联系方式:</span>
+				<span id="jinjConWay2"></span>
+			</div>
+			
+			
+		</div>
+
+	</body>
+	<script src="../../js/common/jquery-weui.min.js"></script>
+	<script src="../../js/distributor/orderDetails.js"></script>
+
+</html>

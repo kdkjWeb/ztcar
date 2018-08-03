@@ -36,6 +36,7 @@ $(function() {
 		}else{
 			$('#mortgagePayments').parents(".weui-cell").addClass("hide");
 			$('#mortgagePayments').removeClass("must");
+			$('#mortgagePayments').val('');
 		}
 	})
 	
@@ -60,7 +61,7 @@ $(function() {
 			id: importId
 		}
 		$.ajax({
-			url: path + "/apply/getBorrowerAddressByApplyId",
+			url: path + "/apply/getBorrowerAddressByApplyId?time=" + new Date().getTime(),
 			data: JSON.stringify(data),
 			dataType: "json",
 			contentType: "application/json",
@@ -87,6 +88,12 @@ $(function() {
 						}
 						if(listJson.natureHousing) { //现住房性质
 							$('#nature').val(listJson.natureHousing);
+							
+							if(listJson.natureHousing == '有按揭自置'){
+								$('#mortgagePayments').parents(".weui-cell").removeClass("hide");
+								$('#mortgagePayments').addClass("must");
+							}
+							
 						}
 						if(listJson.housingLocation) { //房产地点
 							$('#housingLocation').val(listJson.housingLocation);

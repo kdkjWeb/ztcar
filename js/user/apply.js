@@ -194,10 +194,10 @@ function suerAjax() {
 
 	var dealersId = JSON.parse(localStorage.getItem('dealersId')); //经销商id
 	
-	var productAge = JSON.parse(localStorage.getItem('age')); //经销商id
+//	var productAge = JSON.parse(localStorage.getItem('age')); //经销商年龄
 
 	var loanId = JSON.parse(localStorage.getItem('loanId'));
-	var loanMonth = JSON.parse(localStorage.getItem('loanMonth'));
+//	var loanMonth = JSON.parse(localStorage.getItem('loanMonth'));
 	var loanType = JSON.parse(localStorage.getItem('loanType'));
 
 	var userName = $('#userName').val(); //用户姓名
@@ -222,16 +222,16 @@ function suerAjax() {
 	var myhaveLessee = 0; //是否有承租人
 	var myhaveGuarantee = 0; //是否有担保人
 	
-	var userAge = GetAge(userId); //借款人当前年纪
-	var age = Number(localStorage.getItem('age')); // 年龄限制
-	var month = localStorage.getItem('month');  //期数
-	var year = accDiv(month,12);    //贷款期数折合年数 
-	var present =  accAdd(userAge,year);  //借款人当前年纪+贷款期数折合年数
+//	var userAge = GetAge(userId); //借款人当前年纪
+//	var age = Number(localStorage.getItem('age')); // 年龄限制
+//	var month = localStorage.getItem('month');  //期数
+//	var year = accDiv(month,12);    //贷款期数折合年数 
+//	var present =  accAdd(userAge,year);  //借款人当前年纪+贷款期数折合年数
 	
-	if(present>age){
-		errLay('你的年龄已超过产品限制贷款期数,请返回重试');
-		return false;
-	}
+//	if(present>age){
+//		errLay('你的年龄已超过产品限制贷款期数,请返回重试');
+//		return false;
+//	}
 	
 	if(isName(userName, '借款人') == false) { //判断用户姓名
 		return false;
@@ -281,6 +281,8 @@ function suerAjax() {
 	if($('#agreen').attr('box') != 'true') {
 		errAlert('提醒', '请阅读征信授权书');
 	} else {
+		showCredit();//显示loading
+		
 		getImg('identa', 'a'); //用户身份证a
 		getImg('identb', 'b'); //用户身份证b
 		//getImg('dd','c');   //银行卡 a
@@ -298,7 +300,7 @@ function suerAjax() {
 		Fdata.append('dealersId', dealersId);
 
 		Fdata.append('loanId', loanId);
-		Fdata.append('loanMonth', loanMonth);
+//		Fdata.append('loanMonth', loanMonth);
 		Fdata.append('loanType', loanType);
 
 		Fdata.append('name', userName);
@@ -322,8 +324,6 @@ function suerAjax() {
 		Fdata.append('guaranteeIdNum', guaranteeId);
 		Fdata.append('guaranteePhone', guaranteePhone);
 		
-//		errLay('征信正在查询中');
-		showCredit();//显示loading
 		
 		$.ajax({
 			url: path + "/apply/addApply",
@@ -336,7 +336,7 @@ function suerAjax() {
 			contentType: false,
 			success: function(data) {
 				if(data.code == 0) {
-					errLay('申请成功');
+					errLay(data.msg);
 					var time = setTimeout(function() {
 						window.location.href = 'detail.html?applyId=' + data.applyId;
 					}, 500);

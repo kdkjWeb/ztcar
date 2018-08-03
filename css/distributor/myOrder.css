@@ -32,7 +32,7 @@
     /*width: 1.4rem;*/
 }
 .titName{
-	width: 50%;
+	width: 45%;
 	font-size: .3rem;
 	line-height: .9rem;
 	  overflow: hidden;
@@ -41,7 +41,7 @@
 }
 /* 贷款 */
 .credit{
-	margin-left: .5rem;
+	
 }
 .cre{
 	margin-left: .3rem;
@@ -168,9 +168,74 @@ label, span{
 }
 .orderProcess{
 	background-color: #5bc0de;
-	
-	
 }
 .seeProcess{
 	background-color: #8a6de9;
+	margin-left: 5%;
+}
+
+
+
+.filter{
+	padding: .2rem 5%;
+	display: -webkit-flex;
+    display: flex;
+}
+.filter p{
+	font-size: .32rem;
+	width: 33%;
+	text-align: center;
+	height: .7rem;
+	line-height: .7rem;
+	color:#3b6af4;	
+	border-top: 1px solid #3b6af4;
+	border-bottom: 1px solid #3b6af4;
+	
+}
+
+.filter p:first-of-type{
+	border-left: 1px solid #3b6af4;
+	border-radius: .7rem 0 0 .7rem;
+}
+.filter p:nth-of-type(2){
+	border-left: 1px solid #3b6af4;
+	border-right: 1px solid #3b6af4;
+}
+.filter p:last-of-type{
+	border-right: 1px solid #3b6af4;
+	border-radius:0 .7rem .7rem 0;
+}
+.filActive{
+	background-color: #3b6af4 !important;
+	color: #FFFFFF !important;
+}
+
+
+
+/*=====搜索===========*/
+.searchDiv{
+	width: 90%;
+	padding:.2rem 5%;
+	display: inline-flex;
+}
+#search{
+	width: 80%;
+	height: .6rem;
+	line-height: .6rem;
+	outline: none;
+	border-radius:.6rem 0 0 .6rem;
+	border: 1px solid #CCCCCC;
+	text-indent: .5rem;
+	font-size: .3rem;
+	
+}
+#searchBtn{
+	/*display: inline-block;*/
+	width: 18%;
+	text-align: center;
+	color: #FFFFFF;
+	background-color:#3b6af4;
+	height: .6rem;
+	line-height: .6rem;
+	border-radius:0 .6rem .6rem 0;
 }

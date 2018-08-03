@@ -28,7 +28,7 @@ $(function() {
 			id: importId
 		}
 		$.ajax({
-			url: path + "/apply/getBorrowerCarInfo",
+			url: path + "/apply/getBorrowerCarInfo?time=" + new Date().getTime(),
 			data: JSON.stringify(data),
 			dataType: "json",
 			contentType: "application/json",

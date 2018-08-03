@@ -94,7 +94,7 @@ $(function(){
                     '</div>'+
                 '</li>';
                 
-                if(arr.status == 0 || arr.status == null){   //未申请的
+                if(arr.status == 0){   //未申请的
                 	text += '<li>'+
 						'<p class="pXian apply changeStatus" myStatus="1">申请提前还款</p>'+  //变成1
 					'</li>';
@@ -104,7 +104,6 @@ $(function(){
                 	if(arr.auditState == 0){
                 		text += '<li>'+'<p class="examine">待审核</p>'+'</li>'+
 						'<li>'+'<p class="pXian examine changeStatus" myStatus="0">取消提前还款</p>'+'</li>';  //变成0
-					;
                 	}
                 	if(arr.auditState == 1){
                 		text += '<li>'+'<p class="adopt">已通过</p>'+'</li>'+
@@ -151,7 +150,7 @@ $(function(){
     })
 
     function saveList(Index,Status){
-    	var data = listJson[Index]
+    	var data = listJson[Index];
     	listJson[Index].status = Status;
     	
     	$.ajax({

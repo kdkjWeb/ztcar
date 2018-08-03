@@ -47,7 +47,7 @@ $(function() {
 			id: importId
 		}
 		$.ajax({
-			url: path + "/apply/getSmSpouseInfoByApplyId",
+			url: path + "/apply/getSmSpouseInfoByApplyId?time=" + new Date().getTime(),
 			data: JSON.stringify(data),
 			dataType: "json",
 			contentType: "application/json",

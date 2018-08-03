@@ -16,6 +16,16 @@ $(function() {
 			success: function(data) {
 				if(data.code == 0 || data.code == 200) {
 					var listJson = data.data;
+					if(listJson.applyDate){
+						$('#applyDate').val(listJson.applyDate);
+					}else{
+						$('#applyDate').val('无');
+					}
+					if(listJson.fkDate){
+						$('#fkDate').val(listJson.fkDate);
+					}else{
+						$('#fkDate').val('无');
+					}
 					
 					if(listJson.orderNum){   //订单号
 						$('#orderNum').text(listJson.orderNum);  
@@ -39,38 +49,43 @@ $(function() {
 						$('#carModels').val(listJson.carModels);  
 					}
 					if(listJson.carOpenFare){   //车辆开票价
-						$('#carOpenFare').val(listJson.carOpenFare);  
+						$('#carOpenFare').val(keepTwo(listJson.carOpenFare) +'元');  
 					}
-					if(listJson.vehicleFinancing){   //车辆融资额
-						$('#vehicleFinancing').val(listJson.vehicleFinancing);  
-					}
+//					if(listJson.vehicleFinancing){   //车辆融资额
+//						$('#vehicleFinancing').val(keepTwo(listJson.vehicleFinancing));  
+//					}
 					if(listJson.proportionDownPayment){   //首付比例
-						$('#proportionDownPayment').val(listJson.proportionDownPayment);  
+						$('#proportionDownPayment').val(listJson.proportionDownPayment +'%');  
 					}
 					if(listJson.downPaymentAmount){   //首付金额
-						$('#downPaymentAmount').val(listJson.downPaymentAmount);  
+						$('#downPaymentAmount').val(keepTwo(listJson.downPaymentAmount) +'元');  
 					}
-					if(listJson.insurancePremium){   //保险费
-						$('#insurancePremium').val(listJson.insurancePremium);  
+//					if(listJson.insurancePremium){   //保险费
+//						$('#insurancePremium').val(keepTwo(listJson.insurancePremium));  
+//					}
+//					if(listJson.serviceCharge){   //GPS服务费
+//						$('#serviceCharge').val(keepTwo(listJson.serviceCharge));  
+//					}
+//					if(listJson.purchaseTax){   //购置税
+//						$('#purchaseTax').val(keepTwo(listJson.purchaseTax));  
+//					}
+//					if(listJson.chechuanTax){   //车船税
+//						$('#chechuanTax').val(keepTwo(listJson.chechuanTax));  
+//					}
+//					if(listJson.otherTax){   //其他
+//						$('#otherTax').val(keepTwo(listJson.otherTax));  
+//					}
+
+					if(listJson.yujiYugong){   //预估月供
+						$('#yuegong').val(keepTwo(listJson.yujiYugong) +'元');  
 					}
-					if(listJson.serviceCharge){   //GPS服务费
-						$('#serviceCharge').val(listJson.serviceCharge);  
+					if(listJson.reimbursementDeadline){   //贷款期数
+						$('#qishu').val(listJson.reimbursementDeadline);  
 					}
-					if(listJson.purchaseTax){   //购置税
-						$('#purchaseTax').val(listJson.purchaseTax);  
+
+					if(listJson.totalLoan){
+						$('#totalLoan').text(listJson.totalLoan +'元');  
 					}
-					if(listJson.chechuanTax){   //车船税
-						$('#chechuanTax').val(listJson.chechuanTax);  
-					}
-					if(listJson.otherTax){   //其他
-						$('#otherTax').val(listJson.otherTax);  
-					}
-					if(listJson.totalLoan){   //贷款总额
-						$('#totalLoan').text(listJson.totalLoan);  
-					}
-					
-					
-					
 				} else {
 					errLay('请求失败')
 				}

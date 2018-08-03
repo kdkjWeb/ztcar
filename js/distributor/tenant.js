@@ -76,7 +76,7 @@ $(function() {
 			id: importId
 		}
 		$.ajax({
-			url: path + "/apply/getTenantInfoByApplyId",
+			url: path + "/apply/getTenantInfoByApplyId?time=" + new Date().getTime(),
 			data: JSON.stringify(data),
 			dataType: "json",
 			contentType: "application/json",

@@ -32,7 +32,10 @@ $(function() {
 		if(!Verification()) {  //正则 
 			return false;
 		}
-
+		if(!PhoneVerification()) {  //正确的手机号正则验证
+			return false;
+		};
+		
 		listJson.applyId = importId;
 
 		listJson.companyName = $('#companyName').val(); //单位名称
@@ -52,7 +55,7 @@ $(function() {
 			id: importId
 		}
 		$.ajax({
-			url: path + "/apply/getBorrowerWorkByApplyId",
+			url: path + "/apply/getBorrowerWorkByApplyId?time=" + new Date().getTime(),
 			data: JSON.stringify(data),
 			dataType: "json",
 			contentType: "application/json",
@@ -112,7 +115,7 @@ $(function() {
 		});
 	}
 
-	function postList() { //上传
+	function postList() { 
 		$.ajax({
 			url: path + "/apply/saveBorrowerWork",
 			data: JSON.stringify(listJson),

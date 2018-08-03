@@ -1,6 +1,10 @@
 $(function() {
 	var listJson = {};
 	var importId = GetRequest().applyId;
+	
+	
+	var borrwerName; //主贷人姓名
+	var borrwerPhone; //主贷人电话
 
 	getOldValue(); //获取回显
 
@@ -28,14 +32,16 @@ $(function() {
 	
 	
 	$(".weui-btn").on("click", function() {
+		showLoading(); //显示loading	
 		if(!Verification()) {   //为空的正则验证
+			hideLoading(); //隐藏load
 			return false;
 		};
 		
 		if(!PhoneVerification()) {  //正确的手机号正则验证
+			hideLoading(); //隐藏load
 			return false;
 		};
-		
 	
 		var name1 = $('#name1').val();
 		var name2 = $('#name2').val();
@@ -43,6 +49,7 @@ $(function() {
 		if(name1 && name2){
 			if(name1 === name2){
 				errLay('联系人姓名不能重复');
+				hideLoading(); //隐藏load
 				return false;
 			}
 		}
@@ -53,8 +60,20 @@ $(function() {
 		if(tel1 && tel2){
 			if(tel1 === tel2){
 				errLay('联系人电话不能重复');
+				hideLoading(); //隐藏load
 				return false;
 			}
+		}
+
+		if(name1 == borrwerName || name2 == borrwerName){
+			errLay('联系人姓名不能与主贷人重复');
+			hideLoading(); //隐藏load
+			return false;
+		}
+		if(tel1 == borrwerPhone || tel2 == borrwerPhone){
+			errLay('联系人电话不能与主贷人重复');
+			hideLoading(); //隐藏load
+			return false;
 		}
 
 		$('.urgent').each(function(index, item) {
@@ -70,6 +89,8 @@ $(function() {
 			}
 			listJson.urgentContactList[index] = obj;
 		});
+		
+		
 		getSave();
 	});
 
@@ -78,11 +99,12 @@ $(function() {
 			id: importId
 		}
 		$.ajax({
-			url: path + "/apply/getContactListByApplyId",
+			url: path + "/apply/getContactListByApplyId?time=" + new Date().getTime(),
 			data: JSON.stringify(data),
 			dataType: "json",
 			contentType: "application/json",
 			type: "post",
+			async:false,
 			xhrFields: {
 				withCredentials: true
 			},
@@ -93,6 +115,9 @@ $(function() {
 				hideLoading(); //隐藏load
 				if(data.code == 0) {
 					if(data.form) {
+						borrwerName = data.form.borrwerName;
+						borrwerPhone = data.form.borrwerPhone;
+						
 						listJson = data.form;
 						content(listJson.smProductApplycontent); ////显示和必填验证
 						for(var i = 0; i < listJson.urgentContactList.length; i++) {
@@ -127,21 +152,18 @@ $(function() {
 			dataType: "json",
 			contentType: "application/json",
 			type: "post",
+			async:false,
 			traditional: false,
 			xhrFields: {
 				withCredentials: true
 			},
-			beforeSend: function() {
-				showLoading(); //显示loading	
-			},
 			success: function(data) {
-				hideLoading(); //隐藏load
 				if(data.code == 0) {
-					window.location.href = "application.html?applyId=" + importId;
+					Create();
 				} else {
+					hideLoading(); //隐藏load
 					errLay(data.msg);
 				}
-
 			},
 			error: function(request, textStatus, errorThrown) {
 				hideLoading(); //隐藏load	
@@ -206,5 +228,67 @@ $(function() {
 
 		}
 	};
+	
+//	==================生成合同=============
+	  function Create() {
+        var data = {
+            applyId:importId
+        }
+        $.ajax({
+            url:path+"/compact/buildCompact",
+            data:data,
+            dataType:"json",
+            contentType:"application/json",
+            type:"get",
+            async:false,
+            xhrFields: {
+				withCredentials: true
+			},
+            success:function(data){
+                if(data.code == 0){
+					Send(data.data); 
+                }else {   //生成合同失败，跳到手动生产
+					window.location.href = "application.html?applyId=" + importId;
+				}
+            },error:function(request, textStatus, errorThrown){
+            	window.location.href = "application.html?applyId=" + importId;
+				hideLoading();  //隐藏load	
+				errLay(request.responseJSON.msg);
+			}
+        })
+    }
+
+    function Send(myData) {
+    	var data = {
+    		smCompacts:myData,
+    		applyId:importId
+    	}
+        $.ajax({
+            url: path + "/compact/sendCompact",
+            data:JSON.stringify(data),
+            dataType:"json",
+            contentType:"application/json",
+            type:"post",
+            async:false,
+            xhrFields: {
+				withCredentials: true
+			},
+            success: function(data) {
+                if(data.code == 0){
+                    errLay("已发送申请表至经销商邮箱");
+                    var setRemove = setTimeout(function() {
+						 window.location.href="submission.html?applyId="+importId+'&dataType=0'+'&dataId='+data.data;
+					}, 1000);
+                } else{
+                    errLay(data.msg);
+                    window.location.href = "application.html?applyId=" + importId;
+                }   
+            },error:function(request, textStatus, errorThrown){
+            	window.location.href = "application.html?applyId=" + importId;
+				hideLoading();  //隐藏load	
+				errLay(request.responseJSON.msg);
+			}
+        })
+    }
 
 })

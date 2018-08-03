@@ -22,9 +22,9 @@ $(function() {
 	$(document).on('click', '.wait', function() {
 		let id = $(this).attr('attr-id');
 		let name = $(this).parents('tr').find('td').first().text();
-
 		cue("提醒", "你确定将此结果待转？")
 		$("#yes").on("click", function() {
+			showLoading(); //显示loading	
 			dowatting(id, 0);
 		})
 	});
@@ -70,21 +70,23 @@ $(function() {
 
 	//=====获取列表===========
 	function getList() {
-
 		$.ajax({
-			url: path + "/apply/showNowCreditByDealers",
+			url: path + "/apply/showNowCreditByDealers?time=" + new Date().getTime(),
 			data: {},
 			xhrFields: {
 				withCredentials: true
+			},
+			beforeSend: function() {
+				showLoading(); //显示loading	
 			},
 			crossDomain: true,
 			dataType: "json",
 			contentType: "application/json",
 			type: "post",
 			success: function(data) {
+				hideLoading(); //隐藏load
 				if(data.code == 0) {
 					if(data.data.length == 0){
-//						errLay('暂无数据');
 						$(".container").append("<div style='text-align: center;'>暂无征信结果</div>");
 					}else{
 						eachList(data.data);
@@ -92,6 +94,10 @@ $(function() {
 				} else {
 					errLay(data.msg);
 				}
+			},
+			error: function(request, textStatus, errorThrown) {
+				hideLoading(); //隐藏load	
+				errLay(request.responseJSON.msg);
 			}
 		});
 	}
@@ -108,11 +114,14 @@ $(function() {
 			xhrFields: {
 				withCredentials: true
 			},
+			beforeSend: function() {
+				showLoading(); //显示loading	
+			},
 			dataType: "json",
 			contentType: "application/json",
 			type: "post",
 			success: function(data) {
-				console.log(data)
+				hideLoading(); //隐藏load
 				if(data.code == 0) {
 					if(num == 1){
 						window.location.href="distributorMsg.html?applyId="+id
@@ -123,10 +132,9 @@ $(function() {
 					errLay(data.msg);
 				}
 			},
-			error: function(xhr, type, errorThrown) {
-				//异常处理；
-				console.log(xhr);
-				console.log(type);
+			error: function(request, textStatus, errorThrown) {
+				hideLoading(); //隐藏load	
+				errLay(request.responseJSON.msg);
 			}
 		});
 	}

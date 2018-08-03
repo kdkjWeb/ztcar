@@ -37,6 +37,8 @@ function getResult(num, type) {
 		success: function(data) {
 			var list = data.data;
 			if(data.code == 0) {
+				$('#goodsName').text(list.productName)
+
 				if(list.allStatusStr) {
 					if(list.allStatusStr == '通过') {
 						$('#allStatusStr').text('通过');
@@ -101,28 +103,32 @@ function getResult(num, type) {
 function user(arr) {
 	var mind = '<div class="content-c">' +
 		'<div class="mind">' +
-		'<h2>主申请人征信结果</h2>' +
+		'<h2>主贷人审查结果';
+
+	if(arr.status) {
+		if(arr.status == '通过') {
+			mind += '<p class="pass yes">' + arr.status + '</p>';
+		} else {
+			mind += '<p class="pass no">' + arr.status + '</p>';
+		}
+	} else {
+		mind += '<p class="pass no">待审核</p>';
+	};
+
+	mind += '</h2>' +
 		'<div class="result">' +
 		'<div class="name">' +
-		'<p class="text">借款人姓名&nbsp;:&nbsp;' + arr.name + '</p>' +
+		'<p class="text">姓名&nbsp;:&nbsp; ' + arr.name + '</p>' +
 		'</div>' +
 		'<div class="IDcard">' +
-		'<p class="text">身&nbsp;份&nbsp;证&nbsp;号&nbsp;:&nbsp;' + arr.IDcard + '</p>' +
+		'<p class="text">身&nbsp;份&nbsp;证&nbsp;号&nbsp;:&nbsp; ' + arr.IDcard + '</p>' +
 		'</div>' +
 		'<div class="phone">' +
-		'<p class="text">预留手机号&nbsp;:&nbsp;' + arr.phone + '</p>' +
+		'<p class="text">手&nbsp;&nbsp;&nbsp;机&nbsp;&nbsp;&nbsp;号: ' + arr.phone + '</p>' +
 		'</div>' +
 		'</div>' +
 		'<div class="auditing-result">' +
-		'<p class="text-p">综合审核结果:</p>';
-
-	if(arr.status == '通过') {
-		mind += '<p class="pass yes">' + arr.status + '</p>';
-	} else {
-		mind += '<p class="pass no">' + arr.status + '</p>';
-	}
-
-	mind += '</div>' +
+		'</div>' +
 		'</div>' +
 		'</div>' +
 		'<div class="line"></div>';
@@ -131,14 +137,23 @@ function user(arr) {
 }
 
 function other(arr) {
-	console.log(arr)
 	var text = '<div class="content-c1">' +
 		'<div class="other">' +
-		'<h1>' + arr.h1 + '征信结果' +
-		'</h1>' +
+		'<h2>' + arr.h1 + '审查结果';
+	if(arr.status) {
+		if(arr.status == '通过') {
+			text += '<p class="pass yes">' + arr.status + '</p>';
+		} else {
+			text += '<p class="pass no">' + arr.status + '</p>';
+		}
+	} else {
+		text += '<p class="pass no">待审核</p>';
+	}
+
+	text += '</h2>' +
 		'<div class="result1">' +
 		'<div class="name">' +
-		'<p class="text">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：' + arr.name + '</p>' +
+		'<p class="text">姓名: ' + arr.name + '</p>' +
 		'</div>' +
 		'<div class="IDcard">' +
 		'<p class="text">身&nbsp;份&nbsp;证&nbsp;号&nbsp;:' + arr.IDcard + '</p>' +
@@ -148,13 +163,7 @@ function other(arr) {
 		'</div>' +
 		'</div>' +
 		'<div class="auditing-result2">' +
-		'<p class="text-p">综合审核结果:</p>';
-	if(arr.status == '通过') {
-		text += '<p class="pass yes">' + arr.status + '</p>';
-	} else {
-		text += '<p class="pass no">' + arr.status + '</p>';
-	}
-	text += '</div>' +
+		'</div>' +
 		'</div>' +
 		'</div>' +
 		'<div class="line"></div>';

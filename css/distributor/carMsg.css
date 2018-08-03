@@ -39,7 +39,7 @@ span{
 }
 /* 车型 */
 .type label{
-    text-align: right;
+    /*text-align: right;*/
 }
 /* 输入框 */
 .input{
@@ -58,7 +58,7 @@ span{
 .weui-label{
     width: 1.5rem;
     font-size: .32rem;
-    text-align: right;
+    text-align: left;
     line-height: .6rem;
     margin-right: .3rem
 }

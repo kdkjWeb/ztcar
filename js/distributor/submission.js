@@ -7,6 +7,7 @@ $(function() {
 	var importId = GetRequest().applyId;
 	var importType = GetRequest().dataType;
 	var dataId = GetRequest().dataId;
+	
 	var delDom;  //当前点击删除的节点
 	getList();
 	
@@ -34,12 +35,6 @@ $(function() {
 		shanchuImg(ulIndex, liIndex);
 		delDom = $(this).parents('li');
 	})
-	
-	$(document).on('click','.imgMsg',function(){
-//		alert('span');
-	})
-	
-	
 	
 	$(document).on('click','li',function(event){  //展示图片，并且展示不通过原因
 		event.stopPropagation();//阻止事件冒泡即可\\\
@@ -129,7 +124,7 @@ $(function() {
 			nodeId:dataId
 		}
 		$.ajax({
-			url: path + "/smAuditing/getAuitingFiles?time=" + (new Date()).getTime(),
+			url: path + "/smAuditing/getAuitingFiles?time=" + new Date().getTime(),
 			data: JSON.stringify(data),
 			xhrFields: {
 				withCredentials: true
@@ -145,12 +140,20 @@ $(function() {
 				if(data.code == 0) {
 					listJson = data.data;
 					if(listJson.borrowerName) {
-						$('#userName').text(listJson.borrowerName)
+						$('#userName').text(listJson.borrowerName);
 					}
 					if(listJson.borrowerPhone) {
-						$('#userPhone').text(listJson.borrowerPhone)
+						$('#userPhone').text(listJson.borrowerPhone);
 					}
 					
+					if(listJson.auditingRemark && listJson.auditingStatus != 1){  //未通过原因
+						$('.cause').show();
+						$('#auditingRemark').text(listJson.auditingRemark);
+					}
+					if(listJson.capitalAuditingStatus != null && listJson.capitalAuditingStatus != 1 && listJson.capitalAuditingRemark != null){  //未通过原因
+						$('.cause').show();
+						$('#auditingRemark').text(listJson.capitalAuditingRemark);
+					}
 					for(var i = 0; i < listJson.smFileOwens.length; i++) {
 						var text = '<div class="list">' +
 							'<label>' + listJson.smFileOwens[i].modelName + '：</label>' +
@@ -325,7 +328,22 @@ $(function() {
 		
 		$('body').append(text)
 	}
+	
 
+
+//	==历史记录==================
+	pushHistory();
+	function pushHistory() {
+		var state = {
+			title: "title",
+			url: "#"
+		};
+		window.history.pushState(state, "title", "#");
+	};
+	window.onpopstate = function() {
+		location.href = "myOrder.html";
+	};
+	
 });
 
 

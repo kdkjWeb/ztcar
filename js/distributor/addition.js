@@ -131,7 +131,7 @@ $(function() {
 			nodeId:dataId
 		}
 		$.ajax({
-			url: path + "/smAuditing/getAuitingRzjrFiles?time=" + (new Date()).getTime(),
+			url: path + "/smAuditing/getAuitingRzjrFiles?time=" + new Date().getTime(),
 			data: JSON.stringify(data),
 			xhrFields: {
 				withCredentials: true

@@ -8,10 +8,11 @@ body{
 }
 .content-c{
     width: 100%;
+    overflow: hidden;
 }
 .content-c1{
     width: 100%;
-    height: 4.54rem;
+    overflow: hidden;
 }
 .mind{
     width: 6.93rem;
@@ -19,35 +20,37 @@ body{
 }
 .h-result{
     width: 100%;
-    height: 2rem;
     margin-bottom: .2rem;
 }
 h1{
+	box-sizing: border-box;
     width:100%;
     height:1.5rem;
     font-size: .36rem;
     color: #4169ed;
     font-weight: 700;
     line-height: 1.5rem;
-    text-align: center;
+    text-align: left;
+    padding-left:.5rem;
+    padding-right: .25rem;
 }
 .h-result p{
     width: 100%;
     height: .5rem;
     font-size: .32rem;
     line-height: .5rem;
-    padding-left: .3rem;
+    padding:0 .3rem;
     box-sizing: border-box;
 }
 /* 某某人的征信结果标题 */
 h2{
-    width:100%;
+    /*width:100%;*/
     height:1.38rem;
     font-size: .32rem;
     color: black;
     font-weight: 700;
     line-height: 1.38rem;
-    text-align: center;
+    text-align: left;
 }
 /* 主申请人征信结果 */
 .result{
@@ -84,30 +87,25 @@ h2{
 /* 综合审核结果 */
 .auditing-result{
     width:100%;
-    height:.82rem;
+    /*height:.82rem;
     display: flex;
-    flex-direction: row;
+    flex-direction: row;*/
     padding-top: .2rem;
 }
 /* 配偶、共同承租人、担保人 */
 .other{
     width:6.93rem;
-    height:3.66rem;
     margin: auto;
 }
 /* 除主申请人以外的征信结果 */
 .result1{
     width:100%;
-    height:1.48rem;
 }
 /* 除主申请人以外的综合审核结果 */
 
 .auditing-result2{
     width:100%;
-    height:.82rem;
-    display: flex;
-    flex-direction: row;
-    padding-top: .9rem;
+    padding-top: .1rem;
 }
 /* 综合审核结果标题 */
 .text-p{
@@ -129,8 +127,9 @@ h2{
 }
 /* 通过 */
 .yes{
+	float: right;
 	display: inline-block;
-    width: 1.25rem;
+   	padding: 0 .3rem;
     height: .5rem;
     font-size: .32rem;
     border: 1px solid #94c945;
@@ -140,20 +139,32 @@ h2{
     text-align: center;
     color: #fff;
     background-color: #94c945;
-    margin-left: 5px;
+    margin-right: .1rem;
 }
 /* 未通过 */
 .no{
+	float: right;
 	display: inline-block;
-    width: 1.25rem;
+   	padding: 0 .3rem;
     height: .5rem;
     font-size: .32rem;
-    border: 1px solid #94c945;
+    border: 1px solid #EE2C2C;
     border-radius: .5rem;
     box-sizing: border-box;
     line-height: .5rem;
     text-align: center;
     color: #fff;
-    background-color: #94c945;
-    margin-left: 5px;
+    background-color: #EE2C2C;
+    margin-right: .1rem;
+}
+p{
+	margin: .1rem 0;
+}
+
+#allStatusStr{
+	margin-top: .5rem;
+}
+
+.pass{
+	margin-top: .4rem;
 }
