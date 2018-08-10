@@ -44,11 +44,11 @@ $(function(){
         }
     });
     // 记录查询
-    $(document).on("click","#loan",function(){
+    $(document).on("click",".loan",function(){
         var id = $(this).attr("userId")
         window.location.href = "loanSearch.html?id="+id
     })
-    $(document).on("click","#repay",function(){
+    $(document).on("click",".repay",function(){
         var id = $(this).siblings("a").attr("userId")
         window.location.href = "repaymentSearch.html?id="+id
     })
@@ -96,7 +96,7 @@ $(function(){
     function getSearchByZx() {
         var sBeginTime = $("#zxBeginTime").val();
         var sEndTime = $("#zxEndTime").val();
-        let data = {
+        var data = {
             startTime: getTime(sBeginTime),
             endTime: getTime(sEndTime)
         }
@@ -135,7 +135,7 @@ $(function(){
     function  getSearchByTime() {
         var sBeginTime = $("#carBeginTime").val();
         var sEndTime = $("#carEndTime").val();
-        let data = {
+        var data = {
             startTime: getTime(sBeginTime),
             endTime: getTime(sEndTime)
         }
@@ -175,7 +175,7 @@ $(function(){
     function getSearchByPrice() {
         var sBeginPrice = $("#beginPrice").val();
         var sEndPrice = $("#endPrice").val();
-        let data = {
+        var data = {
             startPrice: sBeginPrice,
             endPrice: sEndPrice
         }
@@ -218,7 +218,7 @@ $(function(){
       // 遍历客户姓名
       function userName(arr) {
           var text= ''
-        for(let i = 0;i < arr.length;i++) {
+        for(var i = 0;i < arr.length;i++) {
              text += '<div class="c-list">'+
                  '<p>'+
                  '<span class="userName">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：' + arr[i].name +'</span>'+
@@ -228,17 +228,17 @@ $(function(){
                  '<p>联系电话：<span>' + arr[i].contactNum + '</span></p>'+
                  '<p>身份证号：<span>' +arr[i].certificateNum + '</span></p>'+
                  '<div class="text">'+
-                     '<a id="loan" userId='+arr[i].id+'>车贷分期记录查询</a>'+
-                     '<a id="repay">车贷还款记录查询</a>'+
+                     '<a class="loan" userId='+arr[i].applyId+'>车贷分期记录查询</a>'+
+//                   '<a class="repay">车贷还款记录查询</a>'+
                  '</div> '+
              '</div>'
          }
-        $(".list").html(text)
+        $(".list").html(text);
      }
      // 遍历征信记录
      function zxRcord(arr) {
          var text= '';
-         for(let i = 0;i < arr.length;i++) {
+         for(var i = 0;i < arr.length;i++) {
               text += '<tr>' +
                 '<td>' + arr[i].name + '</td>' +
              '<td>' + getDays(arr[i].modifyTime) + '</td>' +
@@ -256,7 +256,7 @@ $(function(){
      // 遍历汽车售价区间
      function carPrice(arr){
          var text = ""
-         for(let i = 0;i < arr.length;i++) {
+         for(var i = 0;i < arr.length;i++) {
             text += '<tr>'+
                  '<td>' + getDays(arr[i].orderTime) + '</td>'+
                  '<td>' + arr[i].vehicleBrand + arr[i].carSeries+'</td>'+
@@ -269,7 +269,7 @@ $(function(){
      // 遍历汽车销售时间
      function saveTime(arr) {
          var text = ""
-         for(let i = 0;i < arr.length;i++) {
+         for(var i = 0;i < arr.length;i++) {
             text += '<tr>'+
                  '<td>' + getDays(arr[i].orderTime) + '</td>'+
                  '<td>' + arr[i].vehicleBrand + arr[i].carSeries+ '</td>'+

@@ -46,6 +46,8 @@ $(function() {
 				$('#other').text(listJson.other?listJson.other:'无');
 				$('#totalLoan').text(listJson.totalLoan?listJson.totalLoan:'无');
 				$('#yujiYugong').text(listJson.yujiYugong?listJson.yujiYugong:'无');
+				$('#viNumber').text(listJson.viNumber?listJson.viNumber:'无');
+				$('#enNumber').text(listJson.enNumber?listJson.enNumber:'无');
 				
 				$('#boName').text(listJson.boName?listJson.boName:'无');
 				$('#boNameOne').text(listJson.boName?listJson.boName:'无');
@@ -75,7 +77,7 @@ $(function() {
 				$('#workTel').text(listJson.workTel?listJson.workTel:'无');
 				$('#enNature').text(listJson.enNature?listJson.enNature:'无');
 				$('#inInvolved').text(listJson.inInvolved?listJson.inInvolved:'无');
-				$('#yearsOfWork').text(listJson.yearsOfWork?listJson.yearsOfWork+'年':'无');
+				$('#yearsOfWork').text(listJson.yearsOfWork?listJson.yearsOfWork:'无');
 				$('#cuAddr').text(listJson.cuAddr?listJson.cuAddr:'无');
 				$('#peAddr').text(listJson.peAddr?listJson.peAddr:'无');
 				$('#naHousing').text(listJson.naHousing?listJson.naHousing:'无');

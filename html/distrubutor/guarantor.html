@@ -45,34 +45,34 @@
                 <div class="weui-cell hide">
                     <div class="weui-cell__hd"><label class="weui-label">担保人姓名：</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" type="text" id="name" placeholder="请输入姓名">
+                        <input class="weui-input" type="text" id="name" placeholder="请输入姓名" readonly="readonly">
                     </div>
                 </div>
                 <div class="weui-cell hide">
                     <div class="weui-cell__hd"><label for="gender" class="weui-label">性别：</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" type="text" id="gender" placeholder="请选择性别">
+                        <input class="weui-input" type="text" id="gender" placeholder="请选择性别" readonly="readonly">
                     </div>
-                    <i class="iconfont icon-xiangxia1"></i>
+                    <!--<i class="iconfont icon-xiangxia1"></i>-->
                 </div>
                 <div class="weui-cell hide">
                     <div class="weui-cell__hd"><label class="weui-label">证件类型：</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" type="text" id="type" placeholder="请选择证件类型">
+                        <input class="weui-input" type="text" id="type" placeholder="请选择证件类型" readonly="readonly" value="身份证">
                     </div>
-                    <i class="iconfont icon-xiangxia1"></i>
+                    <!--<i class="iconfont icon-xiangxia1"></i>-->
                 </div>
                 <div class="weui-cell hide">
                     <div class="weui-cell__hd"><label class="weui-label">证件号码：</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" type="url" id="id" oninput="if(value.length>18)value=value.slice(0,18)" placeholder="请输入证件号码">
+                        <input class="weui-input" type="url" id="id" oninput="if(value.length>18)value=value.slice(0,18)" placeholder="请输入证件号码" readonly="readonly">
                     </div>
-                    <i class="iconfont icon-xiangji1" id="IDcamera"></i>
+                    <!--<i class="iconfont icon-xiangji1" id="IDcamera"></i>-->
                 </div>
                 <div class="weui-cell hide">
                     <div class="weui-cell__hd"><label for="time3" class="weui-label">出生日期：</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" id="time3" type="text" readonly="readonly" placeholder="请选择出生日期">
+                        <input class="weui-input" id="time3" type="text" readonly="readonly" placeholder="请选择出生日期" readonly="readonly">
                     </div>
                 </div>
                 <div class="weui-cell hide">
@@ -119,12 +119,14 @@
                     <div class="weui-cell__hd"><label class="weui-label">每月净收入：</label></div>
                     <div class="weui-cell__bd">
                         <input class="weui-input" type="number" id="income" placeholder="请输入每月净收入">
+                        <span style="font-size: .32rem;margin-left: 0; color: #5c5c5c;line-height: .79rem;">元</span>
                     </div>
                 </div>
                 <div class="weui-cell hide">
                     <div class="weui-cell__hd"><label class="weui-label">每月均支出：</label></div>
                     <div class="weui-cell__bd">
                         <input class="weui-input" type="number" id="pay" placeholder="请输入每月均支出">
+                        <span style="font-size: .32rem;margin-left: 0; color: #5c5c5c;line-height: .79rem;">元</span>
                     </div>
                 </div>
                 <div class="weui-cell hide">

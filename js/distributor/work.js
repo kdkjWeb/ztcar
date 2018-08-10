@@ -4,7 +4,9 @@ $(function() {
 	var importId = GetRequest().applyId;
 	var Route; //路径
 
-	getList(); //回显
+	OrderUse(importId,function(){
+		getList();
+	});
 
 	$("#nature").select({
 		title: "企业性质",
@@ -51,7 +53,7 @@ $(function() {
 	})
 
 	function getList() { //回显
-		let data = {
+		var data = {
 			id: importId
 		}
 		$.ajax({

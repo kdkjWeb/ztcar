@@ -1,28 +1,12 @@
 /* 查询结果 */
-.content{
-    width:6.9rem;
-    margin: auto;
-    padding-top: .5rem;
-    box-sizing: border-box
+body,html{
+	background-color: #efeff4;
 }
-table,th,tr,td{
-    /* border: 1px solid black; */
-}
-table{
-    width: 100%;
-}
-th{ 
-    height: .65rem;
-    font-size: .32rem;
-    color: white;
-    text-align: center;
-    line-height: .65rem;
-    background-color: #3b6bf4;
-} 
-td{
-    height: .6rem;
-    line-height: .6rem;  
-    font-size: .28rem;
-    color: #717171;
-    text-align: center;
+.list{
+	box-sizing: border-box;
+	margin-bottom: .3rem;
+	background-color: #FFFFFF;
+	padding: .1rem .2rem;
+	font-size: .3rem;
+	border-bottom: 1px dashed #ccc;
 }

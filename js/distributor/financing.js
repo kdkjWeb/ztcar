@@ -36,11 +36,21 @@ $(function() {
 
 	var paymentValCtr; // 1-车贷比例-加融比例
 
-	var goodsAge;   //产品年龄限制
+	var maxAge;   //产品年龄限制 ,上限
+	var minAge;  //产品年龄，下限
 	var userAge;    //用户年龄
 
 	getCar(); //获取车辆品牌 
-	getList(); //回显
+	
+	OrderUse(importId,function(){
+		getList(); //回显
+	});
+	
+	$("#city").cityPicker({
+	    title: "请选择上牌城市",
+	    showDistrict: false
+	  });
+
 
 	$("#month").select({
 		title: "贷款期数",
@@ -50,18 +60,17 @@ $(function() {
 				var goodsMonth = parseFloat(month.val()); //选择的产品期数
 				var year = accDiv(goodsMonth,12);    //贷款期数折合年数 
 				var present =  accAdd(userAge,year);  //借款人当前年纪+贷款期数折合年数		
-				console.log(present +'用户年龄加期数')
-				console.log(goodsAge + '产品年龄限制')
-				if(present>goodsAge){
+
+				if(present < maxAge && userAge > minAge){
+					getDeadline($(this)[0].data.values,listJson.productId);
+					rate.val('');
+					coefficient.val('');
+				}else{
 					errLay('您的年龄不符合该产品要求');
 					month.val('');
 					rate.val('');
 					coefficient.val('');
 					return false;
-				}else{
-					getDeadline($(this)[0].data.values,listJson.productId);
-					rate.val('');
-					coefficient.val('');
 				}
 				
 			}
@@ -69,28 +78,28 @@ $(function() {
 	});
 
 	//	=============首付金额不能大于车辆开票价
-	firstPayment.bind('input propertychange', function() {
+	firstPayment.change(function() {
 		var a = Number(firstPayment.val()); //首付金额
 		var b = Number(ticketPrice.val()); // 车辆开票价；
-
-		if(a >= b) { //首付金额大于等于 车辆开票价
+		if(a >= b || a < 0) { //首付金额大于等于 车辆开票价
 			errLay('首付金额不能大于等于车辆开票价');
 			firstRatio.val(''); //清空首付比例
 			firstPayment.val(''); //清空首付金额
-			carFinancing.val('') //清空车辆融资额
+//			carFinancing.val('') //清空车辆融资额
 			TotalLoan.text(''); //清空贷款总额
 			payment.text(''); //清空预估月供
 		}
 	});
 
+
 	//	=============首付比例不能大于100
-	firstRatio.bind('input propertychange', function() {
+	firstRatio.change(function() {
 		var a = Number(firstRatio.val()); //首付比例
-		if(a > 100) {
+		if(a > 100 || a <= 0) {
 			errLay('首付比例错误');
 			firstRatio.val(''); //清空首付比例
 			firstPayment.val(''); //清空首付金额
-			carFinancing.val('') //清空车辆融资额
+//			carFinancing.val('') //清空车辆融资额
 			TotalLoan.text(''); //清空贷款总额
 			payment.text(''); //清空预估月供
 		}
@@ -192,7 +201,8 @@ $(function() {
 			errLay('请填写预估月供');
 			return false;
 		}
-
+		
+		listJson.spCity = $('#city').val();//上牌城市
 		listJson.vehicleBrand = $('#Vehicle').val(); //车辆品牌
 		listJson.carSeries = $('#audi').val(); //车系
 		listJson.carModels = $('#type').val(); //车型
@@ -221,7 +231,7 @@ $(function() {
 
 	//	=======回显======
 	function getList() {
-		let data = {
+		var data = {
 			applyId: importId
 		}
 		$.ajax({
@@ -243,14 +253,25 @@ $(function() {
 					listJson = data.data;
 
 					content(listJson.smProductApplycontent); ////显示和必填验证
-	
+					
+					if(listJson.spCity){   //上牌城市
+						$('#city').val(listJson.spCity)
+					}
+					
 					if(listJson.idNum){  //用户年龄
 						userAge = GetAge(listJson.idNum);
 					}
-					if(listJson.heighAge){   //年龄限制
-						goodsAge = listJson.heighAge;
+					
+					if(listJson.heighAge){   //年龄限制 上限
+						maxAge = listJson.heighAge;
 					}
-
+					
+					if(listJson.minAge){   //年龄限制 下限
+						minAge = listJson.minAge;
+					}else{
+						minAge = 18;  //如果没有，默认18岁
+					}
+					
 					if(listJson.loansType) {
 						$('#loansType').text(listJson.loansType); //贷款类型
 					}
@@ -366,7 +387,7 @@ $(function() {
 
 					if(listJson.accountMethod == 0) {
 						ruleOne();
-						iptDislable.removeClass("must"); // 规则一加绒项不必填
+						iptDislable.removeClass("must"); // 规则一加融项不必填
 						console.log('规则一');
 					} else if(listJson.accountMethod == 1) {
 						console.log('规则二')
@@ -441,7 +462,7 @@ $(function() {
 
 	//====================获取汽车品牌=============
 	function getCar() {
-		let data = {
+		var data = {
 			id: importId
 		}
 		$.ajax({
@@ -676,7 +697,6 @@ $(function() {
 	$(document).on('click', '.typeSelect .mylabel', function() {
 		$(this).addClass('active').siblings('.mylabel').removeClass('active');
 		var myVal = $(this).find('p').text();
-		getCarModel(myVal);
 		$('#type').val(myVal);
 		$('#mySelect').remove();
 		$('body').removeClass('modal-open');
@@ -688,8 +708,16 @@ $(function() {
 			window.location.href = "basicMsg.html?applyId=" + importId;
 		} else {
 			for(var i = 0; i < mycontent.smProductApplycontents.length; i++) {
+				if(mycontent.smProductApplycontents[i].label == "spCity") { //上牌城市
+					if(mycontent.smProductApplycontents[i].isShow == 1) {
+						$('#city').parents(".weui-cell").removeClass("hide");
+						if(mycontent.smProductApplycontents[i].isRequire == 1) {
+							$('#city').addClass("must");
+						}
+					}
 
-				if(mycontent.smProductApplycontents[i].label == "vehicle") { //车辆品牌
+				}
+				else if(mycontent.smProductApplycontents[i].label == "vehicle") { //车辆品牌
 					if(mycontent.smProductApplycontents[i].isShow == 1) {
 						$('#Vehicle').parents(".weui-cell").removeClass("hide");
 						if(mycontent.smProductApplycontents[i].isRequire == 1) {
@@ -944,13 +972,10 @@ $(function() {
 
 				if(shouldDown <= CarProportion) { // 1-首付比例  小于或等于车贷比例
 					var mytext = accMul(ticketPrice.val(), shouldDown); //车辆开票价*（1-首付比例）
-					carFinancing.val(keepTwo(mytext));
-					carFinancing.change();
-
+					carFinancing.val(keepTwo(mytext)).change();
 				} else {
 					var mytext = accMul(ticketPrice.val(), CarProportion); //车辆融资额=车辆开票价*车贷比例.
-					carFinancing.val(keepTwo(mytext));
-					carFinancing.change();
+					carFinancing.val(keepTwo(mytext)).change();
 				}
 			}
 		}
@@ -1006,31 +1031,40 @@ $(function() {
 
 	}
 
+
+//	==========规则二
 	function ruleTwo() {
 
 		function getOther() {
 			var num = 0;
-			if(!insurance.val()) {
-				insurance.val(0);
+			
+			var insuranceVal = 0;
+			var purchaseVal = 0;
+			var shipVal = 0;
+			var gpsVal = 0;
+			var otherVal = 0;
+			
+			if(insurance.val()) {
+				insuranceVal = insurance.val();
 			}
-			if(!purchase.val()) {
-				purchase.val(0);
+			if(purchase.val()) {
+				purchaseVal = purchase.val();
 			}
-			if(!ship.val()) {
-				ship.val(0);
+			if(ship.val()) {
+				shipVal = ship.val();
 			}
-			if(!gps.val()) {
-				gps.val(0);
+			if(gps.val()) {
+				gpsVal = gps.val();
 			}
-			if(!other.val()) {
-				other.val(0);
+			if(other.val()) {
+				otherVal = other.val();
 			}
-
-			var a = accAdd(insurance.val(), purchase.val());
-			var b = accAdd(a, ship.val());
-			var c = accAdd(b, gps.val());
-			var d = accAdd(c, other.val());
-
+			
+			var a = accAdd(insuranceVal, purchaseVal);
+			var b = accAdd(a, shipVal);
+			var c = accAdd(b, gpsVal);
+			var d = accAdd(c, otherVal);
+			
 			num = d;
 			return num;
 		}
@@ -1047,11 +1081,21 @@ $(function() {
 				var d = accSub(1, CarProportion) //1-车贷比例
 				var e = accSub(d, c); //1-车贷比例  - [（保费+GPS+车船税……）*加融比例/开票价]   
 				var f = accMul(e, 100);
-				firstRatio.val(keepTwo(f)); //填写首付比例		
+				firstRatio.val(keepTwo(f)).change(); //填写首付比例		
 			}
-
 		}
+		
+		//	=====================
+		ticketPrice.change(getFirstPayment);
+		TotalLoan.change(getFirstPayment);
+		iptDislable.change(getFirstPayment);
 
+		function getFirstPayment() { //已知车辆开票价，，贷款总额   //填写首付金额
+			var t = parseFloat(TotalLoan.text()); //贷款总额
+			var c = accSub(ticketPrice.val(), t);
+			firstPayment.val(keepTwo(c)).change();
+		}
+		
 		//	========================
 		ticketPrice.change(getTotalLoan);
 		iptDislable.change(getTotalLoan);
@@ -1064,17 +1108,6 @@ $(function() {
 				var d = accAdd(b, c); // 车辆开票价*车贷比例   +（保费+GPS+车船税……）*加融比例
 				countTotalLoan(d);
 			}
-		}
-
-		//	=====================
-		ticketPrice.change(getFirstPayment);
-		TotalLoan.change(getFirstPayment);
-		iptDislable.change(getFirstPayment);
-
-		function getFirstPayment() { //已知车辆开票价，，贷款总额   //填写首付金额
-			var t = parseFloat(TotalLoan.text()); //贷款总额
-			var c = accSub(ticketPrice.val(), t);
-			firstPayment.val(keepTwo(c));
 		}
 
 		//	=================

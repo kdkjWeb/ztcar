@@ -24,8 +24,8 @@ $(function() {
 					num--;
 					var myHtml = '<div class="contList">'+
 						'<div class="Opinion">节点'+num+': '+listJson[i].nodeName+'</div>'+
-						'<div class="listOne">处理人: '+listJson[i].auditUser+'</div>'+
-						'<div class="listOne">处理结果: '+listJson[i].auditResult+'</div>';
+						'<div class="Opinion">处理人: '+listJson[i].auditUser+'</div>'+
+						'<div class="Opinion">处理结果: '+listJson[i].auditResult+'</div>';
 						
 						if(listJson[i].auditTime){
 							myHtml+='<div class="Opinion">处理时间: '+listJson[i].auditTime+'</div>';
@@ -34,9 +34,19 @@ $(function() {
 						}
 						
 						if(listJson[i].auditRemark){
-							myHtml+='<div class="Opinion">处理意见: '+listJson[i].auditRemark+'</div>';
+							if(listJson[i].nodeName.indexOf('提交') > -1){
+								myHtml+='<div class="Opinion">备注: '+listJson[i].auditRemark+'</div>';
+							}else{
+								myHtml+='<div class="Opinion">处理意见: '+listJson[i].auditRemark+'</div>';
+							}
+							
 						}else{
-							myHtml+='<div class="Opinion">处理意见: 无</div>';
+							if(listJson[i].nodeName.indexOf('提交') > -1){
+								myHtml+='<div class="Opinion">备注: 无</div>';
+							}else{
+								myHtml+='<div class="Opinion">处理意见: 无</div>';
+							}
+							
 						}
 						
 					myHtml+='</div>';			

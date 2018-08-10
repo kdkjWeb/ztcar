@@ -119,13 +119,13 @@
             <div class="weui-cell hide">
                 <div class="weui-cell__hd"><label class="weui-label">驾驶证号码：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input carSur" type="number" id="drivingNumber" oninput="if(value.length>18)value=value.slice(0,18)" placeholder="请输入驾驶证号码">
+                    <input class="weui-input carSur" type="url" id="drivingNumber" oninput="if(value.length>18)value=value.slice(0,18)" placeholder="请输入驾驶证号码">
                 </div>
             </div>
             <div class="weui-cell hide">
                 <div class="weui-cell__hd"><label class="weui-label">驾驶证档案号：</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input carSur" type="number" id="drivingRecordNumber" oninput="if(value.length>12)value=value.slice(0,12)" placeholder="请输入驾驶证档案号">
+                    <input class="weui-input carSur" type="url" id="drivingRecordNumber" oninput="if(value.length>12)value=value.slice(0,12)" placeholder="请输入驾驶证档案号">
                 </div>
             </div>
             <div class="weui-cell hide">
@@ -149,7 +149,7 @@
             </div>
             <div class="weui-cell hide" id="hasCar">
                 <div class="weui-cell__hd"><label class="weui-label">现有车辆品牌：</label></div>
-                <div class="weui-cell__bd">
+                <div class="weui-cell__bd" id="addselectOne">
                     <input class="weui-input" type="text" id="Vehicle" placeholder="请选择现有车辆品牌">
                 </div>
                 <i class="iconfont icon-xiangxia1"></i>
@@ -177,22 +177,23 @@
 			<div class="tit">请上传驾驶证正反面照片</div>
 			<div class="positiveCar">
 				<div class="upId image-item">
-					<input class="file userfile Positive" type="file" id="carA"/>
-					<span>上传驾驶证正面照片</span>
+					<input class="file userfile Positive" type="file" id="carA" accept="image/*"/>
+					<span>上传驾驶证照片</span>
 				</div>
 			</div>
-			<div class="positiveCar">
+			<!--<div class="positiveCar">
 				<div class="downId image-item">
 					<input class="file userfile" type="file" id="carB"/>
-					<span>上传驾驶证反面照片</span>
+					<span>上传驾驶证副页照片</span>
 				</div>
-			</div>
-			<div class="next">返回</div>
+			</div>-->
+			<div class="next">确定</div>
 		</div>
 		<!--=用户身份证====-->
     
     
 </body>
 <script src="../../js/common/jquery-weui.min.js"></script>
+<script src="../../js/common/uPimg.js"></script>
 <script src="../../js/distributor/basicMsg.js"></script>
 </html>

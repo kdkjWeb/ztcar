@@ -70,7 +70,7 @@ $(function() {
 						
 						window.location.href = "userMenu.html"
 					} else {
-						errLay('登录失败，请稍后重试')
+						errLay(data.msg)
 					}
 				},
 				error: function(request, textStatus, errorThrown) {

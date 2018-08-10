@@ -10,8 +10,8 @@ $(function() {
 
 	//	==========转订单=====
 	$(document).on('click', '.to', function() {
-		let id = $(this).attr('attr-id');
-		let name = $(this).parents('tr').find('td').first().text();
+		var id = $(this).attr('attr-id');
+		var name = $(this).parents('tr').find('td').first().text();
 		cue("提醒", "你确定将【" + name + "】的征信结果转为订单吗？");
 		$("#yes").on("click", function() {
 			dowatting(id, 1);
@@ -20,8 +20,8 @@ $(function() {
 
 	//	=============待转====
 	$(document).on('click', '.wait', function() {
-		let id = $(this).attr('attr-id');
-		let name = $(this).parents('tr').find('td').first().text();
+		var id = $(this).attr('attr-id');
+		var name = $(this).parents('tr').find('td').first().text();
 		cue("提醒", "你确定将此结果待转？")
 		$("#yes").on("click", function() {
 			showLoading(); //显示loading	
@@ -31,7 +31,7 @@ $(function() {
 
 	//	=====查看详情==========
 	$(document).on('click', '.look', function() {
-		let id = $(this).attr('attr-id');
+		var id = $(this).attr('attr-id');
 		window.location.href = "detail.html?id=" + id;
 	});
 

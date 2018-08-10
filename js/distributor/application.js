@@ -76,8 +76,7 @@ $(function(){
                     $(".pop-box").hide()
                     errLay("已发送至经销商邮箱");
                     var setRemove = setTimeout(function() {
-						 window.location.href="myOrder.html";
-						 window.location.href="submission.html?applyId="+importId+'&dataType=0'+'&dataId='+data.nodeId;
+						window.location.href="submission.html?applyId="+importId+'&dataType=0'+'&dataId='+data.data;
 					}, 200);
                 } else{
                     errLay(data.msg);

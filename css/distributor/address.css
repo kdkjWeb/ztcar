@@ -38,7 +38,7 @@ header ul{
     border: none
 }
 .weui-label{
-    width: 3rem;
+    width: 2.5rem;
     font-size: .32rem;
     text-align: right;
     line-height: .6rem;
@@ -59,7 +59,7 @@ header ul{
 .weui-cell .icon-xiangxia1{
     position: absolute;
     top: .3rem;
-    left: 88%
+    left: 81%
 }
 .weui-cell .icon-xiangji1{
    width:.4rem;

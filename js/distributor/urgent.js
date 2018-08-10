@@ -6,7 +6,10 @@ $(function() {
 	var borrwerName; //主贷人姓名
 	var borrwerPhone; //主贷人电话
 
-	getOldValue(); //获取回显
+	
+	OrderUse(importId,function(){
+		getOldValue(); //获取回显
+	});
 
 	var relationship = ["夫妻", "父子", "父女", "母子", "母女"];
 	var relationshipOne = ["夫妻", "父子", "父女", "母子", "母女","朋友"];
@@ -32,7 +35,7 @@ $(function() {
 	
 	
 	$(".weui-btn").on("click", function() {
-		showLoading(); //显示loading	
+		
 		if(!Verification()) {   //为空的正则验证
 			hideLoading(); //隐藏load
 			return false;
@@ -75,7 +78,9 @@ $(function() {
 			hideLoading(); //隐藏load
 			return false;
 		}
-
+		
+		showLoading(); //显示loading	
+		
 		$('.urgent').each(function(index, item) {
 			var obj = {};
 			if($(this).find('.myName').val()) {
@@ -90,12 +95,11 @@ $(function() {
 			listJson.urgentContactList[index] = obj;
 		});
 		
-		
 		getSave();
 	});
 
 	function getOldValue() {
-		let data = {
+		var data = {
 			id: importId
 		}
 		$.ajax({
@@ -104,12 +108,9 @@ $(function() {
 			dataType: "json",
 			contentType: "application/json",
 			type: "post",
-			async:false,
+//			async:false,
 			xhrFields: {
 				withCredentials: true
-			},
-			beforeSend: function() {
-				showLoading(); //显示loading	
 			},
 			success: function(data) {
 				hideLoading(); //隐藏load
@@ -152,8 +153,7 @@ $(function() {
 			dataType: "json",
 			contentType: "application/json",
 			type: "post",
-			async:false,
-			traditional: false,
+//			async:false,
 			xhrFields: {
 				withCredentials: true
 			},
@@ -172,64 +172,7 @@ $(function() {
 		})
 	};
 
-	//=-=========显示。是否必填==========
-	function content(mycontent) {
-
-		for(var i = 0; i < mycontent.smProductApplycontents.length; i++) {
-			if(mycontent.smProductApplycontents[i].label == "jinjName1") { //紧急联系人1姓名
-				if(mycontent.smProductApplycontents[i].isShow == 1) {
-					$('#name1').parents(".weui-cell").removeClass("hide");
-					if(mycontent.smProductApplycontents[i].isRequire == 1) {
-						$('#name1').addClass("must");
-					}
-				}
-
-			} else if(mycontent.smProductApplycontents[i].label == "jinjRel1") { //紧急联系人1与申请人关系
-				if(mycontent.smProductApplycontents[i].isShow == 1) {
-					$('#type1').parents(".weui-cell").removeClass("hide");
-					if(mycontent.smProductApplycontents[i].isRequire == 1) {
-						$('#type1').addClass("must");
-					}
-				}
-
-			} else if(mycontent.smProductApplycontents[i].label == "jinjConWay1") { //紧急联系人1联系电话
-				if(mycontent.smProductApplycontents[i].isShow == 1) {
-					$('#tel1').parents(".weui-cell").removeClass("hide");
-					if(mycontent.smProductApplycontents[i].isRequire == 1) {
-						$('#tel1').addClass("must");
-					}
-				}
-
-			} else if(mycontent.smProductApplycontents[i].label == "jinjName2") { //紧急联系人1姓名
-				if(mycontent.smProductApplycontents[i].isShow == 1) {
-					$('#name2').parents(".weui-cell").removeClass("hide");
-					if(mycontent.smProductApplycontents[i].isRequire == 1) {
-						$('#name2').addClass("must");
-					}
-				}
-
-			} else if(mycontent.smProductApplycontents[i].label == "jinjRel2") { //紧急联系人1与申请人关系
-				if(mycontent.smProductApplycontents[i].isShow == 1) {
-					$('#type2').parents(".weui-cell").removeClass("hide");
-					if(mycontent.smProductApplycontents[i].isRequire == 1) {
-						$('#type2').addClass("must");
-					}
-				}
-
-			} else if(mycontent.smProductApplycontents[i].label == "jinjConWay2") { //紧急联系人1联系电话
-				if(mycontent.smProductApplycontents[i].isShow == 1) {
-					$('#tel2').parents(".weui-cell").removeClass("hide");
-					if(mycontent.smProductApplycontents[i].isRequire == 1) {
-						$('#tel2').addClass("must");
-					}
-				}
-
-			}
-
-		}
-	};
-	
-//	==================生成合同=============
+	//	==================生成合同=============
 	  function Create() {
         var data = {
             applyId:importId
@@ -290,5 +233,65 @@ $(function() {
 			}
         })
     }
+
+
+
+	//=-=========显示。是否必填==========
+	function content(mycontent) {
+
+		for(var i = 0; i < mycontent.smProductApplycontents.length; i++) {
+			if(mycontent.smProductApplycontents[i].label == "jinjName1") { //紧急联系人1姓名
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#name1').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#name1').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "jinjRel1") { //紧急联系人1与申请人关系
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#type1').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#type1').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "jinjConWay1") { //紧急联系人1联系电话
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#tel1').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#tel1').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "jinjName2") { //紧急联系人1姓名
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#name2').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#name2').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "jinjRel2") { //紧急联系人1与申请人关系
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#type2').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#type2').addClass("must");
+					}
+				}
+
+			} else if(mycontent.smProductApplycontents[i].label == "jinjConWay2") { //紧急联系人1联系电话
+				if(mycontent.smProductApplycontents[i].isShow == 1) {
+					$('#tel2').parents(".weui-cell").removeClass("hide");
+					if(mycontent.smProductApplycontents[i].isRequire == 1) {
+						$('#tel2').addClass("must");
+					}
+				}
+
+			}
+
+		}
+	};
+	
 
 })

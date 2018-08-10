@@ -2,7 +2,7 @@ $(function() {
 
 	var listJson = {};
 	var importId = GetRequest().id;
-	let data = {
+	var data = {
 		applyId: importId
 	};
 	$.ajax({

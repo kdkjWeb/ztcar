@@ -26,9 +26,6 @@ $(function() {
                 	}else{
                 		repay(data.data.list)
                 	}
-                   
-                    
-                   
                 }
             }
         },error: function(request, textStatus, errorThrown) {
@@ -40,7 +37,7 @@ $(function() {
 
 
 function repay(arr) {
-    for(let i = 0;i < arr.length;i++) {
+    for(var i = 0;i < arr.length;i++) {
      $("table").append(
         '<tr>'+
             '<td>'+ getDays(arr[i].repaymentMoth)+'</td>'+

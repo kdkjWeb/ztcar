@@ -5,22 +5,25 @@ $(function() {
 	var Route; //路径
 	getExsit(); //判断路径
 
-	getList(); //获取借贷人信息
+	OrderUse(importId,function(){
+		getList(); //回显
+	});
+	
 
-	$("#birth").datetimePicker({
-		times: function() {
-			return
-		}
-	});
+//	$("#birth").datetimePicker({
+//		times: function() {
+//			return
+//		}
+//	});
 
-	$("#gender").select({
-		title: "性别",
-		items: ["男", "女"]
-	});
-	$("#type").select({
-		title: "证件类型",
-		items: ["身份证"]
-	});
+//	$("#gender").select({
+//		title: "性别",
+//		items: ["男", "女"]
+//	});
+//	$("#type").select({
+//		title: "证件类型",
+//		items: ["身份证"]
+//	});
 	$("#edu").select({
 		title: "文化程度",
 		items: ["高中以下", "高中/技校/中专", "专科", "本科", "本科以上"]
@@ -72,7 +75,7 @@ $(function() {
 
 	//获取借贷人信息
 	function getList() {
-		let data = {
+		var data = {
 			id: importId
 		}
 		$.ajax({

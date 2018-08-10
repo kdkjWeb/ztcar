@@ -18,14 +18,18 @@ var timer = function() {
 }
 
 // 告诉用户身份证输入正确
-$('.IDcard .ipt').blur(function() {
-	let p = $('.IDcard .ipt').val();
-	if(!(/^[1-9]\d{5}[1-2]\d{3}[0-1]\d{1}[0-2]\d{1}\d{3}[0-9Xx]$/.test(p))) {
-
+$('#userId').change(function() {
+	var p = $('#userId').val();
+	var regex = /^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/;
+	if(!regex.test(p)) {
+		console.log('1');
+		$(".IDcard span").hide();
 	} else {
+		console.log('2')
 		$(".IDcard span").show();
 	}
 })
+
 // 上传身份证照片
 $("#IDcamera").on("click", function() {
 	$('#userIdbox').fadeIn(100);
@@ -64,7 +68,7 @@ $('#getCode').click(function() { //获取验证码
 
 		} else {
 			_that.attr("disabled", true);
-			$('#userPhone').attr("readonly","readonly");
+			$('#userPhone').attr("readonly", "readonly");
 			getcode(userPhone);
 		}
 	}
@@ -89,8 +93,8 @@ $('.mycheckbox').click(function() {
 $(document).on('change', 'input[type=file]', function() {
 	var files = Array.prototype.slice.call(this.files);
 	var _this = $(this);
+	var thisDom = $(this).attr('id')
 	files.forEach(function(file, i) {
-		//jpeg png gif    "/image/jpeg"     i对大小写不敏感
 		var fileType = /\/(?:jpeg|png|gif)/i;
 		if(!fileType.test(file.type)) {
 			alert("请选择正确的图片格式(jpeg || png || gif)");
@@ -109,8 +113,25 @@ $(document).on('change', 'input[type=file]', function() {
 		//读取成功
 		reader.onload = function() {
 			var result = this.result; //读取失败时  null   否则就是读取的结果
-			var image = new Image();
-			image.src = result;
+			var myFile = files[i];
+			var fileName = files[i].name;
+			var name = fileName.substring(0,fileName.indexOf("."));
+			
+			var img = new Image();
+			img.src = result;
+			
+			if (img.complete) {
+	                callback();
+	            } else {
+	                img.onload = callback;
+	            }
+				function callback() {
+					var data = compress(img);		
+					var inputData = upload(data, file.type);		
+					orcImg(inputData,name,thisDom);
+					img = null;
+				}
+			
 			_this.parents('.image-item').css("background-image", 'url(' + result + ')');
 		};
 		//注入图片 转换成base64
@@ -132,7 +153,8 @@ function getcode(phone) {
 			if(data.code == 0) {
 				timer();
 			}
-		},error:function(request, textStatus, errorThrown){
+		},
+		error: function(request, textStatus, errorThrown) {
 			errLay(request.responseJSON.msg)
 		}
 	});
@@ -155,19 +177,20 @@ function getImg(name, dom) {
 
 	Fdata.append(name, file);
 }
+
 function SecondTrue(userName) {
-	var text = '<div class="pop-box" id="errbox">'+
-		'<div class="mask"></div>'+
-		'<div class="box1">'+
-			'<p class="warn">提醒</p>'+
-			'<p class="wrong">'+userName+',您是否需要办理新的借款业务,</br>如果是请点击【确定】,如否请点击【登录】</p>'+
-				'<div class="btn-box">'+
-			'<a href="javascript:;" class="weui-btn weui-btn_primary" id="sure">确定</a>'+ 
-			'<a href="javascript:;" class="weui-btn weui-btn_primary" id="login">登录</a>'+  
-		'</div>'+
-		'</div>'+
+	var text = '<div class="pop-box" id="errbox">' +
+		'<div class="mask"></div>' +
+		'<div class="box1">' +
+		'<p class="warn">提醒</p>' +
+		'<p class="wrong">' + userName + ',您是否需要办理新的借款业务,</br>如果是请点击【确定】,如否请点击【登录】</p>' +
+		'<div class="btn-box">' +
+		'<a href="javascript:;" class="weui-btn weui-btn_primary" id="sure">确定</a>' +
+		'<a href="javascript:;" class="weui-btn weui-btn_primary" id="login">登录</a>' +
+		'</div>' +
+		'</div>' +
 		'</div>';
-		
+
 	$('body').append(text);
 	$('#errbox').fadeIn('500');
 }
@@ -184,7 +207,7 @@ $(document).on('click', '#sure', function() {
 })
 
 $(document).on('click', '#login', function() {
-	window.location.href='login.html';
+	window.location.href = 'login.html';
 })
 
 function suerAjax() {
@@ -193,11 +216,8 @@ function suerAjax() {
 	var carProperty = JSON.parse(localStorage.getItem('carProperty')); //新车
 
 	var dealersId = JSON.parse(localStorage.getItem('dealersId')); //经销商id
-	
-//	var productAge = JSON.parse(localStorage.getItem('age')); //经销商年龄
 
 	var loanId = JSON.parse(localStorage.getItem('loanId'));
-//	var loanMonth = JSON.parse(localStorage.getItem('loanMonth'));
 	var loanType = JSON.parse(localStorage.getItem('loanType'));
 
 	var userName = $('#userName').val(); //用户姓名
@@ -221,18 +241,8 @@ function suerAjax() {
 	var myisMarryed = 0; //是否有配偶欧
 	var myhaveLessee = 0; //是否有承租人
 	var myhaveGuarantee = 0; //是否有担保人
-	
-//	var userAge = GetAge(userId); //借款人当前年纪
-//	var age = Number(localStorage.getItem('age')); // 年龄限制
-//	var month = localStorage.getItem('month');  //期数
-//	var year = accDiv(month,12);    //贷款期数折合年数 
-//	var present =  accAdd(userAge,year);  //借款人当前年纪+贷款期数折合年数
-	
-//	if(present>age){
-//		errLay('你的年龄已超过产品限制贷款期数,请返回重试');
-//		return false;
-//	}
-	
+
+
 	if(isName(userName, '借款人') == false) { //判断用户姓名
 		return false;
 	} else if(isId(userId, '借款人') == false) { //判断用户身份证
@@ -244,7 +254,7 @@ function suerAjax() {
 	} else if(isCode(userCode) == false) { //验证码
 		return false;
 	}
-	
+
 	if($('#marry').attr('box') == 'true') { //如果勾选配偶
 		myisMarryed = 1; //是否有配偶欧
 		if(isName(marryName, '配偶') == false) { //配偶姓名
@@ -255,7 +265,7 @@ function suerAjax() {
 			return false;
 		}
 	}
-	
+
 	if($('#tenant').attr('box') == 'true') { //如果勾选承租人
 		myhaveLessee = 1; //是否有承租人
 		if(isName(tenantName, '承租人') == false) { //承租人姓名
@@ -266,7 +276,7 @@ function suerAjax() {
 			return false;
 		}
 	}
-	
+
 	if($('#guarantee').attr('box') == 'true') { //如果勾选担保人
 		myhaveGuarantee = 1; //是否有担保人
 		if(isName(guaranteeName, '担保人') == false) { //担保人姓名
@@ -279,20 +289,18 @@ function suerAjax() {
 	}
 
 	if($('#agreen').attr('box') != 'true') {
-		errAlert('提醒', '请阅读征信授权书');
+		errLay('请阅读征信授权书');
+		return false;
 	} else {
-		showCredit();//显示loading
+		showCredit(); //显示loading
+
 		
-		getImg('identa', 'a'); //用户身份证a
-		getImg('identb', 'b'); //用户身份证b
 		//getImg('dd','c');   //银行卡 a
 		//getImg('dd','d');   //银行卡b
+		getImg('identa', 'a'); //用户身份证a
 		getImg('spouseidenta', 'e'); // 配偶 a
-		getImg('spouseidentb', 'f'); //配偶b
 		getImg('lesseeidenta', 'g'); //承租人 a
-		getImg('lesseeidentb', 'h'); //承租人 b
 		getImg('guaranteeidenta', 'i'); //担保人 a
-		getImg('guaranteeidentb', 'j'); //担保人b
 
 		Fdata.append('isSecondTrue', isSecondTrue);
 
@@ -300,7 +308,6 @@ function suerAjax() {
 		Fdata.append('dealersId', dealersId);
 
 		Fdata.append('loanId', loanId);
-//		Fdata.append('loanMonth', loanMonth);
 		Fdata.append('loanType', loanType);
 
 		Fdata.append('name', userName);
@@ -323,12 +330,11 @@ function suerAjax() {
 		Fdata.append('guarantee', guaranteeName);
 		Fdata.append('guaranteeIdNum', guaranteeId);
 		Fdata.append('guaranteePhone', guaranteePhone);
-		
-		
+
 		$.ajax({
 			url: path + "/apply/addApply",
 			data: Fdata,
-			timeout : 600000, //超时时间设置，单位毫秒,10分钟
+			timeout: 600000, //超时时间设置，单位毫秒,10分钟
 			dataType: "json",
 			contentType: "application/json",
 			type: "post",
@@ -343,77 +349,95 @@ function suerAjax() {
 				} else if(data.code == 1) {
 					isSecondTrue = 1;
 					SecondTrue(userName);
-					hideLoading();  //隐藏load
+					hideLoading(); //隐藏load
 				} else {
-					errLay(data.msg);
-					hideLoading();//隐藏load
+					if(data.msg.indexOf('refID') > -1) {
+						var myMsg = data.msg.substring(0, data.msg.indexOf('refID') - 2);
+						errLay(myMsg);
+					} else {
+						errLay(data.msg);
+					}
+					hideLoading(); //隐藏load
 				}
-			},error:function(request, textStatus, errorThrown){
-				errLay(request.responseJSON.msg);
-				hideLoading();  //隐藏load	
+			},
+			error: function(request, textStatus, errorThrown) {
+				if(request.responseJSON.msg.indexOf('refID') > -1) {
+					var myMsg = request.responseJSON.msg.substring(0,request.responseJSON.msg.indexOf('refID') - 2);
+					errLay(myMsg);
+				} else {
+					errLay(request.responseJSON.msg);
+				}
+				hideLoading(); //隐藏load	
 			}
 		});
 	}
 }
 
-
-$('.Positive').change(function(){  //身份证ocr接口
-	var _this = $(this);
-	var files = Array.prototype.slice.call(this.files);
-	var mydata = new FormData();
-	mydata.append('file',files[0]);
-	mydata.append('ocrCode',0);
+function orcImg(myFile,name,thisDom) { //身份证ocr接口
+	var Fdata = new FormData();
+	Fdata.append('file', myFile,name+'.jpg');
+	if(thisDom != 'c'){
+		Fdata.append('ocrCode', 0);
+	}else{
+		Fdata.append('ocrCode', 3);
+	}
 	
 	$.ajax({
-			url: path + "/file/addFileUseOCR",
-			data: mydata,
-			dataType: "json",
-			contentType: "application/json",
-			type: "post",
-			processData: false,
-			contentType: false,
-			beforeSend: function() {
-				showLoading();//显示loading	
-			},
-			success: function(data) {
-				hideLoading();  //隐藏load	
-				if(data.code == 0) {
-					if(_this.attr('id') == 'a'){  //主借贷人
-						if(data.data.code){
-							$('#userId').val(data.data.code)
-						}
-						if(data.data.name){
-							$('#userName').val(data.data.name)
-						}
-					}else if(_this.attr('id') == 'e'){   //配偶
-						if(data.data.code){
-							$('#marryId').val(data.data.code)
-						}
-						if(data.data.name){
-							$('#marryName').val(data.data.name)
-						}
-					}else if(_this.attr('id') == 'g'){   //承租人
-						if(data.data.code){
-							$('#tenantId').val(data.data.code)
-						}
-						if(data.data.name){
-							$('#tenantName').val(data.data.name)
-						}
-					}else if(_this.attr('id') == 'i'){   //担保人
-						if(data.data.code){
-							$('#guaranteeId').val(data.data.code)
-						}
-						if(data.data.name){
-							$('#guaranteeName').val(data.data.name)
-						}
+		url: path + "/file/addFileUseOCR",
+		data: Fdata,
+		dataType: "json",
+		contentType: "application/json",
+		type: "post",
+		processData: false,
+		contentType: false,
+		beforeSend: function() {
+			showLoading(); //显示loading	
+		},
+		success: function(data) {
+			hideLoading(); //隐藏load	
+			if(data.code == 0) {
+				if(thisDom == 'a') { //主借贷人
+					if(data.data.code) {
+						$('#userId').val(data.data.code)
 					}
-					
-				}else{
-					errLay(data.msg)
+					if(data.data.name) {
+						$('#userName').val(data.data.name)
+					}
+				}else if(thisDom == 'c'){
+					var num = data.data.bank_card_number.replace(/\s+/g,"");
+					$('#userBank').val(num);
 				}
-			},error:function(request, textStatus, errorThrown){
-				hideLoading();  //隐藏load	
-				errLay(request.responseJSON.msg)
+				else if(thisDom == 'e') { //配偶
+					if(data.data.code) {
+						$('#marryId').val(data.data.code)
+					}
+					if(data.data.name) {
+						$('#marryName').val(data.data.name)
+					}
+				} else if(thisDom == 'g') { //承租人
+					if(data.data.code) {
+						$('#tenantId').val(data.data.code)
+					}
+					if(data.data.name) {
+						$('#tenantName').val(data.data.name)
+					}
+				} else if(thisDom == 'i') { //担保人
+					if(data.data.code) {
+						$('#guaranteeId').val(data.data.code)
+					}
+					if(data.data.name) {
+						$('#guaranteeName').val(data.data.name)
+					}
+				}
+				$('.fixBox').fadeOut(100);
+			} else {
+				errLay(data.msg);
+				$('.fixBox').fadeOut(100);
 			}
-		});
-})
+		},
+		error: function(request, textStatus, errorThrown) {
+			hideLoading(); //隐藏load	
+			errLay(request.responseJSON.msg)
+		}
+	});
+}

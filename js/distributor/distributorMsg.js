@@ -4,19 +4,22 @@ $(function() {
 	var Route; //路径
 	getExsit(); //判断下一个页面
 
-	getList();
+	OrderUse(importId,function(){
+		getList();
+	});
 
 	$("#next").on("click", function() {
-		let disName = $("#disName").val()
-		let disPhone = $("#disPhone").val()
+		var disName = $("#disName").val()
+		var disPhone = $("#disPhone").val()
 
 		if(!Verification()) {
 			return false;
 		}
-		
-		if(!isPhone(disPhone,'销售顾问')){
+
+		if(!PhoneVerification()) {  //正确的手机号正则验证
+			hideLoading(); //隐藏load
 			return false;
-		}
+		};
 		
 		listJson.applyId = importId;
 		listJson.salesConsultant = disName;
@@ -26,7 +29,7 @@ $(function() {
 	})
 
 	function getList() {
-		let data = {
+		var data = {
 			id: importId
 		}
 		$.ajax({
@@ -35,14 +38,15 @@ $(function() {
 			dataType: "json",
 			contentType: "application/json",
 			type: "post",
+			async:false,
 			xhrFields: {
 				withCredentials: true
 			},
 			beforeSend: function() {
-				showLoading(); //显示loading	
+//				showLoading(); //显示loading	
 			},
 			success: function(data) {
-				hideLoading(); //隐藏load
+				
 				if(data.code == 0) {
 					if(data.data) {
 						listJson = data.data;
@@ -64,6 +68,8 @@ $(function() {
 				} else {
 					errLay(data.msg);
 				}
+				
+				hideLoading(); //隐藏load
 			},
 			error: function(request, textStatus, errorThrown) {
 				hideLoading(); //隐藏load	

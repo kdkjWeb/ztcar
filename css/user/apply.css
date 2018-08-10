@@ -23,14 +23,14 @@ body{
 .IDcard span{
     display: inline;
     vertical-align: middle;
-    color: greenyellow;
-    font-size: .4rem;
+    color: #09BB07;
+    font-size: .2rem;
     display: none
 }
 .IDcard .iconfont{
-    font-size: .5rem;
+    font-size: .4rem;
     color: #5078f4;
-    margin:-.05rem 0 .3rem;
+    /*margin:-.05rem 0 .3rem;*/
 }
 /* 银行卡 */
 .card{
@@ -42,9 +42,9 @@ body{
     margin-left: .4rem
 }
 .icon-xiangji1{
-    font-size: .5rem;
+    font-size: .4rem;
     color: #5078f4;
-    margin:-.05rem 0 .3rem;
+    /*margin:-.05rem 0 .3rem;*/
     float: right
 }
 /* 手机号 */

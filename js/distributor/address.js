@@ -6,7 +6,9 @@ $(function() {
 	var Route; //路径
 	getExsit(); //判断路劲
 
-	getList(); //回显
+	OrderUse(importId,function(){
+		getList();
+	});
 
 	$("#nature").select({
 		title: "现住房性质",

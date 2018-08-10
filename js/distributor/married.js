@@ -5,18 +5,20 @@ $(function() {
 	var Route; //路径
 	getExsit(); //判断路劲
 
-	getOldList(); // 回显
-
-	$("#date").datetimePicker({
-		times: function() {
-			return
-		}
+	
+	OrderUse(importId,function(){
+		getOldList(); // 回显
 	});
+//	$("#date").datetimePicker({
+//		times: function() {
+//			return
+//		}
+//	});
 
-	$("#type").select({
-		title: "证件类型",
-		items: ["身份证"]
-	})
+//	$("#type").select({
+//		title: "证件类型",
+//		items: ["身份证"]
+//	})
 	$(".weui-btn").on("click", function() {
 		if(!Verification()) {
 			return false;
@@ -43,7 +45,7 @@ $(function() {
 	})
 
 	function getOldList() {
-		let data = {
+		var data = {
 			id: importId
 		}
 		$.ajax({
@@ -136,86 +138,86 @@ $(function() {
 	}
 
 	
-	$("#IDcamera").on("click", function() {
-		$('#userIdbox').fadeIn(100)
-	})
-	$('.next').on('click', function() {
-		$(this).parent('.fixBox').fadeOut(100)
-	})
-
-	//  图片上传回显
-	$(document).on('change', 'input[type=file]', function() {
-		var files = Array.prototype.slice.call(this.files);
-		var _this = $(this);
-		files.forEach(function(file, i) {
-			//jpeg png gif    "/image/jpeg"     i对大小写不敏感
-			var fileType = /\/(?:jpeg|png|gif)/i;
-			if(!fileType.test(file.type)) {
-				alert("请选择正确的图片格式(jpeg || png || gif)");
-				return;
-			}
-			//HTML 5.1  新增file接口
-			var reader = new FileReader();
-			//读取失败
-			reader.onerror = function() {
-				alert("读取失败");
-			};
-			//读取中断
-			reader.onabort = function() {
-				alert("网络异常!");
-			};
-			//读取成功
-			reader.onload = function() {
-				var result = this.result; //读取失败时  null   否则就是读取的结果
-				var image = new Image();
-				image.src = result;
-
-				_this.parents('.image-item').css("background-image", 'url(' + result + ')');
-
-			};
-			//注入图片 转换成base64
-			reader.readAsDataURL(file);
-		})
-
-	})
-
-	$('#a').change(function() {
-		var _this = $(this);
-		var files = Array.prototype.slice.call(this.files);
-		var mydata = new FormData();
-		mydata.append('file', files[0]);
-		mydata.append('ocrCode', 0);
-
-		$.ajax({
-			url: path + "/file/addFileUseOCR",
-			data: mydata,
-			dataType: "json",
-			contentType: "application/json",
-			type: "post",
-			processData: false,
-			contentType: false,
-			beforeSend: function() {
-				showLoading(); //显示loading	
-			},
-			success: function(data) {
-				hideLoading(); //隐藏load
-				if(data.code == 0) {
-					if(data.data.code) {
-						$('#id').val(data.data.code)
-					}
-					if(data.data.name) {
-						$('#name').val(data.data.name)
-					}
-				} else {
-					errLay(data.msg)
-				}
-			},
-			error: function(request, textStatus, errorThrown) {
-				hideLoading(); //隐藏load	
-				errLay(request.responseJSON.msg);
-			}
-		});
-	})
+//	$("#IDcamera").on("click", function() {
+//		$('#userIdbox').fadeIn(100)
+//	})
+//	$('.next').on('click', function() {
+//		$(this).parent('.fixBox').fadeOut(100)
+//	})
+//
+//	//  图片上传回显
+//	$(document).on('change', 'input[type=file]', function() {
+//		var files = Array.prototype.slice.call(this.files);
+//		var _this = $(this);
+//		files.forEach(function(file, i) {
+//			//jpeg png gif    "/image/jpeg"     i对大小写不敏感
+//			var fileType = /\/(?:jpeg|png|gif)/i;
+//			if(!fileType.test(file.type)) {
+//				alert("请选择正确的图片格式(jpeg || png || gif)");
+//				return;
+//			}
+//			//HTML 5.1  新增file接口
+//			var reader = new FileReader();
+//			//读取失败
+//			reader.onerror = function() {
+//				alert("读取失败");
+//			};
+//			//读取中断
+//			reader.onabort = function() {
+//				alert("网络异常!");
+//			};
+//			//读取成功
+//			reader.onload = function() {
+//				var result = this.result; //读取失败时  null   否则就是读取的结果
+//				var image = new Image();
+//				image.src = result;
+//
+//				_this.parents('.image-item').css("background-image", 'url(' + result + ')');
+//
+//			};
+//			//注入图片 转换成base64
+//			reader.readAsDataURL(file);
+//		})
+//
+//	})
+//
+//	$('#a').change(function() {
+//		var _this = $(this);
+//		var files = Array.prototype.slice.call(this.files);
+//		var mydata = new FormData();
+//		mydata.append('file', files[0]);
+//		mydata.append('ocrCode', 0);
+//
+//		$.ajax({
+//			url: path + "/file/addFileUseOCR",
+//			data: mydata,
+//			dataType: "json",
+//			contentType: "application/json",
+//			type: "post",
+//			processData: false,
+//			contentType: false,
+//			beforeSend: function() {
+//				showLoading(); //显示loading	
+//			},
+//			success: function(data) {
+//				hideLoading(); //隐藏load
+//				if(data.code == 0) {
+//					if(data.data.code) {
+//						$('#id').val(data.data.code)
+//					}
+//					if(data.data.name) {
+//						$('#name').val(data.data.name)
+//					}
+//				} else {
+//					errLay(data.msg)
+//				}
+//			},
+//			error: function(request, textStatus, errorThrown) {
+//				hideLoading(); //隐藏load	
+//				errLay(request.responseJSON.msg);
+//			}
+//		});
+//	})
 
 	//=-=========显示。是否必填==========
 	function content(mycontent) {

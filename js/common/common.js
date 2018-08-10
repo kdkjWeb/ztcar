@@ -1,8 +1,8 @@
 var path = "https://rydit.rydit.com.cn/zzbjr"; //外网
 
-//var path = "http://192.168.1.10:8080"; //唐彬
+//var path = "http://192.168.0.137:8080"; //唐彬
 
-//var path = "http://192.168.1.26:8080"; //张韩
+//var path = "http://192.168.0.194:8080"; //张韩
 
 (function(doc, win) {
 	var docEl = doc.documentElement;
@@ -145,29 +145,13 @@ function getTime(times) {
 //=====正则验证===========
 function truePhone(phone) { //手机号
 	var regex = /^1[3|4|5|6|8|7|9][0-9]\d{4,8}$/;
-//	var zuoji = /0\d{2}-\d{7,8}/;
-//	if(phone.length == 11) {
-//		if(!regex.test(phone)){
-//			errLay('请填写正确的手机号');
-//			return false;
-//		}else{
-//			return true;
-//		}
-//	} else if(phone.length == 12){
-//		if(!zuoji.test(phone)){
-//			errLay('请填写正确的座机号');
-//			return false;
-//		}else{
-//			return true;
-//		}
-//	}else{
-//		errLay('请填写完整的手机号');
-//		return false;
-//	}
-	if(!regex.test(phone)){
+	if(phone.length != 11){
+		errLay('请填写完整的手机号');
+		return false;
+	}else if(!regex.test(phone)) {
 		errLay('请填写正确的手机号');
 		return false;
-	}else{
+	} else {
 		return true;
 	}
 }
@@ -177,7 +161,10 @@ function isPhone(phone, msg) { //手机号
 	if(phone == '') {
 		errLay('手机号不能为空');
 		return false;
-	} else if(!regex.test(phone)) {
+	}else if(phone.length != 11){
+		errLay('请填写完整' + msg + '的手机号');
+		return false;
+	}else if(!regex.test(phone)) {
 		errLay('请填写' + msg + '正确的手机号');
 		return false;
 	} else {
@@ -286,7 +273,6 @@ function getBirthday(idCard) {
 		}
 		birthday = birthday.replace(/(.{4})(.{2})/, "$1-$2-");
 	}
-
 	return birthday;
 }
 
@@ -435,7 +421,7 @@ function showCredit() {
 function hideLoading() {
 	$('#loading').fadeOut('800');
 	var setRemove = setTimeout(function() {
-		$('#loading').remove()
+		$('#loading').remove();
 	}, 100);
 }
 //============Loading==============
@@ -501,14 +487,13 @@ function quickSort(array, left, right) {　　
 }
 //=============快速排序===========
 
-
 //=================为空验证============
 function Verification() {
 	var flag = true;
 	$(".must").each(function() {
 		if($(this).val() == '') {
-			let msg = $(this).parents(".weui-cell").find("label").text();
-			let str = msg.substr(0, msg.length - 1);
+			var msg = $(this).parents(".weui-cell").find("label").text();
+			var str = msg.substr(0, msg.length - 1);
 			errLay(str + '不能为空');
 			flag = false;
 			return false;
@@ -530,3 +515,40 @@ function PhoneVerification() { //手机号
 	})
 	return flag;
 }
+
+//===================
+function OrderUse(applyId,callback) {
+	callback();
+//	showLoading(); //显示loading	
+//	var data = {
+//		applyId: applyId
+//	}
+//	$.ajax({
+//		url: path + "/apply/ajustOrderUse",
+//		data: data,
+//		dataType: "json",
+//		contentType: "application/json",
+//		type: "get",
+//		xhrFields: {
+//			withCredentials: true
+//		},
+//		success: function(data) {
+//			if(data.code == 0) {
+//				callback();
+//			} else {
+//				errLay(data.msg);
+//				var goOrder = setTimeout(function() {
+//					window.location.href = "myOrder.html";
+//				}, 1500);
+//			}
+//		},
+//		error: function(request, textStatus, errorThrown) {
+//			hideLoading(); //隐藏load	
+//			errLay(request.responseJSON.msg);
+//		}
+//	})
+
+}
+
+
+

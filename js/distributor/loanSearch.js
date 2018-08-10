@@ -1,17 +1,15 @@
 $(function() {
     var listJson = [];
     var importId = GetRequest().id;
-    console.log(importId)
-    var data = {
-        id: importId
-    }
-    console.log(data)
+//  var data = {
+//      id: importId
+//  }
     $.ajax({
-        url: path + "/SmRepaymentRecord/selectListByRepaymentRecordVo",
-        data: JSON.stringify(data),
+        url: path + "/smBorrower/getLoadRecord?applyId="+importId,
+//      data: JSON.stringify(data),
         dataType: "json",
         contentType: "application/json",
-        type: "post",
+        type: "get",
         xhrFields: {
 			withCredentials: true
 		},
@@ -22,12 +20,11 @@ $(function() {
             hideLoading(); //隐藏load	
             if(data.code == 0) {
                 if(data.data) {
-                	if(data.data.list.length == 0){
+                	if(data.data.length == 0){
                 		$('.content').append('<div style="text-align: center;">暂无记录</div>')
                 	}else{
-                	 	loan(data.data.list)	
+                	 	loan(data.data);
                 	}
-                   
                 }
             }
         },error: function(request, textStatus, errorThrown) {
@@ -39,15 +36,16 @@ $(function() {
 
 
 function loan(arr) {
-    for(let i = 0;i < arr.length;i++) {
-     $("table").append(
-        '<tr>'+
-            '<td>'+ arr[i].borrowerName +'</td>'+
-            '<td>'+ getDays(arr[i].loanMoth) +'</td>'+
-            '<td>'+ arr[i].loanProduct +'</td>'+
-            '<td>'+ arr[i].totalLoan +'</td>'+
-            '<td>'+ arr[i].deadlinesId +'</td>'+
-        '</tr>')
+    for(var i = 0;i < arr.length;i++) {
+     $(".content").append(
+        '<div class="list">'+
+            '<div>姓名:'+ arr[i].borrowerName +'</div>'+
+            '<div>时间:'+ arr[i].orderCreateTime +'</div>'+
+            '<div>产品名称:'+ arr[i].productName +'</div>'+
+            '<div>总金额:'+ arr[i].totalLoan +'</div>'+
+            '<div>期数: '+ arr[i].loansMonth +'</div>'+
+            '</div>'
+     	)
      }
     
  }

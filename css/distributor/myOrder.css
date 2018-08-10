@@ -75,7 +75,7 @@ label, span{
     float: left;
 }
 
-.choose{
+.choose,.contract{
     background-color: #3b6bf4;
     float: left;
 }
@@ -95,7 +95,7 @@ label, span{
 	float: right;
 }
 
-.choose,.dislableDiv,.cancel,.middle,.errCan{
+.choose,.dislableDiv,.cancel,.middle,.errCan,.contract{
 	width: 2.2rem;
     font-size: .3rem;
     color: white;

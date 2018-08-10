@@ -1,0 +1,43 @@
+body,html{
+	background-color: #efeff4;
+}
+.basic-msg {
+    height: .7rem;
+    /*border-bottom: 1px dashed #ccc;*/	
+    padding: 0 .4rem;
+    display: flex;
+  	align-items: center;
+}
+.basic-msg div{
+	flex: 0 0 50%;
+}
+input[type=checkbox]{
+	width: .3rem;
+	height: .3rem;
+	margin-right: .3rem;
+}
+.contract{
+	color: #007AFF;
+}
+
+.suer{
+	margin: 0 auto;
+	background-color: #3b6af4;
+    height: .7rem;
+    line-height: .7rem;
+    border-radius: .7rem;
+    width: 2rem;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: .3rem;
+    margin-bottom: .2rem;
+}
+.boder{
+    /*border-bottom: 1px dashed #ccc;*/	
+     padding: 0 .4rem;
+}
+.list{
+	border-bottom: 1px dashed #ccc;
+	margin-bottom: .2rem;
+	background-color: #FFFFFF;
+}

@@ -53,6 +53,6 @@ $(function() {
 				errLay(request.responseJSON.msg)
 			}
 		});
-	})
+	})	
 	
 })

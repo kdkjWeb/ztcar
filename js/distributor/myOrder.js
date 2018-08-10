@@ -2,7 +2,7 @@ $(function() {
 	var Route;
 
 	var name = ''; //搜索姓名
-	var mytype = 0; //
+	var mytype = 0; //搜索种类
 
 	//	0 进行中
 	//	1完成
@@ -11,8 +11,11 @@ $(function() {
 	getList();
 
 	$(document).on('click', '.cancel', function() { //取消订单
-		var id = $(this).parents('.list').attr('dataId')
-		myAlert(id);
+		var id = $(this).parents('.list').attr('dataId');
+		var applyid = $(this).parents('.list').attr('applyid');
+		OrderUse(applyid, function() {
+			myAlert(id);
+		});
 	})
 
 	$(document).on('click', '#no', function() { //取消订单弹框的取消按钮
@@ -144,21 +147,21 @@ $(function() {
 					'<div class="cancel">订单取消</div>';
 			} else if(arr.flowType == "3") { //提交初审资料
 				text += '<div class="choose submission" type="0">' + arr.nodeName + '</div>' +
-					'<div class="middle distributorMsg">贷款信息修改</div>' +
+					'<div class="middle distributorMsg distributorMsgAlert">贷款信息修改</div>' +
 					'<div class="cancel">订单取消</div>';
 			} else if(arr.flowType == "4") { //初审资料审核中
 				text += '<div class="errCan">初审资料审核中</div>';
 			} else if(arr.flowType == 5) { //录入车辆信息
 				text += '<div class="errCan">车辆信息录入</div>';
-			} else if(arr.flowType == 6) { //代签合同
+			} else if(arr.flowType == 6) { //待签合同
 				text += '<div class="errCan">待签合同</div>';
 			} else if(arr.flowType == "7") { //提交放款资料
 				text += '<div class="choose credit" type="1">' + arr.nodeName + '</div>' +
 					'<div class="middle">修改资料</div>' +
 					'<div class="cancel">订单取消</div>' +
 					'<div class="tit">' +
-					'<div class="distributorMsg">修改贷款信息</div>' +
-					'<div class="submission" type="0">修改初审资料</div>' +
+					'<div class="distributorMsg distributorMsgAlert">贷款信息修改</div>' +
+					//'<div class="submission" type="0">修改初审资料</div>' +
 					'<div class="carMsg">车辆信息录入</div>' +
 					'</div>';
 			} else if(arr.flowType == "8") { //放款资料审核中
@@ -171,7 +174,11 @@ $(function() {
 				text += '<div class="errCan">放款后资料审核中</div>';
 			}
 		} else if(arr.status == -1) { //已取消
-			text += '<div class="errCan">订单已取消</div>';
+			if(arr.isBohui == 1) {
+				text += '<div class="errCan">订单终止</div>';
+			} else {
+				text += '<div class="errCan">订单已取消</div>';
+			}
 		} else if(arr.status == 1) { //已完成
 			text += '<div class="errCan">订单完成</div>';
 		}
@@ -213,26 +220,58 @@ $(function() {
 		});
 	}
 
-	//		=====================
+	//==============修改贷款信息=============
 	$(document).on('click', '.middle', function() {
 		$(this).siblings('.tit').toggle();
 	})
 
-	//==============修改贷款信息=============
 	$(document).on('click', '.distributorMsg', function() {
+		var _this = $(this);
 		var applyid = $(this).parents('.list').attr('applyid');
-		if($(this).hasClass('middle')) {
-			distributorMsgAlert(applyid); //弹框确认
-		} else {
-			getExsit(applyid);
-		}
+
+		OrderUse(applyid, function() {
+			if(_this.hasClass('distributorMsgAlert')) {
+				hideLoading(); //隐藏load
+				selectNode(applyid)
+			} else {
+				getExsit(applyid);
+			}
+		});
+
 	})
 
-	function distributorMsgAlert(id) {
+	function selectNode(applyid) {
+		$.ajax({
+			url: path + "/apply/selectNodeIdByApplyId?applyId=" + applyid,
+			dataType: "json",
+			contentType: "application/json",
+			type: "get",
+			xhrFields: {
+				withCredentials: true
+			},
+			beforeSend: function() {
+				showLoading(); //显示loading	
+			},
+			success: function(data) {
+				hideLoading(); //隐藏load	
+				if(data.data == '1') {
+					distributorMsgAlert(applyid, '如修改贷款信息,将重新进行初审'); //弹框确认
+				} else {
+					distributorMsgAlert(applyid, '确定要重新修改贷款信息么'); //弹框确认
+				}
+			},
+			error: function(request, textStatus, errorThrown) {
+				hideLoading(); //隐藏load	
+				errLay(request.responseJSON.msg);
+			}
+		});
+	}
+
+	function distributorMsgAlert(id, msg) {
 		var text = '<div class="pop-box" id="errBox">' +
 			'<div class="mask"></div>' +
 			'<div class="box1">' +
-			'<span style="margin-top: .3rem">是否要修改贷款信息</span>' +
+			'<span style="margin-top: .3rem">' + msg + '</span>' +
 			'<div class="btn-box">' +
 			'<a href="javascript:;" class="weui-btn weui-btn_primary" id="no">取消</a>' +
 			'<a href="javascript:;" class="weui-btn weui-btn_primary" id="distributorYes" dataId="' + id + '">确定</a>' +
@@ -301,7 +340,9 @@ $(function() {
 		var applyid = $(this).parents('.list').attr('applyid');
 		var nodeId = $(this).parents('.list').attr('nodeId');
 		var type = $(this).attr('type');
-		window.location.href = 'submission.html?applyId=' + applyid + '&dataType=' + type + '&dataId=' + nodeId;
+		OrderUse(applyid, function() {
+			window.location.href = 'submission.html?applyId=' + applyid + '&dataType=' + type + '&dataId=' + nodeId;
+		});
 	})
 
 	//==========提交放款资料==========
@@ -309,7 +350,10 @@ $(function() {
 		var applyid = $(this).parents('.list').attr('applyid');
 		var nodeId = $(this).parents('.list').attr('nodeId');
 		var type = $(this).attr('type');
-		window.location.href = 'credit.html?applyId=' + applyid + '&dataType=' + type + '&dataId=' + nodeId;
+		OrderUse(applyid, function() {
+			window.location.href = 'credit.html?applyId=' + applyid + '&dataType=' + type + '&dataId=' + nodeId;
+		});
+
 	})
 
 	//	====提交放款后资料=========
@@ -318,40 +362,52 @@ $(function() {
 		var nodeId = $(this).parents('.list').attr('nodeId');
 		var type = $(this).attr('type');
 
-		$.ajax({
-			url: path + "/smAuditing/validateCarInfo?applyId=" + applyid,
-			dataType: "json",
-			contentType: "application/json",
-			type: "get",
-			xhrFields: {
-				withCredentials: true
-			},
-			beforeSend: function() {
-				showLoading(); //显示loading	
-			},
-			success: function(data) {
-				hideLoading(); //隐藏load	
-				if(data.data == 0) { //如果没有填写过车辆信息，跳转到填写车辆信息
-					errLay('请先填写车辆信息');
-					var set = setTimeout(function() {
-						window.location.href = 'carMsg.html?applyId=' + applyid;
-					}, 1500)
-				} else { //如果已经填写过车辆信息，跳转到提交放款后自理
-					window.location.href = 'afterCredit.html?applyId=' + applyid + '&dataType=' + type + '&dataId=' + nodeId;
+		OrderUse(applyid, function() {
+			$.ajax({
+				url: path + "/smAuditing/validateCarInfo?applyId=" + applyid,
+				dataType: "json",
+				contentType: "application/json",
+				type: "get",
+				xhrFields: {
+					withCredentials: true
+				},
+				beforeSend: function() {
+					showLoading(); //显示loading	
+				},
+				success: function(data) {
+					hideLoading(); //隐藏load	
+					if(data.data != null && data.data == 0) { //如果没有填写过车辆信息，跳转到填写车辆信息
+						errLay('请先填写车辆信息');
+						var set = setTimeout(function() {
+							window.location.href = 'carMsg.html?applyId=' + applyid;
+						}, 1500)
+					} else { //如果已经填写过车辆信息，跳转到提交放款后自理
+						window.location.href = 'afterCredit.html?applyId=' + applyid + '&dataType=' + type + '&dataId=' + nodeId;
+					}
+				},
+				error: function(request, textStatus, errorThrown) {
+					hideLoading(); //隐藏load	
+					errLay(request.responseJSON.msg);
 				}
-			},
-			error: function(request, textStatus, errorThrown) {
-				hideLoading(); //隐藏load	
-				errLay(request.responseJSON.msg);
-			}
+			});
 		});
 
 	})
 
+	//	========contract====待签合同
+//	$(document).on('click', '.contract', function() {
+//		var applyid = $(this).parents('.list').attr('applyid');
+//		OrderUse(applyid, function() {
+//			window.location.href = 'contract.html?applyId=' + applyid;
+//		});
+//	})
+
 	//	=====车辆信息录入=========
 	$(document).on('click', '.carMsg', function() {
 		var applyid = $(this).parents('.list').attr('applyid');
-		window.location.href = 'carMsg.html?applyId=' + applyid;
+		OrderUse(applyid, function() {
+			window.location.href = 'carMsg.html?applyId=' + applyid;
+		});
 	})
 
 	//==============订单详情，流程查看
@@ -365,18 +421,103 @@ $(function() {
 		window.location.href = 'orderFlow.html?applyId=' + appId;
 	})
 
-	//=============================
-	pushHistory();
+	//================如果是返回的刷新页面
+	window.onpageshow = function(event) {　　
+		if(event.persisted) {　　　　
+			window.location.reload()　　
+		}
+	};
 
-	function pushHistory() {
-		var state = {
-			title: "title",
-			url: "#"
+	//	=============
+	var browser = {
+		versions: function() {
+			var u = navigator.userAgent,
+				app = navigator.appVersion;
+			return { //移动终端浏览器版本信息
+				trident: u.indexOf('Trident') > -1, //IE内核
+				presto: u.indexOf('Presto') > -1, //opera内核
+				webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+				gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+				mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+				ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+				android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+				iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+				iPad: u.indexOf('iPad') > -1, //是否iPad
+				webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+			};
+		}(),
+		language: (navigator.browserLanguage || navigator.language).toLowerCase()
+	};
+	var addStyleLink = function(href) {
+		var head = document.getElementsByTagName('head')[0];
+		var styleLink = document.createElement('link');
+		styleLink.setAttribute('rel', 'stylesheet');
+		styleLink.setAttribute('href', href);
+		head.appendChild(styleLink);
+	};
+
+	//=======================
+	if(browser.versions.ios) {
+		pushHistory();
+		var bool = false;
+		setTimeout(function() {
+			bool = true;
+		}, 1000);
+		window.addEventListener("popstate", function(e) {
+			if(bool) {
+				window.location.href = 'distributorMenu.html';
+			}
+			pushHistory();
+		}, false);
+		
+		function pushHistory() {
+			var state = {
+				title: "title",
+				url: "#"
+			};
+			window.history.pushState(state, "title", "#");
 		};
-		window.history.pushState(state, "title", "#");
-	};
-	window.onpopstate = function() {
-		location.href = "distributorMenu.html";
-	};
+	}
+
+	if(browser.versions.android) {;
+		! function(pkg, undefined) {
+			var STATE = 'x-back';
+			var element;
+
+			var onPopState = function(event) {
+				event.state === STATE && fire();
+			}
+
+			var record = function(state) {
+				history.pushState(state, null, location.href);
+			}
+
+			var fire = function() {
+				var event = document.createEvent('Events');
+				event.initEvent(STATE, false, false);
+				element.dispatchEvent(event);
+			}
+
+			var listen = function(listener) {
+				element.addEventListener(STATE, listener, false);
+			}
+
+			;
+			! function() {
+				element = document.createElement('span');
+				window.addEventListener('popstate', onPopState);
+				this.listen = listen;
+				this.record = record(STATE);
+				record(STATE);
+			}.call(window[pkg] = window[pkg] || {});
+
+		}('XBack');
+
+		XBack.listen(function() {
+			window.location.href = 'distributorMenu.html';
+		});
+	}
+
+	//	=====================
 
 })

@@ -1,11 +1,11 @@
 $(function() {
 	var id = GetRequest().id;
-	var applyId = GetRequest().applyId;
+	var applyId = GetRequest().applyId;  //申请过来
 
 	if(id != undefined) {
 		getResult(id, 'id');
 	} else if(applyId != undefined) {
-		getResult(applyId, 'applyId');
+		getResult(applyId, 'applyId');//申请过来
 	}
 
 })
@@ -19,7 +19,7 @@ function getResult(num, type) {
 		data = {
 			id: num
 		}
-	} else if(type == 'applyId') {
+	} else if(type == 'applyId') {   //申请过来
 		url = 'creditDetail';
 		data = {
 			applyId: num
@@ -44,7 +44,7 @@ function getResult(num, type) {
 						$('#allStatusStr').text('通过');
 						$('#allStatusStr').addClass('yes');
 					} else {
-						$('#allStatusStr').text('不通过');
+						$('#allStatusStr').text(list.allStatusStr);
 						$('#allStatusStr').addClass('no');
 					}
 				}
@@ -118,10 +118,10 @@ function user(arr) {
 	mind += '</h2>' +
 		'<div class="result">' +
 		'<div class="name">' +
-		'<p class="text">姓名&nbsp;:&nbsp; ' + arr.name + '</p>' +
+		'<p class="text">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名: ' + arr.name + '</p>' +
 		'</div>' +
 		'<div class="IDcard">' +
-		'<p class="text">身&nbsp;份&nbsp;证&nbsp;号&nbsp;:&nbsp; ' + arr.IDcard + '</p>' +
+		'<p class="text">身&nbsp;份&nbsp;证&nbsp;号:&nbsp; ' + arr.IDcard + '</p>' +
 		'</div>' +
 		'<div class="phone">' +
 		'<p class="text">手&nbsp;&nbsp;&nbsp;机&nbsp;&nbsp;&nbsp;号: ' + arr.phone + '</p>' +
@@ -153,10 +153,10 @@ function other(arr) {
 	text += '</h2>' +
 		'<div class="result1">' +
 		'<div class="name">' +
-		'<p class="text">姓名: ' + arr.name + '</p>' +
+		'<p class="text">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:' + arr.name + '</p>' +
 		'</div>' +
 		'<div class="IDcard">' +
-		'<p class="text">身&nbsp;份&nbsp;证&nbsp;号&nbsp;:' + arr.IDcard + '</p>' +
+		'<p class="text">身&nbsp;份&nbsp;证&nbsp;号:' + arr.IDcard + '</p>' +
 		'</div>' +
 		'<div class="phone">' +
 		'<p class="text">手&nbsp;&nbsp;&nbsp;机&nbsp;&nbsp;&nbsp;号: ' + arr.phone + '</p>' +

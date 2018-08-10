@@ -3,23 +3,27 @@ $(function() {
 	var listJson = {};
 	var importId = GetRequest().applyId;
 
-	getList(); //回显
-
-	$("#time3").datetimePicker({
-		times: function() {
-			return
-		}
+	
+	OrderUse(importId,function(){
+		getList(); //回显
 	});
+	
+
+//	$("#time3").datetimePicker({
+//		times: function() {
+//			return
+//		}
+//	});
 
 	// 下拉框
-	$("#gender").select({
-		title: "性别",
-		items: ["男", "女"]
-	})
-	$("#type").select({
-		title: "证件类型",
-		items: ["身份证", "临时身份证", '护照', '台胞证', "港澳台通行证"]
-	})
+//	$("#gender").select({
+//		title: "性别",
+//		items: ["男", "女"]
+//	})
+//	$("#type").select({
+//		title: "证件类型",
+//		items: ["身份证", "临时身份证", '护照', '台胞证', "港澳台通行证"]
+//	})
 	$("#edu").select({
 		title: "文化程度",
 		items: ["高中以下", "高中/技校/中专", '专科', '本科', '本科以上']
@@ -100,7 +104,7 @@ $(function() {
 	})
 
 	function getList() {
-		let data = {
+		var data = {
 			id: importId
 		}
 		$.ajax({

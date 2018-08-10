@@ -1,4 +1,11 @@
 $(function() {
+	//	=================历史返回直接回到菜单页
+	window.onpageshow = function(event) {　　
+		if(event.persisted) {　　　　
+			window.location.href = 'distributorMenu.html';
+		}
+	};
+	
 	var listJson = {};
 	var importId = GetRequest().applyId;
 
@@ -24,7 +31,7 @@ $(function() {
 	})
 
 	function getList() { //回显
-		let data = {
+		var data = {
 			id: importId
 		}
 		$.ajax({
@@ -62,6 +69,16 @@ $(function() {
 						if(listJson.viNumber) {
 							$('#Frame').val(listJson.viNumber); //车架
 						}
+						
+						if(listJson.carBrand){
+							$('#carBrand').text(listJson.carBrand); //车品牌
+						}
+						
+						if(listJson.carSer){
+							$('#carSer').text(listJson.carSer); //车系
+						}
+						
+						
 					}
 				} else {
 					errLay(data.msg);

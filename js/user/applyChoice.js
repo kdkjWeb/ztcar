@@ -1,4 +1,5 @@
 $(function() {
+	
 	$('#distributor').val('');
 	
 	var listJson; //经销商数据
@@ -6,17 +7,17 @@ $(function() {
 	//	==========
 	$("#Carloan").select({
 		title: "车贷分期",
-		items: []
+		items: ['']
 	});
 
 	$("#Carrisk").select({
 		title: "车险分期",
-		items: []
+		items: ['']
 	});
 
 	$("#Insurance").select({
 		title: "维保分期",
-		items: []
+		items: ['']
 	});
 
 //	$("#CarloanTime").select({
@@ -72,12 +73,9 @@ $(function() {
 	//=======产品前面的多选按钮点击事件============
 
 	$('.iconBox').on('click', function() {
-		$(".content_div input").select("close");
-//		$(".content_div input").unbind();
-		
 
-//		$(".content_div input").select("update",{items: ['请先选择产品']});
-		
+		$(".content_div input").select("close");
+
 		var _that = $(this);
 
 		clear(); //清空下拉框
@@ -142,34 +140,29 @@ $(function() {
 					if(arr.length == 0) {
 						arr = ["暂无产品可选"]
 					}
-
+					
+					$('#Carloan').attr('disabled','disabled');
+					$('#Carrisk').attr('disabled','disabled');
+					$('#Insurance').attr('disabled','disabled');
+					
 					if(type == '1') {
 						console.log('1')
 						$("#Carloan").select("update", {
 							items: arr
 						});
-//						$("#Carloan").select({
-//							title: "车贷分期",
-//							items: arr
-//						});
+						$('#Carloan').removeAttr('disabled');
 					} else if(type == '2') {
 						console.log('2')
 						$("#Carrisk").select("update", {
 							items: arr
 						});
-//						$("#Carrisk").select({
-//							title: "车险分期",
-//							items: arr
-//						});
+						$('#Carrisk').removeAttr('disabled');
 					} else if(type == '3') {
 						console.log('3')
 						$("#Insurance").select("update", {
 							items: arr
 						});
-//						$("#Insurance").select({
-//							title: "维保分期",
-//							items: arr
-//						});
+						$('#Insurance').removeAttr('disabled');
 					}
 				} else {
 					errLay(data.msg);
@@ -185,7 +178,7 @@ $(function() {
 
 	$("#btn1").on("click", function() {
 
-		localStorage.clear(); //清空重置localStorage
+//		localStorage.clear(); //清空重置localStorage
 
 		var carProperty = ''; //新车
 
@@ -248,7 +241,7 @@ $(function() {
 
 		localStorage.removeItem("carProperty");
 		localStorage.removeItem("dealersId");
-		localStorage.removeItem("age");
+//		localStorage.removeItem("age");
 		localStorage.removeItem("loanId");
 //		localStorage.removeItem("loanMonth");
 //		localStorage.removeItem("month");
@@ -383,6 +376,7 @@ $(function() {
 	}
 
 	function Distributor(arr) {
+		$(".content_div input").select("close");
 		$('body').addClass('modal-open');
 		$('#mySelect').remove();
 		var text = '<div id="mySelect">' +

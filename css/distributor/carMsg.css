@@ -20,7 +20,6 @@ span{
 /* 基本信息 */
 .basic-msg{
     width:6.9rem;
-    height: 3rem;
     border-bottom: 1px dashed #ccc
 }
 /* 姓名和电话 */

@@ -11,8 +11,8 @@ $(function() {
 
 	//    点击转订单
 	$(document).on('click', '.to', function() {
-		let id = $(this).attr('attr-id');
-		let name = $(this).parents('tr').find('td').first().text();
+		var id = $(this).attr('attr-id');
+		var name = $(this).parents('tr').find('td').first().text();
 		cue("提醒", "你确定将【" + name + "】的征信结果转为订单吗？")
 		$("#yes").on("click", function() {
 			showLoading(); //显示loading	
@@ -23,7 +23,7 @@ $(function() {
 
 	//	=====查看详情==========
 	$(document).on('click', '.look', function() {
-		let id = $(this).attr('attr-id');
+		var id = $(this).attr('attr-id');
 		window.location.href = "detail.html?id=" + id;
 	});
 
