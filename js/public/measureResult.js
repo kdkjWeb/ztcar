@@ -28,7 +28,7 @@ $(function(){
 				if(data.code == 0) {
 					
 					if(data.data){
-						$('#modle').text(data.data.brandName + data.data.carSeries + data.data.model)
+						$('#modle').text(data.data.brandName +' '+ data.data.carSeries +' '+ data.data.model)
 					}else{
 						$('#modle').text('此价格未查询到相关车辆信息')
 					}

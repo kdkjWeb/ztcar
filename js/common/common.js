@@ -1,6 +1,6 @@
 var path = "https://rydit.rydit.com.cn/zzbjr"; //外网
 
-//var path = "http://192.168.0.137:8080"; //唐彬
+//var path = "http://192.168.0.137:8088"; //唐彬
 
 //var path = "http://192.168.0.194:8080"; //张韩
 
@@ -23,6 +23,7 @@ var path = "https://rydit.rydit.com.cn/zzbjr"; //外网
 	win.addEventListener(resizeEvt, recalc, false);
 	doc.addEventListener('DOMContentLoaded', recalc, false);
 })(document, window);
+//========================
 
 //==========ios兼容readonly=====
 $('input[readonly]').on('focus', function() {
@@ -242,15 +243,17 @@ function isCode(code) { //短信验证码
 }
 
 function isBank(carId) { //银行卡验证
-	var regex = /^([1-9]{1})(\d{14}|\d{18})$/;
-	if(carId == '') {
-		return true;
-	} else if(!regex.test(carId)) {
-		errLay("请填写正确的银行卡");
-		return false;
-	} else {
-		return true;
-	}
+//	var regex = /^([1-9]{1})(\d{14}|\d{18})$/;
+//	if(carId == '') {
+//		return true;
+//	} else if(!regex.test(carId)) {
+//		errLay("请填写正确的银行卡");
+//		return false;
+//	} else {
+//		return true;
+//	}
+	
+	return true;
 }
 
 function isPsd(word) {

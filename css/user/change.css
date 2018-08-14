@@ -4,14 +4,14 @@
 }
 .old{
     padding-top: .5rem;
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 .new{
     padding-top: .5rem;
     box-sizing: border-box
 }
 label{
-    font-size: .3rem
+    font-size: .3rem;
 }
 input{
     width:3.5rem;
@@ -20,17 +20,18 @@ input{
     border-radius: .5rem;
     padding-left: .2rem;
     box-sizing: border-box;
-    outline: none
+    outline: none;
+    font-size: .32rem;
 }
 .phone{
     display: flex;
     justify-content: space-between;
-    margin: .5rem 0
+    margin: .5rem 0;
 }
 .code{
     display: flex;
     justify-content: space-between;
-    margin: .5rem 0
+    margin: .5rem 0;
 }
 /* 原手机号验证 */
 .test-old{
@@ -65,7 +66,7 @@ input{
     text-align: center;
     border-radius: .5rem;
     color: #fff;
-    background-color: #3b6bf4
+    background-color: #3b6bf4;
 }
 
 #save{

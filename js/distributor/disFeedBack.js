@@ -1,4 +1,11 @@
 $(function() {
+	//================如果是返回的刷新页面
+	window.onpageshow = function(event) {　　
+		if(event.persisted) {　　　　
+			window.location.reload()　　
+		}
+	};
+//	=====================
 	$(document).on("click", '#no', function() {
 		$('.pop-box').fadeOut('9000');
 		var setRemove = setTimeout(function() {

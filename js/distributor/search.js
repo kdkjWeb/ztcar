@@ -1,5 +1,11 @@
 $(function() {
-
+	//================如果是返回的刷新页面
+	window.onpageshow = function(event) {　　
+		if(event.persisted) {　　　　
+			window.location.reload()　　
+		}
+	};
+//	=====================
 	var listJson = {};
 	var importId = GetRequest().id;
 	var data = {
