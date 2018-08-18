@@ -66,38 +66,26 @@ label{
     /* display: none */
 }
 /* 时间段 */
-.time{
-    width: 6.9rem;
+.time,.price{
     margin: auto;
     display: flex;
     margin-bottom: .3rem;
-    justify-content: space-between
+    justify-content: space-between;
 }
-.time input{
-    width:1.9rem;
+.time>div,.price>div{
+	width: 100%;
+	padding: 0 .2rem;
+	
+}
+.time input,.price input{
+    width:2.3rem;
     height: .6rem;
     border-radius: .5rem;
     padding-left: .2rem;
     border: 1px solid #c6c6c6;
     box-sizing: border-box;
-    margin-top: .32rem
-}
-/* 价格区间 */
-.price{
-    width: 6.9rem;
-    margin: auto;
-    display: flex;
-    margin-bottom: .3rem;
-    justify-content: space-between
-}
-.price input{
-    width:1.8rem;
-    height: .6rem;
-    border-radius: .5rem;
-    padding-left: .2rem;
-    border: 1px solid #c6c6c6;
-    box-sizing: border-box;
-    margin-top: .32rem
+    margin-top: .32rem;
+    font-size: .28rem;
 }
 /* 客户姓名 */
 .name{
@@ -247,4 +235,14 @@ td{
 .seeProcess{
 	background-color: #8a6de9;
 	margin-left: 5%;
+}
+
+
+/*========================*/
+#tsbtn,#psbtn,#zxbtn{
+	/*display: block;*/
+	/*float: right;*/
+	margin: 0 auto;
+	margin-bottom: .2rem;
+	margin-left: .2rem;
 }

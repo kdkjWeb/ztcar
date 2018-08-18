@@ -61,7 +61,7 @@ $('.next').on('click', function() {
 $('#getCode').click(function() { //获取验证码
 	let _that = $(this);
 	let userPhone = $('#userPhone').val(); //用户电话
-	if(isPhone(userPhone) == false) {
+	if(isPhone(userPhone,'主贷人') == false) {
 		return false;
 	} else {
 		if(_that.attr('disabled') != undefined) {
@@ -344,6 +344,7 @@ function suerAjax() {
 				if(data.code == 0) {
 					errLay(data.msg);
 					var time = setTimeout(function() {
+						hideLoading(); //隐藏load
 						window.location.href = 'detail.html?applyId=' + data.applyId;
 					}, 500);
 				} else if(data.code == 1) {
@@ -377,9 +378,9 @@ function orcImg(myFile,name,thisDom) { //身份证ocr接口
 	var Fdata = new FormData();
 	Fdata.append('file', myFile,name+'.jpg');
 	if(thisDom != 'c'){
-		Fdata.append('ocrCode', 0);
+		Fdata.append('ocrCode', 0);  //身份证
 	}else{
-		Fdata.append('ocrCode', 3);
+		Fdata.append('ocrCode', 3);   //银行卡
 	}
 	
 	$.ajax({

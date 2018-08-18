@@ -1,11 +1,11 @@
 $(function() {
-//================如果是返回的刷新页面
+	//================如果是返回的刷新页面
 	window.onpageshow = function(event) {　　
 		if(event.persisted) {　　　　
 			window.location.reload()　　
 		}
 	};
-//	=====================
+	//	=====================
 	var listJson = {};
 	var importId = GetRequest().applyId;
 	var Route; //路径
@@ -317,13 +317,15 @@ $(function() {
 			'<div id="selectContent" class="carList">';
 
 		for(var i = 0; i < arr.length; i++) {
-			if(brandVal == arr[i].name) {
-				myText += '<div class="mylabel active" code="' + arr[i].id + '">';
-			} else {
-				myText += '<div class="mylabel" code="' + arr[i].id + '">';
+			if(arr[i].name != '全品牌') {
+				if(brandVal == arr[i].name) {
+					myText += '<div class="mylabel active" code="' + arr[i].id + '">';
+				} else {
+					myText += '<div class="mylabel" code="' + arr[i].id + '">';
+				}
+				myText += '<p>' + arr[i].name + '</p>' + '</div>';
 			}
-			myText += '<p>' + arr[i].name + '</p>' +
-				'</div>';
+
 		}
 		myText += '</div>' + '</div>';
 		$('#addselectOne').append(myText);
@@ -557,9 +559,9 @@ $(function() {
 		$('#userIdbox').hide();
 	})
 
-function orcImg(myFile,name,thisDom) { //驾驶证ocr接口
+	function orcImg(myFile, name, thisDom) { //驾驶证ocr接口
 		var Fdata = new FormData();
-		Fdata.append('file', myFile,name+'.jpg');
+		Fdata.append('file', myFile, name + '.jpg');
 		Fdata.append('ocrCode', 1);
 
 		$.ajax({
@@ -599,7 +601,7 @@ function orcImg(myFile,name,thisDom) { //驾驶证ocr接口
 	$(document).on('change', 'input[type=file]', function() {
 		var files = Array.prototype.slice.call(this.files);
 		var _this = $(this);
-		var thisDom = $(this).attr('id')
+		var thisDom = $(this).attr('id');
 		files.forEach(function(file, i) {
 			var fileType = /\/(?:jpeg|png|gif)/i;
 			if(!fileType.test(file.type)) {
@@ -621,30 +623,30 @@ function orcImg(myFile,name,thisDom) { //驾驶证ocr接口
 				var result = this.result; //读取失败时  null   否则就是读取的结果
 				var myFile = files[i];
 				var fileName = files[i].name;
-				var name = fileName.substring(0,fileName.indexOf("."));
-				
+				var name = fileName.substring(0, fileName.indexOf("."));
+
 				var img = new Image();
 				img.src = result;
-				
-				if (img.complete) {
-		                callback();
-		            } else {
-		                img.onload = callback;
-		            }
-					function callback() {
-						var data = compress(img);		
-						var inputData = upload(data, file.type);		
-						orcImg(inputData,name,thisDom);
-						img = null;
-					}
-				
+
+				if(img.complete) {
+					callback();
+				} else {
+					img.onload = callback;
+				}
+
+				function callback() {
+					var data = compress(img);
+					var inputData = upload(data, file.type);
+					orcImg(inputData, name, thisDom);
+					img = null;
+				}
+
 				_this.parents('.image-item').css("background-image", 'url(' + result + ')');
 			};
 			//注入图片 转换成base64
 			reader.readAsDataURL(file);
+		})
+
 	})
-			
-		
-})
-	
+
 })

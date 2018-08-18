@@ -1,8 +1,10 @@
-var path = "https://rydit.rydit.com.cn/zzbjr"; //外网
+//var path = "https://www.catialol.cn/zzbjr"; //正式
+
+var path = "https://rydit.rydit.com.cn/zzbjr"; //测试
 
 //var path = "http://192.168.0.137:8088"; //唐彬
 
-//var path = "http://192.168.0.194:8080"; //张韩
+//var path = "http://192.168.0.194:8088"; //张韩
 
 (function(doc, win) {
 	var docEl = doc.documentElement;
@@ -121,6 +123,15 @@ function GetRequest() {
 }
 
 //=======//时间转换=========
+function fmtDate(obj){
+    var date =  new Date(obj);
+    var y = 1900+date.getYear();
+    var m = "0"+(date.getMonth()+1);
+    var d = "0"+date.getDate();
+    return y+"-"+m.substring(m.length-2,m.length)+"-"+d.substring(d.length-2,d.length);
+}
+
+
 function getDays(times) {
 	var d = new Date(times);
 	return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();

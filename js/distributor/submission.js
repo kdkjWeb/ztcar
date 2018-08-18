@@ -305,15 +305,15 @@ $(function() {
 			contentType: "application/json",
 			type: "post",
 			success: function(data) {
-				hideLoading(); //隐藏load	
 				if(data.code == 0) {
 					errLay('保存成功');
 					setTimeout(function(){
 						window.location.href = 'myOrder.html';
+						hideLoading(); //隐藏load	
 					},1000)
-					
 				} else {
 					errLay(data.msg);
+					hideLoading(); //隐藏load	
 				}
 			},error: function(request, textStatus, errorThrown) {
 				hideLoading(); //隐藏load	

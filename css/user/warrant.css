@@ -1,0 +1,50 @@
+#foot{
+	text-align: center;
+	padding-bottom: 60px;
+	
+}
+#myBotton{
+	width: 50px;
+    height:50px;
+    vertical-align: middle;
+}
+#foot span{
+	font-size: 40px;
+	vertical-align: middle;
+}
+
+#next{
+	margin: 0 auto;
+	width: 80%;
+    /*height: .8rem;*/
+   	height: 100px;
+   	line-height: 100px;
+    background-color: #3b6bf4 !important;
+    border-radius: 50px;
+    font-size: 40px;
+    font-weight: 900;
+    color: #fff;
+    text-align: center;
+    margin-top: .7rem;
+}
+
+#content,#foot,body{
+	width: 1000px;
+}
+
+#errLay span{
+	background-color: rgba(0,0,0,.5);
+	color: #FFFFFF;
+	border-radius: 16px;
+	padding: 25px;
+	font-size: 40px;
+}
+
+.weui-loadmore__tips{
+	font-size: 45px !important;
+	color: #FFFFFF !important; 
+}
+.weui-loading{
+	width: 50px;
+	height: 50px;
+}

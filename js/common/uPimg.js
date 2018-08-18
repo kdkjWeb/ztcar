@@ -49,7 +49,7 @@ function compress(img) {
 		ctx.drawImage(img, 0, 0, width, height);
 	}
 
-	//进行最小压缩
+	//进行最小压缩, 后面这个参数就是压缩比例，最大是1
 	var ndata = canvas.toDataURL('image/jpeg',0.3);
 
 	console.log('压缩前：' + initSize);

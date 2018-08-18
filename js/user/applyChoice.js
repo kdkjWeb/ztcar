@@ -3,7 +3,6 @@ $(function() {
 	$('#distributor').val('');
 	
 	var listJson; //经销商数据
-
 	//	==========
 	$("#Carloan").select({
 		title: "车贷分期",
@@ -19,21 +18,6 @@ $(function() {
 		title: "维保分期",
 		items: ['']
 	});
-
-//	$("#CarloanTime").select({
-//		title: "贷款期数",
-//		items: []
-//	});
-//	
-//	$("#CarriskTime").select({
-//		title: "贷款期数",
-//		items: []
-//	});
-//	
-//	$("#CarloanTime").select({
-//		title: "InsuranceTime",
-//		items: []
-//	});
 	
 	//============================新旧车点击
 	document.querySelector("#newCar").addEventListener("click", function() {
@@ -178,8 +162,6 @@ $(function() {
 
 	$("#btn1").on("click", function() {
 
-//		localStorage.clear(); //清空重置localStorage
-
 		var carProperty = ''; //新车
 
 		if($('#newCar').hasClass('icon-danxuan')) {
@@ -195,133 +177,53 @@ $(function() {
 		var maintenanceId = $('#maintenanceId').attr('data-values'); //维保id
 
 		var loanId = ''; //产品id
-//		var loanMonth = ''; //产品期数id
-//		var month = ''; //期数
 		var loanType = ''; //产品类型
-//		var age = ''; //年龄
+		var loanText = '';
+		
 
 		$('.iconBox').each(function() {
 			if($(this).attr('box') == 'true') {
 				if($(this).attr('num') == '1') {
-					let id = $('#Carloan').attr('data-values');
-					let line = $('#CarloanTime').attr('data-values');
-					month = parseInt($('#CarloanTime').val());
-					age = $('#Carloan').attr('age');
+					var id = $('#Carloan').attr('data-values');
+					var line = $('#CarloanTime').attr('data-values');
 					loanId = id;
-					loanMonth = line;
 					loanType = $(this).attr('num');
+					loanText = $('#Carloan').val();
 				} else if($(this).attr('num') == '2') {
-					let id = $('#Carrisk').attr('data-values');
-					let line = $('#CarriskTime').attr('data-values');
-					month = parseInt($('#CarriskTime').val());
-					age = $('#Carrisk').attr('age');
+					var id = $('#Carrisk').attr('data-values');
+					var line = $('#CarriskTime').attr('data-values');
 					loanId = id;
-					loanMonth = line;
 					loanType = $(this).attr('num');
+					loanText = $('#Carrisk').val();
 				} else if($(this).attr('num') == '3') {
-					let id = $('#Insurance').attr('data-values');
-					let line = $('#InsuranceTime').attr('data-values');
-					month = parseInt($('#InsuranceTime').val());
-					age = $('#InsuranceTime').attr('age');
+					var id = $('#Insurance').attr('data-values');
+					var line = $('#InsuranceTime').attr('data-values');
 					loanId = id;
-					loanMonth = line;
 					loanType = $(this).attr('num');
+					loanText = $('#Insurance').val();
 				}
 			}
 		});
 
-		if(!loanId) {
+		if(loanText == '' || loanText == '暂无产品可选') {
 			errLay('请选择一个产品');
 			return false;
 		}
-//		if(!loanMonth) {
-//			errLay('请选择产品期数');
-//			return false;
-//		}
-
+		
 		localStorage.removeItem("carProperty");
 		localStorage.removeItem("dealersId");
-//		localStorage.removeItem("age");
 		localStorage.removeItem("loanId");
-//		localStorage.removeItem("loanMonth");
-//		localStorage.removeItem("month");
 		localStorage.removeItem("loanType");
 
 
 		localStorage.setItem('carProperty', JSON.stringify(carProperty)); //新车
 		localStorage.setItem('dealersId', JSON.stringify(dealersId)); //经销商id
-//		localStorage.setItem('age', age); //产品年龄
 		localStorage.setItem('loanId', JSON.stringify(loanId));   //产品id
-//		localStorage.setItem('loanMonth', JSON.stringify(loanMonth));  //产品期数id
-//		localStorage.setItem('month', JSON.stringify(month));     //产品期数
 		localStorage.setItem('loanType', JSON.stringify(loanType));   // 产品类型
 
 		window.location.href = "apply.html";
 
 	});
-
-	//==========如果没有选择经销商============
-//	$('.content_div .input_span').on('click', function() {
-//		if($('#distributor').val().length < 1) {
-//			errLay('请先选择经销商');
-//			return false;
-//		}
-//	});
-//	//=======================获取贷款期数============
-//	function getTime(dataVal, mytype) {
-//		let data = {
-//			productId: dataVal
-//		};
-//		$.ajax({
-//			url: path + "/deadlineCategory/queryeadlineByProductId",
-//			data: data,
-//			dataType: "json",
-//			contentType: "application/json",
-//			type: "get",
-//			beforeSend: function() {
-//				showLoading(); //显示loading	
-//			},
-//			success: function(data) {
-//				if(data.code == 0) {
-//					hideLoading(); //隐藏load	
-//					var list = data.data;
-//
-//					var arr = [];
-//					$.each(list, function(index, data, array) {
-//						var a = {
-//							title: data.deadLines,
-//							value: data.deadlinesId
-//						};
-//						arr.push(a);
-//					});
-//					if(arr.length == 0) {
-//						arr = ["暂无期数可选"]
-//					}
-//					if(mytype === 'type1'){
-//						$("#CarloanTime").select("update",{
-//							items: arr
-//						});
-//					} else if(mytype === 'type2'){
-//						$("#CarriskTime").select("update",{
-//							items: arr
-//						});
-//					} else if(mytype === 'type3'){
-//						$("#InsuranceTime").select("update",{
-//							items: arr
-//						});
-//					}
-//
-//				} else {
-//					errAlert('提醒', '请求超时');
-//				}
-//			},
-//			error: function(request, textStatus, errorThrown) {
-//				hideLoading(); //隐藏load	
-//				errLay(request.responseJSON.msg)
-//			}
-//		});
-//
-//	}
 
 	//====================经销商名称=============================			
 

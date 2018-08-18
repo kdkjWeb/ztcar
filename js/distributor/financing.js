@@ -5,7 +5,7 @@ $(function() {
 			window.location.reload()　　
 		}
 	};
-//	=====================
+	//	=====================
 	var importId = GetRequest().applyId;
 	var listJson;
 	var carList; //汽车品牌数组
@@ -42,44 +42,44 @@ $(function() {
 	var iptDislable = $('.iptDislable');
 
 	var paymentValCtr; // 1-车贷比例-加融比例
+	var paymentValCtrTwo; //1-车贷比例
 
-	var maxAge;   //产品年龄限制 ,上限
-	var minAge;  //产品年龄，下限
-	var userAge;    //用户年龄
+	var maxAge; //产品年龄限制 ,上限
+	var minAge; //产品年龄，下限
+	var userAge; //用户年龄
 
 	getCar(); //获取车辆品牌 
-	
-	OrderUse(importId,function(){
+
+	OrderUse(importId, function() {
 		getList(); //回显
 	});
-	
-	$("#city").cityPicker({
-	    title: "请选择上牌城市",
-	    showDistrict: false
-	  });
 
+	$("#city").cityPicker({
+		title: "请选择上牌城市",
+		showDistrict: false
+	});
 
 	$("#month").select({
 		title: "贷款期数",
 		items: [],
 		onChange: function() {
-			if($(this)[0].data.values && listJson.productId){		
+			if($(this)[0].data.values && listJson.productId) {
 				var goodsMonth = parseFloat(month.val()); //选择的产品期数
-				var year = accDiv(goodsMonth,12);    //贷款期数折合年数 
-				var present =  accAdd(userAge,year);  //借款人当前年纪+贷款期数折合年数		
+				var year = accDiv(goodsMonth, 12); //贷款期数折合年数 
+				var present = accAdd(userAge, year); //借款人当前年纪+贷款期数折合年数		
 
-				if(present < maxAge && userAge > minAge){
-					getDeadline($(this)[0].data.values,listJson.productId);
+				if(present < maxAge && userAge > minAge) {
+					getDeadline($(this)[0].data.values, listJson.productId);
 					rate.val('');
 					coefficient.val('');
-				}else{
+				} else {
 					errLay('您的年龄不符合该产品要求');
 					month.val('');
 					rate.val('');
 					coefficient.val('');
 					return false;
 				}
-				
+
 			}
 		}
 	});
@@ -92,12 +92,11 @@ $(function() {
 			errLay('首付金额不能大于等于车辆开票价');
 			firstRatio.val(''); //清空首付比例
 			firstPayment.val(''); //清空首付金额
-//			carFinancing.val('') //清空车辆融资额
+			//			carFinancing.val('') //清空车辆融资额
 			TotalLoan.text(''); //清空贷款总额
 			payment.text(''); //清空预估月供
 		}
 	});
-
 
 	//	=============首付比例不能大于100
 	firstRatio.change(function() {
@@ -106,7 +105,7 @@ $(function() {
 			errLay('首付比例错误');
 			firstRatio.val(''); //清空首付比例
 			firstPayment.val(''); //清空首付金额
-//			carFinancing.val('') //清空车辆融资额
+			//			carFinancing.val('') //清空车辆融资额
 			TotalLoan.text(''); //清空贷款总额
 			payment.text(''); //清空预估月供
 		}
@@ -143,7 +142,7 @@ $(function() {
 		}
 	}
 
-	function getCoefficient(myrate) {   //更具费率，获取万元还款系数
+	function getCoefficient(myrate) { //更具费率，获取万元还款系数
 		if(month.val()) {
 			var m = parseFloat(month.val()); //贷款期数	
 			var t = accDiv(parseFloat(myrate), 100); //获取费率
@@ -156,7 +155,7 @@ $(function() {
 
 	//============费率和万元还款系数的计算规则=================
 
-	//	====贷款总额的方法
+	//	====贷款总额的方法,适用于规则
 	function countTotalLoan(TotalNum) {
 		if(TotalNum >= AmountDown && TotalNum <= AmountUp) {
 			var num = keepTwo(TotalNum);
@@ -194,6 +193,40 @@ $(function() {
 		}
 	}
 
+	function getOther() {
+		var num = 0;
+
+		var insuranceVal = 0;
+		var purchaseVal = 0;
+		var shipVal = 0;
+		var gpsVal = 0;
+		var otherVal = 0;
+
+		if(insurance.val()) {
+			insuranceVal = insurance.val();
+		}
+		if(purchase.val()) {
+			purchaseVal = purchase.val();
+		}
+		if(ship.val()) {
+			shipVal = ship.val();
+		}
+		if(gps.val()) {
+			gpsVal = gps.val();
+		}
+		if(other.val()) {
+			otherVal = other.val();
+		}
+
+		var a = accAdd(insuranceVal, purchaseVal);
+		var b = accAdd(a, shipVal);
+		var c = accAdd(b, gpsVal);
+		var d = accAdd(c, otherVal);
+
+		num = d;
+		return num;
+	}
+
 	$("#save").on("click", function() {
 		if(!Verification()) {
 			return false;
@@ -208,14 +241,14 @@ $(function() {
 			errLay('请填写预估月供');
 			return false;
 		}
-		
-		listJson.spCity = $('#city').val();//上牌城市
+
+		listJson.spCity = $('#city').val(); //上牌城市
 		listJson.vehicleBrand = $('#Vehicle').val(); //车辆品牌
 		listJson.carSeries = $('#audi').val(); //车系
 		listJson.carModels = $('#type').val(); //车型
 		listJson.carOpenFare = $('#ticketPrice').val(); //车辆开票价
 		listJson.reimbursementDeadline = $('#month').val(); //还款期限
-		listJson.deadlineId = $('#month').attr('data-values');  //期数id
+		listJson.deadlineId = $('#month').attr('data-values'); //期数id
 
 		listJson.wyhkxs = $('#coefficient').val(); //万元还款系数
 		listJson.rate = $('#rate').val(); //费率
@@ -260,25 +293,25 @@ $(function() {
 					listJson = data.data;
 
 					content(listJson.smProductApplycontent); ////显示和必填验证
-					
-					if(listJson.spCity){   //上牌城市
+
+					if(listJson.spCity) { //上牌城市
 						$('#city').val(listJson.spCity)
 					}
-					
-					if(listJson.idNum){  //用户年龄
+
+					if(listJson.idNum) { //用户年龄
 						userAge = GetAge(listJson.idNum);
 					}
-					
-					if(listJson.heighAge){   //年龄限制 上限
+
+					if(listJson.heighAge) { //年龄限制 上限
 						maxAge = listJson.heighAge;
 					}
-					
-					if(listJson.minAge){   //年龄限制 下限
+
+					if(listJson.minAge) { //年龄限制 下限
 						minAge = listJson.minAge;
-					}else{
-						minAge = 18;  //如果没有，默认18岁
+					} else {
+						minAge = 18; //如果没有，默认18岁
 					}
-					
+
 					if(listJson.loansType) {
 						$('#loansType').text(listJson.loansType); //贷款类型
 					}
@@ -299,9 +332,9 @@ $(function() {
 						$('#month').val(listJson.reimbursementDeadline); //还款期限
 					}
 					if(listJson.deadlineId) {
-						$('#month').attr('data-values',listJson.deadlineId); //还款期限id
+						$('#month').attr('data-values', listJson.deadlineId); //还款期限id
 					}
-					
+
 					if(listJson.deadlineList) {
 						var arr = [];
 						for(var i = 0; i < listJson.deadlineList.length; i++) {
@@ -315,10 +348,10 @@ $(function() {
 							items: arr
 						});
 					}
-					if(listJson.deadlineId && listJson.productId){
-						getDeadline(listJson.deadlineId,listJson.productId);
+					if(listJson.deadlineId && listJson.productId) {
+						getDeadline(listJson.deadlineId, listJson.productId);
 					}
-					
+
 					if(listJson.wyhkxs) {
 						$('#coefficient').val(listJson.wyhkxs); //万元还款系数
 					}
@@ -373,6 +406,8 @@ $(function() {
 
 					paymentValCtr = accSub(1, accAdd(CarProportion, AddProportion)); // 1-车贷比例-加融比例
 
+					paymentValCtrTwo = accSub(1, CarProportion);
+
 					AmountDown = Number(listJson.financingAmountDown); //贷款总额下限
 					AmountUp = Number(listJson.financingAmountUp); //贷款总额上限
 
@@ -382,14 +417,14 @@ $(function() {
 							items: []
 						})
 						$("#rate").parents('.weui-cell').append('<i class="iconfont icon-xiangxia1"></i>');
-						
+
 						$("#coefficient").select({
 							title: "万元还款系数",
-							items:[]
+							items: []
 						});
-						
+
 						$("#coefficient").parents('.weui-cell').append('<i class="iconfont icon-xiangxia1"></i>');
-						
+
 					}
 
 					if(listJson.accountMethod == 0) {
@@ -400,11 +435,11 @@ $(function() {
 						console.log('规则二')
 						ruleTwo();
 						$('#thawing').before($('#thawingDom')); //加融选项放在首付比例前
-						firstRatio.attr('readonly','readonly');  //首付比例和首付金额  不能手动填写
-						firstRatio.css('border','none');
-						firstPayment.attr('readonly','readonly');
-						firstPayment.css('border','none');
-						
+						firstRatio.attr('readonly', 'readonly'); //首付比例和首付金额  不能手动填写
+						firstRatio.css('border', 'none');
+						firstPayment.attr('readonly', 'readonly');
+						firstPayment.css('border', 'none');
+
 					} else if(listJson.accountMethod == 2) {
 						ruleThree();
 						$('#firstRatio').parents(".weui-cell").addClass("hide");
@@ -425,6 +460,9 @@ $(function() {
 						$('#other').parents(".weui-cell").removeClass("hide");
 						$('#other').addClass("must");
 						console.log('规则四');
+					} else if(listJson.accountMethod == 4) {
+						ruleFive();
+						console.log('规则五');
 					}
 
 				} else {
@@ -613,24 +651,27 @@ $(function() {
 	})
 
 	function audiSelect(arr) {
-		$('body').addClass('modal-open');
-		var brandVal = $('#audi').val();
-		$('#mySelect').remove();
-		var text = '<div id="mySelect">' +
-			'<div id="selectContent" class="audiSelect">';
-
-		for(var i = 0; i < arr.length; i++) {
-			if(brandVal == arr[i]) {
-				text += '<div class="mylabel active">';
-			} else {
-				text += '<div class="mylabel">';
+		if($('#Vehicle').val() != ''){
+			$('body').addClass('modal-open');
+			var brandVal = $('#audi').val();
+			$('#mySelect').remove();
+			var text = '<div id="mySelect">' +
+				'<div id="selectContent" class="audiSelect">';
+	
+			for(var i = 0; i < arr.length; i++) {
+				if(brandVal == arr[i]) {
+					text += '<div class="mylabel active">';
+				} else {
+					text += '<div class="mylabel">';
+				}
+				text += '<p>' + arr[i] + '</p>' +
+					'</div>';
 			}
-			text += '<p>' + arr[i] + '</p>' +
-				'</div>';
+			text += '</div>' + '</div>';
+			$('#addselectTwo').append(text);
+			$('#mySelect').fadeIn();
 		}
-		text += '</div>' + '</div>';
-		$('#addselectTwo').append(text);
-		$('#mySelect').fadeIn();
+		
 	}
 
 	function audiSearch(keyWord) {
@@ -669,24 +710,27 @@ $(function() {
 	})
 
 	function typeSelect(arr) {
-		$('body').addClass('modal-open');
-		var brandVal = $('#type').val();
-		$('#mySelect').remove();
-		var text = '<div id="mySelect">' +
-			'<div id="selectContent" class="typeSelect">';
-
-		for(var i = 0; i < arr.length; i++) {
-			if(brandVal == arr[i]) {
-				text += '<div class="mylabel active">';
-			} else {
-				text += '<div class="mylabel">';
+		if($('#audi').val() != ''){
+			$('body').addClass('modal-open');
+			var brandVal = $('#type').val();
+			$('#mySelect').remove();
+			var text = '<div id="mySelect">' +
+				'<div id="selectContent" class="typeSelect">';
+	
+			for(var i = 0; i < arr.length; i++) {
+				if(brandVal == arr[i]) {
+					text += '<div class="mylabel active">';
+				} else {
+					text += '<div class="mylabel">';
+				}
+				text += '<p>' + arr[i] + '</p>' +
+					'</div>';
 			}
-			text += '<p>' + arr[i] + '</p>' +
-				'</div>';
+			text += '</div>' + '</div>';
+			$('#addselectThree').append(text);
+			$('#mySelect').fadeIn();
 		}
-		text += '</div>' + '</div>';
-		$('#addselectThree').append(text);
-		$('#mySelect').fadeIn();
+		
 	}
 
 	function typeSearch(keyWord) {
@@ -723,8 +767,7 @@ $(function() {
 						}
 					}
 
-				}
-				else if(mycontent.smProductApplycontents[i].label == "vehicle") { //车辆品牌
+				} else if(mycontent.smProductApplycontents[i].label == "vehicle") { //车辆品牌
 					if(mycontent.smProductApplycontents[i].isShow == 1) {
 						$('#Vehicle').parents(".weui-cell").removeClass("hide");
 						if(mycontent.smProductApplycontents[i].isRequire == 1) {
@@ -908,18 +951,18 @@ $(function() {
 		function setFirstRatio() { //已知开票价和首付比例，自动填写首付金额
 			if(ticketPrice.val() && firstRatio.val()) {
 				var firstRatioVal = accDiv(parseFloat(firstRatio.val()), 100) //获取首付比例
-				if(firstRatioVal>0 && firstRatioVal >= paymentValCtr) { //如果首付  大于 1-车贷比例-加融比例
+				if(firstRatioVal > 0 && firstRatioVal >= paymentValCtr) { //如果首付  大于 1-车贷比例-加融比例
 					var text = accMul(ticketPrice.val(), firstRatioVal); //自动填写首付金额
 					firstPayment.val(keepTwo(text));
 				} else {
-					if(firstRatioVal<=0){
+					if(firstRatioVal <= 0) {
 						errLay('首付比例需大于0%');
 						firstRatio.val(''); //清空首付比例
 						firstPayment.val(''); //清空首付金额
 						carFinancing.val('') //清空车辆融资额
 						TotalLoan.text(''); //清空贷款总额
 						payment.text(''); //清空预估月供
-					}else{
+					} else {
 						var a = keepTwo(paymentValCtr * 100);
 						errLay('首付比例不得低于' + a + "%");
 						firstRatio.val(''); //清空首付比例
@@ -928,7 +971,7 @@ $(function() {
 						TotalLoan.text(''); //清空贷款总额
 						payment.text(''); //清空预估月供
 					}
-					
+
 				}
 			}
 		}
@@ -942,20 +985,20 @@ $(function() {
 				var firstPaymentVal = parseFloat(firstPayment.val()); //获取首付金额
 				var Ctr = accMul(paymentValCtr, ticketPrice.val()); //（1-车贷比例-加融比例）*车辆开票价
 				var myCtr = keepTwo(Ctr)
-				if(firstPaymentVal>0 && firstPaymentVal >= Ctr) {
+				if(firstPaymentVal > 0 && firstPaymentVal >= Ctr) {
 					var mytext = accDiv(firstPayment.val(), ticketPrice.val()); //首付比例 = 首付金额/车辆开票价
 					var newText = accMul(mytext, 100);
 					firstRatio.val(keepTwo(newText));
 					firstRatio.change();
 				} else {
-					if(firstPaymentVal<=0){
+					if(firstPaymentVal <= 0) {
 						errLay('首付比例需大于0%');
 						firstRatio.val(''); //清空首付比例
 						firstPayment.val(''); //清空首付金额
 						carFinancing.val('') //清空车辆融资额
 						TotalLoan.text(''); //清空贷款总额
 						payment.text(''); //清空预估月供
-					}else{
+					} else {
 						errLay('首付金额不得低于' + myCtr);
 						firstRatio.val(''); //清空首付比例
 						firstPayment.val(''); //清空首付金额
@@ -963,7 +1006,7 @@ $(function() {
 						TotalLoan.text(''); //清空贷款总额
 						payment.text(''); //清空预估月供
 					}
-					
+
 				}
 			}
 		}
@@ -1038,43 +1081,8 @@ $(function() {
 
 	}
 
-
-//	==========规则二
+	//	==========规则二
 	function ruleTwo() {
-
-		function getOther() {
-			var num = 0;
-			
-			var insuranceVal = 0;
-			var purchaseVal = 0;
-			var shipVal = 0;
-			var gpsVal = 0;
-			var otherVal = 0;
-			
-			if(insurance.val()) {
-				insuranceVal = insurance.val();
-			}
-			if(purchase.val()) {
-				purchaseVal = purchase.val();
-			}
-			if(ship.val()) {
-				shipVal = ship.val();
-			}
-			if(gps.val()) {
-				gpsVal = gps.val();
-			}
-			if(other.val()) {
-				otherVal = other.val();
-			}
-			
-			var a = accAdd(insuranceVal, purchaseVal);
-			var b = accAdd(a, shipVal);
-			var c = accAdd(b, gpsVal);
-			var d = accAdd(c, otherVal);
-			
-			num = d;
-			return num;
-		}
 
 		//================================
 		ticketPrice.change(getFirstRatio);
@@ -1091,7 +1099,7 @@ $(function() {
 				firstRatio.val(keepTwo(f)).change(); //填写首付比例		
 			}
 		}
-		
+
 		//	=====================
 		ticketPrice.change(getFirstPayment);
 		TotalLoan.change(getFirstPayment);
@@ -1102,7 +1110,7 @@ $(function() {
 			var c = accSub(ticketPrice.val(), t);
 			firstPayment.val(keepTwo(c)).change();
 		}
-		
+
 		//	========================
 		ticketPrice.change(getTotalLoan);
 		iptDislable.change(getTotalLoan);
@@ -1143,6 +1151,90 @@ $(function() {
 		});
 	}
 
+	function ruleFive() {
+
+		//		=============== 首付比例改变事件
+
+		firstRatio.change(firstRatioVal);
+		firstRatio.change(carFinancingVal);
+		ticketPrice.change(firstRatioVal);
+		ticketPrice.change(carFinancingVal);
+		
+		function firstRatioVal() {
+			var a = firstRatio.val();
+			var num = accDiv(a, 100)
+			var t = ticketPrice.val(); //车俩开票价
+
+			if(num >= paymentValCtrTwo && a < 100 && t != '') {
+				if(t) {
+					var c = accMul(t, num); //首付金额
+					firstPayment.val(keepTwo(c));
+				}
+			} else {
+				if(firstRatio.val()){
+					errLay('首付比例错误');
+					firstRatio.val(''); //清空首付比例
+					firstPayment.val(''); //清空首付金额
+					carFinancing.val('') //清空车辆融资额
+					TotalLoan.text(''); //清空贷款总额
+					payment.text(''); //清空预估月供
+				}
+				
+			}
+		}
+
+		function carFinancingVal() { //车俩融资额
+			if(ticketPrice.val() && firstRatio.val()){
+				var t = ticketPrice.val(); //车俩开票价
+				var a = firstRatio.val();
+				var num = accDiv(a, 100); //首付比例
+				var c = accSub(1, num); //（1-首付比例）
+				var d = accMul(t, c); // 车辆融资额=车辆开票价*（1-首付比例）
+				carFinancing.val(keepTwo(d)).change();
+			}
+			
+			
+		}
+
+		firstPayment.change(firstPaymentVal); //首付金额改变事件
+		firstPayment.change(firstPaymentVal); //首付金额改变事件
+		
+		function firstPaymentVal() {
+			var a = firstPayment.val(); //首付金额
+			var b = ticketPrice.val(); //车俩开票价
+			var c = accMul(paymentValCtrTwo, b) //（1-车贷比例）*车辆开票价
+
+			if(a >= c && b != '') { //首付金额必须大于或等于（1-车贷比例）*车辆开票价，
+				var d = accDiv(a, b) //首付比例=首付金额/车辆开票价
+				var n = accMul(d, 100)
+				firstRatio.val(keepTwo(n)).change();
+			} else {
+				if(firstPayment.val()){
+					errLay('首付金额错误');
+					firstRatio.val(''); //清空首付比例
+					firstPayment.val(''); //清空首付金额
+					carFinancing.val('') //清空车辆融资额
+					TotalLoan.text(''); //清空贷款总额
+					payment.text(''); //清空预估月供
+				}
+				
+			}
+		}
+
+		carFinancing.change(countTotalLoanVal);
+		iptDislable.change(countTotalLoanVal);
+		function countTotalLoanVal() {
+			if(carFinancing.val() && firstRatio.val()){
+				var a = carFinancing.val();  //车辆融资额
+				var b = getOther();
+				var c = accAdd(a,b); //贷款总额=车辆开票价*（1-首付比例）+保险费+gps服务费+。。。
+				countTotalLoan(c);
+			}
+			
+		}
+
+	}
+
 	function getDeadline(code, id) {
 		mydata = {
 			deadlineId: code,
@@ -1168,12 +1260,12 @@ $(function() {
 						$("#rate").select("update", {
 							items: arr
 						});
-						var CoefficientArr= [];
-						for(var i = 0; i<arr.length;i++){
+						var CoefficientArr = [];
+						for(var i = 0; i < arr.length; i++) {
 							CoefficientArr.push(getCoefficient(arr[i]))
 						}
 						$("#coefficient").select("update", {
-							items:CoefficientArr
+							items: CoefficientArr
 						});
 					} else {
 						rateDown = data.data.rateDown; //费率下线
@@ -1198,12 +1290,11 @@ $(function() {
 		});
 	}
 
-
 	//加在返回的页面，如果是通过历史返回，刷新页面
-	window.onpageshow = function(event) {
-	　　if (event.persisted) {
-	　　　　window.location.reload() 
-	　　}
+	window.onpageshow = function(event) {　　
+		if(event.persisted) {　　　　
+			window.location.reload()　　
+		}
 	};
 
 })
